@@ -1,5 +1,5 @@
 {
-  "name": "merrymen",
+  "name": "littlejohn",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.12.9",
@@ -29,12 +29,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nverno/merrymen.git"
+    "url": "git+https://github.com/nverno/littlejohn.git"
   },
   "author": "Noah Peart <noah.v.peart@gmail.com> (https://www.github.com/nverno)",
   "license": "WTFPL",
   "bugs": {
-    "url": "https://github.com/nverno/merrymen/issues"
+    "url": "https://github.com/nverno/littlejohn/issues"
   },
-  "homepage": "https://github.com/nverno/merrymen#readme"
+  "homepage": "https://github.com/nverno/littlejohn#readme",
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.8"
+  }
 }
