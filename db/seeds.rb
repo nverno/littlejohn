@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 User.create!(
-  first_name: 'asdf',
-  last_name: 'asdf',
-  username: 'asdf',
-  email: 'asdf@gmail.com',
+  first_name: 'guest',
+  last_name: 'ipoo',
+  username: 'guest',
+  email: 'guest@gmail.com',
   password: 'asdfasdf',
   balance: 10_000
 )

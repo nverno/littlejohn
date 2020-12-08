@@ -18,6 +18,14 @@ class SessionForm extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  // FIXME: 
+  demoLogin(e) {
+    e.preventDefault();
+    this.props.demoLogin();
+    // this.setState({ email: 'guest', password: 'asdfasdf' });
+    // this.props.processForm(this.state);
+  }
+
   handleChange(field) {
     return (e) =>
       this.setState({
@@ -49,7 +57,8 @@ class SessionForm extends Component {
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit} className={`${formType}-form`}>
           {formType === 'login' ? (
-            <LoginFormBody {...this.state} handleChange={this.handleChange} />
+            <LoginFormBody {...this.state} handleChange={this.handleChange}
+                           demoLogin={this.demoLogin.bind(this)} />
           ) : (
             <SignupFormBody {...this.state} handleChange={this.handleChange} />
           )}

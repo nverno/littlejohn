@@ -10,6 +10,12 @@
   </head>
 
   <body>
+    <!-- FIXME: handle this on frontend -->
+    <% if logged_in? %>
+      <h3>Welcome, <%= current_user.first_name %></h3>
+      <%= button_to 'Logout', api_session_url, method: :delete %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
