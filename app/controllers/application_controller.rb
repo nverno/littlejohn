@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base # rubocop:todo Style/Documentation
-  protect_from_forgery with: :exception
+  # FIXME: remove this, add back protect_from_forgery
+  skip_before_action :verify_authenticity_token
+  # protect_from_forgery with: :exception
 
   # make these methods available from within the views
   helper_method :current_user, :logged_in?
