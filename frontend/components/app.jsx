@@ -4,14 +4,11 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 import LoginFormContainer from './session/login_form_container';
 import SignUpFormContainer from './session/signup_form_container';
+import Header from './header/header';
 
 const App = () => (
   <div>
-    <header>
-      <Link to="/" className="header-link">
-        <h1>LittleJohn</h1>
-      </Link>
-    </header>
+    <Header />
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
