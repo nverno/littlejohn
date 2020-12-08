@@ -14,7 +14,9 @@ const configureStore = (preloadedState = {}) => {
   const store = createStore(
     rootReducer,
     preloadedState,
-    composeWithDevTools(applyMiddleware(...middlewares))
+    (process.env.NODE_ENV !== 'production'
+     ? composeWithDevTools(applyMiddleware(...middlewares))
+     : applyMiddleware(...middlewares))
   );
 
   return store;
