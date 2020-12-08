@@ -1,6 +1,10 @@
 {
   "name": "littlejohn",
   "private": true,
+  "engines": {
+    "node": ">=15",
+    "npm": ">=7"
+  },
   "dependencies": {
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
@@ -24,6 +28,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "webpack",
     "start": "webpack --mode=development --watch"
   },
   "repository": {
@@ -37,7 +42,7 @@
   },
   "homepage": "https://github.com/nverno/littlejohn#readme",
   "devDependencies": {
-    "redux-logger": "^3.0.6",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6"
   }
 }
