@@ -7,7 +7,7 @@ import SignUpFormContainer from './session/signup_form_container';
 import Header from './header/header';
 
 const App = () => (
-  <div>
+  <div className="app">
     <Header />
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
@@ -16,5 +16,5 @@ const App = () => (
     </Switch>
   </div>
 );
-
+// T9gTCbj8QpnHiOG_nWy17
 export default App;

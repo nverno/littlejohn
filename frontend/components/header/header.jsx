@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import Logo from './logo';
-import Search from './search';
+import Search from '../search/search';
 
 export default class Header extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ export default class Header extends Component {
 
   render() {
     return (
-      <header>
+      <header className="main-header">
         <div className="logo-container">
           <Link to="/">
             <Logo />
