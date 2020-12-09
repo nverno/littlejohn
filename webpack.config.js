@@ -19,6 +19,10 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack']
+      },
     ],
   },
   devtool: 'source-map',
