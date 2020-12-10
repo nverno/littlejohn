@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import LoginFormBody from './login_form_body';
-import SignupFormBody from './signup_form_body';
+import LoginFormBody from './login/login_form_body';
+import SignupFormBody from './signup/signup_form_body';
 
 class SessionForm extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class SessionForm extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // FIXME: 
+  // FIXME:
   demoLogin(e) {
     e.preventDefault();
     this.props.demoLogin();
@@ -57,8 +57,11 @@ class SessionForm extends Component {
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit} className={`${formType}-form`}>
           {formType === 'login' ? (
-            <LoginFormBody {...this.state} handleChange={this.handleChange}
-                           demoLogin={this.demoLogin.bind(this)} />
+            <LoginFormBody
+              {...this.state}
+              handleChange={this.handleChange}
+              demoLogin={this.demoLogin.bind(this)}
+            />
           ) : (
             <SignupFormBody {...this.state} handleChange={this.handleChange} />
           )}

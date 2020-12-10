@@ -19,15 +19,15 @@ const Unknown404 = () => {
             </div>
             <p>
               <span className="unknown-404-text">
-                Not all those who wander are lost, but it seems you may
-                have taken a wrong turn.
+                Not all those who wander are lost, but it seems you may have
+                taken a wrong turn.
               </span>
             </p>
             <Link to="/">
               <Button
-                color='success'
+                color="success"
                 className="btn btn-success"
-                style={{color: 'black'}}
+                style={{ color: 'black' }}
               >
                 Go Home
               </Button>

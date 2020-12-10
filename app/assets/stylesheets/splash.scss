@@ -1,0 +1,349 @@
+.splash-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 64px;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.splash-header {
+  background-color: rgb(195, 245, 60);
+  border-bottom-color: #000000;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  overflow: hidden;
+  position: relative;
+  display: block;
+}
+
+.splash-header-container {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  min-width: 320px;
+  max-width: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.splash-header-body {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  margin-left: -9px;
+  margin-right: -9px;
+  width: calc(100% + 18px);
+  -webkit-flex-wrap: wrap;
+  -webkit-flex-direction: row;
+}
+
+.splash-header-content-outer {
+  margin-left: 9px;
+  margin-right: 9px;
+  width: calc(41.667% - 18px);
+  display: block;
+  visibility: visible;
+}
+
+.splash-header-content-inner {
+  margin-left: 6px;
+  margin-right: 6px;
+  width: calc(100% - 12px);
+  display: block;
+  visibility: visible;
+}
+
+.splash-header-content {
+  padding: 100px 0;
+}
+
+.splash-header-title {
+  margin-bottom: 18px;
+  white-space: pre-line;
+  display: block;
+}
+
+.splash-header-title h1 {
+  font-family: 'Capsule Sans Display', system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 52px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 60px;
+  margin: 0;
+  -webkit-letter-spacing: -1.75px;
+  -moz-letter-spacing: -1.75px;
+  -ms-letter-spacing: -1.75px;
+  letter-spacing: -1.75px;
+  -webkit-text-decoration: unset;
+  text-decoration: unset;
+}
+
+.splash-header-text-container {
+  margin-top: 24px;
+  display: block;
+}
+
+.splash-header-text-container span {
+  font-family: 'Capsule Sans Display', system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px;
+  -webkit-letter-spacing: -0.24px;
+  -moz-letter-spacing: -0.24px;
+  -ms-letter-spacing: -0.24px;
+  letter-spacing: -0.24px;
+  -webkit-text-decoration: unset;
+  text-decoration: unset;
+  margin: 0;
+}
+
+.splash-header-control-container {
+  margin-top: 40px;
+  display: block;
+}
+
+.splash-header-control-content {
+  display: flex;
+  flex-direction: column;
+  margin: -20px 0;
+}
+
+.splash-header-signup {
+  display: flex;
+  justify-content: flex-start;
+  -webkit-box-pack: start;
+  margin: 20px 0;
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.splash-button-signup {
+  color: white;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  position: static;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0 36px;
+  height: 48px;
+  min-width: 144px;
+  border-radius: 24px;
+  width: auto;
+  background-color: rgb(0, 0, 0);
+}
+
+.splash-button-signup:hover {
+  color: white;
+  background-color: rgb(42, 49, 55);
+  text-decoration: none;
+}
+
+.splash-disclosure-container {
+  margin: 20px 0;
+  display: block;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.splash-disclosure-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  -webkit-appearance: none;
+  text-align: unset;
+  color: unset;
+  // -webkit-tap-highlight-color: transparent;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.splash-disclosure {
+  display: flex;
+  align-items: center;
+  font: inherit;
+  color: unset;
+  text-align: unset;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.splash-disclosure-text,
+.splash-disclosure-text span {
+  padding-top: 2px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.splash-disclosure-icon {
+  margin-right: 12px;
+  font: inherit;
+}
+
+.splash-disclosure:hover {
+  margin: 0px;
+  color: rgb(0, 200, 50);
+}
+
+.splash-header-image-container {
+  margin-left: 9px;
+  margin-right: 9px;
+  width: calc(58.333% - 18px);
+  display: block;
+  visibility: visible;
+}
+
+.splash-header-image-outer {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  height: 100%;
+  align-content: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.splash-header-image-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.splash-header-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+
+.splash-header-backdrop {
+  display: flex;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  position: absolute;
+}
+
+// Sections
+.splash-section-1 {
+  background-color: rgb(255, 255, 255);
+  border-bottom-color: #000000;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+.splash-section-1-container {
+  width: 100%;
+  padding-left: 36px;
+  padding-right: 36px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.splash-section-1-outer {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-left: -9px;
+  margin-right: -9px;
+  width: calc(100% + 18px);
+  // -webkit-flex-wrap: wrap;
+  // -ms-flex-wrap: wrap;
+  // -webkit-flex-direction: row;
+  // -ms-flex-direction: row;
+}
+
+.splash-section-1-start {
+  margin-left: 9px;
+  margin-right: 9px;
+  width: calc(25% - 18px);
+  display: block;
+  visibility: visible;
+}
+
+.splash-section-1-inner {
+  margin-left: 9px;
+  margin-right: 9px;
+  width: calc(50% - 18px);
+  display: block;
+  visibility: visible;
+}
+
+.splash-section-1-body {
+  padding: 72px 0;
+  text-align: center;
+  display: block;
+}
+
+.splash-section-1-header-container {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.splash-section-1-header {
+  font-family: 'Capsule Sans Display', system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px;
+  letter-spacing: -0.32px;
+  text-decoration: unset;
+  margin: 0;
+  color: rgb(0, 0, 0);
+}
+
+.splash-section-1-text-container {
+  margin-bottom: 36px;
+}
+.splash-section-1-text {
+  margin-top: 0;
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.splash-footer {
+}
