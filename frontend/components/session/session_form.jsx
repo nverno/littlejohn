@@ -18,12 +18,14 @@ class SessionForm extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // FIXME:
+  componentDidMount() {
+    console.log("FARTING!!");
+    this.props.clearSessionErrors();
+  }
+
   demoLogin(e) {
     e.preventDefault();
     this.props.demoLogin();
-    // this.setState({ email: 'guest', password: 'asdfasdf' });
-    // this.props.processForm(this.state);
   }
 
   handleChange(field) {
@@ -39,7 +41,6 @@ class SessionForm extends Component {
     this.props.processForm(user);
   }
 
-  // FIXME: better display errors? Check site
   renderErrors() {
     return (
       <ul className="session-errors">
