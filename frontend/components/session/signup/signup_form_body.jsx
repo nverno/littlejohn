@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
   [ Password (min. 10 characters)]
 
   Continue  |  Log in...
- */
+*/
 const SignupFormBody = ({
   firstName,
   lastName,
@@ -19,32 +19,33 @@ const SignupFormBody = ({
   handleChange,
 }) => (
   <>
-    <h3 className="signup-message">Welcome to LittleJohn</h3>
+    {/* <h3 className="signup-message">Welcome to LittleJohn</h3> */}
     <div className="signup-form">
-      <label>
-        <input
-          type="text"
-          name="firstName"
-          value={firstName}
-          placeholder="First name"
-          onChange={handleChange('first_name')}
-          className="signup-input"
-          required
-        />
-      </label>{' '}
-      <label>
-        <input
-          type="text"
-          name="lastName"
-          value={lastName}
-          placeholder="Last name"
-          onChange={handleChange('last_name')}
-          className="signup-input"
-          required
-        />
-      </label>
-      <br />
-      <label>
+      <div className="signup-form-row-1">
+        <div className="signup-input-firstname">
+          <input
+            type="text"
+            name="firstName"
+            value={firstName}
+            placeholder="First name"
+            onChange={handleChange('first_name')}
+            className="signup-input"
+            required
+          />
+        </div>
+        <div className="signup-input-lastname">
+          <input
+            type="text"
+            name="lastName"
+            value={lastName}
+            placeholder="Last name"
+            onChange={handleChange('last_name')}
+            className="signup-input"
+            required
+          />
+        </div>
+      </div>
+      <div className="signup-input-email">
         <input
           type="email"
           name="email"
@@ -54,9 +55,8 @@ const SignupFormBody = ({
           className="signup-input"
           required
         />
-      </label>
-      <br />
-      <label>
+      </div>
+      <div className="signup-input-password">
         <input
           type="password"
           value={password}
@@ -65,13 +65,19 @@ const SignupFormBody = ({
           className="signup-input"
           required
         />
-      </label>
-      <br />
-      <div className="signup-form-footer">
-        <input className="signup-submit" type="submit" value="Continue" />
+      </div>
 
-        <p>Already started?</p>
-        <Link to="/login">Log in to complete your application</Link>
+      <div className="signup-form-footer">
+        <div className="signup-form-button-container">
+          <button className="signup-submit login-submit" type="submit">
+            Continue
+          </button>
+        </div>
+        <div className="signup-form-login">
+          <span>Already started?</span>
+          <br />
+          <Link to="/login">Log in to complete your application</Link>
+        </div>
       </div>
     </div>
   </>

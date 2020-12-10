@@ -5,7 +5,8 @@ import { AuthRoute, ProtectedRoute, UserRoute } from '../util/route_util';
 import SplashContainer from './splash/splash_container';
 import Header from './header/header';
 import LoginPage from './session/login/login_page';
-import SignUpFormContainer from './session/signup/signup_form_container';
+import SignupPage from './session/signup/signup_page';
+// import SignUpFormContainer from './session/signup/signup_form_container';
 import Unknown404Container from './errors/404/unknown_404_container';
 
 const App = () => (
@@ -13,7 +14,7 @@ const App = () => (
     <UserRoute path="/" component={Header} />
     <Switch>
       <AuthRoute exact path="/login" component={LoginPage} />
-      <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+      <AuthRoute exact path="/signup" component={SignupPage} />
       <Route exact path="/" component={SplashContainer} />
       <Route path="/" component={Unknown404Container} />
     </Switch>

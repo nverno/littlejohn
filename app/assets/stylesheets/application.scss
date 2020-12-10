@@ -6,8 +6,12 @@
 
 @import 'splash';
 
+// XXX: should pull input and button stylings out of login/signup
+// where they are shared
 @import 'app';
-@import 'login';
+@import 'login'; // button styles in login are used in signup
+@import 'signup';
+
 @import 'header';
 @import 'search';
 @import 'static_pages';

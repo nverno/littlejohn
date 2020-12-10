@@ -42,7 +42,7 @@ class SessionForm extends Component {
   // FIXME: better display errors? Check site
   renderErrors() {
     return (
-      <ul>
+      <ul className="session-errors">
         {this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>{error}</li>
         ))}
@@ -54,7 +54,6 @@ class SessionForm extends Component {
     const { formType } = this.props;
     return (
       <div className={`${formType}-form-container`}>
-        {this.renderErrors()}
         <form onSubmit={this.handleSubmit} className={`${formType}-form`}>
           {formType === 'login' ? (
             <LoginFormBody
@@ -66,6 +65,7 @@ class SessionForm extends Component {
             <SignupFormBody {...this.state} handleChange={this.handleChange} />
           )}
         </form>
+        {this.renderErrors()}
       </div>
     );
   }
