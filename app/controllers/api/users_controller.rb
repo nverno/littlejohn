@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController # rubocop:todo Style/Documentation
+  before_action :require_logged_out, only: :create
+
   def create
     @user = User.new(user_params)
     if @user.save
