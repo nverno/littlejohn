@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 
 const LoginFormBody = ({ email, password, handleChange, demoLogin }) => {
   return (
@@ -40,10 +39,13 @@ const LoginFormBody = ({ email, password, handleChange, demoLogin }) => {
 
         <br />
         <footer className="login-form-footer">
-          <input className="login-submit" type="submit" value="Sign In" />
-          {' '}
-          <input className="login-submit" type="submit" value="Demo Login"
-                 onClick={demoLogin} />
+          <input className="login-submit" type="submit" value="Sign In" />{' '}
+          <input
+            className="login-submit"
+            type="submit"
+            value="Demo Login"
+            onClick={demoLogin}
+          />
         </footer>
       </div>
     </>
