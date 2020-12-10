@@ -19,7 +19,6 @@ class SessionForm extends Component {
   }
 
   componentDidMount() {
-    console.log("FARTING!!");
     this.props.clearSessionErrors();
   }
 
