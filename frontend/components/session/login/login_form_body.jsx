@@ -15,7 +15,7 @@ const LoginFormBody = ({ email, password, handleChange, demoLogin }) => {
             type="text"
             value={email}
             onChange={handleChange('email')}
-            className="login-input"
+            className="form-input"
             required
           />
         </label>
@@ -27,7 +27,7 @@ const LoginFormBody = ({ email, password, handleChange, demoLogin }) => {
             type="password"
             value={password}
             onChange={handleChange('password')}
-            className="login-input"
+            className="form-input"
             required
           />
         </label>

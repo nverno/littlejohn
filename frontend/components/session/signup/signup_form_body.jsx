@@ -29,7 +29,7 @@ const SignupFormBody = ({
             value={firstName}
             placeholder="First name"
             onChange={handleChange('first_name')}
-            className="signup-input"
+            className="form-input"
             required
           />
         </div>
@@ -40,7 +40,7 @@ const SignupFormBody = ({
             value={lastName}
             placeholder="Last name"
             onChange={handleChange('last_name')}
-            className="signup-input"
+            className="form-input"
             required
           />
         </div>
@@ -52,7 +52,7 @@ const SignupFormBody = ({
           value={email}
           placeholder="Email"
           onChange={handleChange('email')}
-          className="signup-input"
+          className="form-input"
           required
         />
       </div>
@@ -62,7 +62,7 @@ const SignupFormBody = ({
           value={password}
           placeholder="Password (min. 6 characters)"
           onChange={handleChange('password')}
-          className="signup-input"
+          className="form-input"
           required
         />
       </div>
