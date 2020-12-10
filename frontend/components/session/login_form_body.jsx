@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 const LoginFormBody = ({ email, password, handleChange, demoLogin }) => {
   return (
     <>
-      <h3 className="login-message">Welcome to LittleJohn</h3>
-      <div className="login-form">
+      <header className="login-header">
+        <span>Welcome to LittleJohn</span>
+      </header>
+      <div className="login-form-body">
         <label>
           Email or username
+          <br />
           <input
             type="text"
             value={email}
@@ -19,6 +22,7 @@ const LoginFormBody = ({ email, password, handleChange, demoLogin }) => {
         <br />
         <label>
           Password
+          <br />
           <input
             type="password"
             value={password}
@@ -28,16 +32,21 @@ const LoginFormBody = ({ email, password, handleChange, demoLogin }) => {
           />
         </label>
         <br />
-
         {/* FIXME: unhandled */}
-        <Link to="/">Forgot your username or password?</Link>
+        <Link to="/signup/reset_password">
+          <p>Forgot your username or password?</p>
+        </Link>
 
         <br />
-        <div className="login-form-footer">
-          <input className="login-submit" type="submit" value="Sign In" />
-          <input className="login-submit" type="submit" value="Demo Login"
-                 onClick={demoLogin} />
-        </div>
+        <footer className="login-form-footer">
+          <input className="login-submit" type="submit" value="Sign In" />{' '}
+          <input
+            className="login-submit"
+            type="submit"
+            value="Demo Login"
+            onClick={demoLogin}
+          />
+        </footer>
       </div>
     </>
   );
