@@ -1,7 +1,50 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import 'bootstrap';
 
+@import 'rh_vars';
+
+body {
+  color: var(--rh__neutral-fg1);
+  background-color: var(--rh__neutral-bg1);
+  font-family: Capsule Sans Text,-apple-system,BlinkMacSystemFont,sans-serif;
+  display: block;
+  font-size: 13px;
+}
+
+#root, body, html {
+  margin: 0;
+  padding: 0;
+}
+
+body, body.regular, h4, h4.regular {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -.1px;
+  line-height: 20px;
+  margin: 0;
+}
+
+*, :after, :before {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+label {
+  cursor: default;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 @import 'app';
+@import 'login';
 @import 'header';
 @import 'search';
 @import 'static_pages';
