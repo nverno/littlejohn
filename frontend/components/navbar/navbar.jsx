@@ -3,6 +3,8 @@ import React from 'react';
 import UserNavbar from './user_navbar';
 import MainNavbar from './main_navbar';
 
+// FIXME: could add test if match.params have changed, in which
+// case all dropdowns should be closed
 export default class Navbar extends React.Component {
   constructor(props) {
     super(props);
@@ -14,16 +16,18 @@ export default class Navbar extends React.Component {
   setWrapperRef(node) {
     this.wrapperRef = node;
   }
-  
+
   // Hide open dropdowns when clicked elsewhere on the page
   handleOutsideClick(e) {
-    console.log('firing beeotch');
-    if (this.props.isOpen &&
-        this.wrapperRef && !this.wrapperRef.current.contains(e.target)) {
+    if (
+      this.props.isOpen &&
+      this.wrapperRef &&
+      !this.wrapperRef.current.contains(e.target)
+    ) {
       // Tell the parent navbar that none of the items are open
       this.props.navbarDropdownClose();
     }
-  };
+  }
 
   componentDidMount() {
     this.props.navbarCloseAll();
@@ -37,17 +41,23 @@ export default class Navbar extends React.Component {
 
   render() {
     const { loggedIn } = this.props;
-    const navClass = loggedIn ? 'navbar-user' : 'navbar-main';
+    let navClass = loggedIn ? 'navbar-user' : 'navbar-main';
+    if (this.props.isOpen) {
+      navClass += ' navbar-dropdown-expanded';
+    }
+
     return (
       <div ref={this.wrapperRef}>
         <div className="navbar-container">
-          <nav role='navigation' className={navClass}>
-            {loggedIn
-             ? <UserNavbar {...this.props} />
-             : <MainNavbar {...this.props} />}
+          <nav role="navigation" className={navClass}>
+            {loggedIn ? (
+              <UserNavbar {...this.props} />
+            ) : (
+              <MainNavbar {...this.props} />
+            )}
           </nav>
         </div>
       </div>
     );
   }
-};
+}

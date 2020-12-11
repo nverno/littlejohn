@@ -9,11 +9,16 @@
 // FIXME: need class w/ 128px when links are shown
 // and default is only 64px
 .navbar-main {
-  // height: 128px;  
+  // height: 128px;
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px 0px;
   height: 64px;
   position: relative;
+}
+// Note: after .navbar-main/.navbar-user to override any settings
+// when there is an active dropdown
+.navbar-dropdown-expanded {
+  height: 128px;
 }
 
 .navbar-main-outer {
@@ -43,11 +48,11 @@
 
 .navbar-signup-button {
   @include signup-button(
-    $color: black,
-    $bg-color: var(--rh__primary-base),
-    $bg-color-hover: rgba(0,180,5,1),
-  )
-  @include type12;
+      $color: black,
+      $bg-color: var(--rh__primary-base),
+      $bg-color-hover: rgba(0, 180, 5, 1)
+    )
+    @include type12;
 }
 
 .navbar-login-container {
@@ -57,10 +62,7 @@
 }
 
 .navbar-login-anchor {
-  @include unstyled-anchor(
-    $color: black,
-    $color-hover: rgba(0,180,5,1),
-  );
+  @include unstyled-anchor($color: black, $color-hover: rgba(0, 180, 5, 1));
   @include type12;
 }
 

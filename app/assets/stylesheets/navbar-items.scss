@@ -12,7 +12,7 @@
   margin-top: 0;
   display: inline-block;
   padding: 0;
-  white-space: nowrap;  
+  white-space: nowrap;
   list-style: none;
 }
 .lj-navbar-item li {
@@ -23,22 +23,43 @@
 .lj-navbar-unstyled-button {
   @include unstyled-button;
   &:hover {
-    color: rgba(0,180,5,1);
+    color: rgba(0, 180, 5, 1);
   }
 }
 
 .lj-navbar-link {
-  @include unstyled-anchor(
-    $color: black,
-    $color-hover: rgba(0,180,5,1),
-  );
+  @include unstyled-anchor($color: black, $color-hover: rgba(0, 180, 5, 1));
   @include type11;
 }
 
 .lj-nested-navbar-items-container {
-  
+}
+// Used when dropdown is active
+.lj-nested-navbar-items-container-expanded {
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 64px;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  left: 205px;
+  top: 64px;
+  text-align: -webkit-match-parent;
 }
 
 .lj-nested-navbar-item {
-  
+  white-space: nowrap;
+  display: inline-block;
+  margin-top: 0;
+  margin-left: 36px;
+}
+.lj-nested-navbar-item:first-of-type {
+  margin-left: 0;
+}
+
+.lj-nested-navbar-item span {
+  @include type11;
 }
