@@ -32,9 +32,10 @@ const NavbarItem = ({
 }) => {
   // click handler for the actual nav item: toggles sublist
   const handleClick = (e) => {
-    if (isOpen) {
+    if (isOpen && openId === item.title) {
       navbarDropdownClose();
     } else {
+      if (isOpen) navbarDropdownClose();
       navbarDropdownOpen(item.title);
     }
   };
