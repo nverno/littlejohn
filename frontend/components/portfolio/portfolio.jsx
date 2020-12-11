@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+
+import HeaderPage from '../header/header_page';
 
 export default class Portfolio extends Component {
   constructor(props) {
@@ -7,9 +10,9 @@ export default class Portfolio extends Component {
 
   render() {
     return (
-      <div className="portfolio-container">
-        Portfolio
-      </div>
+      <HeaderPage>
+        Portfolio aqui
+      </HeaderPage>
     );
   }
 }
