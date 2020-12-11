@@ -42,6 +42,25 @@ export default class MainNavbar extends Component {
   }
 
   render() {
+    const controls = this.props.loggedIn
+          ? (
+            <Link to="/portfolio" className="navbar-signup-button">
+              My Account
+            </Link>
+          ) : (
+            <>
+              <Link to='/login' className="navbar-login-anchor">
+                <span className="navbar-login-text">
+                  <span>Log In</span>
+                </span>
+              </Link>
+              <div className="navbar-button-spacer"/>
+              <Link to="/signup" className="navbar-signup-button">
+                Sign up
+              </Link>
+            </>
+          );
+
     return (
       <div className="navbar-main-outer">
         
@@ -70,15 +89,7 @@ export default class MainNavbar extends Component {
         {/* </div> */}
         
         <div className="navbar-login-container">
-          <Link to='/login' className="navbar-login-anchor">
-            <span className="navbar-login-text">
-              <span>Log In</span>
-            </span>
-          </Link>
-          <div className="navbar-button-spacer"/>
-          <Link to="/signup" className="navbar-signup-button">
-            Sign up
-          </Link>
+          {controls}
         </div>
 
       </div>
