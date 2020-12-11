@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 import Navbar from './navbar';
 import {
@@ -13,10 +13,11 @@ import {
   navbarCloseAll,
 } from '../../actions/navbar_actions';
 
-const mapStateToProps = (state, _ownProps) => ({
+const mapStateToProps = (state, ownProps) => ({
   loggedIn: Boolean(state.session.currentUser),
   isOpen: Boolean(state.ui.navbar.open),
   openId: state.ui.navbar.open,
+  welcome: ownProps.welcome,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -26,8 +27,8 @@ const mapDispatchToProps = (dispatch) => ({
   demoLogin: () => dispatch(demoLogin()),
   logout: () => {
     dispatch(logout());
-    return <Redirect to="/" />;
+    return <Redirect to="/login" />;
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navbar));

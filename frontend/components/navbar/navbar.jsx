@@ -1,5 +1,6 @@
 import React from 'react';
 
+import HeaderContainer from '../header/header_container';
 import UserNavbar from './user_navbar';
 import MainNavbar from './main_navbar';
 
@@ -40,8 +41,10 @@ export default class Navbar extends React.Component {
   }
 
   render() {
-    const { loggedIn } = this.props;
-    let navClass = loggedIn ? 'navbar-user' : 'navbar-main';
+    const { loggedIn, welcome } = this.props;
+    if (!welcome && loggedIn) return <HeaderContainer />;
+    
+    let navClass = !welcome && loggedIn ? 'navbar-user' : 'navbar-main';
     if (this.props.isOpen) {
       navClass += ' navbar-dropdown-expanded';
     }
@@ -50,7 +53,7 @@ export default class Navbar extends React.Component {
       <div ref={this.wrapperRef}>
         <div className="navbar-container">
           <nav role="navigation" className={navClass}>
-            {loggedIn ? (
+            {!welcome && loggedIn ? (
               <UserNavbar {...this.props} />
             ) : (
               <MainNavbar {...this.props} />

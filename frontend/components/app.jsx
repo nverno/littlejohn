@@ -1,16 +1,15 @@
 import React from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Redirect, Link, Route, Switch } from 'react-router-dom';
 import {
   AuthRoute,
   ProtectedRoute,
   UserRoute
 } from '../util/route_util';
 
+import HomeContainer from './home/home_container';
 import SplashContainer from './splash/splash_container';
-// import Header from './header/header';
 import LoginPage from './session/login/login_page';
 import SignupPage from './session/signup/signup_page';
-// import SignUpFormContainer from './session/signup/signup_form_container';
 import Unknown404Container from './errors/404/unknown_404_container';
 import NavbarContainer from './navbar/navbar_container';
 
@@ -20,10 +19,18 @@ const App = () => (
     <Switch>
       <AuthRoute exact path="/login" component={LoginPage} />
       <AuthRoute exact path="/signup" component={SignupPage} />
-      <Route exact path="/" component={SplashContainer} />
+      <Route exact path="/welcome" component={SplashContainer} />
+      <Route exact path="/" component={HomeContainer} />
       <Route path="/" component={Unknown404Container} />
     </Switch>
-    <NavbarContainer />
+
+    <Switch>
+      <Route exact path="/welcome">
+        <NavbarContainer welcome />
+      </Route>
+      <Route path="/signup" render={() => <></>} />
+      <Route path="/" component={NavbarContainer} />
+    </Switch>
   </div>
 );
 

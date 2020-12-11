@@ -12,6 +12,14 @@ export default class Splash extends Component {
   }
 
   render() {
+    const controls = this.props.loggedIn
+          ? <Link to="/portfolio" className="splash-button-signup">
+              My Account
+            </Link>
+          : <Link to="/signup" className="splash-button-signup">
+              Sign up
+            </Link>;
+    
     return (
       <div className="splash-container">
         <header className="splash-header">
@@ -33,9 +41,7 @@ export default class Splash extends Component {
                     <div className="splash-header-control-container">
                       <div className="splash-header-control-content">
                         <div className="splash-header-signup">
-                          <Link to="/signup" className="splash-button-signup">
-                            Sign up
-                          </Link>
+                          {controls}
                         </div>
                         <div className="splash-disclosure-container">
                           <DisclosureButton className="splash">
