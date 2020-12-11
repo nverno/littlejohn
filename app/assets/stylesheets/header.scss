@@ -1,3 +1,58 @@
-.main-header {
+.lj-header {
+  background-color: var(--rh__neutral-bg1);
+  height: 64px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.lj-header-outer {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 1024px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  height: 64px;
+  -webkit-box-direction: normal;
+}
+
+.lj-header-logo-container {
+  margin-right: 6px;
+}
+
+.lj-header-items-container {
+  padding: 0 4px 0 6px;
+  flex-shrink: 0;
+  margin-left: auto;
+  // border: 1px solid black;
+}
+
+.lj-header-items-outer {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.lj-header-items-outer div:not(:first-child) {
+  margin-left: 33px;
+}
+
+.lj-header-link {
+  display: inline-block;
+  padding: 6px 0px;
+  box-sizing: border-box;
+  border-bottom: 2px solid transparent;
+  @include type8;
 }

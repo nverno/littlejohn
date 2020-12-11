@@ -2,7 +2,34 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import Logo from '../navbar/logo';
-import Search from '../search/search';
+import SearchContainer from '../search/search_container';
+import HeaderItems from './header_items';
+
+const headerItems = [
+  {
+    title: 'Free Stocks',
+    to: '/account/referral',
+    disabled: true,
+  },
+  {
+    title: 'Portfolio',
+    to: '/',
+  },
+  {
+    title: 'Cash',
+    to: '/cash',
+    disabled: true,
+  },
+  {
+    title: 'Messages',
+    to: '/messages',
+    disabled: true,
+  },
+  {
+    title: 'Account',
+    to: '/account',
+  },
+];
 
 export default class Header extends Component {
   constructor(props) {
@@ -11,14 +38,18 @@ export default class Header extends Component {
 
   render() {
     return (
-      <header className="main-header">
-        <div className="logo-container">
-          <Link to="/">
-            <Logo />
-          </Link>
-        </div>
+      <header className="lj-header">
+        <div className="lj-header-outer">
+          <div className="lj-header-logo-container">
+            <Link to="/">
+              <Logo className="lj-logo" />
+            </Link>
+          </div>
 
-        <Search />
+          <SearchContainer />
+
+          <HeaderItems items={headerItems} />
+        </div>
       </header>
     );
   }
