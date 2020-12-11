@@ -26,9 +26,56 @@
 
 .navbar-named-logo-centerer {
   position: relative;
-  bottom: 60px;
-  width: 100%;
+  bottom: 62px;
+  min-width: 150px;
+  width: 75%;
 }
 .navbar-named-logo-centerer a:hover {
   color: var(--rh__primary-base);
+}
+
+.navbar-main-item-container {
+  width: 100%;
+  // border: 1px solid black;
+  display: block;
+  visibility: visible;
+}
+
+.navbar-signup-button {
+  @include signup-button(
+    $color: black,
+    $bg-color: var(--rh__primary-base),
+    $bg-color-hover: rgba(0,180,5,1),
+  )
+  @include type12;
+}
+
+.navbar-login-container {
+  display: flex;
+  visibility: visible;
+  width: 100%;
+}
+
+.navbar-login-anchor {
+  @include unstyled-anchor(
+    $color: black,
+    $color-hover: rgba(0,180,5,1),
+  );
+  @include type12;
+}
+
+.navbar-login-text {
+  white-space: nowrap;
+  position: static;
+  text-align: center;
+}
+
+.navbar-main-spacer {
+  flex-grow: 1;
+  -webkit-box-flex: 1;
+  width: 100%;
+}
+
+.navbar-button-spacer {
+  width: 30px;
 }

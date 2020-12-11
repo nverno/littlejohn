@@ -1,0 +1,32 @@
+.lj-navbar-items-container {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lj-navbar-item {
+  @include type11;
+  margin-left: 48px;
+  margin-top: 0;
+  display: inline-block;
+  padding: 0;
+  white-space: nowrap;  
+  list-style: none;
+}
+
+.lj-navbar-unstyled-button {
+  @include unstyled-button;
+  &:hover {
+    color: rgba(0,180,5,1);
+  }
+}
+
+.lj-navbar-link {
+  @include unstyled-anchor(
+    $color: black,
+    $color-hover: rgba(0,180,5,1),
+  );
+  @include type11;
+}
