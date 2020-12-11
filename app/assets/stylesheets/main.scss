@@ -45,6 +45,10 @@ label {
   cursor: default;
 }
 
+a {
+  color: var(--rh__text-color);
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -90,6 +94,10 @@ p {
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+}
+
+nav {
+  display: block;
 }
 
 // Forms

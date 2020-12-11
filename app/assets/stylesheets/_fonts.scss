@@ -1,0 +1,9 @@
+// @include "rh_vars";
+
+@mixin type16 {
+  font-family: var(--rh__type-palette__type16__stack);
+  font-size: var(--rh__type-palette__type16__font-size);
+  font-weight: var(--rh__type-palette__type16__font-weight);
+  line-height: var(--rh__type-palette__type16__line-height);
+  letter-spacing: var(--rh__type-palette__type16__letter-spacing);
+}

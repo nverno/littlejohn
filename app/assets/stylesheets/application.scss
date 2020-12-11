@@ -2,6 +2,8 @@
 @import 'bootstrap';
 
 @import 'rh_vars';
+@import 'fonts.scss';
+
 @import 'main';
 
 @import 'logo';
@@ -10,6 +12,7 @@
 @import 'app';                                    // XXX: remove?
 @import 'login';
 @import 'signup';
+@import 'navbar';
 
 @import 'header';
 @import 'search';

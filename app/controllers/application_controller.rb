@@ -38,6 +38,7 @@ class ApplicationController < ActionController::Base # rubocop:todo Style/Docume
 
   def require_logged_in
     # Prevent logged-out users from seeing certain pages
-    redirect_to new_session_url unless logged_in?
+    render json: ['Cant log out unless logged in!'], status: 401 unless logged_in?
+    # redirect_to api_session_url unless logged_in?
   end
 end

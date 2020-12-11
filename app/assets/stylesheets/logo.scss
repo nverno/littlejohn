@@ -1,3 +1,11 @@
+.lj-logo {
+  fill: var(--rh__neutral-fg1);
+}
+
+.lj-logo:hover {
+  fill: var(--rh__primary-base);
+}
+
 .lj-logo-named {
   position: absolute;
   top: 40px;
@@ -6,11 +14,14 @@
 }
 
 .lj-logo-text {
+  @include type16;
   position: relative;
   left: 7px;
   top: 3px;
   text-align: right;
-  font-size: var(--rh__type-palette__type16__font-size);
-  font-style: normal;
-  font-weight: var(--rh__type-palette__type16__font-weight);
 }
+
+/* .lj-logo-named:hover { */
+/*   color: var(--rh__primary-base); */
+/*   fill: var(--rh__primary-base); */
+/* } */
