@@ -1,0 +1,50 @@
+// @include "rh_vars";
+
+
+@mixin type7 {
+  font-family: var(--rh__type-palette__type7__stack);
+  font-size: var(--rh__type-palette__type7__font-size);
+  font-weight: var(--rh__type-palette__type7__font-weight);
+  line-height: var(--rh__type-palette__type7__line-height);
+  letter-spacing: var(--rh__type-palette__type7__letter-spacing);
+}
+
+@mixin type8 {
+  font-family: var(--rh__type-palette__type8__stack);
+  font-size: var(--rh__type-palette__type8__font-size);
+  font-weight: var(--rh__type-palette__type8__font-weight);
+  line-height: var(--rh__type-palette__type8__line-height);
+  letter-spacing: var(--rh__type-palette__type8__letter-spacing);
+}
+
+@mixin type11 {
+  font-family: var(--rh__type-palette__type11__stack);
+  font-size: var(--rh__type-palette__type11__font-size);
+  font-weight: var(--rh__type-palette__type11__font-weight);
+  line-height: var(--rh__type-palette__type11__line-height);
+  letter-spacing: var(--rh__type-palette__type11__letter-spacing);
+}
+
+@mixin type12 {
+  font-family: var(--rh__type-palette__type12__stack);
+  font-size: var(--rh__type-palette__type12__font-size);
+  font-weight: var(--rh__type-palette__type12__font-weight);
+  line-height: var(--rh__type-palette__type12__line-height);
+  letter-spacing: var(--rh__type-palette__type12__letter-spacing);
+}
+
+@mixin type15 {
+  font-family: var(--rh__type-palette__type15__stack);
+  font-size: var(--rh__type-palette__type15__font-size);
+  font-weight: var(--rh__type-palette__type15__font-weight);
+  line-height: var(--rh__type-palette__type15__line-height);
+  letter-spacing: var(--rh__type-palette__type15__letter-spacing);
+}
+
+@mixin type16 {
+  font-family: var(--rh__type-palette__type16__stack);
+  font-size: var(--rh__type-palette__type16__font-size);
+  font-weight: var(--rh__type-palette__type16__font-weight);
+  line-height: var(--rh__type-palette__type16__line-height);
+  letter-spacing: var(--rh__type-palette__type16__letter-spacing);
+}

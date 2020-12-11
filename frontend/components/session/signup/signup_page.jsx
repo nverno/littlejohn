@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SignupFormContainer from './signup_form_container';
-import Logo from '../../header/logo';
+import NamedLogo from '../../navbar/named_logo';
 
 export default class SignupPage extends Component {
   constructor(props) {
@@ -13,11 +13,7 @@ export default class SignupPage extends Component {
         {/* {Left side} */}
         <div className="signup-content-left-container">
           <div className="signup-content-left">
-            <div className="signup-content-logo">
-              {/* {FIXME: how to adjust svg size with params?} */}
-              <span>LittleJohn</span>
-              <Logo />
-            </div>
+            <NamedLogo />
 
             <div className="signup-left-row-1">
               <span>Make Your Money Move</span>

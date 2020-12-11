@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import Logo from './logo';
+import Logo from '../navbar/logo';
 import Search from '../search/search';
 
 export default class Header extends Component {

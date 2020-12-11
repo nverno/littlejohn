@@ -1,0 +1,83 @@
+.navbar-container {
+  max-height: calc(100% - 0px - env(safe-area-inset-bottom));
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+// FIXME: need class w/ 128px when links are shown
+// and default is only 64px
+.navbar-main {
+  // height: 128px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px 0px;
+  height: 64px;
+  position: relative;
+}
+// Note: after .navbar-main/.navbar-user to override any settings
+// when there is an active dropdown
+.navbar-dropdown-expanded {
+  height: 128px;
+}
+
+.navbar-main-outer {
+  padding: 0 24px;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  height: 64px;
+}
+
+.navbar-named-logo-centerer {
+  position: relative;
+  bottom: 62px;
+  min-width: 150px;
+  width: 75%;
+}
+.navbar-named-logo-centerer a:hover {
+  color: var(--rh__primary-base);
+}
+
+.navbar-main-item-container {
+  width: 100%;
+  // border: 1px solid black;
+  display: block;
+  visibility: visible;
+}
+
+.navbar-signup-button {
+  @include signup-button(
+      $color: black,
+      $bg-color: var(--rh__primary-base),
+      $bg-color-hover: rgba(0, 180, 5, 1)
+    )
+    @include type12;
+}
+
+.navbar-login-container {
+  display: flex;
+  visibility: visible;
+  width: 100%;
+}
+
+.navbar-login-anchor {
+  @include unstyled-anchor($color: black, $color-hover: rgba(0, 180, 5, 1));
+  @include type12;
+}
+
+.navbar-login-text {
+  white-space: nowrap;
+  position: static;
+  text-align: center;
+}
+
+.navbar-main-spacer {
+  flex-grow: 1;
+  -webkit-box-flex: 1;
+  width: 100%;
+}
+
+.navbar-button-spacer {
+  width: 30px;
+}
