@@ -10,7 +10,7 @@
 @import 'logo';
 @import 'splash';
 
-@import 'app';                                    // XXX: remove?
+@import 'app'; // XXX: remove?
 @import 'login';
 @import 'signup';
 @import 'navbar';
@@ -18,5 +18,6 @@
 
 @import 'header';
 @import 'search';
+
 @import 'static_pages';
 @import 'unknown404';
