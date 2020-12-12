@@ -11,6 +11,9 @@
      window.loginURL = "<%= image_url 'login.jpg' %>"
      window.splashImageURL = "<%= image_url 'splash_image.png' %>"
      window.splashVideoURL = "<%= image_url 'splash_video.gif' %>"
+
+     window.avAPIKey = "<%= Rails.application.credentials.alphavantage[:api_key] %>"
+     window.iexAPIKey = "<%= Rails.application.credentials.iexcloud[:api_key] %>"
     </script>
     
   </head>
