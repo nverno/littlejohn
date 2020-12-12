@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+// import { Row, Col } from 'react-bootstrap';
 
 import HeaderPage from '../header/header_page';
+// import SampleGraph from './portfolio_sample.png';
 
 export default class Portfolio extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class Portfolio extends Component {
         <div className="row">
           <div className="col-12 portfolio-col-left">
             <section className="portfolio-graph-section">
-              Portfolio Graph
+              {/* <img src={SampleGraph} /> */}
             </section>
 
             <div className="portfolio-buying-power">Buying Power</div>
