@@ -2,5 +2,4 @@
 // https://www.alphavantage.co/documentation/
 
 const params = {
-  
 }
