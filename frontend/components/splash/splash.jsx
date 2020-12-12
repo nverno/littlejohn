@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import ErrorBoundary from '../errors/error_boundary';
-import SplashImage from './splash_image.png';
-import SplashVideo from './splash_video.gif';
 import DisclosureButton from './disclosure_button';
 
 export default class Splash extends Component {
@@ -13,13 +11,13 @@ export default class Splash extends Component {
 
   render() {
     const controls = this.props.loggedIn
-          ? <Link to="/portfolio" className="splash-button-signup">
-              My Account
+      ? <Link to="/portfolio" className="splash-button-signup">
+        My Account
             </Link>
-          : <Link to="/signup" className="splash-button-signup">
-              Sign up
+      : <Link to="/signup" className="splash-button-signup">
+        Sign up
             </Link>;
-    
+
     return (
       <div className="splash-container">
         <header className="splash-header">
@@ -57,9 +55,10 @@ export default class Splash extends Component {
                 <div className="splash-header-image-outer">
                   <div className="splash-header-image-inner">
                     <ErrorBoundary>
-                      <img src={SplashImage} className="splash-header-video" />
+                      <img src={window.splashImageURL}
+                           className="splash-header-video" />
                       <img
-                        src={SplashVideo}
+                        src={window.splashVideoURL}
                         className="splash-header-backdrop"
                       />
                     </ErrorBoundary>
