@@ -2,21 +2,13 @@
 // Modified from
 // https://github.com/wagenaartje/stocks.js
 //
-/** Import */
+// import Cache from './cache';
+
 var fetch = window.fetch;
-// if (typeof window === 'undefined') {
-//   // Seems like we are using Node.js
-//   fetch = require('node-fetch');
-// } else {
-//   fetch = window.fetch;
-// }
 
-/*******************************************************************************
-                                  STOCKS
-*******************************************************************************/
-
-function Stocks(apiKey = window.avAPIKey) {
+function Stocks(apiKey) {
   this.apiKey = apiKey;
+  // this.cache = new Cache(timeout);
 }
 
 Stocks.prototype = {

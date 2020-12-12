@@ -7,8 +7,7 @@ import configureStore from './store/store';
 // BEGIN testing
 import * as util from './util/session_api_util';
 import * as actions from './actions/session_actions';
-import * as av from './util/av_api_util';
-import Stocks from './util/stocks';
+import * as StockAPI from './util/stock_api_util';
 // END testing
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
     delete window.currentUser;
   }
 
+  // Initializes stocks API with key and time-to-live for cached results
+  StockAPI.initializeStocksAPI(10000);
+
   const store = configureStore(preloadedState);
   ReactDOM.render(<Root store={store} />, root);
 
@@ -32,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.store = store;
   window.SessionUtil = util;
   window.actions = actions;
-  window.av = av;
-  window.Stocks = Stocks;
+  window.sapi = StockAPI;
   // END testing
 });
