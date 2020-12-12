@@ -2,10 +2,14 @@
 // https://www.alphavantage.co/documentation/
 import Stocks from './stocks.js';
 
-const stocks = new Stocks(window.avAPIKey);
+// XXX: move this
+var stocks;
+document.addEventListener('DOMContentLoaded', () => {
+  stocks = new Stocks(window.avAPIKey);
+});
 
 export const fetchStock = (symbol, interval, amount) =>
-  new Stocks().timeSeries({ symbol, interval, amount });
+  stocks.timeSeries({ symbol, interval, amount });
 
 // const BASE_URL = 'https://www.alphavantage.co/query?';
 // const API_KEY = window.avAPIKey;
