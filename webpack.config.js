@@ -16,12 +16,13 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/env', '@babel/react'],
+            plugins: ['@babel/transform-runtime'],
           },
         },
       },
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack']
+        use: ['@svgr/webpack'],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,

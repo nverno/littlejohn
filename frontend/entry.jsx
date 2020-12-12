@@ -7,6 +7,8 @@ import configureStore from './store/store';
 // BEGIN testing
 import * as util from './util/session_api_util';
 import * as actions from './actions/session_actions';
+import * as av from './util/av_api_util';
+import Stocks from './util/stocks';
 // END testing
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -30,5 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.store = store;
   window.SessionUtil = util;
   window.actions = actions;
+  window.av = av;
+  window.Stocks = Stocks;
   // END testing
 });
