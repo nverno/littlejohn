@@ -7,13 +7,10 @@ import {
   companyOverview,
 } from '../../../selectors/companies';
 
-const mapStateToProps = (state, { match }) => {
-  const { symbol } = match.params;
-  const company = state.entities.companies[symbol];
+const mapStateToProps = (state, ownProps) => {
+  const { company } = ownProps;
 
   return {
-    company,
-    symbol,
     description: companyDescription(company),
     overview: companyOverview(company),
     state,

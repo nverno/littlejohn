@@ -71,4 +71,21 @@ export default class StocksCache {
       }
     });
   }
+
+  quote(symbol) {
+    const self = this;
+    const options = { symbol, interval: 'quote' };
+
+    return new Promise((resolve, _reject) => {
+      const res = self.cache.get(options);
+      if (res) {
+        resolve(res);
+      } else {
+        self.stocksAPI.quote(symbol).then((result) => {
+          self.cache.put(options, result);
+          resolve(result);
+        });
+      }
+    });
+  }
 }

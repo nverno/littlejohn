@@ -28,15 +28,15 @@ export default class StockInfo extends Component {
     this.setShowMore = this.setShowMore.bind(this);
   }
 
-  componentDidMount() {
-    if (!this.props.company) {
-      this.props.fetchCompanyInfo();
-    }
-  }
+  // componentDidMount() {
+  //   if (!this.props.company) {
+  //     this.props.fetchCompanyInfo();
+  //   }
+  // }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.symbol !== prevProps.symbol) this.props.fetchCompanyInfo();
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.symbol !== prevProps.symbol) this.props.fetchCompanyInfo();
+  // }
 
   setReadMore() {
     this.setState({ readMore: !this.state.readMore });
@@ -59,11 +59,15 @@ export default class StockInfo extends Component {
 
         <div className="lj-stock-info-about-container">
           <h3 className="lj-stock-info-about">
-            <span className="lj-type7 lj-primary">
-              {description.first}
-              {!readMore && '... '}
-              {readMore && description.second}
-            </span>
+            {description ? (
+              <span className="lj-type7 lj-primary">
+                {description.first}
+                {!readMore && '... '}
+                {readMore && description.second}
+              </span>
+            ) : (
+              <Spinner />
+            )}
 
             <ReadMoreButton toggle={readMore} setToggle={this.setReadMore} />
           </h3>

@@ -11,6 +11,16 @@ function Stocks(apiKey) {
   // this.cache = new Cache(timeout);
 }
 
+const mapKeys = (obj, fn) =>
+  Object.keys(obj).reduce((acc, k) => {
+    acc[fn(obj[k], k, obj)] = obj[k];
+    return acc;
+  }, {});
+
+// Cleanup quote results
+const cleanQuote = (quote) =>
+  mapKeys(quote, (_, k) => k.slice(4).replace(/ /g, '_'));
+
 Stocks.prototype = {
   /** Constants */
   DEFAULT_URL: 'https://www.alphavantage.co/query?',
@@ -350,6 +360,34 @@ Stocks.prototype = {
     };
 
     return this._doRequest(params);
+  },
+
+  search: async function (query) {
+    const params = {
+      function: 'SYMBOL_SEARCH',
+      keywords: query,
+    };
+
+    return this._doRequest(params);
+  },
+
+  // Generic API entry point
+  // By default return daily quote for a given symbol
+  query: async function (symbol, func = 'GLOBAL_QUOTE', ...rest) {
+    return this._doRequest({
+      function: func,
+      symbol,
+      ...rest,
+    });
+  },
+
+  quote: async function (symbol) {
+    let res = await this._doRequest({
+      function: 'GLOBAL_QUOTE',
+      symbol,
+    });
+
+    return cleanQuote(res['Global Quote']);
   },
 };
 

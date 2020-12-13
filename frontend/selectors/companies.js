@@ -4,7 +4,7 @@ export const companyOverview = (info) => {
     info && [
       {
         title: 'Name',
-        value: info['Name'],
+        value: info['Name'] && info['Name'].replace(/,?\s*Inc.?$/i, ''),
       },
       {
         title: 'Employees',
@@ -41,7 +41,7 @@ export const companyOverview = (info) => {
 };
 
 export const companyDescription = (info) => {
-  if (!info) return null;
+  if (!info || !info['Description']) return null;
   const desc = info['Description'];
 
   if (desc.length < 235) return { first: desc };
@@ -55,34 +55,36 @@ export const companyDescription = (info) => {
 // Pull out the extra information about a company
 // Some of this comes from the daily price data, a different source
 // than the regular info
-export const companyOverviewExtra = (info, prices) => {
+export const companyOverviewExtra = (info, quotes) => {
   // console.log('Info is ', info);
-  return (
-    info && [
-      {
-        title: 'High Today',
-      },
-      {
-        title: 'Low Today',
-      },
-      {
-        title: 'Open Price',
-      },
-      {
-        title: 'Volume',
-      },
-      {
-        title: '52 Week High',
-        value: info['52WeekHigh'],
-      },
-      {
-        title: '52 Week Low',
-        value: info['52WeekLow'],
-      },
-      {
-        title: '50 Day Moving Avg.',
-        value: info['50DayMovingAverage'],
-      },
-    ]
-  );
+  return [
+    {
+      title: 'High Today',
+      value: quotes && quotes['high'],
+    },
+    {
+      title: 'Low Today',
+      value: quotes && quotes['low'],
+    },
+    {
+      title: 'Open Price',
+      value: quotes && quotes['open'],
+    },
+    {
+      title: 'Volume',
+      value: quotes && quotes['volume'],
+    },
+    {
+      title: '52 Week High',
+      value: info && info['52WeekHigh'],
+    },
+    {
+      title: '52 Week Low',
+      value: info && info['52WeekLow'],
+    },
+    {
+      title: '50 Day Moving Avg.',
+      value: info && info['50DayMovingAverage'],
+    },
+  ];
 };

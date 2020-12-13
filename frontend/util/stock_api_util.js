@@ -39,6 +39,17 @@ export const fetchStockPrices = (symbol, interval, amount = 100) => {
   return __avStocksAPI.timeSeries({ symbol, interval, amount });
 };
 
+export const fetchStockQuote = (symbol) => {
+  return __avStocksAPI.quote(symbol);
+};
+
 export const fetchCompanyInfo = (symbol) => {
   return __avStocksAPI.stocksAPI.companyInfo(symbol);
 };
+
+export const fetchSearchResults = (query) => {
+  return __avStocksAPI.stocksAPI.search(query);
+};
+
+export const fetchQueryResults = (symbol, ...params) =>
+  __avStocksAPI.stocksAPI.query(symbol, ...params);

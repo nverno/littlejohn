@@ -10,8 +10,21 @@ export default class Stock extends Component {
     super(props);
   }
 
+  fetchStockShowData() {
+    this.props.fetchStockQuote();
+    this.props.fetchCompanyInfo();
+  }
+
+  componentDidMount() {
+    this.fetchStockShowData();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.symbol !== prevProps.symbol) this.fetchStockShowData();
+  }
+
   render() {
-    const { symbol } = this.props;
+    const { symbol, company, quote } = this.props;
 
     return (
       <HeaderPage>
@@ -20,12 +33,12 @@ export default class Stock extends Component {
         <div className="row">
           <div className="col-12">
             <header className="lj-stock-header">
-              <h1>{symbol}</h1>
+              <h1>{company && company['Name']}</h1>
             </header>
 
             <div>
               <section className="lj-stock-graph-section">
-                <StockPriceGraphContainer symbol={symbol} />
+                <StockPriceGraphContainer quote={quote} symbol={symbol} />
               </section>
 
               {/* XXX: only render this section if stock is owned */}
@@ -34,7 +47,7 @@ export default class Stock extends Component {
               {/* <section className="lj-stock-user-value"> */}
               {/* </section> */}
 
-              <StockInfoContainer />
+              <StockInfoContainer company={company} symbol={symbol} />
 
               <Section>
                 <SectionHeader title="Related Lists" />
