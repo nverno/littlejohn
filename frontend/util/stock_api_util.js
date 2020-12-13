@@ -26,5 +26,5 @@ export const initializeStocksAPI = (ttl) => {
   __stocksAPI = new StocksCache(window.avAPIKey, ttl);
 };
 
-export const fetchStock = (symbol, interval, amount = 100) =>
+export const fetchStockPrices = (symbol, interval, amount = 100) =>
   __stocksAPI.timeSeries({ symbol, interval, amount });
