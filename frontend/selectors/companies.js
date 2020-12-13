@@ -56,7 +56,7 @@ export const companyDescription = (info) => {
 // Some of this comes from the daily price data, a different source
 // than the regular info
 export const companyOverviewExtra = (info, prices) => {
-  console.log('Info is ', info);
+  // console.log('Info is ', info);
   return (
     info && [
       {
