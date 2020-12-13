@@ -2,7 +2,7 @@
   border-bottom: 1px solid;
   border-color: var(--rh__neutral-bg3);
   margin-top: 24px;
-  margin-bottom: 12px;  
+  margin-bottom: 12px;
 }
 
 .lj-graph-nav-container {
@@ -14,7 +14,7 @@
   display: flex;
   height: 33px;
   margin-left: -12px;
-  margin-right: -12px;  
+  margin-right: -12px;
 }
 
 .lj-graph-nav-button {
@@ -25,6 +25,10 @@
   padding: 0px;
   color: unset;
   appearance: none;
+
+  & span:hover {
+    color: var(--rh__primary-base);
+  }
 }
 
 .lj-nav-button-active {

@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Initializes stocks API with key and time-to-live for cached results
-  StockAPI.initializeStocksAPI(10000);
+  StockAPI.initializeStocksAPI(10 * 60 * 1000);
 
   const store = configureStore(preloadedState);
   ReactDOM.render(<Root store={store} />, root);
