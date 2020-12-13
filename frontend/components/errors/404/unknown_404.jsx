@@ -1,12 +1,13 @@
 import React from 'react';
 import Image404 from './image_404.svg';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import { Container, Row, Col } from 'react-bootstrap';
+
+import NavbarPage from '../../navbar/navbar_page';
 
 const Unknown404 = () => {
   return (
-    <Container fluid>
+    <NavbarPage>
+
       <div className="unknown-404-container">
         <div className="unknown-404-body">
           <div className="unknown-404-content">
@@ -23,22 +24,19 @@ const Unknown404 = () => {
                 taken a wrong turn.
               </span>
             </p>
-            <Link to="/">
-              <Button
-                color="success"
-                className="btn btn-success"
-                style={{ color: 'black' }}
-              >
-                Go Home
-              </Button>
+
+            <Link to="/" className="navbar-signup-button">
+              Go Home
             </Link>
+
           </div>
           <div className="unknown-404-image">
             <Image404 />
           </div>
         </div>
       </div>
-    </Container>
+
+    </NavbarPage>
   );
 };
 
