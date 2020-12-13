@@ -1,9 +1,9 @@
 //
+// API for alphavantage financial data
+//
 // Modified from
 // https://github.com/wagenaartje/stocks.js
 //
-// import Cache from './cache';
-
 var fetch = window.fetch;
 
 function Stocks(apiKey) {
@@ -341,6 +341,15 @@ Stocks.prototype = {
     }
 
     return result;
+  },
+
+  companyInfo: async function (company) {
+    const params = {
+      function: 'OVERVIEW',
+      symbol: company,
+    };
+
+    return this._doRequest(params);
   },
 };
 

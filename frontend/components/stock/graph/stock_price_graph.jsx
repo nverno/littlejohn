@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import PropagateLoader from 'react-spinners/PropagateLoader';
-import { SpinnerDotted } from '../../loading/SpinnerDotted';
+import Spinner from '../../loading/spinner';
 import GraphNav from '../../graph/graph_nav';
 
 const navIntervals = ['1D', '1W', '1M', '3M', '1Y', '5Y'];
@@ -60,23 +60,7 @@ export default class StockPriceGraph extends Component {
 
   render() {
     if (!this.props.prices) {
-      return (
-        <div
-          className="loading"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-          }}
-        >
-          <SpinnerDotted
-            size={50}
-            thickness={100}
-            speed={100}
-            color="rgba(0,200,5)"
-          />
-          {/* <PropagateLoader color="rgb(0,200,5)"/> */}
-        </div>
-      );
+      return <Spinner />;
     }
 
     return (

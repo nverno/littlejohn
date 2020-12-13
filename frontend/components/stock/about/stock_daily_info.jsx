@@ -3,35 +3,39 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import StockDailyInfoCell from './stock_daily_info_cell';
+import { companyOverviewExtra } from '../../../selectors/companies';
 // import { fetchPriceRecords } from '../../../actions/stock_price_actions';
 
 // These rely on the days data
-const gridExtraColumns = [
-  'High Today', 'Low Today', 'Open Price', 'Volume',
-  '52 Week High', '52 Week Low',
-];
+// const gridExtraColumns = [
+//   'High Today', 'Low Today', 'Open Price', 'Volume',
+// ];
 
-const StockDailyInfo = props => {
+const StockDailyInfo = (props) => {
   return (
     <>
-      {gridExtraColumns.map((column, idx) =>
-        <StockDailyInfoCell title={column} key={idx}/>)}
+      {props.overviewExtra.map((item, idx) => (
+        <StockDailyInfoCell key={idx} {...item} />
+      ))}
     </>
   );
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const symbol = ownProps.match.params.symbol;
-  return ({
+  const { company } = ownProps;
+  const { symbol } = ownProps.match.params;
+  const prices = state.entities.prices;
+
+  return {
     symbol,
-    prices: state.entities.prices[symbol],
-  });
+    overviewExtra: companyOverviewExtra(company, prices),
+  };
 };
 
 const mapDispatchToProps = (dispatch, { match }) => ({
   // fetchPriceRecords: () => dispatch(fetchPriceRecords(match.params.symbol)),
 });
 
-export default withRouter(connect(
-  mapStateToProps, mapDispatchToProps
-)(StockDailyInfo));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(StockDailyInfo)
+);

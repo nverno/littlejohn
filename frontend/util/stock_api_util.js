@@ -1,4 +1,4 @@
-import StocksCache from './stocks_cache';
+import AVStocksCache from './av_stocks_cache';
 
 // Alphavantage financial API
 // https://www.alphavantage.co/documentation/
@@ -20,7 +20,7 @@ import StocksCache from './stocks_cache';
 //     .join('&') + `&apikey=${API_KEY}`
 // );
 
-var __stocksAPI;
+export var __avStocksAPI;
 
 const intervalTable = {
   '1D': 'daily',
@@ -28,13 +28,17 @@ const intervalTable = {
   '1M': 'monthly',
   // XXX: add 3M, 1Y, 5Y
 };
-const normalizeInterval = interval => intervalTable[interval] || interval;
+const normalizeInterval = (interval) => intervalTable[interval] || interval;
 
-export const initializeStocksAPI = (ttl) => {
-  __stocksAPI = new StocksCache(window.avAPIKey, ttl);
+export const initializeAVStocksAPI = (ttl) => {
+  __avStocksAPI = new AVStocksCache(window.avAPIKey, ttl);
 };
 
 export const fetchStockPrices = (symbol, interval, amount = 100) => {
   interval = normalizeInterval(interval);
-  return __stocksAPI.timeSeries({ symbol, interval, amount });
+  return __avStocksAPI.timeSeries({ symbol, interval, amount });
+};
+
+export const fetchCompanyInfo = (symbol) => {
+  return __avStocksAPI.stocksAPI.companyInfo(symbol);
 };

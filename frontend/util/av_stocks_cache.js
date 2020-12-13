@@ -1,4 +1,4 @@
-import Stocks from './stocks';
+import Stocks from './av_stocks';
 
 // Cached values that expire after time_to_live (ttl)
 class Cache {
