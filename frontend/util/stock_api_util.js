@@ -22,9 +22,19 @@ import StocksCache from './stocks_cache';
 
 var __stocksAPI;
 
+const intervalTable = {
+  '1D': 'daily',
+  '1W': 'weekly',
+  '1M': 'monthly',
+  // XXX: add 3M, 1Y, 5Y
+};
+const normalizeInterval = interval => intervalTable[interval] || interval;
+
 export const initializeStocksAPI = (ttl) => {
   __stocksAPI = new StocksCache(window.avAPIKey, ttl);
 };
 
-export const fetchStockPrices = (symbol, interval, amount = 100) =>
-  __stocksAPI.timeSeries({ symbol, interval, amount });
+export const fetchStockPrices = (symbol, interval, amount = 100) => {
+  interval = normalizeInterval(interval);
+  return __stocksAPI.timeSeries({ symbol, interval, amount });
+};

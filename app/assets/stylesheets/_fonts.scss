@@ -1,5 +1,28 @@
 // @include "rh_vars";
 
+@mixin type1 {
+  font-family: var(--rh__type-palette__type1__stack);
+  font-size: var(--rh__type-palette__type1__font-size);
+  font-weight: var(--rh__type-palette__type1__font-weight);
+  line-height: var(--rh__type-palette__type1__line-height);
+  letter-spacing: var(--rh__type-palette__type1__letter-spacing);
+}
+
+@mixin type2 {
+  font-family: var(--rh__type-palette__type2__stack);
+  font-size: var(--rh__type-palette__type2__font-size);
+  font-weight: var(--rh__type-palette__type2__font-weight);
+  line-height: var(--rh__type-palette__type2__line-height);
+  letter-spacing: var(--rh__type-palette__type2__letter-spacing);
+}
+
+@mixin type4 {
+  font-family: var(--rh__type-palette__type4__stack);
+  font-size: var(--rh__type-palette__type4__font-size);
+  font-weight: var(--rh__type-palette__type4__font-weight);
+  line-height: var(--rh__type-palette__type4__line-height);
+  letter-spacing: var(--rh__type-palette__type4__letter-spacing);
+}
 
 @mixin type7 {
   font-family: var(--rh__type-palette__type7__stack);

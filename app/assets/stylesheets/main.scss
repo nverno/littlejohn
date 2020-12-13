@@ -1,5 +1,5 @@
 figcaption, figure, main {
-    display: block;
+  display: block;
 }
 
 body {
@@ -116,6 +116,10 @@ button {
   border-style: outset;
   border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
   border-image: initial;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 p {

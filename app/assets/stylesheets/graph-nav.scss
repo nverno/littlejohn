@@ -1,0 +1,51 @@
+.lj-graph-nav {
+  border-bottom: 1px solid;
+  border-color: var(--rh__neutral-bg3);
+  margin-top: 24px;
+  margin-bottom: 12px;  
+}
+
+.lj-graph-nav-container {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 33px;
+  margin-left: -12px;
+  margin-right: -12px;  
+}
+
+.lj-graph-nav-button {
+  background: none;
+  border: 0px;
+  cursor: pointer;
+  font: inherit;
+  padding: 0px;
+  color: unset;
+  appearance: none;
+}
+
+.lj-nav-button-active {
+  & span {
+    border-bottom: 2px solid;
+    border-color: var(--rh__primary-base);
+    padding-top: 2px;
+    color: var(--rh__primary-base);
+  }
+}
+
+.lj-graph-nav-tab-outer {
+  margin: 0px;
+  color: var(--rh__text-color);
+  @include type2;
+}
+
+.lj-graph-nav-tab {
+  align-items: center;
+  display: flex;
+  margin: 0 12px;
+  position: relative;
+  padding-bottom: 12px;
+}
