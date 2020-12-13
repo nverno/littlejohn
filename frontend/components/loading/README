@@ -1,0 +1,3 @@
+Spinner is from https://github.com/adexin/spinners-react
+Current version not installing with react 17.*, and haven't
+figured out how to force install it on Heroku.

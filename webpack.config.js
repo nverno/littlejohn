@@ -10,15 +10,19 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(j|t)sx?$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/env', '@babel/react'],
-            plugins: ['@babel/transform-runtime', 'emotion'],
+            presets: ['@babel/env', '@babel/react', '@babel/typescript'],
+            plugins: ['@babel/transform-runtime', '@emotion/babel-plugin'],
           },
         },
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.svg$/,
@@ -36,6 +40,6 @@ module.exports = {
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['.js', '.jsx', '*'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '*'],
   },
 };

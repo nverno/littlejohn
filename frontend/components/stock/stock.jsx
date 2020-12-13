@@ -25,7 +25,7 @@ export default class Stock extends Component {
 
             <div>
               <section className="lj-stock-graph-section">
-                <StockPriceGraphContainer />
+                <StockPriceGraphContainer symbol={symbol} />
               </section>
 
               {/* XXX: only render this section if stock is owned */}

@@ -15,8 +15,8 @@ class Cache {
   get({ symbol, interval, amount, ...rest }) {
     try {
       const res = this.cache[symbol][interval];
-      console.log(this.cache);
-      console.log(`get({ ${symbol}, ${interval} }) = ${res}`);
+      // console.log(this.cache);
+      // console.log(`get({ ${symbol}, ${interval} }) = ${res}`);
       if (Date.now() - res.timestamp > this.ttl) return null;
       return res.value;
     } catch (_) {
