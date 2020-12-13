@@ -32,6 +32,22 @@ h4.regular {
   margin: 0;
 }
 
+
+h3 {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+h3, legend {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -.1px;
+  line-height: 20px;
+  margin: 0;
+}
+
 *,
 :after,
 :before {
@@ -177,4 +193,57 @@ a {
 .disabled-link {
   pointer-events: none;
   color: var(--rh__neutral-fg2);
+}
+
+// Grid layouts
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 -6px;
+
+  &> * {
+    display: block;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+  &>:last-child {
+    margin-right: 0;
+  }
+}
+
+.col-12 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 66.66667%;
+  flex: 0 0 66.66667%;
+
+  &>:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.col-5 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 27.77778%;
+  flex: 0 0 27.77778%;
+}
+
+.grid-4 {
+  display: flex;
+  flex-wrap: wrap;
+
+  &>* {
+    flex-basis: calc(25% - 12px);
+  }
+
+  &>:nth-child(4n+1) {
+    margin-left: 0;
+  }
+
+  &>:nth-child(4n) {
+    margin-right: 0;
+  }
 }

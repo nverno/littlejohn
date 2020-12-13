@@ -1,0 +1,56 @@
+.lj-stock-info-section {
+  margin-bottom: 60px;
+  transition: background .3s;
+
+  & header {
+    margin-bottom: 24px;
+  }
+}
+
+.lj-stock-info-header-container {
+  border-bottom: 1px solid;
+  border-color: var(--rh__neutral-bg3);
+  padding-bottom: 16px;
+  display: flex;
+  align-items: center;
+
+  & > div {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -webkit-box-align: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  h2 {
+    @include type16;
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+
+.lj-stock-info-about-container {
+  margin-bottom: 15px;
+}
+
+.lj-stock-info-about {
+  margin: 0px 0px 24px;
+  max-width: 570px;
+}
+
+.lj-stock-info-grid {
+  padding-top: 18px;
+}
+
+.lj-stock-info-cell {
+  margin-bottom: 12px;
+}
+
+.lj-stock-info-cell-content {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}

@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => {
   const symbol = ownProps.match.params.symbol;
   return ({
     symbol,
-    price: state.entities.prices[symbol],
+    prices: state.entities.prices[symbol],
     state,
   });
 };

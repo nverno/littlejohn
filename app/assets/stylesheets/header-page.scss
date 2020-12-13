@@ -47,38 +47,3 @@
 .main-container > :first-child {
   margin-top: 0;
 }
-
-.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin: 0 -6px;
-
-  &> * {
-    display: block;
-    padding-left: 6px;
-    padding-right: 6px;
-  }
-  &>:last-child {
-    margin-right: 0;
-  }
-}
-
-.col-12 {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 66.66667%;
-  flex: 0 0 66.66667%;
-
-  &>:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.col-5 {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 27.77778%;
-  flex: 0 0 27.77778%;
-}

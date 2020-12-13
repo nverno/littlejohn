@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import HeaderPage from '../header/header_page';
 import StockPriceGraphContainer from './graph/stock_price_graph_container';
+import StockInfoContainer from './about/stock_info_container';
 
 export default class Stock extends Component {
   constructor(props) {
@@ -30,6 +31,8 @@ export default class Stock extends Component {
 
               <section className="lj-stock-user-value">
               </section>
+
+              <StockInfoContainer />
             </div>
           </div>
 

@@ -1,4 +1,9 @@
 // @include "rh_vars";
+.lj-primary {
+  margin: 0px;
+  text-decoration: unset;
+  color: var(--rh__text-color);
+}
 
 @mixin type1 {
   font-family: var(--rh__type-palette__type1__stack);
@@ -23,6 +28,9 @@
   line-height: var(--rh__type-palette__type4__line-height);
   letter-spacing: var(--rh__type-palette__type4__letter-spacing);
 }
+.lj-type4 {
+  @include type4;
+}
 
 @mixin type7 {
   font-family: var(--rh__type-palette__type7__stack);
@@ -30,6 +38,9 @@
   font-weight: var(--rh__type-palette__type7__font-weight);
   line-height: var(--rh__type-palette__type7__line-height);
   letter-spacing: var(--rh__type-palette__type7__letter-spacing);
+}
+.lj-type7 {
+  @include type7;
 }
 
 @mixin type8 {
