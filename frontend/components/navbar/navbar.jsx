@@ -42,7 +42,7 @@ export default class Navbar extends React.Component {
 
   render() {
     const { loggedIn, welcome } = this.props;
-    if (!welcome && loggedIn) return <></>; // <HeaderContainer />;
+    // if (!welcome && loggedIn) return <></>; // <HeaderContainer />;
     
     let navClass = !welcome && loggedIn ? 'navbar-user' : 'navbar-main';
     if (this.props.isOpen) {
@@ -53,11 +53,12 @@ export default class Navbar extends React.Component {
       <div ref={this.wrapperRef}>
         <div className="navbar-container">
           <nav role="navigation" className={navClass}>
-            {!welcome && loggedIn ? (
-              <UserNavbar {...this.props} />
-            ) : (
-              <MainNavbar {...this.props} />
-            )}
+            <MainNavbar {...this.props} />
+            {/* {!welcome && loggedIn ? ( */}
+            {/*   <UserNavbar {...this.props} /> */}
+            {/* ) : ( */}
+            {/*   <MainNavbar {...this.props} /> */}
+            {/* )} */}
           </nav>
         </div>
       </div>

@@ -2,7 +2,7 @@ import {
   NAVBAR_DROPDOWN_CLOSE,
   NAVBAR_DROPDOWN_OPEN,
   NAVBAR_CLOSE_ALL,
-} from '../actions/navbar_actions';
+} from '../../actions/navbar_actions';
 
 const _defaultNavbar = {
   open: null,

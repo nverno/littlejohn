@@ -9,6 +9,7 @@ import SignupPage from './session/signup/signup_page';
 import Unknown404Container from './errors/404/unknown_404_container';
 import NavbarContainer from './navbar/navbar_container';
 import PortfolioContainer from './portfolio/portfolio_container';
+import StockContainer from './stock/stock_container';
 
 const App = () => (
   <div className="app">
@@ -16,6 +17,8 @@ const App = () => (
       <Route exact path="/welcome" component={SplashContainer} />
       <AuthRoute exact path="/login" component={LoginPage} />
       <AuthRoute exact path="/signup" component={SignupPage} />
+
+      <Route exact path="/stocks/:symbol" component={StockContainer} />
 
       <ProtectedRoute exact path="/portfolio" component={PortfolioContainer} />
 
@@ -27,8 +30,7 @@ const App = () => (
       <Route exact path="/welcome">
         <NavbarContainer welcome />
       </Route>
-      <Route path="/signup" render={() => <></>} />
-      <Route path="/" component={NavbarContainer} />
+      <Route exact path="/" component={NavbarContainer} />
     </Switch>
   </div>
 );

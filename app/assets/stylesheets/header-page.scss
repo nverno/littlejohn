@@ -47,35 +47,3 @@
 .main-container > :first-child {
   margin-top: 0;
 }
-
-.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin: 0 -6px;
-}
-
-.row > * {
-  display: block;
-  padding-left: 6px;
-  padding-right: 6px;
-}
-
-.row > :last-child {
-  margin-right: 0;
-}
-
-.col-12 {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 66.66667%;
-  flex: 0 0 66.66667%;
-}
-
-.col-5 {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 27.77778%;
-  flex: 0 0 27.77778%;
-}

@@ -1,0 +1,15 @@
+.lj-stock-associated-lists {
+  margin-bottom: 8px;
+  border: 1px solid black;
+}
+
+.lj-stock-header {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.lj-stock-user-value {
+  margin-bottom: 60px;
+  transition: background .3s;
+}
