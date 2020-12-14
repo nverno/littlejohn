@@ -8,7 +8,7 @@ import LoginPage from './session/login/login_page';
 import SignupPage from './session/signup/signup_page';
 import Unknown404Container from './errors/404/unknown_404_container';
 import NavbarContainer from './navbar/navbar_container';
-import PortfolioContainer from './portfolio/portfolio_container';
+// import PortfolioContainer from './portfolio/portfolio_container';
 import StockContainer from './stock/stock_container';
 
 const App = () => (
@@ -20,7 +20,7 @@ const App = () => (
 
       <Route exact path="/stocks/:symbol" component={StockContainer} />
 
-      <ProtectedRoute exact path="/portfolio" component={PortfolioContainer} />
+      <ProtectedRoute exact path="/portfolio" component={() => <Redirect to="/" />} />
 
       <Route exact path="/" component={HomeContainer} />
       <Route path="/" component={Unknown404Container} />
