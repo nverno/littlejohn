@@ -12,6 +12,9 @@
   line-height: var(--rh__type-palette__type1__line-height);
   letter-spacing: var(--rh__type-palette__type1__letter-spacing);
 }
+.lj-type1 {
+  @include type1;
+}
 
 @mixin type2 {
   font-family: var(--rh__type-palette__type2__stack);

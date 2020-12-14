@@ -1,0 +1,39 @@
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.search-menu-outer {
+  padding: 0 24px 24px;
+
+  & section {
+    margin: 12px 0 24px;
+  }
+
+  & h4 {
+    color: var(--rh__neutral-fg2);
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+}

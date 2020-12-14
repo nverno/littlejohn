@@ -1,43 +1,51 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import SearchIcon from './search_icon';
+import SearchMenu from './search_menu';
 
-export default class Search extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      query: '',
-    };
-  }
+// TODO: clicking elsewhere should also close search menu
+const Search = ({ searchResults, fetchSearchResults, ...props }) => {
+  const [query, setQuery] = React.useState('');
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
-  handleChange(property) {
-    return (e) => this.setState({ [property]: e.target.value });
-  }
+  // Debounce search results to avoid making too many fetches back-to-back
+  // This should start a timeout when 'query' changes, but if 'query'
+  // is modified before the timeout expires, the old timeout will be cancelled
+  // and a new one started.
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      fetchSearchResults(query);
+    }, 300);
 
-  render() {
-    const { query } = this.state;
+    return () => clearTimeout(timeout);
+  }, [query]);
 
-    return (
-      <div className="search-container">
-        <div className="search-box">
-          <div className="search-box-outer">
-            <div className="search-box-inner">
-              <div className="search-icon-container">
-                <span className="search-icon">
-                  <SearchIcon />
-                </span>
-              </div>
-              <input
-                type="search"
-                className="search-input"
-                value={query}
-                onChange={this.handleChange('query')}
-                placeholder="Search"
-              />
+  return (
+    <div className="search-container">
+      <div className="search-box">
+        <div
+          className="search-box-outer"
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <div className="search-box-inner">
+            <div className="search-icon-container">
+              <span className="search-icon">
+                <SearchIcon />
+              </span>
             </div>
+            <input
+              type="search"
+              className="lj-type1 search-input"
+              value={query}
+              onChange={(e) => setQuery(e.currentTarget.value)}
+              placeholder="Search"
+            />
           </div>
+          {menuOpen && <SearchMenu results={searchResults} {...props} />}
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default Search;
