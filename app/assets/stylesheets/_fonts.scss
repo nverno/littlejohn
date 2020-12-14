@@ -1,8 +1,12 @@
 // @include "rh_vars";
-.lj-primary {
+.lj-default-text {
   margin: 0px;
   text-decoration: unset;
   color: var(--rh__text-color);
+}
+
+.lj-primary {
+  color: var(--rh__primary-base);
 }
 
 @mixin type1 {

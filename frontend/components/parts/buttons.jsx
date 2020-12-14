@@ -3,7 +3,7 @@ import React from 'react';
 export const ToggleButton = ({ toggle, setToggle, lessText, moreText }) => (
   <button type="button" className="lj-btn-primary">
     <span
-      className="lj-type4 lj-primary"
+      className="lj-type4 lj-default-text"
       onClick={() => setToggle((toggle) => !toggle)}
     >
       {toggle ? lessText : moreText}

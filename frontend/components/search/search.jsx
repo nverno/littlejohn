@@ -29,13 +29,13 @@ class Search extends Component {
 
   updateQuery(e) {
     this.setState({ query: e.currentTarget.value });
-    
+
     // Debounce search results to avoid making too many fetches back-to-back
     // This should start a timeout when 'query' changes, but if 'query'
     // is modified before the timeout expires, the old timeout will be cancelled
     // and a new one started.
     clearTimeout(this.timeout);
-    if (this.state.query.length == 0) {
+    if (e.currentTarget.value.length == 0) {
       this.props.clearSearchResults();
     } else {
       this.timeout = setTimeout(() => {
@@ -70,7 +70,13 @@ class Search extends Component {
                 placeholder="Search"
               />
             </div>
-            {menuOpen && <SearchMenu results={searchResults} {...this.props} />}
+            {menuOpen && (
+              <SearchMenu
+                results={searchResults}
+                query={query}
+                {...this.props}
+              />
+            )}
           </div>
         </div>
       </div>

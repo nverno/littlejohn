@@ -17,9 +17,13 @@ const mapKeys = (obj, fn) =>
     return acc;
   }, {});
 
-// Cleanup quote results
+// Cleanup search/quote results
+// remove preceding list index and replace spaces with '_'
 const cleanQuote = (quote) =>
   mapKeys(quote, (_, k) => k.slice(4).replace(/ /g, '_'));
+
+const cleanSearch = (results) =>
+  results.map((res) => mapKeys(res, (_, k) => k.slice(4).replace(/ /g, '_')));
 
 Stocks.prototype = {
   /** Constants */
@@ -368,7 +372,8 @@ Stocks.prototype = {
       keywords: query,
     };
 
-    return this._doRequest(params);
+    let res = await this._doRequest(params);
+    return res['bestMatches'] ? res['bestMatches'] : [];
   },
 
   // Generic API entry point

@@ -60,7 +60,7 @@ export default class StockInfo extends Component {
         <div className="lj-stock-info-about-container">
           <h3 className="lj-stock-info-about">
             {description ? (
-              <span className="lj-type7 lj-primary">
+              <span className="lj-type7 lj-default-text">
                 {description.first}
                 {!readMore && '... '}
                 {readMore && description.second}
