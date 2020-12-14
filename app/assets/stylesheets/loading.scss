@@ -1,0 +1,40 @@
+.lj-loading-header-container {
+  height: 2px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 200;
+}
+
+@keyframes loadFlash {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+@-webkit-keyframes loadFlash {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.lj-loading-flash {
+  animation: loadFlash 0.8s;
+  -webkit-animation: loadFlash 0.8s;
+  background: var(--rh__primary-base);
+}
+
+.lj-loading-header {
+  height: 100%;
+  // width: 100%;
+  // transform: scaleX(0);
+  // transform-origin: center left;
+  // transition-duration: 150ms;
+  // transition-delay: 0ms;
+}
