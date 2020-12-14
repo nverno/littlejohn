@@ -1,51 +1,81 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import SearchIcon from './search_icon';
 import SearchMenu from './search_menu';
 
 // TODO: clicking elsewhere should also close search menu
-const Search = ({ searchResults, fetchSearchResults, ...props }) => {
-  const [query, setQuery] = React.useState('');
-  const [menuOpen, setMenuOpen] = React.useState(false);
+class Search extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: '',
+      menuOpen: false,
+    };
+    // timeout started after a query changed, used to debounce
+    this.timeout = null;
+  }
 
-  // Debounce search results to avoid making too many fetches back-to-back
-  // This should start a timeout when 'query' changes, but if 'query'
-  // is modified before the timeout expires, the old timeout will be cancelled
-  // and a new one started.
-  React.useEffect(() => {
-    const timeout = setTimeout(() => {
-      fetchSearchResults(query);
-    }, 300);
+  componentDidMount() {
+    this.props.clearSearchResults();
+  }
 
-    return () => clearTimeout(timeout);
-  }, [query]);
+  componentWillUnmount() {
+    clearTimeout(this.timeout);
+  }
 
-  return (
-    <div className="search-container">
-      <div className="search-box">
-        <div
-          className="search-box-outer"
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <div className="search-box-inner">
-            <div className="search-icon-container">
-              <span className="search-icon">
-                <SearchIcon />
-              </span>
+  toggleMenu() {
+    this.setState({ menuOpen: !this.state.menuOpen });
+  }
+
+  updateQuery(e) {
+    this.setState({ query: e.currentTarget.value });
+    
+    // Debounce search results to avoid making too many fetches back-to-back
+    // This should start a timeout when 'query' changes, but if 'query'
+    // is modified before the timeout expires, the old timeout will be cancelled
+    // and a new one started.
+    clearTimeout(this.timeout);
+    if (this.state.query.length == 0) {
+      this.props.clearSearchResults();
+    } else {
+      this.timeout = setTimeout(() => {
+        if (this.state.query.length > 0)
+          this.props.fetchSearchResults(this.state.query);
+      }, 300);
+    }
+  }
+
+  render() {
+    const { query, menuOpen } = this.state;
+    const { searchResults } = this.props;
+
+    return (
+      <div className="search-container">
+        <div className="search-box">
+          <div
+            className="search-box-outer"
+            onClick={this.toggleMenu.bind(this)}
+          >
+            <div className="search-box-inner">
+              <div className="search-icon-container">
+                <span className="search-icon">
+                  <SearchIcon />
+                </span>
+              </div>
+              <input
+                type="search"
+                className="lj-type1 search-input"
+                value={query}
+                onChange={this.updateQuery.bind(this)}
+                placeholder="Search"
+              />
             </div>
-            <input
-              type="search"
-              className="lj-type1 search-input"
-              value={query}
-              onChange={(e) => setQuery(e.currentTarget.value)}
-              placeholder="Search"
-            />
+            {menuOpen && <SearchMenu results={searchResults} {...this.props} />}
           </div>
-          {menuOpen && <SearchMenu results={searchResults} {...props} />}
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Search;

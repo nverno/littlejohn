@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchMenu = (props) => {
+const SearchMenu = ({ searchResults, ...props }) => {
   return (
     <div>
       <div className="fade-in">
