@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { formatSearchResults } from '../../selectors/search_results';
 
 const SearchResults = ({ results, query, ...props }) => {
-  console.log('results: ', results);
+  // console.log('results: ', results);
   const formatted = formatSearchResults(query, results);
-  console.log('formatted: ', formatted);
+  // console.log('formatted: ', formatted);
   if (!formatted) return null;
   return (
     <>
