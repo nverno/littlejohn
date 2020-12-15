@@ -6,8 +6,8 @@ import configureStore from './store/store';
 
 // BEGIN testing
 import * as util from './util/session_api_util';
-import * as actions from './actions/session_actions';
 import * as StocksAPI from './util/stocks_api';
+import * as actions from './actions/user_actions';
 // END testing
 
 document.addEventListener('DOMContentLoaded', () => {

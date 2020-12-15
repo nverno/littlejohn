@@ -30,6 +30,11 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
   after_create :assign_default_watchlist
 
+  def add_funds(amount)
+    self.balance += amount
+    save!
+  end
+
   def self.find_by_credentials(username_or_email, password)
     user = User.find_by(username: username_or_email) ||
            User.find_by(email: username_or_email)
