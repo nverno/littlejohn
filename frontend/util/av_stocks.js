@@ -6,9 +6,14 @@
 //
 var fetch = window.fetch;
 
-function Stocks(apiKey) {
-  this.apiKey = apiKey;
-  // this.cache = new Cache(timeout);
+function Stocks(apiKeys) {
+  this.apiKeys = apiKeys;
+  this.iKey = Math.floor(Math.random() * this.apiKeys.length);
+  this.nextKey = () => {
+    const res = this.apiKeys[this.iKey];
+    this.iKey = (this.iKey + 1) % this.apiKeys.length;
+    return res;
+  };
 }
 
 const mapKeys = (obj, fn) =>
@@ -142,17 +147,18 @@ Stocks.prototype = {
 
   /** Private functions */
   _createUrl: function (params) {
-    params.apikey = this.apiKey;
+    params.apikey = this.nextKey();
 
     var encoded = Object.keys(params)
       .map((key) => `${key}=${params[key]}`)
       .join('&');
 
+    // console.log('URL: ', encoded);
     return this.DEFAULT_URL + encoded;
   },
 
   _doRequest: function (params) {
-    if (typeof this.apiKey === 'undefined') {
+    if (typeof this.apiKeys === 'undefined') {
       this._throw(0, 'error');
     }
 
@@ -161,16 +167,15 @@ Stocks.prototype = {
     return new Promise((resolve, reject) => {
       var url = this._createUrl(params);
 
-      // $.ajax({
-      //   url})
       fetch(url)
         .then(function (response) {
-          // console.log(response);
           return response.json();
         })
         .then(function (data) {
           if (typeof data['Error Message'] !== 'undefined') {
             self._throw(9, 'error');
+          } else if (typeof data['Note'] !== 'undefined') {
+            throw new Error(`API limit exceeded: ${data['Note']}`);
           }
           resolve(data);
         });

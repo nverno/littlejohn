@@ -31,7 +31,7 @@ const intervalTable = {
 const normalizeInterval = (interval) => intervalTable[interval] || interval;
 
 export const initializeAVStocksAPI = (ttl) => {
-  __avStocksAPI = new AVStocksCache(window.avAPIKey, ttl);
+  __avStocksAPI = new AVStocksCache(window.avKeys, ttl);
 };
 
 export const fetchStockPrices = (symbol, interval, amount = 100) => {

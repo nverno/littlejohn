@@ -42,10 +42,10 @@ class Cache {
 // Caching wrapper around Stocks API
 // API fetches are only made if the previous value has expired (after `timeout`)
 export default class StocksCache {
-  constructor(apiKey, ttl) {
-    this.apiKey = apiKey;
+  constructor(apiKeys, ttl) {
+    this.apiKeys = apiKeys;
     this.cache = new Cache(ttl);
-    this.stocksAPI = new Stocks(apiKey);
+    this.stocksAPI = new Stocks(apiKeys);
   }
 
   normalizeParams(options) {

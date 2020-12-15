@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   context: __dirname,
@@ -41,5 +42,16 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx', '*'],
+    fallback: {
+      // fix build errors where fs/path not defined
+      fs: false,
+      path: require.resolve('path-browserify'),
+    }
   },
+  // fix 'process is not defined'
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    })
+  ]
 };

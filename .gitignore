@@ -29,3 +29,4 @@
 bundle.js*
 .DS_*
 npm-debug.log
+.env
