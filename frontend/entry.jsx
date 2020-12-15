@@ -7,8 +7,7 @@ import configureStore from './store/store';
 // BEGIN testing
 import * as util from './util/session_api_util';
 import * as actions from './actions/session_actions';
-import * as StockAPI from './util/stock_api_util';
-import iexAPI from './util/iex_stocks';
+import * as StocksAPI from './util/stocks_api';
 // END testing
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,8 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
     delete window.currentUser;
   }
 
-  // Initializes stocks API with key and time-to-live for cached results
-  StockAPI.initializeAVStocksAPI(10 * 60 * 1000);
+  // Initializes iex/alphavantage APIs with key and time-to-live
+  // for cached results
+  StocksAPI.initializeStocksAPI(10 * 60 * 1000);
 
   const store = configureStore(preloadedState);
   ReactDOM.render(<Root store={store} />, root);
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.store = store;
   window.SessionUtil = util;
   window.actions = actions;
-  window.sapi = StockAPI;
-  window.iex = new iexAPI(window.iexAPIKey);
+  window.sapi = StocksAPI;
+  // window.iex = new iexAPI(window.iexAPIKey);
   // END testing
 });

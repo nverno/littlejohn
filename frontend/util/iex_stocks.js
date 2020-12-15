@@ -76,6 +76,20 @@ export default class IexAPI {
   // async prices(symbol, interval) {
   // }
 
+  async fetchBatchStock(symbol, types, ...params) {
+    return this.apiRequest(`/stock/${symbol}/batch`, {
+      types: types.join(','), // 'quote,news,company'
+      ...params
+    });
+  }
+
+  async fetchBatchStocks(symbols, types, ...params) {
+    return this.apiRequest(`/market/${symbols.join(',')}/batch`, {
+      types: types.join(','),
+      ...params
+    });
+  }
+
   // Markets
   async sectorPerformance() {
     return this.apiRequest("/stock/market/sector-performance");

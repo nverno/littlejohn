@@ -1,4 +1,4 @@
-import * as StockAPI from '../util/stock_api_util';
+import * as StockAPI from '../util/stocks_api';
 
 export const RECEIVE_COMPANY_INFO = 'RECEIVE_COMPANY_INFO';
 
