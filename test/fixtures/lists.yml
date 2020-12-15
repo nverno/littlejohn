@@ -1,0 +1,19 @@
+# == Schema Information
+#
+# Table name: lists
+#
+#  id         :bigint           not null, primary key
+#  user_id    :integer          not null
+#  name       :string           not null
+#  public     :boolean          default(FALSE), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  name: MyString
+  public: false
+
+two:
+  name: MyString
+  public: false

@@ -3,10 +3,12 @@
 # Table name: users
 #
 #  id              :bigint           not null, primary key
-#  username        :string           not null
+#  first_name      :string           not null
+#  last_name       :string           not null
 #  email           :string           not null
-#  balance         :float            default(0.0), not null
-#  gold            :boolean          default(FALSE), not null
+#  username        :string
+#  balance         :float            default(0.0)
+#  gold            :boolean          default(FALSE)
 #  password_digest :string           not null
 #  session_token   :string           not null
 #  created_at      :datetime         not null
@@ -20,7 +22,13 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, allow_nil: true
   validates :gold, inclusion: { in: [true, false] }
 
+  has_many :holdings, dependent: :destroy
+  has_many :watchlists, dependent: :destroy
+  has_many :lists, dependent: :destroy
+  has_many :transactions, dependent: :destroy
+
   after_initialize :ensure_session_token
+  after_create :assign_default_watchlist
 
   def self.find_by_credentials(username_or_email, password)
     user = User.find_by(username: username_or_email) ||
@@ -46,6 +54,14 @@ class User < ApplicationRecord
   end
 
   private
+
+  # Start new users with default watchlist
+  def assign_default_watchlist
+    first_list = List.find_by(name: 'My First List')
+    return unless first_list
+
+    watchlists.create(list_id: first_list.id)
+  end
 
   def ensure_session_token
     generate_unique_session_token unless session_token
