@@ -28,7 +28,7 @@ class User < ApplicationRecord
   has_many :transactions, dependent: :destroy
 
   after_initialize :ensure_session_token
-  after_create :assign_default_watchlist
+  after_create :create_default_watchlist
 
   def add_funds(amount)
     self.balance += amount
@@ -61,11 +61,15 @@ class User < ApplicationRecord
   private
 
   # Start new users with default watchlist
-  def assign_default_watchlist
+  def create_default_watchlist
     first_list = List.find_by(name: 'My First List')
     return unless first_list
 
-    watchlists.create(list_id: first_list.id)
+    user_id = id
+    new_list = first_list.clone
+    new_list.user_id = id
+    new_list.save!
+    watchlists.create!(user_id: user_id, list_id: new_list.id)
   end
 
   def ensure_session_token

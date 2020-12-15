@@ -1,14 +1,18 @@
-export const RECEIVE_FUNDS = 'RECEIVE_FUNDS';
+import * as UserAPI from '../util/user_api_util';
+import { receiveCurrentUser } from './session_actions';
+export const RECEIVE_USER_HOLDINGS = 'RECEIVE_USER_HOLDINGS';
 
-export const receiveFunds = (amount) => ({
-  type: RECEIVE_FUNDS,
-  amount
+export const receiveUserHoldings = (holdings) => ({
+  type: RECEIVE_USER_HOLDINGS,
+  holdings
 });
 
-export const updateBalance = (user_id, amount) => dispatch => {
-  $.ajax({
-    method: 'PATCH',
-    url: `/api/users/${user_id}`,
-    data: { amount }
-  }).then(res => dispatch(receiveFunds(res)));
+export const updateBalance = (userId, amount) => dispatch => {
+  UserAPI.updateBalance(userId, amount)
+    .then(user => dispatch(receiveCurrentUser(user)));
 };
+
+export const fetchHoldings = (userId) => (
+  UserAPI.fetchHoldings(userId)
+    .then(holdings => receiveUserHoldings(holdings))
+);

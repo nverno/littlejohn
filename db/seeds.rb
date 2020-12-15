@@ -17,7 +17,7 @@ admin = User.create!(
 
 # Default user watchlist
 first_list = List.create!(
-  user_id: admin.id,
+  # user_id: admin.id,
   name: 'My First List',
   public: true
 )

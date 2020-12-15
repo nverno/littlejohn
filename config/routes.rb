@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     resource :session, only: %i[create update destroy]
 
     resources :users, only: %i[create update destroy show] do
-      resources :watchlists, only: %i[index show create]
-      resources :holdings, only: %i[index create update destroy]
+      resources :holdings, only: %i[index]
       resources :transactions, only: %i[index create update show]
+      resources :watchlists, only: %i[index create update delete show]
     end
 
     resources :lists, only: %i[index show create update delete]
