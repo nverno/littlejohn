@@ -26,13 +26,24 @@ class User < ApplicationRecord
   has_many :watchlists, dependent: :destroy
   has_many :lists, dependent: :destroy
   has_many :transactions, dependent: :destroy
+  has_many :followed_lists, through: :watchlists, source: :list
 
   after_initialize :ensure_session_token
   after_create :create_default_watchlist
 
+  DEFAULT_LIST = %w[AAPL TWTR TSLA NFLX FB MSFT]
+
   def add_funds(amount)
     self.balance += amount
     save!
+  end
+
+  def following
+    followed_lists.where('lists.user_id is NULL OR lists.user_id != ?', id)
+  end
+
+  def subscribe(list)
+    watchlists.create!(list_id: list.id)
   end
 
   def self.find_by_credentials(username_or_email, password)
@@ -62,14 +73,8 @@ class User < ApplicationRecord
 
   # Start new users with default watchlist
   def create_default_watchlist
-    first_list = List.find_by(name: 'My First List')
-    return unless first_list
-
-    user_id = id
-    new_list = first_list.clone
-    new_list.user_id = id
-    new_list.save!
-    watchlists.create!(user_id: user_id, list_id: new_list.id)
+    new_list = lists.create!(name: 'My First List')
+    new_list.assets = DEFAULT_LIST
   end
 
   def ensure_session_token

@@ -36,10 +36,9 @@ ActiveRecord::Schema.define(version: 2020_12_15_193243) do
   create_table "lists", force: :cascade do |t|
     t.integer "user_id"
     t.string "name", null: false
-    t.boolean "public", default: false, null: false
+    t.boolean "public", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_lists_on_name", unique: true
     t.index ["user_id", "name"], name: "index_lists_on_user_id_and_name", unique: true
   end
 

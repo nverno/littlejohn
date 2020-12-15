@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 class List < ApplicationRecord
-  validates :name, :public, presence: true
+  validates :name, presence: true
   validates :public, inclusion: { in: [true, false] }
 
   belongs_to :user, optional: true
@@ -22,4 +22,10 @@ class List < ApplicationRecord
            foreign_key: :list_id,
            class_name: :ListAsset,
            dependent: :destroy
+
+  def assets=(assets)
+    assets.each do |asset| 
+      ListAsset.create!(list_id: id, symbol: asset)
+    end
+  end
 end

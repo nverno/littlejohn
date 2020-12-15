@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
+List.destroy_all
 
 admin = User.create!(
   first_name: 'admin',
@@ -15,22 +16,25 @@ admin = User.create!(
   password: 'asdfasdf'
 )
 
-# Default user watchlist
-first_list = List.create!(
-  # user_id: admin.id,
-  name: 'My First List',
-  public: true
-)
+# Global Lists
 
-%w[AAPL TWTR TSLA NFLX FB MSFT].each do |symbol|
-  ListAsset.create!(
-    list_id: first_list.id,
-    symbol: symbol
-  )
-end
+# Default user watchlist
+# first_list = List.create!(
+#   # user_id: admin.id,
+#   name: 'My First List',
+#   public: true
+# )
+# first_list.assets = %w[AAPL TWTR TSLA NFLX FB MSFT]
+
+# Popular
+popular_list = List.create!(
+  name: 'Most Popular',
+  public: true,
+)
+popular_list.assets = %w[AAPL TSLA F MSFT AAL PFE NIO DIS AMZN DAL ACB GE]
 
 # Demo user
-User.create!(
+demo = User.create!(
   first_name: 'guest',
   last_name: 'ipoo',
   username: 'guest',
@@ -38,6 +42,7 @@ User.create!(
   password: 'asdfasdf',
   balance: 10_000
 )
+demo.subscribe(popular_list)
 
 # Test user
 lj = User.create!(
@@ -48,6 +53,7 @@ lj = User.create!(
   password: 'asdfasdf',
   balance: 10_000
 )
+lj.subscribe(popular_list)
 
 # Transactions
 [
