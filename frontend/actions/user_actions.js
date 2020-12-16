@@ -17,3 +17,13 @@ export const updateBalance = (userId, amount) => (dispatch) =>
     (user) => dispatch(receiveCurrentUser(user)),
     (err) => dispatch(receiveUserErrors(err))
   );
+
+export const refreshCurrentUser = () => dispatch => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/users`,
+  }).then(
+    user => dispatch(receiveCurrentUser(user)),
+    errors => dispatch(receiveUserErrors(errors))
+  )
+);

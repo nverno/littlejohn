@@ -7,10 +7,10 @@ export const updateBalance = (userId, amount) =>
   });
 
 // Holdings
-export const fetchHoldings = (userId) =>
+export const fetchHoldings = () =>
   $.ajax({
     method: 'GET',
-    url: `/api/users/${userId}/holdings`,
+    url: `/api/holdings`,
   });
 
 // Transactions
@@ -32,3 +32,19 @@ export const fetchTransaction = (transactionId) =>
     method: 'GET',
     url: `/api/transactions/${transactionId}`,
   });
+
+export const postBuy = (order) => (
+  $.ajax({
+    method: 'POST',
+    url: '/api/buy',
+    data: { ...order }
+  })
+);
+
+export const postSell = (order) => (
+  $.ajax({
+    method: 'POST',
+    url: '/api/sell',
+    data: { ...order }
+  })
+);

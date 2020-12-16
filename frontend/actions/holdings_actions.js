@@ -12,8 +12,8 @@ export const receiveHoldings = (holdings) => ({
   holdings,
 });
 
-export const fetchHoldings = (userId) => (dispatch) =>
-  UserAPI.fetchHoldings(userId).then(
+export const fetchHoldings = () => (dispatch) =>
+  UserAPI.fetchHoldings().then(
     (holdings) => dispatch(receiveHoldings(holdings)),
     (err) => dispatch(receiveHoldingsErrors(err))
   );

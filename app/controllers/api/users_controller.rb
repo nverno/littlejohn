@@ -1,6 +1,16 @@
 class Api::UsersController < ApplicationController # rubocop:todo Style/Documentation
   before_action :require_logged_out, only: :create
-  before_action :require_logged_in, only: %i[update follow]
+  before_action :require_logged_in, only: %i[update follow index show]
+
+  def index
+    @user = current_user
+    render :show
+  end
+
+  def show
+    @user = User.find(params[:id])
+    render :show
+  end
 
   def create
     @user = User.new(user_params)

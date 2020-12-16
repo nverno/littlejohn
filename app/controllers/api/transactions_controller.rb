@@ -21,16 +21,20 @@ class Api::TransactionsController < ApplicationController # rubocop:todo Style/D
   end
 
   def buy
-    pars = params
-    pars[:kind] = 'buy'
-    @transaction = current_user.buy(pars)
+    @transaction = current_user.buy(
+      params[:symbol],
+      params[:amount].to_f,
+      params[:price].to_f
+    )
     render :show
   end
 
   def sell
-    pars = params
-    pars[:kind] = 'sell'
-    @transaction = current_user.sell(pars)
+    @transaction = current_user.sell(
+      params[:symbol],
+      params[:amount].to_f,
+      params[:price].to_f
+    )
     render :show
   end
 

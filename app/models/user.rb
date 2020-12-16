@@ -47,6 +47,7 @@ class User < ApplicationRecord
       amount: units,
       kind: 'buy'
     )
+    self.save!
     reload
     res
   end
@@ -60,6 +61,7 @@ class User < ApplicationRecord
       amount: units,
       kind: 'sell'
     )
+    self.save!
     reload
     res
   end

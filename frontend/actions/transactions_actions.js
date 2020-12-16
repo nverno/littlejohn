@@ -1,4 +1,6 @@
 import * as UserAPI from '../util/user_api_util';
+import { fetchHoldings } from './holdings_actions';
+import { refreshCurrentUser } from './user_actions';
 
 export const RECEIVE_TRANSACTIONS = 'RECEIVE_TRANSACTIONS';
 export const RECEIVE_TRANSACTION = 'RECEIVE_TRANSACTION';
@@ -42,5 +44,31 @@ export const createTransaction = (transaction) => (dispatch) => {
   return UserAPI.postTransaction(transaction).then(
     (transaction) => dispatch(receiveTransaction(transaction)),
     (errors) => dispatch(receiveTransactionErrors(errors))
+  );
+};
+
+// A transaction modifies a user's holdings and buying power as well
+const syncAfterOrder = dispatch => {
+  dispatch(fetchHoldings());
+  dispatch(refreshCurrentUser());
+};
+
+export const executeBuy = order => dispatch => {
+  return UserAPI.postBuy(order).then(
+    transaction => {
+      dispatch(receiveTransaction(transaction));
+      syncAfterOrder(dispatch);
+    },
+    errors => dispatch(receiveTransactionErrors(errors))
+  );
+};
+
+export const executeSell = order => dispatch => {
+  return UserAPI.postSell(order).then(
+    transaction => {
+      dispatch(receiveTransaction(transaction)),
+      syncAfterOrder(dispatch);
+    },
+    errors => dispatch(receiveTransactionErrors(errors))
   );
 };
