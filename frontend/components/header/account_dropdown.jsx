@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { Link, withRouter, Redirect } from 'react-router-dom';
+import { FiLogOut } from '@react-icons/all-files/fi/FiLogOut';
 
 import HeaderDropdown from './header_dropdown';
 import AccountDropdownHeader from './account_dropdown_header';
@@ -17,11 +18,21 @@ const AccountDropdown = ({ logout, ...props }) => {
   // const [open, setOpen] = React.useState(false);
   return (
     <HeaderDropdown {...props}>
-      <div className="lj-acct-drop-container lj-theme-overlay">
-        <div className="lj-acct-drop-outer">
-          <AccountDropdownHeader />
+      <>
+        <div className="lj-acct-drop-container lj-theme-overlay">
+          <div className="lj-acct-drop-outer">
+            <AccountDropdownHeader />
+            <a className="lj-acct-logout">
+              <span className="lj-acct-logout-icon">
+                <h3>
+                  <FiLogOut size={24} />
+                </h3>
+              </span>
+              <span type="lj-11">Log Out</span>
+            </a>
+          </div>
         </div>
-      </div>
+      </>
     </HeaderDropdown>
   );
 };

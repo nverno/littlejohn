@@ -92,3 +92,6 @@
   line-height: var(--rh__type-palette__type16__line-height);
   letter-spacing: var(--rh__type-palette__type16__letter-spacing);
 }
+.lj-type16 {
+  @include type16;
+}

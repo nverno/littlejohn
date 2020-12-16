@@ -41,3 +41,21 @@
 .lj-acct-drop-buying-power {
   white-space: nowrap;
 }
+
+.lj-acct-logout {
+  font-weight: 500;
+  color: var(--rh__neutral-fg1);
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 48px;
+  padding: 0 24px;
+  background-color: transparent;
+}
+.lj-acct-logout-icon {
+  display: inline-flex;
+  margin-right: 12px;
+}

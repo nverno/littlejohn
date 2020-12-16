@@ -40,7 +40,7 @@ const AccountDropdownHeader = ({
           <div style={{ marginBottom: '0' }}>
             <span className="lj-type4">
               <div>
-                <h3>{buyingPower}</h3>
+                <h3>${buyingPower}</h3>
               </div>
             </span>
             <div style={{ height: '2px' }} />
