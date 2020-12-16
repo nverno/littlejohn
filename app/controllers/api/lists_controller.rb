@@ -2,8 +2,9 @@ class Api::ListsController < ApplicationController # rubocop:todo Style/Document
   before_action :require_logged_in, except: :index
 
   def index
-    @lists = if params[:user_id]
-               User.find(params[:user_id]).lists
+    @lists = if params[:user]
+               current_user.lists
+               # User.find(params[:user_id]).lists
              else
                List.public_lists
              end

@@ -43,8 +43,8 @@ export const fetchPublicLists = () => (dispatch) =>
     (err) => dispatch(receiveListErrors(err))
   );
 
-export const fetchUserLists = (userId) => (dispatch) =>
-  ListAPI.fetchUserLists(userId).then(
+export const fetchUserLists = () => (dispatch) =>
+  ListAPI.fetchUserLists().then(
     (lists) => dispatch(receiveUserLists(lists)),
     (err) => dispatch(receiveListErrors(err))
   );

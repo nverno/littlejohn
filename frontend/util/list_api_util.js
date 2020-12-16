@@ -42,10 +42,10 @@ export const createUserList = (userId, list) => {
   });
 };
 
-export const fetchUserLists = (userId) => {
+export const fetchUserLists = () => {
   return $.ajax({
     method: 'GET',
-    url: `/api/users/${userId}/lists`,
+    url: `/api/lists?user=true`,
   });
 };
 

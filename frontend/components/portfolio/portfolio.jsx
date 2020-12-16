@@ -5,7 +5,7 @@ import HeaderPage from '../header/header_page';
 import GraphNav from '../graph/graph_nav';
 // import SampleGraph from './portfolio_sample.png';
 
-const navIntervals = [ '1D', '1W', '1M', '3M', '1Y', '5Y', 'All' ];
+const navIntervals = ['1D', '1W', '1M', '3M', '1Y', '5Y', 'All'];
 
 export default class Portfolio extends Component {
   constructor(props) {
@@ -15,7 +15,11 @@ export default class Portfolio extends Component {
     };
     this.updateInterval = this.updateInterval.bind(this);
   }
-  
+
+  componentDidMount() {
+    this.props.fetchPortfolioUserData();
+  }
+
   updateInterval(interval) {
     this.setState({ interval });
   }

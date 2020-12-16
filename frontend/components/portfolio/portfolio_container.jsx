@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
 import Portfolio from './portfolio';
-// import { actions } from '../../actions/';
+import { fetchPortfolioUserData } from '../../actions/portfolio_actions';
 
-const mapStateToProps = (state, ownProps) => ({
-});
+const mapStateToProps = (state, ownProps) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
-  // actions: () => dispatch(actions()),
+  fetchPortfolioUserData: () => dispatch(fetchPortfolioUserData()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Portfolio);
