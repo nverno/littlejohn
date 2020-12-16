@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../navbar/logo';
 import SearchContainer from '../search/search_container';
 import HeaderItems from './header_items';
+import AccountDropdown from './account_dropdown';
 
 const headerItems = [
   {
@@ -28,6 +29,7 @@ const headerItems = [
   {
     title: 'Account',
     to: '/account',
+    component: (item, props) => <AccountDropdown item={item} {...props} />,
   },
 ];
 

@@ -1,0 +1,43 @@
+.lj-acct-drop-container {
+  position: absolute;
+  top: 34px;
+  padding: 18px 0 0;
+  right: -12px;
+  width: 296px;
+  max-height: calc(100vh - var(--rh-fixed-header-height, 64px) - 12px);
+  overflow-y: auto;
+  padding: 24px;
+  -webkit-transition: opacity 0.15s, visibility 0.15s;
+  transition: opacity 0.15s, visibility 0.15s;
+  color: var(--rh__neutral-fg1);
+  // background-color: var(--rh__neutral-bg1);
+}
+
+.lj-acct-drop-outer {
+  --rh__text-color: var(--rh__neutral-fg1);
+  width: 100%;
+}
+
+.lj-acct-drop-header {
+  border-bottom: 1px solid;
+  border-color: var(--rh__neutral-bg3);
+  padding: 0 24px 12px;
+  display: block;
+}
+
+.lj-acct-drop-account {
+  margin-top: 12px;
+  display: flex;
+}
+
+.lj-acct-drop-portfolio-outer {
+  margin-right: 36px;
+  white-space: nowrap;
+}
+.lj-acct-drop-portfolio-inner {
+  margin-botton: 0;
+}
+
+.lj-acct-drop-buying-power {
+  white-space: nowrap;
+}

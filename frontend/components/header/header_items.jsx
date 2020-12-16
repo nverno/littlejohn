@@ -7,9 +7,13 @@ const HeaderItem = ({ item, ...props }) => {
 
   return (
     <div className="lj-header-item-container">
-      <Link to={item.to} className={cname}>
-        {item.title}
-      </Link>
+      {item.component ? (
+        (console.log(props), item.component(item, props))
+      ) : (
+        <Link to={item.to} className={cname}>
+          {item.title}
+        </Link>
+      )}
     </div>
   );
 };

@@ -29,6 +29,7 @@
   padding: 0 4px 0 6px;
   flex-shrink: 0;
   margin-left: auto;
+  /* position: relative; */
   // border: 1px solid black;
 }
 
@@ -45,7 +46,7 @@
   justify-content: flex-end;
 }
 
-.lj-header-items-outer div:not(:first-child) {
+.lj-header-items-outer > div:not(:first-child) {
   margin-left: 33px;
 }
 
@@ -55,4 +56,8 @@
   box-sizing: border-box;
   border-bottom: 2px solid transparent;
   @include type8;
+}
+
+.lj-header-item-container {
+  position: relative;
 }

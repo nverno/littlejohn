@@ -57,6 +57,9 @@
   line-height: var(--rh__type-palette__type8__line-height);
   letter-spacing: var(--rh__type-palette__type8__letter-spacing);
 }
+.lj-type8 {
+  @include type8;
+}
 
 @mixin type11 {
   font-family: var(--rh__type-palette__type11__stack);
