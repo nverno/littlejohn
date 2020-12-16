@@ -5,13 +5,12 @@ export const fetchPublicLists = () => {
   });
 };
 
-export const createPublicList = (list) => (
+export const createPublicList = (list) =>
   $.ajax({
     method: 'POST',
     url: `/api/lists`,
     data: { list },
-  })
-);
+  });
 
 export const fetchList = (id) => {
   return $.ajax({
@@ -53,6 +52,13 @@ export const fetchUserLists = (userId) => {
 export const followList = (userId, listId) => {
   return $.ajax({
     method: 'POST',
+    url: `/api/users/${userId}/lists/${listId}/follow`,
+  });
+};
+
+export const unfollowList = (userId, listId) => {
+  return $.ajax({
+    method: 'DELETE',
     url: `/api/users/${userId}/lists/${listId}/follow`,
   });
 };

@@ -27,7 +27,7 @@ earnings = List.create!(name: 'Upcoming Earnings', public: true)
 earnings.assets = %w[NKE ACN FDX GIS LEN CCL HEI DRI FDS]
 
 # Demo user
-demo = User.create!(
+demo = User.create!( # rubocop:todo Lint/UselessAssignment
   first_name: 'guest',
   last_name: 'ipoo',
   username: 'guest',
@@ -35,7 +35,8 @@ demo = User.create!(
   password: 'asdfasdf',
   balance: 10_000
 )
-demo.follow(popular_list)
+# demo.follow(popular_list.id)
+# demo.follow(earnings.id)
 
 # Test user
 lj = User.create!(
@@ -46,7 +47,8 @@ lj = User.create!(
   password: 'asdfasdf',
   balance: 10_000
 )
-lj.follow(popular_list)
+# lj.follow(popular_list.id)
+# demo.follow(earnings.id)
 
 # Transactions
 [

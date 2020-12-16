@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :transactions, only: %i[index create update show]
       resources :lists, only: %i[index create] do
         post 'follow', to: 'users#follow'
+        delete 'follow', to: 'users#unfollow'
       end
     end
 

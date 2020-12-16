@@ -1,4 +1,5 @@
 import * as ListAPI from '../util/list_api_util';
+import { receiveCurrentUser } from './session_actions';
 
 export const RECEIVE_PUBLIC_LISTS = 'RECEIVE_PUBLIC_LISTS';
 export const RECEIVE_LIST = 'RECEIVE_LIST';
@@ -72,9 +73,19 @@ export const createPublicList = (list) => (dispatch) =>
     (err) => dispatch(receiveListErrors(err))
   );
 
-export const updateList = (list) => (dispatch) => (
+export const updateList = (list) => (dispatch) =>
   ListAPI.updateList(list).then(
-    list => dispatch(receiveList(list)),
-    err => dispatch(receiveListErrors(err))
-  )
-);
+    (list) => dispatch(receiveList(list)),
+    (err) => dispatch(receiveListErrors(err))
+  );
+
+export const followList = (userId, listId) => (dispatch) =>
+  ListAPI.followList(userId, listId).then(
+    (user) => dispatch(receiveCurrentUser(user)),
+    (err) => dispatch(receiveListErrors(err))
+  );
+
+export const unfollowList = (userId, listId) => (dispatch) =>
+  ListAPI.unfollowList(userId, listId)
+    .then((user) => dispatch(receiveCurrentUser(user)))
+    .fail((err) => dispatch(receiveListErrors(err)));

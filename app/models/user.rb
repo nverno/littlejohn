@@ -31,6 +31,7 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
   after_create :create_default_watchlist
+  after_create :create_default_follows
 
   DEFAULT_LIST = %w[AAPL TWTR TSLA NFLX FB MSFT].freeze
 
@@ -43,8 +44,12 @@ class User < ApplicationRecord
     followed_lists.where('lists.user_id is NULL OR lists.user_id != ?', id)
   end
 
-  def follow(list)
-    watchlists.create!(list_id: list.id)
+  def follow(list_id)
+    watchlists.create!(list_id: list_id) unless watchlists.exists?(list_id: list_id)
+  end
+
+  def unfollow(list_id)
+    watchlists.find_by(list_id: list_id)&.delete
   end
 
   def self.find_by_credentials(username_or_email, password)
@@ -76,6 +81,14 @@ class User < ApplicationRecord
   def create_default_watchlist
     new_list = lists.create!(name: 'My First List')
     new_list.assets = DEFAULT_LIST
+  end
+
+  # Start users following a couple of default lists
+  def create_default_follows
+    ['Most Popular', 'Upcoming Earnings'].each do |name|
+      list = List.find_by(name: name)
+      follow(list.id) if list
+    end
   end
 
   def ensure_session_token
