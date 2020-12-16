@@ -18,7 +18,7 @@ class List < ApplicationRecord
   has_many :watchers,
            through: :watchlists,
            source: :user
-  has_many :items,
+  has_many :assets,
            foreign_key: :list_id,
            class_name: :ListAsset,
            dependent: :destroy
@@ -27,9 +27,11 @@ class List < ApplicationRecord
     List.where(public: true)
   end
 
-  def assets=(assets)
-    assets.each do |asset| 
-      ListAsset.create!(list_id: id, symbol: asset)
+  def assets=(new_assets)
+    self.save
+    self.assets.destroy_all
+    new_assets.each do |asset|
+      self.assets.create(symbol: asset)
     end
   end
 end

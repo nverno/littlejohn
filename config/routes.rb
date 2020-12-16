@@ -17,6 +17,6 @@ Rails.application.routes.draw do
     # Index / create for public lists
     # show / update / delete for all lists
     # Note: could merge both create lists?
-    resources :lists, only: %i[index show create update delete]
+    resources :lists, only: %i[index show create update destroy]
   end
 end

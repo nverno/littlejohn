@@ -22,7 +22,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, allow_nil: true
   validates :gold, inclusion: { in: [true, false] }
   validates :balance, numericality: true
-  
+
   has_many :holdings, dependent: :destroy
   has_many :watchlists, dependent: :destroy
   has_many :lists, dependent: :destroy
@@ -32,7 +32,7 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
   after_create :create_default_watchlist
 
-  DEFAULT_LIST = %w[AAPL TWTR TSLA NFLX FB MSFT]
+  DEFAULT_LIST = %w[AAPL TWTR TSLA NFLX FB MSFT].freeze
 
   def add_funds(amount)
     self.balance += amount

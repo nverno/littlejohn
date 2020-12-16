@@ -10,22 +10,22 @@ export const clearUserErrors = () => ({
 
 export const receiveUserErrors = (errors) => ({
   type: RECEIVE_USER_ERRORS,
-  errors
+  errors,
 });
 
 export const receiveUserHoldings = (holdings) => ({
   type: RECEIVE_USER_HOLDINGS,
-  holdings
+  holdings,
 });
 
-export const updateBalance = (userId, amount) => dispatch => (
-  UserAPI.updateBalance(userId, amount)
-    .then(user => dispatch(receiveCurrentUser(user)),
-          err => dispatch(receiveUserErrors(err)))
-);
+export const updateBalance = (userId, amount) => (dispatch) =>
+  UserAPI.updateBalance(userId, amount).then(
+    (user) => dispatch(receiveCurrentUser(user)),
+    (err) => dispatch(receiveUserErrors(err))
+  );
 
-export const fetchHoldings = (userId) => dispatch => (
-  UserAPI.fetchHoldings(userId)
-    .then(holdings => dispatch(receiveUserHoldings(holdings)),
-          err => dispatch(receiveUserErrors(err)))
-);
+export const fetchHoldings = (userId) => (dispatch) =>
+  UserAPI.fetchHoldings(userId).then(
+    (holdings) => dispatch(receiveUserHoldings(holdings)),
+    (err) => dispatch(receiveUserErrors(err))
+  );

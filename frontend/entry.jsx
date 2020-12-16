@@ -8,6 +8,7 @@ import configureStore from './store/store';
 import * as util from './util/session_api_util';
 import * as StocksAPI from './util/stocks_api';
 import * as actions from './actions/user_actions';
+import * as lists from './actions/list_actions';
 // END testing
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -36,6 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.SessionUtil = util;
   window.actions = actions;
   window.sapi = StocksAPI;
-  // window.iex = new iexAPI(window.iexAPIKey);
+  window.lists = lists;
   // END testing
 });

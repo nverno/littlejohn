@@ -1,58 +1,58 @@
-export const fetchPublicLists = () => (
-  $.ajax({
+export const fetchPublicLists = () => {
+  return $.ajax({
     method: 'GET',
-    url: '/api/lists'
-  })
-);
+    url: '/api/lists',
+  });
+};
 
 export const createPublicList = (list) => (
   $.ajax({
     method: 'POST',
     url: `/api/lists`,
-    data: { list }
+    data: { list },
   })
 );
 
-export const fetchList = id => (
-  $.ajax({
+export const fetchList = (id) => {
+  return $.ajax({
     method: 'GET',
-    url: `/api/lists/${id}`
-  })
-);
+    url: `/api/lists/${id}`,
+  });
+};
 
-export const updateList = (list) => (
-  $.ajax({
+export const updateList = (list) => {
+  return $.ajax({
     method: 'PATCH',
     url: `/api/lists/${list.id}`,
-    data: { list }
-  })
-);
+    data: { list },
+  });
+};
 
-export const deleteList = (listId) => (
-  $.ajax({
+export const deleteList = (listId) => {
+  return $.ajax({
     method: 'DELETE',
-    url: `/api/lists/${listId}`
-  })
-);
+    url: `/api/lists/${listId}`,
+  });
+};
 
-export const createUserList = (userId, list) => (
-  $.ajax({
+export const createUserList = (userId, list) => {
+  return $.ajax({
     method: 'POST',
-    url: `/api/${userId}/lists`,
-    data: { list }
-  })
-);
+    url: `/api/users/${userId}/lists`,
+    data: { list },
+  });
+};
 
-export const fetchUserLists = (userId) => (
-  $.ajax({
+export const fetchUserLists = (userId) => {
+  return $.ajax({
     method: 'GET',
-    url: `/api/${userId}/lists`
-  })
-);
+    url: `/api/users/${userId}/lists`,
+  });
+};
 
-export const followList = (userId, listId) => (
-  $.ajax({
+export const followList = (userId, listId) => {
+  return $.ajax({
     method: 'POST',
-    url: `/api/${userId}/lists/${listId}/follow`,
-  })
-);
+    url: `/api/users/${userId}/lists/${listId}/follow`,
+  });
+};

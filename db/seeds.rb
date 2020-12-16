@@ -8,7 +8,7 @@
 User.destroy_all
 List.destroy_all
 
-admin = User.create!(
+admin = User.create!( # rubocop:todo Lint/UselessAssignment
   first_name: 'admin',
   last_name: 'admin',
   username: 'admin',
@@ -19,7 +19,7 @@ admin = User.create!(
 # Public Lists
 popular_list = List.create!(
   name: 'Most Popular',
-  public: true,
+  public: true
 )
 popular_list.assets = %w[AAPL TSLA F MSFT AAL PFE NIO DIS AMZN DAL ACB GE]
 
