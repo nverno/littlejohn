@@ -8,12 +8,12 @@ Rails.application.routes.draw do
 
     resources :users, only: %i[create update destroy show] do
       resources :holdings, only: %i[index]
-      resources :transactions, only: %i[index create update show]
       resources :lists, only: %i[index create] do
         post 'follow', to: 'users#follow'
         delete 'follow', to: 'users#unfollow'
       end
     end
+    resources :transactions, only: %i[index create show]
 
     # Index / create for public lists
     # show / update / delete for all lists

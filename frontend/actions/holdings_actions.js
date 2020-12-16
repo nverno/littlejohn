@@ -4,7 +4,7 @@ export const RECEIVE_HOLDINGS_ERRORS = 'RECEIVE_HOLDINGS_ERRORS';
 
 export const receiveHoldingsErrors = (errors) => ({
   type: RECEIVE_HOLDINGS_ERRORS,
-  errors
+  errors,
 });
 
 export const receiveHoldings = (holdings) => ({
