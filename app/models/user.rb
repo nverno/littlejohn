@@ -39,24 +39,29 @@ class User < ApplicationRecord
 
   def buy(asset, units, unit_cost)
     throw 'Not enough buying power' if unit_cost * units > balance
+    self.balance -= unit_cost * units
 
-    transactions.create!(
+    res = transactions.create!(
       symbol: asset,
       price: unit_cost,
       amount: units,
       kind: 'buy'
     )
     reload
+    res
   end
 
   def sell(asset, units, unit_price)
-    transactions.create!(
+    self.balance += units * unit_price
+
+    res = transactions.create!(
       symbol: asset,
       price: unit_price,
       amount: units,
       kind: 'sell'
     )
     reload
+    res
   end
 
   def add_funds(amount)

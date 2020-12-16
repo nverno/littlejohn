@@ -13,7 +13,10 @@ Rails.application.routes.draw do
         delete 'follow', to: 'users#unfollow'
       end
     end
+
     resources :transactions, only: %i[index create show]
+    post 'buy', to: 'transactions#buy'
+    post 'sell', to: 'transactions#sell'
 
     # Index / create for public lists
     # show / update / delete for all lists

@@ -20,6 +20,20 @@ class Api::TransactionsController < ApplicationController # rubocop:todo Style/D
     end
   end
 
+  def buy
+    pars = params
+    pars[:kind] = 'buy'
+    @transaction = current_user.buy(pars)
+    render :show
+  end
+
+  def sell
+    pars = params
+    pars[:kind] = 'sell'
+    @transaction = current_user.sell(pars)
+    render :show
+  end
+
   private
 
   def transaction_params
