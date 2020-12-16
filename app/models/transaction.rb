@@ -19,4 +19,26 @@ class Transaction < ApplicationRecord
   validates :amount, :price, numericality: true
 
   belongs_to :user
+
+  # Ensure buys sells are valid
+  validate do |trans|
+    if trans.kind == 'sell'
+      holding = trans.user.holdings.find_by(symbol: symbol)
+      # puts "DBG: amount = #{amount.inspect}"
+      # puts "DBG: holding.amount = #{holding.amount.inspect}"
+      errors.add(:transaction_invalid, "don't own #{symbol}") unless holding
+      errors.add(:transaction_invalid, "can't sell more #{symbol} than you own") if holding.amount < amount
+    end
+  end
+
+  after_save :update_holdings
+
+  def update_holdings
+    holding = user.holdings.find_or_initialize_by(symbol: symbol)
+    if kind == 'buy'
+      holding.buy(amount, price)
+    else
+      holding.sell(amount)
+    end
+  end
 end

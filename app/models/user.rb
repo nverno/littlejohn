@@ -27,13 +27,37 @@ class User < ApplicationRecord
   has_many :watchlists, dependent: :destroy
   has_many :lists, dependent: :destroy
   has_many :transactions, dependent: :destroy
+
   has_many :followed_lists, through: :watchlists, source: :list
+  has_many :assets, through: :holdings, source: :symbol
 
   after_initialize :ensure_session_token
   after_create :create_default_watchlist
   after_create :create_default_follows
 
   DEFAULT_LIST = %w[AAPL TWTR TSLA NFLX FB MSFT].freeze
+
+  def buy(asset, units, unit_cost)
+    throw 'Not enough buying power' if unit_cost * units > balance
+
+    transactions.create!(
+      symbol: asset,
+      price: unit_cost,
+      amount: units,
+      kind: 'buy'
+    )
+    reload
+  end
+
+  def sell(asset, units, unit_price)
+    transactions.create!(
+      symbol: asset,
+      price: unit_price,
+      amount: units,
+      kind: 'sell'
+    )
+    reload
+  end
 
   def add_funds(amount)
     self.balance += amount
