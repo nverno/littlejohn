@@ -21,7 +21,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
   validates :gold, inclusion: { in: [true, false] }
-
+  validates :balance, numericality: true
+  
   has_many :holdings, dependent: :destroy
   has_many :watchlists, dependent: :destroy
   has_many :lists, dependent: :destroy
@@ -42,7 +43,7 @@ class User < ApplicationRecord
     followed_lists.where('lists.user_id is NULL OR lists.user_id != ?', id)
   end
 
-  def subscribe(list)
+  def follow(list)
     watchlists.create!(list_id: list.id)
   end
 

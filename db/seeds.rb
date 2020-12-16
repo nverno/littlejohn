@@ -16,22 +16,15 @@ admin = User.create!(
   password: 'asdfasdf'
 )
 
-# Global Lists
-
-# Default user watchlist
-# first_list = List.create!(
-#   # user_id: admin.id,
-#   name: 'My First List',
-#   public: true
-# )
-# first_list.assets = %w[AAPL TWTR TSLA NFLX FB MSFT]
-
-# Popular
+# Public Lists
 popular_list = List.create!(
   name: 'Most Popular',
   public: true,
 )
 popular_list.assets = %w[AAPL TSLA F MSFT AAL PFE NIO DIS AMZN DAL ACB GE]
+
+earnings = List.create!(name: 'Upcoming Earnings', public: true)
+earnings.assets = %w[NKE ACN FDX GIS LEN CCL HEI DRI FDS]
 
 # Demo user
 demo = User.create!(
@@ -42,7 +35,7 @@ demo = User.create!(
   password: 'asdfasdf',
   balance: 10_000
 )
-demo.subscribe(popular_list)
+demo.follow(popular_list)
 
 # Test user
 lj = User.create!(
@@ -53,7 +46,7 @@ lj = User.create!(
   password: 'asdfasdf',
   balance: 10_000
 )
-lj.subscribe(popular_list)
+lj.follow(popular_list)
 
 # Transactions
 [

@@ -13,8 +13,12 @@ class Api::UsersController < ApplicationController # rubocop:todo Style/Document
 
   def update
     @user = current_user
-    @user.add_funds(params[:amount].to_f)
-    render :show
+    if params[:amount] =~ /[-0-9.]+/
+      @user.add_funds(params[:amount].to_f)
+      render :show
+    else
+      render json: ['Invalid amount'], status: 400
+    end
   end
 
   private

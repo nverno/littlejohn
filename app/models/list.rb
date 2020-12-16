@@ -23,6 +23,10 @@ class List < ApplicationRecord
            class_name: :ListAsset,
            dependent: :destroy
 
+  def self.public_lists
+    List.where(public: true)
+  end
+
   def assets=(assets)
     assets.each do |asset| 
       ListAsset.create!(list_id: id, symbol: asset)

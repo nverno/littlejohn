@@ -1,7 +1,15 @@
-export const fetchLists = () => (
+export const fetchPublicLists = () => (
   $.ajax({
     method: 'GET',
     url: '/api/lists'
+  })
+);
+
+export const createPublicList = (list) => (
+  $.ajax({
+    method: 'POST',
+    url: `/api/lists`,
+    data: { list }
   })
 );
 
@@ -12,32 +20,39 @@ export const fetchList = id => (
   })
 );
 
-export const fetchWatchlists = userId => (
-  $.ajax({
-    method: 'GET',
-    url: `/api/${userId}/watchlists`
-  })
-);
-
-export const createWatchlist = (userId, list) => (
-  $.ajax({
-    method: 'POST',
-    url: `/api/${userId}/watchlists`,
-    data: { list }
-  })
-);
-
-export const updateWatchlist = (userId, watchlistId, list) => (
+export const updateList = (list) => (
   $.ajax({
     method: 'PATCH',
-    url: `/api/${userId}/watchlists/${watchlistId}`,
+    url: `/api/lists/${list.id}`,
     data: { list }
   })
 );
 
-export const deleteWatchlist = (userId, watchlistId) => (
+export const deleteList = (listId) => (
   $.ajax({
     method: 'DELETE',
-    url: `/api/${userId}/watchlists/${watchlistId}`
+    url: `/api/lists/${listId}`
+  })
+);
+
+export const createUserList = (userId, list) => (
+  $.ajax({
+    method: 'POST',
+    url: `/api/${userId}/lists`,
+    data: { list }
+  })
+);
+
+export const fetchUserLists = (userId) => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/${userId}/lists`
+  })
+);
+
+export const followList = (userId, listId) => (
+  $.ajax({
+    method: 'POST',
+    url: `/api/${userId}/lists/${listId}/follow`,
   })
 );
