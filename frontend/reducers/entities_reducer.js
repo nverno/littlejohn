@@ -6,6 +6,7 @@ import companies from './entities/companies_reducer';
 import quotes from './entities/stock_quotes_reducer';
 import publicLists from './entities/public_lists_reducer';
 import lists from './entities/lists_reducer';
+import holdings from './entities/holdings_reducer';
 
 export default combineReducers({
   users,
@@ -14,4 +15,5 @@ export default combineReducers({
   quotes,
   publicLists,
   lists,
+  holdings,
 });

@@ -63,3 +63,16 @@ lj = User.create!(
     price: price
   )
 end
+
+# Holdings
+[
+  ['AAPL', 2.5 - 1.3, 122.35],
+  ['TSLA', 2, 623]
+].each do |sym, amount, avg_price|
+  Holding.create!(
+    user_id: lj.id,
+    symbol: sym,
+    amount: amount,
+    avg_price: avg_price
+  )
+end

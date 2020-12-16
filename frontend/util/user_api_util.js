@@ -11,7 +11,7 @@ export const updateBalance = (userId, amount) => (
 export const fetchHoldings = (userId) => (
   $.ajax({
     method: 'GET',
-    url: `/api/${userId}/holdings`
+    url: `/api/users/${userId}/holdings`
   })
 );
 

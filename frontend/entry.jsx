@@ -9,6 +9,7 @@ import * as util from './util/session_api_util';
 import * as StocksAPI from './util/stocks_api';
 import * as actions from './actions/user_actions';
 import * as lists from './actions/list_actions';
+import * as holdings from './actions/holdings_actions';
 // END testing
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -38,5 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.actions = actions;
   window.sapi = StocksAPI;
   window.lists = lists;
+  window.holdings = holdings;
   // END testing
 });
