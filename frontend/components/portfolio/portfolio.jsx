@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import HeaderPage from '../header/header_page';
 import GraphNav from '../graph/graph_nav';
 // import SampleGraph from './portfolio_sample.png';
+import PortfolioSidebar from './sidebar/portfolio_sidebar';
 
 const navIntervals = ['1D', '1W', '1M', '3M', '1Y', '5Y', 'All'];
 
@@ -44,7 +45,10 @@ export default class Portfolio extends Component {
             </section>
           </div>
 
-          <div className="col-5 portfolio-col-right">Sidebar Content</div>
+          <div className="col-5 portfolio-col-right">
+            <PortfolioSidebar {...this.props}/>
+          </div>
+
         </div>
       </HeaderPage>
     );

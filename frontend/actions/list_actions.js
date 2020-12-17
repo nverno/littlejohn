@@ -7,6 +7,23 @@ export const RECEIVE_USER_LISTS = 'RECEIVE_USER_LISTS';
 export const REMOVE_LIST = 'REMOVE_LIST';
 export const RECEIVE_LIST_ERRORS = 'RECEIVE_LIST_ERRORS';
 export const CLEAR_LIST_ERRORS = 'CLEAR_LIST_ERRORS';
+export const RECEIVE_OPEN_LIST = 'RECEIVE_OPEN_LIST';
+export const RECEIVE_CLOSE_LIST = 'RECEIVE_CLOSE_LIST';
+export const RECEIVE_CLOSE_ALL_LISTS = 'RECEIVE_CLOSE_ALL_LISTS';
+
+export const closeAllLists = () => ({
+  type: RECEIVE_CLOSE_ALL_LISTS,
+});
+
+export const closeList = (listId) => ({
+  type: RECEIVE_CLOSE_LIST,
+  listId
+});
+
+export const openList = (listId) => ({
+  type: RECEIVE_OPEN_LIST,
+  listId
+});
 
 export const clearListErrors = () => ({
   type: CLEAR_LIST_ERRORS,
@@ -14,7 +31,7 @@ export const clearListErrors = () => ({
 
 export const receiveListErrors = (errors) => ({
   type: RECEIVE_LIST_ERRORS,
-  errors,
+  errors: errors.responseJSON,
 });
 
 export const removeList = (listId) => ({
@@ -67,11 +84,11 @@ export const createUserList = (userId, list) => (dispatch) =>
     (err) => dispatch(receiveListErrors(err))
   );
 
-export const createPublicList = (list) => (dispatch) =>
-  ListAPI.createPublicList(list).then(
-    (list) => dispatch(receiveList(list)),
-    (err) => dispatch(receiveListErrors(err))
-  );
+export const createPublicList = (listForm) => (dispatch) =>
+  ListAPI.createPublicList(listForm)
+    .then((list) => dispatch(receiveList(list)))
+  .fail((err) => dispatch(receiveListErrors(err)));
+
 
 export const updateList = (list) => (dispatch) =>
   ListAPI.updateList(list).then(

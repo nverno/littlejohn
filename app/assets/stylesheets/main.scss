@@ -8,6 +8,7 @@ body {
   font-family: Capsule Sans Text, -apple-system, BlinkMacSystemFont, sans-serif;
   display: block;
   font-size: 13px;
+  overflow: inherit;
 }
 
 section {
@@ -229,6 +230,10 @@ a {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 27.77778%;
   flex: 0 0 27.77778%;
+
+  &>:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .grid-4 {

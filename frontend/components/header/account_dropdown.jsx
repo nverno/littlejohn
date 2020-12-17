@@ -15,14 +15,13 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const AccountDropdown = ({ logout, ...props }) => {
-  // const [open, setOpen] = React.useState(false);
   return (
     <HeaderDropdown {...props}>
       <>
         <div className="lj-acct-drop-container lj-theme-overlay">
           <div className="lj-acct-drop-outer">
             <AccountDropdownHeader />
-            <a className="lj-acct-logout">
+            <a className="lj-acct-logout" onClick={logout}>
               <span className="lj-acct-logout-icon">
                 <h3>
                   <FiLogOut size={24} />

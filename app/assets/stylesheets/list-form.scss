@@ -1,0 +1,61 @@
+.list-form-container {
+  // height: 92px;
+  // left: 0px;
+  // position: absolute;
+  // top: 344px;
+  width: 100%;  
+}
+
+.list-form {
+  padding: 8px 24px 0px 18px;  
+}
+
+.list-form-name-container {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 8px;  
+}
+
+.list-form-name-outer {
+  margin-left: 8px;
+  -webkit-box-flex: 1;
+  flex-grow: 1;  
+}
+.list-form-name-inner {
+  position: relative;
+  width: 100%;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;  
+}
+
+.list-form-footer {
+  display: flex;
+  -webkit-box-pack: end;
+  justify-content: flex-end;  
+}
+
+.list-form-cancel-button {
+  @include signup-button(
+    $color: var(--rh__primary-base),
+    $bg-color: transparent,
+    $bg-color-hover: var(--rh__primary-light-base));
+  border: 1px solid currentcolor;
+}
+
+.list-form-submit-button {
+  @include signup-button(
+    $bg-color: var(--rh__primary-base),
+    $bg-color-hover: var(--rh__primary-light-base));
+  border: 0px;
+}
+
+.list-form-button {
+  border-radius: var(--rh__size-palette__borderRadius);
+  max-width: 360px;
+  height: var(--rh__size-palette__cellHeightSm);
+  min-width: 96px;
+  padding-left: calc(2 * var(--rh__size-palette__gutterWidth));
+  padding-right: calc(2 * var(--rh__size-palette__gutterWidth));
+}

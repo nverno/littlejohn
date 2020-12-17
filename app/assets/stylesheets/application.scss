@@ -4,6 +4,7 @@
 @import 'rh_vars';
 @import 'fonts.scss';
 @import 'buttons';
+@import 'icons';
 
 @import 'app'; // XXX: remove?
 @import 'loading';
@@ -22,6 +23,12 @@
 @import 'stock';
 @import 'stock-graph';
 @import 'stock-info';
+
+@import 'sidebar';
+@import 'portfolio-sidebar';
+@import 'stock-cell';
+@import 'list-cell';
+@import 'list-form';
 
 @import 'splash';
 @import 'login';

@@ -11,6 +11,7 @@
 class List < ApplicationRecord
   validates :name, presence: true
   validates :public, inclusion: { in: [true, false] }
+  validates :name, uniqueness: { scope: :user_id }
 
   belongs_to :user, optional: true
 
@@ -28,10 +29,10 @@ class List < ApplicationRecord
   end
 
   def assets=(new_assets)
-    self.save
-    self.assets.destroy_all
+    save
+    assets.destroy_all
     new_assets.each do |asset|
-      self.assets.create(symbol: asset)
+      assets.create(symbol: asset)
     end
   end
 end
