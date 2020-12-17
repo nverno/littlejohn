@@ -29,8 +29,9 @@ const StockCellGraph = ({ symbol, data, positive }) => {
           <SparklinesReferenceLine
             type="median"
             style={{
-              stroke: 'gainsboro',
-              strokeOpacity: 0.75,
+              stroke: 'var(--rh__neutral-fg2)',
+              strokeOpacity: 1,
+              strokeWidth: "2",
               strokeDasharray: '2, 2',
             }}
           />
