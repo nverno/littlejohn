@@ -2,6 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import {
+  positiveChange,
+  quotePercent,
+  quotePrice,
+} from '../../../selectors/quotes';
+
 import StockCellGraph from './stock_cell_graph';
 
 const mapStateToProps = (state, ownProps) => {
@@ -12,13 +18,12 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-// TODO:
 const StockCellPercent = ({ quote }) => {
-  const cname = quote && quote.negative ? 'lj-negative' : 'lj-positive';
+  const cname = positiveChange(quote) ? 'lj-positive' : 'lj-negative';
   return (
     <span className={cname}>
       <span className="lj-type1 stock-cell-percent-change">
-        {quote ? quote.percent : '—'}
+        {quotePercent(quote)}
       </span>
     </span>
   );
@@ -47,7 +52,7 @@ const StockCell = ({ symbol, quote, holding, ...props }) => {
         <div className="stock-cell-right">
           <span className="lj-type7">
             <div className="stock-cell-price-container">
-              <span className="lj-type1">{quote ? quote.price : '—'}</span>
+              <span className="lj-type1">{quotePrice(quote)}</span>
               <div style={{ height: '2px' }} />
               <StockCellPercent quote={quote} />
             </div>

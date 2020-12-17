@@ -47,8 +47,7 @@ const FollowCell = ({ list }) => {
 };
 
 const PortfolioFollowing = ({ following, userId, ...props }) => {
-  console.log('Following lists: ', following);
-
+  // console.log('Following lists: ', following);
   return (
     <>
       <PortfolioSidebarHeader title="Following" />

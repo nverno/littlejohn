@@ -11,6 +11,9 @@
 .lj-positive {
   --rh__text-color: var(--rh__semantic-positive-base);
 }
+.lj-negative {
+  --rh__text-color: var(--rh__semantic-negative-base);
+}
 
 @mixin type1 {
   font-family: var(--rh__type-palette__type1__stack);

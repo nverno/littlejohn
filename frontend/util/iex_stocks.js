@@ -84,7 +84,8 @@ export default class IexAPI {
   }
 
   async fetchBatchStocks(symbols, types, ...params) {
-    return this.apiRequest(`/market/${symbols.join(',')}/batch`, {
+    return this.apiRequest(`/stock/market/batch`, {
+      symbols: symbols.join(','),
       types: types.join(','),
       ...params
     });
