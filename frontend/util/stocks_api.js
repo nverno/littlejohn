@@ -17,10 +17,10 @@ export const initializeStocksAPI = (ttl) => {
   iexAPI = new IexAPI(window.iexAPIKey);
 };
 
-export const fetchStockPrices = (symbol, interval, amount = 100) => {
-  interval = normalizeInterval(interval);
-  return avAPI.timeSeries({ symbol, interval, amount });
-};
+// export const fetchStockPrices = (symbol, interval, amount = 100) => {
+//   interval = normalizeInterval(interval);
+//   return avAPI.timeSeries({ symbol, interval, amount });
+// };
 
 export const fetchStockQuote = (symbol) => {
   return avAPI.quote(symbol);

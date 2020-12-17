@@ -13,7 +13,7 @@ import * as lists from './actions/list_actions';
 import * as holdings from './actions/holdings_actions';
 import * as transactions from './actions/transactions_actions';
 import * as port from './actions/portfolio_actions';
-
+import * as prices from './actions/stock_price_actions';
 // END testing
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -49,5 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.holdings = holdings;
   window.transactions = transactions;
   window.port = port;
+  window.prices = prices;
   // END testing
 });

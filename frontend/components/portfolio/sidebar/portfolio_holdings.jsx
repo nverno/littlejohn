@@ -7,6 +7,7 @@ import { fetchSidebarHoldingsData } from '../../../actions/portfolio_actions';
 const mapStateToProps = (state, _ownProps) => ({
   holdings: state.entities.holdings,
   quotes: state.entities.quotes,
+  prices: state.entities.prices,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -20,9 +21,9 @@ class PortfolioHoldings extends Component {
   }
 
   componentDidMount() {
-    console.log('PHoldings: ', this.props.holdings, this.props.quotes);
-    const { quotes } = this.props;
-    this.props.fetchSidebarHoldingsData({ quotes });
+    // console.log('PHoldings: ', this.props.holdings, this.props.quotes);
+    const { quotes, prices } = this.props;
+    this.props.fetchSidebarHoldingsData({ quotes, prices });
   }
 
   render() {

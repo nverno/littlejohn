@@ -1,18 +1,33 @@
 import {
   RECEIVE_STOCK_PRICES,
+  RECEIVE_BATCH_PRICES,
 } from '../../actions/stock_price_actions';
 
-export default (state = {}, { type, symbol, interval, values }) => {
+export default (state = {}, action) => {
   Object.freeze(state);
-  switch (type) {
 
+  let intervalKey = action.interval;
+  if (intervalKey === 'intraday-prices') intervalKey = '1D';
+
+  switch (action.type) {
     case RECEIVE_STOCK_PRICES:
       let res = Object.assign({}, state);
-      if (!res[symbol]) res[symbol] = {};
-      res[symbol][interval] = values;
+      if (!res[action.symbol]) res[action.symbol] = {};
+      res[action.symbol][action.interval] = action.values;
       return res;
+
+    case RECEIVE_BATCH_PRICES:
+      if (!action.interval) return state;
+
+      let ns = Object.assign({}, state);
+      for (const [sym, val] of Object.entries(action.data)) {
+        if (!ns[sym]) ns[sym] = {};
+
+        ns[sym][intervalKey] = val[action.interval];
+      }
+      return ns;
 
     default:
       return state;
   }
-}
+};

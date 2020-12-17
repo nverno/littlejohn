@@ -13,21 +13,23 @@ var fetch = window.fetch;
 export default class IexAPI {
   constructor(apiKey) {
     this.apiKey = apiKey;
-    this.baseURL = "https://cloud.iexapis.com/stable";
-    this.sandboxURL = "https://sandbox.iexapis.com";
+    this.baseURL = 'https://cloud.iexapis.com/stable';
+    this.sandboxURL = 'https://sandbox.iexapis.com';
   }
 
-  createUrl(endpoint, params={}) {
+  createUrl(endpoint, params = {}) {
     params.token = this.apiKey;
     const encoded = Object.keys(params)
-          .map(key => `${key}=${params[key]}`)
-          .join('&');
-    return `${this.baseURL}${endpoint}?${encoded}`;
+      .map((key) => `${key}=${params[key]}`)
+      .join('&');
+    const url = `${this.baseURL}${endpoint}?${encoded}`;
+    console.log('API: ', url);
+    return url;
+    // return `${this.baseURL}${endpoint}?${encoded}`;
   }
 
   async apiRequest(endpoint, params) {
-    return fetch(this.createUrl(endpoint, params))
-      .then(res => res.json());
+    return fetch(this.createUrl(endpoint, params)).then((res) => res.json());
   }
 
   // Crypto
@@ -40,7 +42,7 @@ export default class IexAPI {
     return this.apiRequest(`/stock/${symbol}/company`);
   }
 
-  async news(symbol, lastN=10) {
+  async news(symbol, lastN = 10) {
     return this.apiRequest(`/stock/${symbol}/news/last/${lastN}`);
   }
 
@@ -73,26 +75,38 @@ export default class IexAPI {
   }
 
   // Graph data
-  // async prices(symbol, interval) {
-  // }
-
-  async fetchBatchStock(symbol, types, ...params) {
-    return this.apiRequest(`/stock/${symbol}/batch`, {
-      types: types.join(','), // 'quote,news,company'
-      ...params
+  async fetchPrices1D(symbol) {
+    return this.apiRequest(`/stock/${symbol}/intraday-prices`, {
+      chartInterval: 10,
     });
   }
 
-  async fetchBatchStocks(symbols, types, ...params) {
+  // Batch
+  async fetchBatchDailyPrices(symbols) {
+    return this.apiRequest('/stock/market/batch', {
+      symbols: symbols.join(','),
+      types: 'intraday-prices',
+      chartInterval: 10,
+    });
+  }
+
+  async fetchBatchStock(symbol, types, params) {
+    return this.apiRequest(`/stock/${symbol}/batch`, {
+      types: types.join(','), // 'quote,news,company'
+      ...params,
+    });
+  }
+
+  async fetchBatchStocks(symbols, types, params) {
     return this.apiRequest(`/stock/market/batch`, {
       symbols: symbols.join(','),
       types: types.join(','),
-      ...params
+      ...params,
     });
   }
 
   // Markets
   async sectorPerformance() {
-    return this.apiRequest("/stock/market/sector-performance");
+    return this.apiRequest('/stock/market/sector-performance');
   }
 }
