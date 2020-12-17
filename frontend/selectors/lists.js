@@ -7,3 +7,11 @@ export const getFollowedLists = (state) => {
   });
   return res;
 };
+
+export const getOpenListSymbols = (state) => {
+  const listIds = Object.keys(state.ui.lists);
+  return listIds.reduce(
+    (acc, listId) => acc.concat(state.entities.lists[listId].assets),
+    []
+  );
+};

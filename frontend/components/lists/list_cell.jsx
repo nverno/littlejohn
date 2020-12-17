@@ -5,6 +5,8 @@ import { IoIosArrowDown } from '@react-icons/all-files/io/IoIosArrowDown';
 import { IoIosArrowUp } from '@react-icons/all-files/io/IoIosArrowUp';
 import { BiDotsHorizontalRounded } from '@react-icons/all-files/bi/BiDotsHorizontalRounded';
 
+import { maybeFetchPortfolioData } from '../../actions/portfolio_actions';
+import { getOpenListSymbols } from '../../selectors/lists';
 import ListIcon from './list_icon';
 import {
   closeList,
@@ -16,7 +18,9 @@ const mapStateToProps = (state, ownProps) => {
   return {
     list: state.entities.lists[ownProps.listId],
     open: state.ui.lists[ownProps.listId],
-    state,
+    symbols: getOpenListSymbols(state),
+    quotes: state.entities.quotes,
+    // state,
   };
 };
 
@@ -24,14 +28,33 @@ const mapDispatchToProps = (dispatch, { listId }) => ({
   closeList: () => dispatch(closeList(listId)),
   openList: () => dispatch(openList(listId)),
   openEditListModal: () => dispatch(openEditListModal(listId)),
+  maybeFetchPortfolioData: (stateData) =>
+    dispatch(maybeFetchPortfolioData(stateData)),
 });
 
-const ListCell = ({ listId, list, open, closeList, openList, ...props }) => {
+const ListCell = ({
+  quotes,
+  listId,
+  list,
+  open,
+  closeList,
+  openList,
+  maybeFetchPortfolioData,
+  ...props
+}) => {
   const caret = (
     <span className="list-cell-caret">
       {!open ? <IoIosArrowUp size={24} /> : <IoIosArrowDown size={24} />}
     </span>
   );
+
+  const toggleList = () => {
+    if (open) closeList();
+    else {
+      maybeFetchPortfolioData({ symbols: list.assets, quotes });
+      openList();
+    }
+  };
 
   return (
     <div className="list-cell-container">
@@ -57,10 +80,7 @@ const ListCell = ({ listId, list, open, closeList, openList, ...props }) => {
               </button>
             </div>
 
-            <div
-              className="list-cell-toggle-container"
-              onClick={() => (open ? closeList() : openList())}
-            >
+            <div className="list-cell-toggle-container" onClick={toggleList}>
               <div className="list-cell-caret-container">{caret}</div>
             </div>
           </div>

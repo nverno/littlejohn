@@ -6,7 +6,7 @@ import GraphNav from '../graph/graph_nav';
 // import SampleGraph from './portfolio_sample.png';
 import PortfolioSidebar from './sidebar/portfolio_sidebar';
 import EditListModal from '../lists/edit_list_modal';
-import { Section, SectionHeader } from '../parts/section';
+// import { Section, SectionHeader } from '../parts/section';
 import PopularLists from './popular_lists';
 import BuyingPower from './buying_power';
 
@@ -22,7 +22,8 @@ export default class Portfolio extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchPortfolioUserData();
+    const { holdings, quotes, symbols } = this.props;
+    this.props.fetchPortfolioData({ symbols, quotes, holdings });
   }
 
   updateInterval(interval) {

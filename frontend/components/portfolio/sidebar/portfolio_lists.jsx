@@ -12,10 +12,10 @@ const mapStateToProps = (state, _ownProps) => ({
   lists: state.entities.lists,
   openLists: state.ui.lists,
   userId: state.session.currentUser.id,
-  state,
+  // state,
 });
 
-const mapDispatchToProps = (dispatch, { userId }) => ({
+const mapDispatchToProps = (dispatch) => ({
   clearListErrors: () => dispatch(clearListErrors()),
 });
 
