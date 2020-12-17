@@ -1,7 +1,7 @@
 
 .icon-lightbulb {
   // FIXME: not found on Heroku?
-  background-image: url('icons.png');
+  background-image: asset_url('icons.png');
   background-size: 1404px 1404px;
   background-position: -252px -828px;
   width: 18px;
