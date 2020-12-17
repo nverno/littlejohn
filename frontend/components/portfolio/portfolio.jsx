@@ -6,6 +6,9 @@ import GraphNav from '../graph/graph_nav';
 // import SampleGraph from './portfolio_sample.png';
 import PortfolioSidebar from './sidebar/portfolio_sidebar';
 import EditListModal from '../lists/edit_list_modal';
+import { Section, SectionHeader } from '../parts/section';
+import PopularLists from './popular_lists';
+import BuyingPower from './buying_power';
 
 const navIntervals = ['1D', '1W', '1M', '3M', '1Y', '5Y', 'All'];
 
@@ -39,7 +42,9 @@ export default class Portfolio extends Component {
               />
             </section>
 
-            <div className="portfolio-buying-power">Buying Power</div>
+            <BuyingPower />
+
+            <PopularLists />
 
             <section className="portfolio-news-section">
               Popular Lists & News

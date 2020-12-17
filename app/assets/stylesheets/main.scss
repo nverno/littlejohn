@@ -1,4 +1,6 @@
-figcaption, figure, main {
+figcaption,
+figure,
+main {
   display: block;
 }
 
@@ -33,7 +35,6 @@ h4.regular {
   margin: 0;
 }
 
-
 h3 {
   display: block;
   margin-block-start: 1em;
@@ -41,10 +42,11 @@ h3 {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 }
-h3, legend {
+h3,
+legend {
   font-size: 15px;
   font-weight: 700;
-  letter-spacing: -.1px;
+  letter-spacing: -0.1px;
   line-height: 20px;
   margin: 0;
 }
@@ -105,9 +107,10 @@ html h1 {
   margin: 0;
 }
 
-h2, html h1 {
+h2,
+html h1 {
   font-weight: 500;
-  letter-spacing: -.33px;
+  letter-spacing: -0.33px;
 }
 
 button {
@@ -136,6 +139,11 @@ button {
 
   &:focus {
     outline: none;
+  }
+
+  &:hover {
+    border-color: var(--rh__neutral-hover-bg1);
+    background-color: var(--rh__neutral-hover-bg1);
   }
 }
 
@@ -206,12 +214,12 @@ a {
   justify-content: space-between;
   margin: 0 -6px;
 
-  &> * {
+  & > * {
     display: block;
     padding-left: 6px;
     padding-right: 6px;
   }
-  &>:last-child {
+  & > :last-child {
     margin-right: 0;
   }
 }
@@ -221,7 +229,7 @@ a {
   -ms-flex: 0 0 66.66667%;
   flex: 0 0 66.66667%;
 
-  &>:last-child {
+  & > :last-child {
     margin-bottom: 0;
   }
 }
@@ -231,7 +239,7 @@ a {
   -ms-flex: 0 0 27.77778%;
   flex: 0 0 27.77778%;
 
-  &>:last-child {
+  & > :last-child {
     margin-bottom: 0;
   }
 }
@@ -240,15 +248,15 @@ a {
   display: flex;
   flex-wrap: wrap;
 
-  &>* {
+  & > * {
     flex-basis: calc(25% - 12px);
   }
 
-  &>:nth-child(4n+1) {
+  & > :nth-child(4n + 1) {
     margin-left: 0;
   }
 
-  &>:nth-child(4n) {
+  & > :nth-child(4n) {
     margin-right: 0;
   }
 }
