@@ -60,3 +60,9 @@
   padding-right: calc(2 * var(--rh__size-palette__gutterWidth));
   padding-bottom: calc(2 * var(--rh__size-palette__gutterWidth));
 }
+
+.bp-deposit-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

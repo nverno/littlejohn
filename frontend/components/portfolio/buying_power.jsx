@@ -27,18 +27,20 @@ const DepositFunds = ({ userId, updateBalance }) => {
 
   return (
     <div className="bp-deposit-container">
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          className="form-input"
-          value={amount}
-          onChange={(e) => setAmount(e.currentTarget.value)}
-          placeholder="Amount"
-        />
-        <div>
-          <button className="login-submit">Deposit Funds</button>
-        </div>
-      </form>
+      <div className="bp-deposit-outer">
+        <form onSubmit={handleSubmit} className="bp-deposit-form">
+          <input
+            type="text"
+            className="form-input"
+            value={amount}
+            onChange={(e) => setAmount(e.currentTarget.value)}
+            placeholder="Amount"
+          />
+          <div style={{ paddingLeft: '20px' }}>
+            <button className="login-submit">Deposit Funds</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
