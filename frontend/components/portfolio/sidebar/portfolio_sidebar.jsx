@@ -5,6 +5,7 @@ import SidebarContent from '../../parts/sidebar_content';
 import PortfolioSidebarHeader from './portfolio_sidebar_header';
 import PortfolioHoldings from './portfolio_holdings';
 import PortfolioLists from './portfolio_lists';
+import PortfolioFollowing from './portfolio_following';
 
 export default class PortfolioSidebar extends Component {
   constructor(props) {
@@ -14,20 +15,17 @@ export default class PortfolioSidebar extends Component {
   render() {
     return (
       <SidebarContent {...this.props}>
-        <PortfolioSidebarHeader title='Stocks'>
-          <button type='button' className="port-sidebar-header-button">
-            <BiDotsHorizontalRounded size={24}/>
+        <PortfolioSidebarHeader title="Stocks">
+          <button type="button" className="port-sidebar-header-button">
+            <BiDotsHorizontalRounded size={24} />
           </button>
         </PortfolioSidebarHeader>
 
         <PortfolioHoldings />
-        
-        <br />
-        <PortfolioLists />
-        
-        <br />
-        <PortfolioSidebarHeader title='Following' />
 
+        <PortfolioLists />
+
+        <PortfolioFollowing />
       </SidebarContent>
     );
   }
