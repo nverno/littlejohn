@@ -9,14 +9,22 @@ import {
 } from '../../../selectors/quotes';
 
 import StockCellGraph from './stock_cell_graph';
+import { getPrices } from '../../../selectors/prices';
+import { getBuyingPower } from '../../../selectors/user';
 
-const mapStateToProps = (state, ownProps) => ({
-  holding: state.entities.holdings[ownProps.symbol],
-  quote: state.entities.quotes[ownProps.symbol],
-});
+const mapStateToProps = (state, ownProps) => {
+  const { holdings, quotes, prices } = state.entities;
+  const { symbol } = ownProps;
+  return {
+    holding: holdings[symbol],
+    quote: quotes[symbol],
+    data: prices[symbol] ? getPrices(prices[symbol]['1D']) : null,
+  };
+};
 
 const StockCellPercent = ({ quote }) => {
   const cname = positiveChange(quote) ? 'lj-positive' : 'lj-negative';
+
   return (
     <span className={cname}>
       <span className="lj-type1 stock-cell-percent-change">
@@ -32,7 +40,8 @@ class StockCell extends Component {
   }
 
   render() {
-    const { symbol, quote, holding } = this.props;
+    const { symbol, quote, holding, data } = this.props;
+
     return (
       <div className="stock-cell-container">
         <Link to={`/stocks/${symbol}`} className="stock-cell-link">
@@ -50,7 +59,13 @@ class StockCell extends Component {
             )}
           </div>
 
-          <StockCellGraph />
+          {data && (
+            <StockCellGraph
+              positive={positiveChange(quote)}
+              data={data}
+              symbol={symbol}
+            />
+          )}
 
           <div className="stock-cell-right">
             <span className="lj-type7">

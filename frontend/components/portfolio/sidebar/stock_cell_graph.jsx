@@ -1,18 +1,30 @@
 import React from 'react';
+
 import {
   Sparklines,
   SparklinesLine,
   SparklinesReferenceLine,
-  SparklinesSpots,
 } from 'react-sparklines';
 
-const StockCellGraph = () => {
+const StockCellGraph = ({ symbol, data, positive }) => {
+  // console.log('CELL: ', data);
+  if (!data) return null;
   return (
     <div className="stock-cell-graph-container">
       <div className="stock-cell-graph-outer">
-        <Sparklines data={[5, 10, 5, 20]}>
+        <Sparklines
+          min={Math.min.apply(Math, data)}
+          max={Math.max.apply(Math, data)}
+          data={data}
+        >
           <SparklinesLine
-            style={{ fill: 'none', strokeWidth: 3, stroke: 'red' }}
+            style={{
+              fill: 'none',
+              strokeWidth: 4,
+              stroke: positive
+                ? 'var(--rh__semantic-positive-base)'
+                : 'var(--rh__semantic-negative-base)',
+            }}
           />
           <SparklinesReferenceLine
             type="median"
@@ -22,7 +34,6 @@ const StockCellGraph = () => {
               strokeDasharray: '2, 2',
             }}
           />
-          {/* <SparklinesSpots /> */}
         </Sparklines>
       </div>
     </div>
