@@ -6,13 +6,19 @@ import StockDailyInfoCell from './stock_daily_info_cell';
 import { SectionHeader, Section } from '../../parts/section';
 import { ShowMoreButton, ReadMoreButton } from '../../parts/buttons';
 
-const StockInfoGrid = ({ company, overview, showMore }) => {
+const StockInfoGrid = ({ company, overview, showMore, quote, ...props }) => {
   return (
     <div className="grid-4 lj-stock-info-grid">
-      {overview.map((item, idx) => (
-        <StockDailyInfoCell key={idx} {...item} />
-      ))}
-      {showMore && <StockDailyInfo company={company} overview={overview} />}
+      {overview &&
+        overview.map((item, idx) => <StockDailyInfoCell key={idx} {...item} />)}
+      {showMore && (
+        <StockDailyInfo
+          company={company}
+          quote={quote}
+          overview={overview}
+          {...props}
+        />
+      )}
     </div>
   );
 };
@@ -27,16 +33,6 @@ export default class StockInfo extends Component {
     this.setReadMore = this.setReadMore.bind(this);
     this.setShowMore = this.setShowMore.bind(this);
   }
-
-  // componentDidMount() {
-  //   if (!this.props.company) {
-  //     this.props.fetchCompanyInfo();
-  //   }
-  // }
-
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.symbol !== prevProps.symbol) this.props.fetchCompanyInfo();
-  // }
 
   setReadMore() {
     this.setState({ readMore: !this.state.readMore });
@@ -76,6 +72,7 @@ export default class StockInfo extends Component {
             company={company}
             overview={overview}
             showMore={showMore}
+            {...this.props}
           />
         </div>
       </Section>

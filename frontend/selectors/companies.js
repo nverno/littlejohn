@@ -1,32 +1,33 @@
+const fmt = (n) => n && n.toFixed(2).toLocaleString('en');
+
 // Pull out info for About section on stocks show page
-export const companyOverview = (info) => {
+export const companyOverview = (info, quote) => {
   return (
-    info && [
+    info &&
+    quote && [
       {
-        title: 'Name',
-        value: info['Name'] && info['Name'].replace(/,?\s*Inc.?$/i, ''),
+        title: 'CEO',
+        value: info['CEO'] && info['CEO'],
       },
       {
         title: 'Employees',
-        value: info['FullTimeEmployees'],
+        value: info['employees'] || info['FullTimeEmployees'],
       },
       {
         title: 'Headquarters',
-        // TODO: trim address
-        value: info['Address'],
+        value: info['address'] || info['Address'],
       },
       {
         title: 'Industry',
-        value: info['Industry'],
+        value: info['industry'] || info['Industry'],
       },
       {
         title: 'Market Cap',
-        // TODO: format market cap
-        value: info['MarketCapitalization'],
+        value: fmt(quote['marketCap']) || info['MarketCapitalization'],
       },
       {
         title: 'Price-Earnings Ratio',
-        value: info['PERatio'],
+        value: quote['peRatio'] || info['PERatio'],
       },
       {
         title: 'Dividend Yield',
@@ -41,8 +42,8 @@ export const companyOverview = (info) => {
 };
 
 export const companyDescription = (info) => {
-  if (!info || !info['Description']) return null;
-  const desc = info['Description'];
+  if (!info || !info['description']) return null;
+  const desc = info['description'];
 
   if (desc.length < 235) return { first: desc };
 
@@ -55,36 +56,39 @@ export const companyDescription = (info) => {
 // Pull out the extra information about a company
 // Some of this comes from the daily price data, a different source
 // than the regular info
-export const companyOverviewExtra = (info, quotes) => {
-  // console.log('Info is ', info);
-  return [
-    {
-      title: 'High Today',
-      value: quotes && quotes['high'],
-    },
-    {
-      title: 'Low Today',
-      value: quotes && quotes['low'],
-    },
-    {
-      title: 'Open Price',
-      value: quotes && quotes['open'],
-    },
-    {
-      title: 'Volume',
-      value: quotes && quotes['volume'],
-    },
-    {
-      title: '52 Week High',
-      value: info && info['52WeekHigh'],
-    },
-    {
-      title: '52 Week Low',
-      value: info && info['52WeekLow'],
-    },
-    {
-      title: '50 Day Moving Avg.',
-      value: info && info['50DayMovingAverage'],
-    },
-  ];
+export const companyOverviewExtra = (info, quote) => {
+  // console.log('Quote is ', quote);
+  return (
+    quote &&
+    info && [
+      {
+        title: 'High Today',
+        value: fmt(quote['high']),
+      },
+      {
+        title: 'Low Today',
+        value: fmt(quote['low']),
+      },
+      {
+        title: 'Open Price',
+        value: fmt(quote['open']),
+      },
+      {
+        title: 'Volume',
+        value: fmt(quote['volume']),
+      },
+      {
+        title: '52 Week High',
+        value: fmt(quote['week52High']),
+      },
+      {
+        title: '52 Week Low',
+        value: fmt(quote['week52Low']),
+      },
+      {
+        title: 'Avg. Total Volume',
+        value: quote['avgTotalVolume'],
+      },
+    ]
+  );
 };

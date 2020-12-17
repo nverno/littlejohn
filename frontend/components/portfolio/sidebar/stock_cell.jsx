@@ -10,7 +10,6 @@ import {
 
 import StockCellGraph from './stock_cell_graph';
 import { getPrices } from '../../../selectors/prices';
-import { getBuyingPower } from '../../../selectors/user';
 
 const mapStateToProps = (state, ownProps) => {
   const { holdings, quotes, prices } = state.entities;

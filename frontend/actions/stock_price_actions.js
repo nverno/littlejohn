@@ -58,8 +58,9 @@ export const fetchStockPrices = ({ symbol, interval, prices }) => (
 };
 
 export const fetchStockQuote = (symbol) => (dispatch) => {
-  return StocksAPI.fetchStockQuote(symbol).then((quote) =>
-    dispatch(receiveStockQuote(symbol, quote))
+  return StocksAPI.iexAPI.fetchBatchStocks([symbol], ['quote']).then(
+    (data) => dispatch(receiveBatchQuotes(data)),
+    (errors) => dispatch(receiveApiErrors(errors))
   );
 };
 

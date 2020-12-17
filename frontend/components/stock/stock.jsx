@@ -11,8 +11,11 @@ export default class Stock extends Component {
   }
 
   fetchStockShowData() {
-    this.props.fetchStockQuote();
-    this.props.fetchCompanyInfo();
+    console.log('State: ', this.props.state);
+    this.props.fetchStockShowData({
+      symbol: this.props.symbol,
+      ...this.props.state.entities,
+    });
   }
 
   componentDidMount() {
@@ -38,7 +41,7 @@ export default class Stock extends Component {
 
             <div>
               <section className="lj-stock-graph-section">
-                <StockPriceGraphContainer quote={quote} symbol={symbol} />
+                {/* <StockPriceGraphContainer quote={quote} symbol={symbol} /> */}
               </section>
 
               {/* XXX: only render this section if stock is owned */}
@@ -47,7 +50,12 @@ export default class Stock extends Component {
               {/* <section className="lj-stock-user-value"> */}
               {/* </section> */}
 
-              <StockInfoContainer company={company} symbol={symbol} />
+              <StockInfoContainer
+                company={company}
+                quote={quote}
+                symbol={symbol}
+                {...this.props}
+              />
 
               <Section>
                 <SectionHeader title="Related Lists" />

@@ -3,13 +3,13 @@ import * as Holdings from './holdings_actions';
 import { iexAPI } from '../util/stocks_api';
 import {
   receiveBatchQuotes,
-  fetchBatchPrices,
+  // fetchBatchPrices,
   receiveBatchPrices,
   receiveApiErrors,
 } from './stock_price_actions';
 import * as UserAPI from '../util/user_api_util';
 import * as Lists from './list_actions';
-import * as ListsAPI from '../util/list_api_util';
+// import * as ListsAPI from '../util/list_api_util';
 
 export const fetchPortfolioStockData = (holdings) => (dispatch) => {
   iexAPI.fetchBatchStocks(Object.keys(holdings), ['quote']).then((data) => {

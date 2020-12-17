@@ -37,7 +37,7 @@ class HeaderDropdown extends Component {
       this.props.headerCloseAll();
       // this.props.headerDropdownClose(itemId);
     } else {
-      console.log('Opening: ', itemId);
+      // console.log('Opening: ', itemId);
       this.props.headerDropdownOpen(itemId);
     }
   }
@@ -67,7 +67,7 @@ class HeaderDropdown extends Component {
 
   render() {
     const { item, isOpen, children } = this.props;
-    console.log('Item: ', item);
+    // console.log('Item: ', item);
     return (
       <div ref={this.wrapperRef}>
         <a

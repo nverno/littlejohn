@@ -8,11 +8,11 @@ import {
 } from '../../../selectors/companies';
 
 const mapStateToProps = (state, ownProps) => {
-  const { company } = ownProps;
+  const { company, quote } = ownProps;
 
   return {
     description: companyDescription(company),
-    overview: companyOverview(company),
+    overview: companyOverview(company, quote),
     state,
   };
 };

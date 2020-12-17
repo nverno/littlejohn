@@ -6,6 +6,7 @@ import StockDailyInfoCell from './stock_daily_info_cell';
 import { companyOverviewExtra } from '../../../selectors/companies';
 
 const StockDailyInfo = (props) => {
+  // console.log('Extra: ', props);
   return (
     <>
       {props.overviewExtra.map((item, idx) => (
@@ -16,13 +17,12 @@ const StockDailyInfo = (props) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { company } = ownProps;
+  const { company, quote } = ownProps;
   const { symbol } = ownProps.match.params;
-  const quotes = state.entities.quotes[symbol];
 
   return {
     symbol,
-    overviewExtra: companyOverviewExtra(company, quotes),
+    overviewExtra: companyOverviewExtra(company, quote),
   };
 };
 
