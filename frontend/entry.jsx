@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 
 import Root from './components/root';
 import configureStore from './store/store';
@@ -30,6 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initializes iex/alphavantage APIs with key and time-to-live
   // for cached results
   StocksAPI.initializeStocksAPI(10 * 60 * 1000);
+
+  // Setup modal
+  Modal.setAppElement(document.getElementById('root'));
 
   const store = configureStore(preloadedState);
   ReactDOM.render(<Root store={store} />, root);

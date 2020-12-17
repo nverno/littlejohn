@@ -5,6 +5,7 @@ import HeaderPage from '../header/header_page';
 import GraphNav from '../graph/graph_nav';
 // import SampleGraph from './portfolio_sample.png';
 import PortfolioSidebar from './sidebar/portfolio_sidebar';
+import EditListModal from '../lists/edit_list_modal';
 
 const navIntervals = ['1D', '1W', '1M', '3M', '1Y', '5Y', 'All'];
 
@@ -46,10 +47,11 @@ export default class Portfolio extends Component {
           </div>
 
           <div className="col-5 portfolio-col-right">
-            <PortfolioSidebar {...this.props}/>
+            <PortfolioSidebar {...this.props} />
           </div>
-
         </div>
+
+        <EditListModal />
       </HeaderPage>
     );
   }

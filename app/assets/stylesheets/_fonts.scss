@@ -9,7 +9,7 @@
   color: var(--rh__primary-base);
 }
 .lj-positive {
-  --rh__text-color: var(--rh__semantic-positive-base);  
+  --rh__text-color: var(--rh__semantic-positive-base);
 }
 
 @mixin type1 {
@@ -81,6 +81,9 @@
   font-weight: var(--rh__type-palette__type12__font-weight);
   line-height: var(--rh__type-palette__type12__line-height);
   letter-spacing: var(--rh__type-palette__type12__letter-spacing);
+}
+.lj-type12 {
+  @include type12;
 }
 
 @mixin type15 {

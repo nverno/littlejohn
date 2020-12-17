@@ -20,6 +20,7 @@ export const fetchList = (id) => {
 };
 
 export const updateList = (list) => {
+  console.log('Updating: ', list);
   return $.ajax({
     method: 'PATCH',
     url: `/api/lists/${list.id}`,

@@ -20,7 +20,11 @@ const App = () => (
 
       <Route exact path="/stocks/:symbol" component={StockContainer} />
 
-      <ProtectedRoute exact path="/portfolio" component={() => <Redirect to="/" />} />
+      <ProtectedRoute
+        exact
+        path="/portfolio"
+        component={() => <Redirect to="/" />}
+      />
 
       <Route exact path="/" component={HomeContainer} />
       <Route path="/" component={Unknown404Container} />

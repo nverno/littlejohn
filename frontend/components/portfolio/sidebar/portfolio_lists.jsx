@@ -12,7 +12,7 @@ const mapStateToProps = (state, _ownProps) => ({
   lists: state.entities.lists,
   openLists: state.ui.lists,
   userId: state.session.currentUser.id,
-  state
+  state,
 });
 
 const mapDispatchToProps = (dispatch, { userId }) => ({
@@ -21,33 +21,36 @@ const mapDispatchToProps = (dispatch, { userId }) => ({
 
 const PortfolioLists = ({ clearListErrors, lists, openLists }) => {
   const [listFormOpen, setListFormOpen] = React.useState(false);
-  
+
   return (
     <>
-      <PortfolioSidebarHeader title='Lists'>
-        <button type='button' className="port-sidebar-header-button"
-                onClick={() => {
-                  clearListErrors();
-                  setListFormOpen(listFormOpen => !listFormOpen);
-                }}>
-          <AiOutlinePlus size={24}/>
+      <PortfolioSidebarHeader title="Lists">
+        <button
+          type="button"
+          className="port-sidebar-header-button"
+          onClick={() => {
+            clearListErrors();
+            setListFormOpen((listFormOpen) => !listFormOpen);
+          }}
+        >
+          <AiOutlinePlus size={24} />
         </button>
       </PortfolioSidebarHeader>
 
-      {listFormOpen && <ListForm setOpen={setListFormOpen}/>}
-      
-      {Object.keys(lists).map((listId, idx) =>
+      {listFormOpen && <ListForm setOpen={setListFormOpen} />}
+
+      {Object.keys(lists).map((listId, idx) => (
         <React.Fragment key={idx}>
           <ListCell key={`list-${idx}`} listId={listId} />
 
           {openLists[listId] &&
-           lists[listId].assets.map((symbol, idx) =>
-             <StockCell key={`list-${symbol}-${idx}`} symbol={symbol} />)}
-        </React.Fragment>)}
+            lists[listId].assets.map((symbol, idx) => (
+              <StockCell key={`list-${symbol}-${idx}`} symbol={symbol} />
+            ))}
+        </React.Fragment>
+      ))}
     </>
   );
 };
 
-export default connect(
-  mapStateToProps, mapDispatchToProps
-)(PortfolioLists);
+export default connect(mapStateToProps, mapDispatchToProps)(PortfolioLists);

@@ -13,7 +13,7 @@
   display: flex;
   width: 100%;
   height: 100%;
-  background-color: var(--rh__neutral-bg1);  
+  background-color: var(--rh__neutral-bg1);
 }
 
 .list-cell-button {
@@ -33,15 +33,14 @@
   -webkit-box-align: center;
   align-items: center;
   -webkit-box-pack: justify;
-  justify-content: space-between;            
-  
+  justify-content: space-between;
 }
 .list-cell-label-container {
   display: flex;
   cursor: pointer;
   overflow: hidden;
   margin: 8px 16px;
-  padding: 4px 8px;  
+  padding: 4px 8px;
 }
 
 .list-cell-link {
@@ -52,7 +51,7 @@
   align-items: center;
   text-decoration: none;
   &:hover {
-    color: var(--rh__text-color)
+    color: var(--rh__text-color);
   }
 }
 
@@ -61,11 +60,11 @@
   -webkit-box-align: center;
   align-items: center;
   overflow: hidden;
-}  
+}
 
 .list-cell-icon-outer {
   flex-shrink: 0;
-  margin-right: 12px;  
+  margin-right: 12px;
 }
 
 .list-cell-icon-inner {
@@ -90,13 +89,25 @@
   -webkit-box-pack: center;
   justify-content: center;
   position: relative;
-  
 }
 
 .list-cell-name {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.list-cell-overflow-menu {
+  height: 24px;
+  margin-right: 20px;
+  // display: none;
+  &:hover {
+    display: block;
+  }
+}
+
+.list-cell-overflow-button {
+  @include unstyled-button;
 }
 
 .list-cell-caret {
@@ -110,7 +121,7 @@
 .list-cell-toggle-container {
   display: flex;
   -webkit-box-align: center;
-  align-items: center;  
+  align-items: center;
 }
 
 .list-cell-caret-container {
@@ -120,5 +131,5 @@
   -webkit-box-align: center;
   align-items: center;
   transition: transform 300ms ease 0s;
-  transform: rotate(180deg);  
+  transform: rotate(180deg);
 }

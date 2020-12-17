@@ -10,6 +10,17 @@ export const CLEAR_LIST_ERRORS = 'CLEAR_LIST_ERRORS';
 export const RECEIVE_OPEN_LIST = 'RECEIVE_OPEN_LIST';
 export const RECEIVE_CLOSE_LIST = 'RECEIVE_CLOSE_LIST';
 export const RECEIVE_CLOSE_ALL_LISTS = 'RECEIVE_CLOSE_ALL_LISTS';
+export const OPEN_EDIT_LIST_MODAL = 'OPEN_EDIT_LIST_MODAL';
+export const CLOSE_EDIT_LIST_MODAL = 'CLOSE_EDIT_LIST_MODAL';
+
+export const closeEditListModal = () => ({
+  type: CLOSE_EDIT_LIST_MODAL,
+});
+
+export const openEditListModal = (listId) => ({
+  type: OPEN_EDIT_LIST_MODAL,
+  listId,
+});
 
 export const closeAllLists = () => ({
   type: RECEIVE_CLOSE_ALL_LISTS,
@@ -17,12 +28,12 @@ export const closeAllLists = () => ({
 
 export const closeList = (listId) => ({
   type: RECEIVE_CLOSE_LIST,
-  listId
+  listId,
 });
 
 export const openList = (listId) => ({
   type: RECEIVE_OPEN_LIST,
-  listId
+  listId,
 });
 
 export const clearListErrors = () => ({
@@ -87,14 +98,12 @@ export const createUserList = (userId, list) => (dispatch) =>
 export const createPublicList = (listForm) => (dispatch) =>
   ListAPI.createPublicList(listForm)
     .then((list) => dispatch(receiveList(list)))
-  .fail((err) => dispatch(receiveListErrors(err)));
-
+    .fail((err) => dispatch(receiveListErrors(err)));
 
 export const updateList = (list) => (dispatch) =>
-  ListAPI.updateList(list).then(
-    (list) => dispatch(receiveList(list)),
-    (err) => dispatch(receiveListErrors(err))
-  );
+  ListAPI.updateList(list)
+    .then((list) => dispatch(receiveList(list)))
+    .fail((err) => dispatch(receiveListErrors(err)));
 
 export const followList = (userId, listId) => (dispatch) =>
   ListAPI.followList(userId, listId).then(

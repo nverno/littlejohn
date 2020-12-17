@@ -1,0 +1,67 @@
+.edit-modal {
+  max-width: 100%;
+  animation-name: animation-1mblexk;
+  animation-duration: 300ms;
+  margin: 20vh auto 0px;
+  position: relative;
+}
+
+.edit-overlay {
+  position: fixed;
+  inset: 0px;
+  overflow: auto;
+  display: flex;
+  align-items: flex-start;
+  -webkit-box-pack: center;
+  justify-content: center;
+  z-index: var(--rh__size-palette___experimentalModalZIndex);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.edit-list-modal {
+  background-color: var(--rh__neutral-bg1);
+  border-radius: var(--rh__size-palette__borderRadius);
+  box-sizing: border-box;
+  box-shadow: 0px 1px 6px var(--rh__shadow__s1);
+  width: 468px;
+  max-width: 100%;
+  padding: calc(2 * var(--rh__size-palette__gutterWidth)) 0;
+}
+
+.edit-list-modal-header {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: var(--rh__size-palette__gutterWidth);
+  padding: 0 calc(2 * var(--rh__size-palette__gutterWidth));
+}
+
+.edit-list-modal-close {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.edit-list-modal-close-button {
+  background: none;
+  border: 0px;
+  padding: 0px;
+  font: inherit;
+  appearance: none;
+  text-align: unset;
+  color: unset;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin-top: -8px;
+  margin-right: -8px;
+  --rh__text-color: var(--rh__neutral-fg3);
+}
+
+.edit-list-modal-content {
+  padding: 0 calc(2 * var(--rh__size-palette__gutterWidth));
+}

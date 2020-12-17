@@ -3,40 +3,40 @@ import { connect } from 'react-redux';
 
 import ListIcon from './list_icon';
 
-import {
-  createUserList,
-  updateList,
-  deleteList,
-  clearListErrors,
-  // followList,
-  // unfollowList,
-} from '../../actions/list_actions';
+import { createUserList, clearListErrors } from '../../actions/list_actions';
 
-const mapStateToProps = (state, _ownProps) => {
+const mapStateToProps = (state) => {
   const listErrors = state.errors.lists;
-  return ({
+  return {
+    formType: 'Create List',
     errors: listErrors,
     userId: state.session.currentUser.id,
-    state
-  });
+    state,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  createUserList: (userId, list) => dispatch(createUserList(userId, list)),
-  updateList: (list) => dispatch(updateList(list)),
-  deleteList: (listId) => dispatch(deleteList(listId)),
+  processForm: (userId, list) => dispatch(createUserList(userId, list)),
   clearListErrors: () => dispatch(clearListErrors()),
 });
 
-const ListForm = ({
-  userId, errors, setOpen, createUserList, updateList, deleteList,
-  clearListErrors }) => {
-  const [name, setName] = React.useState('');
+export const ListForm = ({
+  formType,
+  list,
+  userId,
+  errors,
+  setOpen,
+  processForm,
+  clearListErrors,
+}) => {
+  const [name, setName] = React.useState((list && list.name) || '');
   const handleChange = (e) => setName(e.currentTarget.value);
   const handleSubmit = (e) => {
     e.preventDefault();
     setName('');
-    createUserList(userId, { name, public: false });
+    formType === 'Create List'
+      ? processForm(userId, { name, public: false })
+      : processForm(null, { ...list, name });
   };
 
   const renderErrors = () => {
@@ -50,7 +50,6 @@ const ListForm = ({
   return (
     <div className="list-form-container">
       <form className="list-form" onSubmit={handleSubmit}>
-
         <div className="list-form-name-container">
           <ListIcon />
           <div className="list-form-name-outer">
@@ -60,7 +59,7 @@ const ListForm = ({
                 className="form-input"
                 value={name}
                 onChange={handleChange}
-                placeholder='List Name'
+                placeholder="List Name"
                 required
               />
             </div>
@@ -68,21 +67,24 @@ const ListForm = ({
         </div>
 
         <footer className="list-form-footer">
-          <div style={{ marginRight: '8px' }}>
-            <button type='button'
-              className="list-form-cancel-button list-form-button"
-              onClick={() => {
-                setOpen(false);
-                clearListErrors();
-              }}>
-              <span className="lj-type4">Cancel</span>
-            </button>
-          </div>
+          {setOpen && (
+            <div style={{ marginRight: '8px' }}>
+              <button
+                type="button"
+                className="list-form-cancel-button list-form-button"
+                onClick={() => {
+                  setOpen(false);
+                  clearListErrors();
+                }}
+              >
+                <span className="lj-type4">Cancel</span>
+              </button>
+            </div>
+          )}
           <button className="list-form-submit-button list-form-button">
-            <span className="lj-type4">Create List</span>
+            <span className="lj-type4">{formType}</span>
           </button>
         </footer>
-
       </form>
 
       {renderErrors()}
