@@ -1,8 +1,10 @@
 import * as Holdings from './holdings_actions';
-import { fetchPublicLists, fetchUserLists } from './list_actions';
+// import { fetchPublicLists, fetchUserLists } from './list_actions';
 import { iexAPI } from '../util/stocks_api';
 import { receiveBatchQuotes } from './stock_price_actions';
 import * as UserAPI from '../util/user_api_util';
+import * as Lists from './list_actions';
+import * as ListsAPI from '../util/list_api_util';
 
 export const fetchPortfolioStockData = (holdings) => (dispatch) => {
   iexAPI.fetchBatchStocks(Object.keys(holdings), ['quote']).then((data) => {
@@ -13,15 +15,15 @@ export const fetchPortfolioStockData = (holdings) => (dispatch) => {
 
 export const fetchPortfolioUserData = () => (dispatch) => {
   dispatch(Holdings.fetchHoldings());
-  dispatch(fetchPublicLists());
-  dispatch(fetchUserLists());
+  dispatch(Lists.fetchPublicLists());
+  dispatch(Lists.fetchUserLists());
 };
 
 const symbolsToFetch = (symbols, quotes) =>
   symbols.filter((sym) => !quotes[sym]);
 
 // only get quotes for holdings if haven't already
-export const maybeFetchPortfolioData = ({ symbols, quotes }) => (dispatch) => {
+export const maybeFetchSidebarData = ({ symbols, quotes }) => (dispatch) => {
   const syms = symbolsToFetch(symbols, quotes);
   if (syms.length > 0) {
     console.log('Fetching symbols: ', syms);
@@ -31,15 +33,19 @@ export const maybeFetchPortfolioData = ({ symbols, quotes }) => (dispatch) => {
   }
 };
 
-export const fetchPortfolioData = ({ symbols, holdings, quotes }) => (
-  dispatch
-) => {
-  UserAPI.fetchHoldings()
-    .then((holdings) => {
-      dispatch(Holdings.receiveHoldings(holdings));
-      dispatch(maybeFetchPortfolioData({ symbols, quotes }));
-    })
-    .fail((errors) => Holdings.receiveHoldingsErrors(errors));
-  dispatch(fetchPublicLists());
-  dispatch(fetchUserLists());
+export const fetchSidebarHoldingsData = ({ quotes }) => (dispatch) => {
+  UserAPI.fetchHoldings().then((holdings) => {
+    dispatch(Holdings.receiveHoldings(holdings));
+    dispatch(
+      maybeFetchSidebarData({
+        symbols: Object.keys(holdings),
+        quotes,
+      })
+    );
+  });
+};
+
+export const fetchSidebarListsData = () => (dispatch) => {
+  dispatch(Lists.fetchPublicLists());
+  dispatch(Lists.fetchUserLists());
 };

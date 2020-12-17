@@ -22,8 +22,8 @@ export default class Portfolio extends Component {
   }
 
   componentDidMount() {
-    const { holdings, quotes, symbols } = this.props;
-    this.props.fetchPortfolioData({ symbols, quotes, holdings });
+    // const { holdings, quotes, symbols } = this.props;
+    // this.props.fetchPortfolioData({ symbols, quotes, holdings });
   }
 
   updateInterval(interval) {

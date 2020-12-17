@@ -5,7 +5,7 @@ import { IoIosArrowDown } from '@react-icons/all-files/io/IoIosArrowDown';
 import { IoIosArrowUp } from '@react-icons/all-files/io/IoIosArrowUp';
 import { BiDotsHorizontalRounded } from '@react-icons/all-files/bi/BiDotsHorizontalRounded';
 
-import { maybeFetchPortfolioData } from '../../actions/portfolio_actions';
+import { maybeFetchSidebarData } from '../../actions/portfolio_actions';
 import { getOpenListSymbols } from '../../selectors/lists';
 import ListIcon from './list_icon';
 import {
@@ -28,8 +28,8 @@ const mapDispatchToProps = (dispatch, { listId }) => ({
   closeList: () => dispatch(closeList(listId)),
   openList: () => dispatch(openList(listId)),
   openEditListModal: () => dispatch(openEditListModal(listId)),
-  maybeFetchPortfolioData: (stateData) =>
-    dispatch(maybeFetchPortfolioData(stateData)),
+  maybeFetchSidebarData: (stateData) =>
+    dispatch(maybeFetchSidebarData(stateData)),
 });
 
 const ListCell = ({
@@ -39,7 +39,7 @@ const ListCell = ({
   open,
   closeList,
   openList,
-  maybeFetchPortfolioData,
+  maybeFetchSidebarData,
   ...props
 }) => {
   const caret = (
@@ -51,7 +51,7 @@ const ListCell = ({
   const toggleList = () => {
     if (open) closeList();
     else {
-      maybeFetchPortfolioData({ symbols: list.assets, quotes });
+      maybeFetchSidebarData({ symbols: list.assets, quotes });
       openList();
     }
   };

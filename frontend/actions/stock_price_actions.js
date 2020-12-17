@@ -6,7 +6,7 @@ export const RECEIVE_BATCH_QUOTES = 'RECEIVE_BATCH_QUOTES';
 
 export const receiveBatchQuotes = (data) => ({
   type: RECEIVE_BATCH_QUOTES,
-  data
+  data,
 });
 
 export const receiveStockQuote = (symbol, quote) => ({
@@ -43,3 +43,6 @@ export const fetchStockQuote = (symbol) => (dispatch) => {
 //       dispatch(receiveBatchQuotes(data));
 //     });
 // };
+// export const maybeFetchStockCellData = ({}) => dispatch => (
+
+// );

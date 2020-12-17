@@ -27,18 +27,6 @@ earnings = List.create!(name: 'Upcoming Earnings', public: true)
 earnings.assets = %w[NKE ACN FDX GIS LEN CCL HEI DRI FDS]
 
 # Demo user
-demo = User.create!( # rubocop:todo Lint/UselessAssignment
-  first_name: 'guest',
-  last_name: 'ipoo',
-  username: 'guest',
-  email: 'guest@gmail.com',
-  password: 'asdfasdf',
-  balance: 10_000
-)
-# demo.follow(popular_list.id)
-# demo.follow(earnings.id)
-
-# Test user
 lj = User.create!(
   first_name: 'Little',
   last_name: 'John',
@@ -47,14 +35,13 @@ lj = User.create!(
   password: 'asdfasdf',
   balance: 10_000
 )
-# lj.follow(popular_list.id)
-# demo.follow(earnings.id)
 
 # Transactions
 [
   ['AAPL', 'buy', 2.5, 122.35],
   ['AAPL', 'sell', 1.3, 133.98],
-  ['TSLA', 'buy', 2, 623]
+  ['TSLA', 'buy', 2, 623],
+  ['AMZN', 'buy', 4, 3000]
 ].each do |sym, typ, amount, price|
   lj.transactions.create!(
     symbol: sym,
