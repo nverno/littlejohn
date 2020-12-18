@@ -11,6 +11,7 @@ import PropagateLoader from 'react-spinners/PropagateLoader';
 
 import GraphNav from '../../graph/graph_nav';
 import { range, isPositive } from '../../../selectors/prices';
+import { computePortfolioValue } from '../../../selectors/user';
 
 const navIntervals = ['1d', '5d', '1m', '3m', '1y', '5y', 'All'];
 
@@ -83,14 +84,21 @@ export default class PortfolioGraph extends Component {
 
   render() {
     const { prices, holdings } = this.props;
-    if (!prices) {
+    if (!prices || prices.length === 0) {
+      console.log('no prices here');
       return null; //<PropagateLoader />;
     }
-
+    const { interval } = this.state;
+    const data = computePortfolioValue(interval, holdings, prices);
+    if (!data) {
+      console.log('no data');
+      return null;
+    }
+    console.log('firing');
     return (
       <>
         <div>
-          <PriceGraph data={prices[interval]} xkey="label" ykey={ykey} />
+          <PriceGraph data={data} xkey="label" ykey='value' />
         </div>
 
         <GraphNav

@@ -5,7 +5,7 @@ import PortfolioSidebar from './sidebar/portfolio_sidebar';
 import EditListModal from '../lists/edit_list_modal';
 import PopularLists from './popular_lists';
 import BuyingPower from './buying_power';
-import PortfolioGraph from './graph/portfolio_graph';
+import PortfolioGraphContainer from './graph/portfolio_graph_container';
 
 export default class Portfolio extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class Portfolio extends Component {
         <div className="row">
           <div className="col-12 portfolio-col-left">
             <section className="portfolio-graph-section">
-              <PortfolioGraph />
+              <PortfolioGraphContainer />
             </section>
 
             <BuyingPower />

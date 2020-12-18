@@ -39,8 +39,8 @@ export const maybeFetchSidebarData = ({ symbols, quotes }) => (dispatch) => {
       })
       .then(
         (data) => {
-          dispatch(receiveBatchQuotes(data));
           dispatch(receiveBatchPrices(data, 'intraday-prices'));
+          dispatch(receiveBatchQuotes(data));
         },
         (errors) => dispatch(receiveApiErrors(errors))
       );

@@ -11,8 +11,9 @@ const mapStateToProps = (state, ownProps) => {
   // const symbols = Object.keys(holdings).concat(getOpenListSymbols(state));
 
   return {
-    // holdings,
-    // quotes,
+    holdings: state.entities.holdings,
+    prices: state.entities.prices,
+    // 
     // symbols,
   };
 };
