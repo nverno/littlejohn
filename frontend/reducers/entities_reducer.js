@@ -9,6 +9,7 @@ import lists from './entities/lists_reducer';
 import holdings from './entities/holdings_reducer';
 import transactions from './entities/transactions_reducer';
 import forceUpdate from './entities/api_actions_reducer';
+import descriptions from './entities/descriptions_reducer';
 
 export default combineReducers({
   users,
@@ -20,4 +21,5 @@ export default combineReducers({
   holdings,
   transactions,
   forceUpdate,
+  descriptions,
 });

@@ -31,7 +31,7 @@ export default class Stock extends Component {
   }
 
   render() {
-    const { symbol, company, quote } = this.props;
+    const { symbol, company, quote, description } = this.props;
 
     return (
       <HeaderPage>
@@ -58,6 +58,7 @@ export default class Stock extends Component {
                 company={company}
                 quote={quote}
                 symbol={symbol}
+                description={description}
                 forcedUpdate={this.props.forcedUpdate}
               />
 

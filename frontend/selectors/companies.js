@@ -42,9 +42,10 @@ export const companyOverview = (info, quote) => {
 };
 
 export const companyDescription = (info) => {
-  if (!info || !info['description']) return null;
-  const desc = info['description'];
+  if (!info) return null;
 
+  const desc = info['Description'] || info['description'];
+  if (!desc) return null;
   if (desc.length < 235) return { first: desc };
 
   return {

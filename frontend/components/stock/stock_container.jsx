@@ -4,8 +4,6 @@ import { withRouter } from 'react-router-dom';
 
 import { fetchStockShowData } from '../../actions/stock_show_actions';
 
-import { fetchCompanyInfo } from '../../actions/company_actions';
-
 const mapStateToProps = (state, ownProps) => {
   const symbol = ownProps.match.params.symbol;
   return {
@@ -14,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
     quote: state.entities.quotes[symbol],
     prices: state.entities.prices[symbol],
     entities: state.entities,
+    description: state.entities.descriptions[symbol],
     // forceUpdate: state.entities.forceUpdate,
   };
 };
@@ -26,7 +25,6 @@ const mapDispatchToProps = (
     },
   }
 ) => ({
-  fetchCompanyInfo: () => dispatch(fetchCompanyInfo(symbol)),
   fetchStockShowData: (stateData) => dispatch(fetchStockShowData(stateData)),
 });
 

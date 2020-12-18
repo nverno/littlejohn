@@ -6,15 +6,24 @@ import {
   receiveStockPrices,
 } from './stock_price_actions';
 import { receiveBatchCompany } from './company_actions';
+
 export const FORCE_COMPONENT_RENDER = 'FORCE_COMPONENT_RENDER';
 
 export const forceComponentRender = () => ({
   type: FORCE_COMPONENT_RENDER,
 });
 
-export const fetchStockShowData = ({ symbol, quotes, prices, companies }) => (
-  dispatch
-) => {
+export const fetchStockShowData = ({
+  symbol,
+  quotes,
+  prices,
+  companies,
+  descriptions,
+}) => (dispatch) => {
+  // Get description from AlphaVantage
+  // if (!descriptions[symbol])
+  //   dispatch(fetchCompanyInfo(symbol));
+
   // console.log('Fetch: ', quotes, prices);
   let types = [],
     params = {};

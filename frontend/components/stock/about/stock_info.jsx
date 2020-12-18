@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 // import Spinner from '../../loading/spinner';
 import PropagateLoader from 'react-spinners/PropagateLoader';
 
@@ -11,6 +12,16 @@ import {
   companyDescription,
   companyOverview,
 } from '../../../selectors/companies';
+import { fetchCompanyInfo } from '../../../actions/company_actions';
+
+const mapStateToProps = (state, ownProps) => ({
+  description: state.entities.descriptions[ownProps.symbol],
+});
+
+const mapDispatchToProps = (dispatch, { symbol }) => ({
+  fetchCompanyInfo: (descriptions) =>
+    dispatch(fetchCompanyInfo({ descriptions, symbol })),
+});
 
 const StockInfoGrid = ({ company, overview, showMore, quote, ...props }) => {
   return (
@@ -29,16 +40,24 @@ const StockInfoGrid = ({ company, overview, showMore, quote, ...props }) => {
   );
 };
 
-export default class StockInfo extends Component {
+class StockInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
       readMore: false,
       showMore: false,
-      forcedUpdate: this.props.forcedUpdate,
+      // forcedUpdate: this.props.forcedUpdate,
     };
     this.setReadMore = this.setReadMore.bind(this);
     this.setShowMore = this.setShowMore.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchCompanyInfo(this.props.descriptions);
+  }
+  componentDidUpdate(prevProps) {
+    if (this.props.symbol !== prevProps.symbol)
+      this.props.fetchCompanyInfo(this.props.descriptions);
   }
 
   setReadMore() {
@@ -53,9 +72,10 @@ export default class StockInfo extends Component {
 
     const { readMore, showMore } = this.state;
 
-    const { company, quote } = this.props;
-    const description = companyDescription(company);
+    const { company, quote, description } = this.props;
+    const formattedDescription = companyDescription(description);
     const overview = companyOverview(company, quote);
+    console.log('Description: ', formattedDescription);
 
     return (
       <Section>
@@ -65,11 +85,11 @@ export default class StockInfo extends Component {
 
         <div className="lj-stock-info-about-container">
           <h3 className="lj-stock-info-about">
-            {description ? (
+            {formattedDescription ? (
               <span className="lj-type7 lj-default-text">
-                {description.first}
+                {formattedDescription.first}
                 {!readMore && '... '}
-                {readMore && description.second}
+                {readMore && formattedDescription.second}
               </span>
             ) : (
               <div style={{ width: '100%' }}>
@@ -91,3 +111,5 @@ export default class StockInfo extends Component {
     );
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(StockInfo);
