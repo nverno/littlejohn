@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import StockPriceGraph from './stock_price_graph';
-import { fetchStockPrices } from '../../../actions/stock_price_actions';
+import { fetchStockPrices } from '../../../actions/stock_show_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {

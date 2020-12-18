@@ -11,7 +11,7 @@ import {
   quotePrice,
 } from '../../../selectors/quotes';
 
-const navIntervals = ['1D', '1W', '1M', '3M', '1Y', '5Y'];
+const navIntervals = ['1d', '5d', '1m', '3m', '1y', '5y'];
 
 // Graph header to display overview of data range, eg.
 // $122.28
@@ -49,7 +49,7 @@ export default class StockPriceGraph extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      interval: '1D',
+      interval: '1d',
     };
     this.updateInterval = this.updateInterval.bind(this);
   }
@@ -81,13 +81,14 @@ export default class StockPriceGraph extends Component {
     if (!prices) {
       return <PropagateLoader />;
     }
+    const ykey = interval === '1d' ? 'average' : 'close';
 
     return (
       <>
         <StockPriceHeader symbol={symbol} quote={quote} />
 
         <div>
-          <PriceGraph data={prices[interval]} xkey="label" ykey="average" />
+          <PriceGraph data={prices[interval]} xkey="label" ykey={ykey} />
         </div>
 
         <GraphNav

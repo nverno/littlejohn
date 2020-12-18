@@ -3,6 +3,7 @@ import {
   receiveApiErrors,
   receiveBatchPrices,
   receiveBatchQuotes,
+  receiveStockPrices,
 } from './stock_price_actions';
 import { receiveBatchCompany } from './company_actions';
 export const FORCE_COMPONENT_RENDER = 'FORCE_COMPONENT_RENDER';
@@ -20,7 +21,7 @@ export const fetchStockShowData = ({ symbol, quotes, prices, companies }) => (
 
   if (!quotes[symbol]) {
     types.push('quote');
-    // params['chartInterval'] = 1;
+    // params['chartSimplify'] = true;
   }
 
   // if (!(prices[symbol] && prices[symbol]['1D'])) types.push('intraday-prices');
@@ -44,5 +45,18 @@ export const fetchStockShowData = ({ symbol, quotes, prices, companies }) => (
     // this in order to re-render when they normally would have been triggered
     // by a state change.
     dispatch(forceComponentRender());
+  }
+};
+
+export const fetchStockPrices = ({ symbol, interval, prices }) => (
+  dispatch
+) => {
+  if (prices[symbol] && prices[symbol][interval]) {
+    dispatch(forceComponentRender());
+  } else {
+    iexAPI.fetchPrices(symbol, interval).then(
+      (values) => dispatch(receiveStockPrices(symbol, interval, values)),
+      (errors) => dispatch(receiveApiErrors(errors))
+    );
   }
 };

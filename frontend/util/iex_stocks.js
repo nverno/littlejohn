@@ -1,6 +1,6 @@
 // iexCloud financial API
 // quotes, news, timeseries
-
+const moment = require('moment');
 var fetch = window.fetch;
 
 // const INTERVALS = {
@@ -79,6 +79,10 @@ export default class IexAPI {
     return this.apiRequest(`/stock/${symbol}/intraday-prices`, {
       chartInterval: 10,
     });
+  }
+
+  async fetchPrices(symbol, range) {
+    return this.apiRequest(`/stock/${symbol}/chart/${range}`);
   }
 
   // Batch
