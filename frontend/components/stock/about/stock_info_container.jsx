@@ -8,12 +8,14 @@ import {
 } from '../../../selectors/companies';
 
 const mapStateToProps = (state, ownProps) => {
-  const { company, quote } = ownProps;
+  const { symbol, company, quote } = ownProps; //ownProps.match.params.symbol;
+  // const company = state.entities.companies[symbol];
+  // const quote = state.entities.quotes[symbol];
 
   return {
     description: companyDescription(company),
     overview: companyOverview(company, quote),
-    state,
+    // forcedUpdate: state.entities.forcedUpdate,
   };
 };
 

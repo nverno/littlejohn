@@ -8,13 +8,13 @@ import { fetchCompanyInfo } from '../../actions/company_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const symbol = ownProps.match.params.symbol;
-
   return {
     symbol,
     company: state.entities.companies[symbol],
     quote: state.entities.quotes[symbol],
     prices: state.entities.prices[symbol],
-    state,
+    entities: state.entities,
+    // forceUpdate: state.entities.forceUpdate,
   };
 };
 

@@ -55,11 +55,11 @@ export default class StockPriceGraph extends Component {
   }
 
   componentDidMount() {
-    // const { interval } = this.state;
-    // this.props.fetchStockPrices({
-    //   interval,
-    //   prices: this.props.allPrices,
-    // });
+    const { interval } = this.state;
+    this.props.fetchStockPrices({
+      interval,
+      prices: this.props.allPrices,
+    });
   }
 
   componentDidUpdate(prevProps) {

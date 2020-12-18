@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import HeaderPage from '../header/header_page';
 import StockPriceGraphContainer from './graph/stock_price_graph_container';
-import StockInfoContainer from './about/stock_info_container';
+import StockInfo from './about/stock_info';
 import { Section, SectionHeader } from '../parts/section';
 import SidebarContent from '../parts/sidebar_content';
 import StockOrderForm from './stock_order_form';
@@ -17,7 +17,8 @@ export default class Stock extends Component {
     console.log('State: ', this.props.state);
     this.props.fetchStockShowData({
       symbol: this.props.symbol,
-      ...this.props.state.entities,
+      // quotes: {}, prices: {}, companies: {},
+      ...this.props.entities,
     });
   }
 
@@ -53,11 +54,11 @@ export default class Stock extends Component {
               {/* <section className="lj-stock-user-value"> */}
               {/* </section> */}
 
-              <StockInfoContainer
+              <StockInfo
                 company={company}
                 quote={quote}
                 symbol={symbol}
-                {...this.props}
+                forcedUpdate={this.props.forcedUpdate}
               />
 
               <Section>
@@ -67,10 +68,7 @@ export default class Stock extends Component {
           </div>
 
           <div className="col-5">
-            <SidebarContent
-              footer={<StockSidebarButtons symbol={symbol} />}
-              {...this.props}
-            >
+            <SidebarContent footer={<StockSidebarButtons symbol={symbol} />}>
               {quote && (
                 <StockOrderForm symbol={symbol} price={quote.latestPrice} />
               )}

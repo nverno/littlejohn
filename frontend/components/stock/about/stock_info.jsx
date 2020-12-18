@@ -7,6 +7,11 @@ import StockDailyInfoCell from './stock_daily_info_cell';
 import { SectionHeader, Section } from '../../parts/section';
 import { ShowMoreButton, ReadMoreButton } from '../../parts/buttons';
 
+import {
+  companyDescription,
+  companyOverview,
+} from '../../../selectors/companies';
+
 const StockInfoGrid = ({ company, overview, showMore, quote, ...props }) => {
   return (
     <div className="grid-4 lj-stock-info-grid">
@@ -30,6 +35,7 @@ export default class StockInfo extends Component {
     this.state = {
       readMore: false,
       showMore: false,
+      forcedUpdate: this.props.forcedUpdate,
     };
     this.setReadMore = this.setReadMore.bind(this);
     this.setShowMore = this.setShowMore.bind(this);
@@ -46,7 +52,10 @@ export default class StockInfo extends Component {
     if (!this.props.company) return <PropagateLoader />;
 
     const { readMore, showMore } = this.state;
-    const { company, description, overview } = this.props;
+
+    const { company, quote } = this.props;
+    const description = companyDescription(company);
+    const overview = companyOverview(company, quote);
 
     return (
       <Section>
