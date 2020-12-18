@@ -1,3 +1,7 @@
+export const fmt = (num) => {
+  return num.toFixed(2).toLocaleString('en');
+};
+
 const capitalize = ([first, ...rest], lowerRest = false) =>
   first.toUpperCase() +
   (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
@@ -21,4 +25,8 @@ export const getPortfolioValue = (holdings, quotes) => {
     amt += quotes[symbol].latestPrice * val.amount;
   }
   return amt;
+};
+
+export const getMarketValue = (holding, quote) => {
+  return fmt(holding.amount * quote.latestPrice);
 };

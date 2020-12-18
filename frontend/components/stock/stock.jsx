@@ -7,6 +7,7 @@ import { Section, SectionHeader } from '../parts/section';
 import SidebarContent from '../parts/sidebar_content';
 import StockOrderForm from './stock_order_form';
 import StockSidebarButtons from './stock_sidebar_buttons';
+import StockHoldings from './stock_holdings';
 
 export default class Stock extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ export default class Stock extends Component {
   }
 
   render() {
-    const { symbol, company, quote, description } = this.props;
+    const { holding, symbol, company, quote, description } = this.props;
 
     return (
       <HeaderPage>
@@ -48,11 +49,7 @@ export default class Stock extends Component {
                 <StockPriceGraphContainer quote={quote} symbol={symbol} />
               </section>
 
-              {/* XXX: only render this section if stock is owned */}
-              {/* <Section> */}
-              {/* </Section> */}
-              {/* <section className="lj-stock-user-value"> */}
-              {/* </section> */}
+              {holding && <StockHoldings holding={holding} quote={quote} />}
 
               <StockInfo
                 company={company}
