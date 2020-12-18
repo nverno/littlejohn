@@ -9,16 +9,19 @@ import {
 const mapStateToProps = (state, _ownProps) => ({
   name: getUsername(state),
   buyingPower: getBuyingPower(state),
-  // TODO: implement this
-  portfolioValue: getPortfolioValue(state),
+  holdings: state.entities.holdings,
+  quotes: state.entities.quotes,
 });
 
 const AccountDropdownHeader = ({
   name,
   buyingPower,
-  portfolioValue,
+  holdings,
+  quotes,
   ...props
 }) => {
+  const portfolioValue = getPortfolioValue(holdings, quotes);
+
   return (
     <header className="lj-acct-drop-header">
       <h3 style={{ margin: 0 }}>
