@@ -23,8 +23,8 @@ const PriceGraph = ({ data, xkey, ykey, ...props }) => {
     );
   const yrange = range(data);
   const color = isPositive(data, ykey)
-    ? 'var(--rh__semantic-positive-base)'
-    : 'var(--rh__semantic-negative-base)';
+        ? 'var(--rh__semantic-positive-base)'
+        : 'var(--rh__semantic-negative-base)';
 
   return (
     <div>
