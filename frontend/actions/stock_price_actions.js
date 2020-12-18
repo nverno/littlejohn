@@ -46,7 +46,7 @@ export const fetchStockPrices = ({ symbol, interval, prices }) => (
   if (prices[symbol] && prices[symbol][interval]) return null;
 
   switch (interval) {
-    case '1D':
+    case '1d':
       return StocksAPI.iexAPI.fetchPrices1D(symbol).then(
         (values) => dispatch(receiveStockPrices(symbol, interval, values)),
         (errors) => dispatch(receiveApiErrors(errors))
@@ -74,7 +74,7 @@ export const fetchBatchPrices = ({ symbols, interval, prices }) => (
 
   console.log('Fetching prices for: ', syms);
   switch (interval) {
-    case '1D':
+    case '1d':
       return StocksAPI.iexAPI.fetchBatchDailyPrices(syms).then(
         (data) => dispatch(receiveBatchPrices(data, 'intraday-prices')),
         (errors) => dispatch(receiveApiErrors(errors))

@@ -28,7 +28,7 @@ const headerItems = [
   },
   {
     title: 'Account',
-    to: '/account',
+    to: '#',
     component: (item, props) => <AccountDropdown item={item} {...props} />,
   },
 ];

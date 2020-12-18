@@ -7,7 +7,7 @@ export default (state = {}, action) => {
   Object.freeze(state);
 
   let intervalKey = action.interval;
-  if (intervalKey === 'intraday-prices') intervalKey = '1D';
+  if (intervalKey === 'intraday-prices') intervalKey = '1d';
 
   switch (action.type) {
     case RECEIVE_STOCK_PRICES:

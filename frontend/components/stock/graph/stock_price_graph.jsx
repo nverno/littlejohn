@@ -10,6 +10,7 @@ import {
   positiveChange,
   quotePrice,
 } from '../../../selectors/quotes';
+import { changesOverTime } from '../../../selectors/prices';
 
 const navIntervals = ['1d', '5d', '1m', '3m', '1y', '5y'];
 

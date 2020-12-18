@@ -36,7 +36,6 @@ class StockSidebarButtons extends Component {
   }
 
   componentDidMount() {
-    console.log('Mounting');
     this.props.fetchUserLists();
   }
 
@@ -47,6 +46,7 @@ class StockSidebarButtons extends Component {
     if (!lists || lists.length === 0) return;
     // FIXME: just puts in first list
     const list = Object.values(lists)[0];
+    // console.log(list);
     if (!list.assets.includes(symbol)) {
       list.assets.push(symbol);
     } else {

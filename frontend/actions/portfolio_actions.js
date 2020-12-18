@@ -14,7 +14,7 @@ import * as Lists from './list_actions';
 export const fetchPortfolioStockData = (holdings) => (dispatch) => {
   iexAPI.fetchBatchStocks(Object.keys(holdings), ['quote']).then((data) => {
     dispatch(receiveBatchQuotes(data));
-    console.log(data);
+    // console.log(data);
   });
 };
 
@@ -31,7 +31,7 @@ const symbolsToFetch = (symbols, quotes) =>
 export const maybeFetchSidebarData = ({ symbols, quotes }) => (dispatch) => {
   const syms = symbolsToFetch(symbols, quotes);
   if (syms.length > 0) {
-    console.log('Fetching symbols: ', syms);
+    // console.log('Fetching symbols: ', syms);
     iexAPI
       .fetchBatchStocks(syms, ['quote', 'intraday-prices'], {
         chartInterval: 5,

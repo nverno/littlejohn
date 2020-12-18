@@ -30,3 +30,33 @@ export const getPortfolioValue = (holdings, quotes) => {
 export const getMarketValue = (holding, quote) => {
   return fmt(holding.amount * quote.latestPrice);
 };
+
+// Compute portfolio value of over time from holdings and times series data
+// XXX: this just simplifies it and assumes whatever is held now, was the
+// same over time. This is good enough for now, until the transactions data is
+// used
+let computePortfolioValue = (interval, holdings, prices) => {
+  const held = Object.keys(holdings);
+  const minLen = Math.min(...held.map((sym) => prices[sym][interval].length));
+  const key = interval === '1d' ? 'average' : 'close';
+  let data = Array.from({ length: minLen });
+
+  for (let i = 0; i < minLen; i++) {
+    let val = 0;
+
+    held.forEach((sym) => {
+      val += holdings[sym].amount * prices[sym][interval][i][key];
+    });
+
+    // data[i] = { label: , value: val };
+  }
+
+  return data;
+};
+
+// const zip = (...arrays) => {
+//   const maxLength = Math.max(...arrays.map(x => x.length));
+//   return Array.from({ length: maxLength }).map((_, i) => {
+//     return Array.from({ length: arrays.length }, (_, k) => arrays[k][i]);
+//   });
+// };
