@@ -13,7 +13,7 @@ export const clearTransactionErrors = () => ({
 
 export const receiveTransactionErrors = (errors) => ({
   type: RECEIVE_TRANSACTION_ERRORS,
-  errors,
+  errors: errors.responseJSON,
 });
 
 export const receiveTransaction = (transaction) => ({
@@ -48,27 +48,26 @@ export const createTransaction = (transaction) => (dispatch) => {
 };
 
 // A transaction modifies a user's holdings and buying power as well
-const syncAfterOrder = dispatch => {
+const syncAfterOrder = (dispatch) => {
   dispatch(fetchHoldings());
   dispatch(refreshCurrentUser());
 };
 
-export const executeBuy = order => dispatch => {
+export const executeBuy = (order) => (dispatch) => {
   return UserAPI.postBuy(order).then(
-    transaction => {
+    (transaction) => {
       dispatch(receiveTransaction(transaction));
       syncAfterOrder(dispatch);
     },
-    errors => dispatch(receiveTransactionErrors(errors))
+    (errors) => dispatch(receiveTransactionErrors(errors))
   );
 };
 
-export const executeSell = order => dispatch => {
+export const executeSell = (order) => (dispatch) => {
   return UserAPI.postSell(order).then(
-    transaction => {
-      dispatch(receiveTransaction(transaction)),
-      syncAfterOrder(dispatch);
+    (transaction) => {
+      dispatch(receiveTransaction(transaction)), syncAfterOrder(dispatch);
     },
-    errors => dispatch(receiveTransactionErrors(errors))
+    (errors) => dispatch(receiveTransactionErrors(errors))
   );
 };

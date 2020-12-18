@@ -9,9 +9,10 @@ const StockDailyInfo = (props) => {
   // console.log('Extra: ', props);
   return (
     <>
-      {props.overviewExtra.map((item, idx) => (
-        <StockDailyInfoCell key={idx} {...item} />
-      ))}
+      {props.overviewExtra &&
+        props.overviewExtra.map((item, idx) => (
+          <StockDailyInfoCell key={idx} {...item} />
+        ))}
     </>
   );
 };

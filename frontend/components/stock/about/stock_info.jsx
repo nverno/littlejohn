@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Spinner from '../../loading/spinner';
+// import Spinner from '../../loading/spinner';
+import PropagateLoader from 'react-spinners/PropagateLoader';
 
 import StockDailyInfo from './stock_daily_info';
 import StockDailyInfoCell from './stock_daily_info_cell';
@@ -42,7 +43,7 @@ export default class StockInfo extends Component {
   }
 
   render() {
-    if (!this.props.company) return <Spinner />;
+    if (!this.props.company) return <PropagateLoader />;
 
     const { readMore, showMore } = this.state;
     const { company, description, overview } = this.props;
@@ -62,7 +63,9 @@ export default class StockInfo extends Component {
                 {readMore && description.second}
               </span>
             ) : (
-              <Spinner />
+              <div style={{ width: '100%' }}>
+                <PropagateLoader style={{ alignItems: 'center' }} />
+              </div>
             )}
 
             <ReadMoreButton toggle={readMore} setToggle={this.setReadMore} />

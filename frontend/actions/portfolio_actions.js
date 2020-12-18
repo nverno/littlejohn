@@ -34,7 +34,7 @@ export const maybeFetchSidebarData = ({ symbols, quotes }) => (dispatch) => {
     console.log('Fetching symbols: ', syms);
     iexAPI
       .fetchBatchStocks(syms, ['quote', 'intraday-prices'], {
-        chartInterval: 10,
+        chartInterval: 5,
       })
       .then(
         (data) => {

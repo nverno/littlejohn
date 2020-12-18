@@ -6,19 +6,25 @@ import { withRouter } from 'react-router-dom';
 const mapStateToProps = (state, ownProps) => {
   const { symbol } = ownProps.match.params;
 
-  return ({
+  return {
     prices: state.entities.prices[symbol],
+    allPrices: state.entities.prices,
+    quote: state.entities.quotes[symbol],
     symbol,
     state,
-  });
+  };
 };
 
 const mapDispatchToProps = (dispatch, { match }) => ({
-  fetchStockPrices: (interval) => (
-    dispatch(fetchStockPrices(match.params.symbol, interval))
-  ),
+  fetchStockPrices: (pars) =>
+    dispatch(
+      fetchStockPrices({
+        symbol: match.params.symbol,
+        ...pars,
+      })
+    ),
 });
 
-export default withRouter(connect(
-  mapStateToProps, mapDispatchToProps
-)(StockPriceGraph));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(StockPriceGraph)
+);

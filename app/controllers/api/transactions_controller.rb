@@ -27,6 +27,8 @@ class Api::TransactionsController < ApplicationController # rubocop:todo Style/D
       params[:price].to_f
     )
     render :show
+  rescue Exception => e # rubocop:todo Lint/RescueException
+    render json: [e], status: 400
   end
 
   def sell
@@ -36,6 +38,8 @@ class Api::TransactionsController < ApplicationController # rubocop:todo Style/D
       params[:price].to_f
     )
     render :show
+  rescue Exception => e # rubocop:todo Lint/RescueException
+    render json: [e], status: 400
   end
 
   private

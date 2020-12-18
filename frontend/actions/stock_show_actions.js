@@ -15,7 +15,7 @@ export const fetchStockShowData = ({ symbol, quotes, prices, companies }) => (
 
   if (!quotes[symbol]) {
     types.push('quote');
-    params['chartInterval'] = 10;
+    // params['chartInterval'] = 1;
   }
 
   if (!(prices[symbol] && prices[symbol]['1D'])) types.push('intraday-prices');

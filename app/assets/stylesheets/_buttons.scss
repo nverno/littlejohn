@@ -1,6 +1,8 @@
-@mixin signup-button($color: white,
-                     $bg-color: black,
-                     $bg-color-hover: rgb(42, 49, 55)) {
+@mixin signup-button(
+  $color: white,
+  $bg-color: black,
+  $bg-color-hover: rgb(42, 49, 55)
+) {
   color: $color;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -36,8 +38,7 @@
   }
 }
 
-@mixin unstyled-anchor($color: inherit,
-                       $color-hover: inherit) {
+@mixin unstyled-anchor($color: inherit, $color-hover: inherit) {
   color: $color;
   text-decoration: none;
   -webkit-box-align: center;
@@ -126,4 +127,40 @@
   // --rh__primary-lightest-textOverlay: var(--rh__primary-base);
   // --rh-LEGACY__primary-color-hover: rgba(0,180,5,1);
   --rh__text-color: var(--rh__primary-base);
+}
+
+@mixin lj-square-button(
+  $color: var(--rh__primary-base),
+  $background: none,
+  $background-color-hover: var(--rh__primary-light-base)
+) {
+  color: $color;
+  background: $background;
+  border: 1px solid currentcolor;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font: inherit;
+  appearance: none;
+  text-align: unset;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  border-radius: var(--rh__size-palette__borderRadius);
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  white-space: nowrap;
+  height: var(--rh__size-palette__cellHeight);
+  min-width: 120px;
+  max-width: 360px;
+  padding-left: calc(4 * var(--rh__size-palette__gutterWidth));
+  padding-right: calc(4 * var(--rh__size-palette__gutterWidth));
+  cursor: pointer;
+  width: 100%;
+
+  &:hover {
+    background-color: $background-color-hover;
+    border-color: var(--rh__primary-hover);
+  }
 }

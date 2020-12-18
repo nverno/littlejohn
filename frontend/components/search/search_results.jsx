@@ -25,7 +25,7 @@ export const SearchResult = ({ result, selected }) => {
       role="option"
       /* aria-selected={selected} */
     >
-      <Link to={linkName}>
+      <Link to={linkName} className="search-result-link">
         <div className="search-result-symbol">
           <span>
             {symbol.map((part, idx) => (

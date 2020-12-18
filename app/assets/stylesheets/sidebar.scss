@@ -8,26 +8,27 @@
   position: fixed;
   scrollbar-width: none;
   top: calc(var(--rh-fixed-header-height, 64px) + 31px);
-  width: 323.77778px;  
+  width: 323.77778px;
   --rh-fixed-header-height: 64px;
 }
 
 .sidebar-container {
-  position: relative;  
-  height: 100%;
-  overflow: hidden auto;  
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  overflow: hidden auto;
 }
 
 .sidebar-outer {
   overflow: visible;
-  height: 0px;
-  width: 0px;  
+  // height: 0px;
+  // width: 0px;
 }
 
 .sidebar-inner {
   box-sizing: border-box;
   direction: ltr;
-  height: 552px;
+  // height: 552px;
   position: relative;
   width: 276px;
   will-change: transform;
@@ -40,5 +41,5 @@
   max-width: 276px;
   max-height: 2354px;
   overflow: hidden;
-  position: relative;  
+  position: relative;
 }

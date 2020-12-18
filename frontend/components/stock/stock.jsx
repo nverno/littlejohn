@@ -4,6 +4,9 @@ import HeaderPage from '../header/header_page';
 import StockPriceGraphContainer from './graph/stock_price_graph_container';
 import StockInfoContainer from './about/stock_info_container';
 import { Section, SectionHeader } from '../parts/section';
+import SidebarContent from '../parts/sidebar_content';
+import StockOrderForm from './stock_order_form';
+import StockSidebarButtons from './stock_sidebar_buttons';
 
 export default class Stock extends Component {
   constructor(props) {
@@ -31,17 +34,17 @@ export default class Stock extends Component {
 
     return (
       <HeaderPage>
-        <div className="lj-stock-associated-lists">Associated lists</div>
+        {/* <div className="lj-stock-associated-lists">Associated lists</div> */}
 
         <div className="row">
           <div className="col-12">
             <header className="lj-stock-header">
-              <h1>{company && company['Name']}</h1>
+              <h1>{company && company['companyName']}</h1>
             </header>
 
             <div>
               <section className="lj-stock-graph-section">
-                {/* <StockPriceGraphContainer quote={quote} symbol={symbol} /> */}
+                <StockPriceGraphContainer quote={quote} symbol={symbol} />
               </section>
 
               {/* XXX: only render this section if stock is owned */}
@@ -63,7 +66,16 @@ export default class Stock extends Component {
             </div>
           </div>
 
-          <div className="col-5">Sidebar Content</div>
+          <div className="col-5">
+            <SidebarContent
+              footer={<StockSidebarButtons symbol={symbol} />}
+              {...this.props}
+            >
+              {quote && (
+                <StockOrderForm symbol={symbol} price={quote.latestPrice} />
+              )}
+            </SidebarContent>
+          </div>
         </div>
       </HeaderPage>
     );

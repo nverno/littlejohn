@@ -1,0 +1,218 @@
+.stock-order-form-header {
+  padding-left: 24px;
+  padding-right: 24px;
+  border-bottom: 1px solid;
+  border-color: var(--rh__neutral-bg3);
+  height: 52px;
+  padding-top: 4px;
+}
+
+.stock-order-tab-panel {
+  -webkit-box-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: flex;
+  height: 100%;
+  position: relative;
+  width: 100%;
+  border-top: none;
+}
+
+.stock-order-tabs-outer {
+  height: 100%;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
+}
+.stock-order-tabs-inner {
+  display: flex;
+}
+
+.stock-order-buy-outer {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 48px;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+.stock-order-buy-inner {
+  transition-duration: 250ms;
+  transition: width;
+}
+
+// Body
+
+.stock-order-form-body {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 12px;
+}
+.stock-order-sell-outer {
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 48px;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+.stock-order-sell-inner {
+  -webkit-transition: width;
+  transition: width;
+  transition-duration: 250ms;
+}
+
+.stock-order-tab-button {
+  border-bottom: 2px solid transparent;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  margin-right: 12px;
+  padding-top: 2px;
+}
+
+.panel-active {
+  border-color: var(--rh__primary-base);
+}
+
+.stock-order-input-outer {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  min-height: 48px;
+}
+
+.stock-order-amount-label {
+  margin-right: 12px;
+  min-width: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stock-order-amount-input-outer {
+  text-align: right;
+  width: 136px;
+}
+.stock-order-amount-input-inner {
+  position: relative;
+  width: 100%;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.stock-order-estimate-container {
+  border-top: 1px solid;
+  border-color: var(--rh__neutral-bg3);
+}
+
+.stock-order-estimate-outer {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  min-height: 48px;
+}
+
+.stock-order-form-controls {
+  padding-top: 12px;
+}
+.stock-order-form-outer {
+  margin-bottom: 12px;
+}
+
+.stock-order-form-inner {
+  padding: 12px 24px 24px;
+  background-color: var(--rh__neutral-bg1);
+}
+.stock-order-form-button {
+  @include lj-square-button(
+      $color: var(--rh__neutral-bg1),
+      $background: var(--rh__primary-base),
+      $background-color-hover: var(--rh__primary-hover)
+    )
+    border: none;
+  width: 100%;
+}
+
+.stock-order-form-footer {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-top: 1px solid;
+  border-color: var(--rh__neutral-bg3);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 48px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0 15px;
+}
+
+.list-errors {
+  list-style: none;
+  color: var(--rh__semantic-negative-base);
+  @include type4;
+}
+
+.stock-order-form-buying-power {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: center;
+  border-left: 2px solid transparent;
+}
+
+.stock-sidebar-buttons {
+  margin-top: 24px;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.stock-sidebar-list-button {
+  @include lj-square-button;
+}
+
+.stock-sidebar-button-text {
+  position: relative;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  --rh__text-color: var(--rh__primary-base);
+}
+
+.stock-sidebar-button-inner {
+  transition: opacity 300ms ease 0s;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}

@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
-// import PropagateLoader from 'react-spinners/PropagateLoader';
-import Spinner from '../../loading/spinner';
+import PropagateLoader from 'react-spinners/PropagateLoader';
+
+import PriceGraph from '../../graph/price_graph';
 import GraphNav from '../../graph/graph_nav';
+import {
+  quoteClass,
+  prettyQuotePrice,
+  quotePercent,
+  positiveChange,
+  quotePrice,
+} from '../../../selectors/quotes';
 
 const navIntervals = ['1D', '1W', '1M', '3M', '1Y', '5Y'];
 
@@ -9,27 +17,30 @@ const navIntervals = ['1D', '1W', '1M', '3M', '1Y', '5Y'];
 // $122.28
 // -$0.83 (-0.67%) Today
 // -$0.13 (-0.11%) After Hours
-const StockPriceHeader = (props) => {
+const StockPriceHeader = ({ quote, symbol }) => {
+  if (!quote) return <PropagateLoader />;
+  const cname = quoteClass(quote);
+
   return (
     <header className="lj-stock-graph-header">
       <div className="lj-stock-graph-price">
-        <h1 style={{ margin: 0 }}>$122.28</h1>
+        <h1 style={{ margin: 0 }}>{quotePrice(quote)}</h1>
       </div>
-      {/* FIXME: separate into component */}
+
       <div className="lj-stock-graph-subheader">
         <span className="lj-stock-graph-percent-change">
-          <span>-$0.83</span>
-          <span>(-0.67%)</span>
+          <span className={cname}>{prettyQuotePrice(quote, 'change')}</span>
+          <span className={cname}> ({quotePercent(quote)})</span>
         </span>
         <span className="lj-stock-graph-percent-change-time">Today</span>
       </div>
-      <div className="lj-stock-graph-subheader">
-        <span className="lj-stock-graph-percent-change">
-          <span>-$0.13</span>
-          <span>(-0.11%)</span>
-        </span>
-        <span className="lj-stock-graph-percent-change-time">Today</span>
-      </div>
+      {/* <div className="lj-stock-graph-subheader"> */}
+      {/*   <span className="lj-stock-graph-percent-change"> */}
+      {/*     <span>-$0.13</span> */}
+      {/*     <span>(-0.11%)</span> */}
+      {/*   </span> */}
+      {/*   <span className="lj-stock-graph-percent-change-time">Today</span> */}
+      {/* </div> */}
     </header>
   );
 };
@@ -38,43 +49,52 @@ export default class StockPriceGraph extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      interval: '1min',
+      interval: '1D',
     };
     this.updateInterval = this.updateInterval.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchStockPrices(this.state.interval);
+    // const { interval } = this.state;
+    // this.props.fetchStockPrices({
+    //   interval,
+    //   prices: this.props.allPrices,
+    // });
   }
 
-  // FIXME: switch to connected-react-router ???
   componentDidUpdate(prevProps) {
     const { symbol, fetchStockPrices } = this.props;
-    if (symbol !== prevProps.symbol) fetchStockPrices(this.state.interval);
+    const { interval } = this.state;
+    if (symbol !== prevProps.symbol)
+      fetchStockPrices({ interval, prices: this.props.allPrices });
   }
 
   updateInterval(interval) {
     this.setState({ interval });
-    this.props.fetchStockPrices(interval);
+    this.props.fetchStockPrices({ interval, prices: this.props.allPrices });
   }
 
   render() {
-    if (!this.props.prices) {
-      return <Spinner />;
+    const { symbol, prices, quote } = this.props;
+    const { interval } = this.state;
+
+    if (!prices) {
+      return <PropagateLoader />;
     }
 
     return (
-      <div>
-        <StockPriceHeader />
-        <p>... Retrieved {this.props.symbol} data</p>
+      <>
+        <StockPriceHeader symbol={symbol} quote={quote} />
 
-        <div>Graph goes here...</div>
+        <div>
+          <PriceGraph data={prices[interval]} xkey="label" ykey="average" />
+        </div>
 
         <GraphNav
           intervals={navIntervals}
           updateInterval={this.updateInterval}
         />
-      </div>
+      </>
     );
   }
 }
