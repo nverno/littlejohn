@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     holding: holdings[symbol],
     quote: quotes[symbol],
-    data: prices[symbol] ? getPrices(prices[symbol]['1D']) : null,
+    data: prices[symbol] ? getPrices(prices[symbol]['1d']) : null,
   };
 };
 
