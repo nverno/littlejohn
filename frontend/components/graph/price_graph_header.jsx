@@ -1,10 +1,6 @@
 import React from 'react';
 import PropagateLoader from 'react-spinners/PropagateLoader';
-import {
-  fmtClass,
-  fmtPrice,
-  fmtPercent,
-} from '../../selectors/quotes';
+import { fmtClass, fmtPrice, fmtPercent } from '../../selectors/quotes';
 
 const PriceGraphHeader = ({ data }) => {
   if (!data) return <PropagateLoader />;
