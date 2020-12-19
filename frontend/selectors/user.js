@@ -37,15 +37,21 @@ export const getMarketValue = (holding, quote) => {
 // used
 export const computePortfolioValue = (interval, holdings, prices) => {
   const held = Object.keys(holdings);
-  console.log('held: ', held);
-  if (held.length === 0 || !holdings.length || !holdings[held[0]]) {
-    console.log('bad input');
+  if (held.length === 0) return null;
+
+  if (holdings.length === 0 || !holdings[held[0]]) {
+    console.log('no holdings');
+    return null;
+  }
+
+  if (prices.length === 0 || !prices[held[0]]) {
+    console.log('no prices');
     return null;
   }
 
   const minLen = //Math.min(...held.map((sym) => prices[sym][interval].length)) ||
         prices[held[0]][interval].length;
-  // confirm('len: ', minLen);
+
   const key = interval === '1d' ? 'average' : 'close';
   let data = [];
 
