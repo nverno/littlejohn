@@ -54,7 +54,6 @@ export default class PortfolioGraph extends Component {
 
     return (
       <>
-        {/* <PriceGraphHeader data={data} /> */}
         <div>
           {data && <PriceGraph data={data} xkey="label" ykey="value" />}
         </div>

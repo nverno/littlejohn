@@ -86,8 +86,6 @@ export default class StockPriceGraph extends Component {
 
     return (
       <>
-        {/* <StockPriceHeader symbol={symbol} quote={quote} /> */}
-
         <div>
           <PriceGraph data={prices[interval]} xkey="label" ykey={ykey} />
         </div>
