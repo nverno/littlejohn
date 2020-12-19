@@ -2,11 +2,11 @@ import React from 'react';
 import PropagateLoader from 'react-spinners/PropagateLoader';
 import { fmtClass, fmtPrice, fmtPercent } from '../../selectors/quotes';
 
-const PriceGraphHeader = ({ data }) => {
-  if (!data) return <PropagateLoader />;
-  const priceChange = data[data.length - 1].value - data[0].value;
-  const price = data[data.length - 1].value;
-  const percentChange = priceChange / price;
+const PriceGraphHeader = ({ price, startPrice, finalPrice }) => {
+  if (!price) return <PropagateLoader />;
+  const priceChange = finalPrice - startPrice;
+  // const price = data[data.length - 1].value;
+  const percentChange = priceChange / startPrice;
   const cname = fmtClass(priceChange);
   return (
     <header className="lj-stock-graph-header">

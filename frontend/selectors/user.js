@@ -36,6 +36,7 @@ export const getMarketValue = (holding, quote) => {
 // same over time. This is good enough for now, until the transactions data is
 // used
 export const computePortfolioValue = (interval, holdings, prices) => {
+  if (!interval) return null;
   const held = Object.keys(holdings);
   if (held.length === 0) return null;
 
@@ -49,8 +50,7 @@ export const computePortfolioValue = (interval, holdings, prices) => {
     return null;
   }
 
-  const minLen = //Math.min(...held.map((sym) => prices[sym][interval].length)) ||
-        prices[held[0]][interval].length;
+  const minLen = prices[held[0]][interval].length; //Math.min(...held.map((sym) => prices[sym][interval].length)) ||
 
   const key = interval === '1d' ? 'average' : 'close';
   let data = [];
