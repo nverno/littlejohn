@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import NamedLogo from './named_logo';
 import NavbarItemsContainer from './items/navbar_items_container';
+import styles from './navbar.module.scss';
 
 const navbarItems = [
   {
@@ -62,7 +63,7 @@ export default class MainNavbar extends Component {
           );
 
     return (
-      <div className="navbar-main-outer">
+      <div className={styles.mainOuter}>
         
         <div className="navbar-named-logo-centerer">
           <Link to="/">
