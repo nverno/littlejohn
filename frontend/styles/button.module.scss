@@ -1,0 +1,107 @@
+@mixin unstyled-anchor-mixin($color: inherit, $color-hover: inherit) {
+  color: $color;
+  text-decoration: none;
+  -webkit-box-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  position: static;
+  text-align: start;
+  white-space: normal;
+  visibility: inherit;
+
+  &:hover {
+    color: $color-hover;
+  }
+}
+
+@mixin signup-button-mixin(
+  $color: white,
+  $bg-color: black,
+  $bg-color-hover: rgb(42, 49, 55)
+) {
+  color: $color;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  position: static;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0 36px;
+  height: 48px;
+  min-width: 144px;
+  border-radius: 24px;
+  width: auto;
+  background-color: $bg-color;
+
+  &:hover {
+    color: $color;
+    background-color: $bg-color-hover;
+    text-decoration: none;
+  }
+}
+
+.signup-button {
+  @include signup-button-mixin(
+    $color: black,
+    $bg-color: var(--rh__primary-base),
+    $bg-color-hover: rgba(0, 180, 5, 1)
+  );
+}
+
+.unstyled-anchor {
+  @include unstyled-anchor-mixin(
+    $color: black,
+    $color-hover: rgba(0, 180, 5, 1)
+  );
+}
+
+.unstyled {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  -webkit-appearance: none;
+  text-align: unset;
+  color: unset;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+
+  &:focus {
+    outline: 0px;
+  }
+}

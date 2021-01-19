@@ -45,18 +45,18 @@ export default class MainNavbar extends Component {
   render() {
     const controls = this.props.loggedIn
           ? (
-            <Link to="/portfolio" className="navbar-signup-button">
+            <Link to="/portfolio" className={styles.signupButton}>
               My Account
             </Link>
           ) : (
             <>
-              <Link to='/login' className="navbar-login-anchor">
-                <span className="navbar-login-text">
+              <Link to='/login' className={styles.loginButton}>
+                <span className={styles.loginText}>
                   <span>Log In</span>
                 </span>
               </Link>
               <div className={styles.buttonSpacer}/>
-              <Link to="/signup" className="navbar-signup-button">
+              <Link to="/signup" className={styles.signupButton}>
                 Sign up
               </Link>
             </>

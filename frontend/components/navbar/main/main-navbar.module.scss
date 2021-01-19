@@ -49,6 +49,16 @@
   padding: 0;
 }
 
+.navbarItem {
+  composes: type11 from '../../../styles/font.module.scss';
+  margin-left: 32px;
+  margin-top: 0;
+  display: inline-block;
+  padding: 0;
+  white-space: nowrap;
+  list-style: none;
+}
+
 .nestedItem {
   white-space: nowrap;
   display: inline-block;
@@ -58,8 +68,46 @@
   &:first-of-type {
     margin-left: 0;
   }
+}
 
-  // span {
-  //   @include type11;
-  // }
+.itemsExpanded {
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 64px;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  left: 205px;
+  top: 64px;
+  text-align: -webkit-match-parent;
+}
+
+.caret {}
+
+.link {
+  composes: type11 from '../../../styles/font.module.scss';
+}
+
+// unstyled button
+.button {
+  composes: unstyled from '../../../styles/button.module.scss';
+}
+
+.loginButton {
+  composes: unstyled-anchor from '../../../styles/button.module.scss';
+  composes: type12 from '../../../styles/font.module.scss';
+}
+
+.signupButton {
+  composes: signup-button from '../../../styles/button.module.scss';
+  composes: type12 from '../../../styles/font.module.scss';
+}
+
+.loginText {
+  white-space: nowrap;
+  position: static;
+  text-align: center;
 }

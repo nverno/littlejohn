@@ -5,7 +5,9 @@ import Modal from 'react-modal';
 import Root from './components/root';
 import configureStore from './store/store';
 
-import './theme.scss';
+import './styles/theme.scss';
+import './styles/font.module.scss';
+import './styles/button.module.scss';
 
 // BEGIN testing
 import * as util from './util/session_api_util';

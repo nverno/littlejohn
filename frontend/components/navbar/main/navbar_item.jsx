@@ -5,15 +5,13 @@ import { IoIosArrowUp } from '@react-icons/all-files/io/IoIosArrowUp';
 import styles from './main-navbar.module.scss';
 
 const NestedNavbarItem = ({ item, ...props }) => (
-  <li className="lj-nested-navbar-item">
-    <span>{item}</span>
+  <li className={styles.nestedItem}>
+    <span className="type11">{item}</span>
   </li>
 );
 
 const NestedNavbarItems = ({ items, isOpen, ...props }) => {
-  const cname = isOpen
-    ? 'lj-nested-navbar-items-container-expanded'
-    : 'lj-nested-navbar-items-container';
+  const cname = isOpen ? styles.itemsExpanded : '';
   return (
     <ul className={cname}>
       {items.map((item, idx) => (
@@ -42,14 +40,15 @@ const NavbarItem = ({
   };
 
   const caret = (
-    <span className="lj-navbar-item-caret">
+    <span className={styles.caret}>
       {openId === item.title ? <IoIosArrowUp /> : <IoIosArrowDown />}
     </span>
   );
   return (
-    <li className="lj-navbar-item">
+    <li className={styles.navbarItem}>
       {item.to ? (
-        <Link to={item.to} className="lj-navbar-link">
+        /* @include unstyled-anchor($color: black, $color-hover: rgba(0, 180, 5, 1)); */
+        <Link to={item.to} className={styles.link}> {/* "lj-navbar-link" */}
           {item.title}
         </Link>
       ) : (
@@ -57,7 +56,7 @@ const NavbarItem = ({
           <button
             onClick={handleClick}
             type="button"
-            className="lj-navbar-unstyled-button"
+            className={styles.button}  /* "lj-navbar-unstyled-button" */
           >
             <span>{item.title}</span>
             {caret}

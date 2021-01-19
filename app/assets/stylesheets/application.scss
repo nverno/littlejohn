@@ -1,7 +1,7 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import 'bootstrap';
 
-@import 'rh_vars';
+// @import 'rh_vars';
 @import 'fonts.scss';
 @import 'buttons';
 @import 'icons';
@@ -11,15 +11,14 @@
 @import 'main';
 @import 'section';
 @import 'logo';
-@import 'navbar';
-@import 'navbar-items';
+
 @import 'header';
 @import 'account-dropdown';
 @import 'search';
 @import 'search-menu';
 @import 'graph-nav';
 @import 'header-page';
-@import 'navbar-page';
+
 @import 'stock';
 @import 'stock-graph';
 @import 'stock-info';

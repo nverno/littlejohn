@@ -1,3 +1,22 @@
+.container {
+  max-height: calc(100% - 0px - env(safe-area-inset-bottom));
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.main {
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px 0px;
+  height: 64px;
+  position: relative;
+}
+
+.mainExpanded {
+  composes: main;
+  height: 128px;
+}
+
 .mainOuter {
   padding: 0 24px;
   -webkit-box-align: center;
@@ -24,3 +43,15 @@
   display: block;
   visibility: visible;
 }
+
+// Navbar Page
+.pageContainer {
+  background-color: var(--rh__neutral-bg1);
+  color: var(--rh__neutral-fg1);
+}
+
+.pageOuter {
+  padding-top: 64px;
+}
+
+.pageBody {}

@@ -3,6 +3,7 @@ import React from 'react';
 // import HeaderContainer from '../header/header_container';
 // import UserNavbar from './user_navbar';
 import MainNavbar from './main/main_navbar';
+import styles from './navbar.module.scss';
 
 // FIXME: could add test if match.params have changed, in which
 // case all dropdowns should be closed
@@ -41,25 +42,13 @@ export default class Navbar extends React.Component {
   }
 
   render() {
-    // const { loggedIn, welcome } = this.props;
-    // if (!welcome && loggedIn) return <></>; // <HeaderContainer />;
-    
-    // let navClass = !welcome && loggedIn ? 'navbar-user' : 'navbar-main';
-    let navClass = 'navbar-main';
-    if (this.props.isOpen) {
-      navClass += ' navbar-dropdown-expanded';
-    }
+    let navClass = this.props.isOpen ? styles.mainExpanded : styles.main;
 
     return (
       <div ref={this.wrapperRef}>
-        <div className="navbar-container">
+        <div className={styles.container}>
           <nav role="navigation" className={navClass}>
             <MainNavbar {...this.props} />
-            {/* {!welcome && loggedIn ? ( */}
-            {/*   <UserNavbar {...this.props} /> */}
-            {/* ) : ( */}
-            {/*   <MainNavbar {...this.props} /> */}
-            {/* )} */}
           </nav>
         </div>
       </div>
