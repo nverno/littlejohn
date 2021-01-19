@@ -108,6 +108,20 @@
   --rh__size-palette___experimentalSelectMenuZIndex: 500;
 }
 
+.dark {
+  --rh__neutral-fg1: rgb(255,255,255);
+  --rh__neutral-fg2: rgb(121,133,139);
+  --rh__neutral-fg3: rgb(84,93,97);
+  --rh__neutral-bg3: rgb(48,54,58);
+  --rh__neutral-bg2: rgb(30,33,36);
+  --rh__neutral-bg1: rgb(0,0,0);
+  --rh__neutral-hover-bg1: rgb(30,33,36);
+  --rh__neutral-hover-bg2: rgb(48,54,58);
+  --rh__neutral-pressed-bg1: rgb(48,54,58);
+  --rh__neutral-pressed-bg2: rgb(48,54,58);
+  --rh__text-color: rgb(255,255,255);
+}
+
 .theme-open-up {
   --st__primary-base: rgb(0,200,5);
   --st__primary-hover: rgba(38,208,43,1);
@@ -124,7 +138,7 @@
   --st__primary-lightest-base: rgba(255, 80, 0, 0.1);
 }
 
-.theme-overlay {
+.overlay {
   background-color: var(--rh__neutral-bg1);
   border-radius: var(--rh__size-palette__borderRadius);
   box-sizing: border-box;
@@ -135,6 +149,24 @@
   --rh__primary-pressed: rgba(0, 160, 4, 1);
   --rh__primary-light-base: rgba(0, 200, 5, 0.3);
   --rh__primary-lightest-base: rgba(0, 200, 5, 0.1);
+}
+
+.overlayDark {
+  composes: overlay;
+
+  --rh__neutral-fg1: rgb(255,255,255);
+  --rh__neutral-fg2: rgb(132,145,151);
+  --rh__neutral-fg3: rgb(98,108,112);
+  --rh__neutral-bg3: rgb(64,73,78);
+  --rh__neutral-bg2: rgb(48,54,58);
+  --rh__neutral-bg1: rgb(30,33,36);
+  --rh__neutral-hover-bg1: rgb(48,54,58);
+  --rh__neutral-hover-bg2: rgb(64,73,78);
+  --rh__neutral-pressed-bg1: rgb(64,73,78);
+  --rh__neutral-pressed-bg2: rgb(64,73,78);
+  --rh__text-color: rgb(255,255,255);
+  --rh__shadow__s1: rgba(0,0,0,0.6);
+  --rh__shadow__s2: rgba(0,0,0,0.6);  
 }
 
 .expandable-item {

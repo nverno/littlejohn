@@ -20,6 +20,7 @@ import * as transactions from './actions/transactions_actions';
 import * as port from './actions/portfolio_actions';
 import * as prices from './actions/stock_price_actions';
 import * as show from './actions/stock_show_actions';
+import * as settings from './actions/settings_actions';
 // END testing
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,6 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
       session: {
         currentUser: window.currentUser,
       },
+      settings: {
+        theme: window.currentUser.theme || '',
+      }
     };
     delete window.currentUser;
   }
@@ -57,5 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.port = port;
   window.prices = prices;
   window.show = show;
+  window.settings = settings;
   // END testing
 });

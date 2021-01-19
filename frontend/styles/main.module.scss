@@ -1,3 +1,18 @@
+figcaption,
+figure,
+main {
+  display: block;
+}
+
+body {
+  color: var(--rh__neutral-fg1);
+  background-color: var(--rh__neutral-bg1);
+  font-family: Capsule Sans Text, -apple-system, BlinkMacSystemFont, sans-serif;
+  display: block;
+  font-size: 13px;
+  overflow: inherit;
+}
+
 .disabled-link {
   pointer-events: none;
   color: var(--rh__neutral-fg2);

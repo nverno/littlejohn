@@ -1,6 +1,7 @@
 class Api::UsersController < ApplicationController # rubocop:todo Style/Documentation
   before_action :require_logged_out, only: :create
-  before_action :require_logged_in, only: %i[update follow index show]
+  before_action :require_logged_in,
+                only: %i[update follow index show settings unfollow]
 
   def index
     @user = current_user
@@ -53,6 +54,15 @@ class Api::UsersController < ApplicationController # rubocop:todo Style/Document
     end
   end
 
+  def settings
+    @user = current_user
+    if @user.update(user_params)
+      render 'api/users/show'
+    else
+      render json: ['Uh oh something wrong with settings'], status: 400
+    end
+  end
+
   private
 
   def user_params
@@ -62,7 +72,8 @@ class Api::UsersController < ApplicationController # rubocop:todo Style/Document
       :username,
       :email,
       :password,
-      :gold
+      :gold,
+      :theme
     )
   end
 end

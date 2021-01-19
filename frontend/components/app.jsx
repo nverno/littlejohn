@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Redirect, Link, Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute, UserRoute } from '../util/route_util';
 
@@ -10,33 +11,43 @@ import Unknown404Container from './errors/404/unknown_404_container';
 import NavbarContainer from './navbar/navbar_container';
 // import PortfolioContainer from './portfolio/portfolio_container';
 import StockContainer from './stock/stock_container';
+import styles from '../styles/theme.module.scss';
 
-const App = () => (
-  <div className="app">
-    <Switch>
-      <Route exact path="/welcome" component={SplashContainer} />
-      <AuthRoute exact path="/login" component={LoginPage} />
-      <AuthRoute exact path="/signup" component={SignupPage} />
+const mapStateToProps = (state) => ({
+  theme: state.settings.theme,
+});
 
-      <Route exact path="/stocks/:symbol" component={StockContainer} />
+const App = ({ theme }) => {
+  if (theme === 'dark')
+    document.body.className = styles.dark;
 
-      <ProtectedRoute
-        exact
-        path="/portfolio"
-        component={() => <Redirect to="/" />}
-      />
+  return (
+    <div className='app'>
+      <Switch>
+        <Route exact path="/welcome" component={SplashContainer} />
+        <AuthRoute exact path="/login" component={LoginPage} />
+        <AuthRoute exact path="/signup" component={SignupPage} />
 
-      <Route exact path="/" component={HomeContainer} />
-      <Route path="/" component={Unknown404Container} />
-    </Switch>
+        <Route exact path="/stocks/:symbol" component={StockContainer} />
 
-    <Switch>
-      <Route exact path="/welcome">
-        <NavbarContainer welcome />
-      </Route>
-      <Route exact path="/" component={NavbarContainer} />
-    </Switch>
-  </div>
-);
+        <ProtectedRoute
+          exact
+          path="/portfolio"
+          component={() => <Redirect to="/" />}
+        />
 
-export default App;
+        <Route exact path="/" component={HomeContainer} />
+        <Route path="/" component={Unknown404Container} />
+      </Switch>
+
+      <Switch>
+        <Route exact path="/welcome">
+          <NavbarContainer welcome />
+        </Route>
+        <Route exact path="/" component={NavbarContainer} />
+      </Switch>
+    </div>
+  );
+};
+
+export default connect(mapStateToProps)(App);

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
         delete 'follow', to: 'users#unfollow'
       end
     end
+    post 'settings', to: 'users#settings'
+
     resources :holdings, only: %i[index]
 
     resources :transactions, only: %i[index create show]
