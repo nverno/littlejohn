@@ -6,6 +6,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     prices: state.entities.prices,
     holdings: state.entities.holdings,
+    apiKeys: state.settings.keys,
   };
 };
 

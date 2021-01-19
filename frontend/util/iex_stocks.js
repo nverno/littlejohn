@@ -1,6 +1,6 @@
 // iexCloud financial API
 // quotes, news, timeseries
-const moment = require('moment');
+// const moment = require('moment');
 var fetch = window.fetch;
 
 // const INTERVALS = {

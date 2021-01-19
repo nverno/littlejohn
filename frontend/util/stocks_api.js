@@ -12,9 +12,9 @@ const intervalTable = {
 };
 const normalizeInterval = (interval) => intervalTable[interval] || interval;
 
-export const initializeStocksAPI = (ttl) => {
-  avAPI = new AVStocksCache(window.avKeys, ttl);
-  iexAPI = new IexAPI(window.iexAPIKey);
+export const initializeStocksAPI = (ttl, keys) => {
+  avAPI = new AVStocksCache(keys['av'], ttl);
+  iexAPI = new IexAPI(keys['iex']);
 };
 
 // export const fetchStockPrices = (symbol, interval, amount = 100) => {

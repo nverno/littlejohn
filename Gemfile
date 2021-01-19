@@ -36,6 +36,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jquery-rails'
 gem 'bootstrap'
 gem 'pry-rails'
+gem 'figaro'
 
 group :development, :test do
   gem 'annotate'

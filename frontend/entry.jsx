@@ -4,6 +4,8 @@ import Modal from 'react-modal';
 
 import Root from './components/root';
 import configureStore from './store/store';
+import { receiveApiKeys } from './actions/settings_actions';
+
 import './styles/theme.module.scss';
 import './styles/font.module.scss';
 import './styles/button.module.scss';
@@ -39,14 +41,23 @@ document.addEventListener('DOMContentLoaded', () => {
     delete window.currentUser;
   }
 
-  // Initializes iex/alphavantage APIs with key and time-to-live
-  // for cached results
-  StocksAPI.initializeStocksAPI(10 * 60 * 1000);
-
   // Setup modal
   Modal.setAppElement(document.getElementById('root'));
 
+  // setup store w/ bootstrapped values
   const store = configureStore(preloadedState);
+  const keys = {
+    iex: window.iexKey,
+    av: window.avKeys,
+  };
+  store.dispatch(receiveApiKeys(keys));
+  delete window.iexKey;
+  delete window.iexAPIKey;
+  delete window.avKeys;
+  // Initializes iex/alphavantage APIs with key and time-to-live
+  // for cached results
+  StocksAPI.initializeStocksAPI(10 * 60 * 1000, keys);
+  
   ReactDOM.render(<Root store={store} />, root);
 
   // BEGIN testing

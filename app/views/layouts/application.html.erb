@@ -17,6 +17,7 @@
      window.avKeys = "<%= Rails.application.credentials.alphavantage[:api_key] %>"
        .split(' ');
      window.iexAPIKey = "<%= Rails.application.credentials.iexcloud[:api_key] %>"
+     window.iexKey = "<%= ENV['IEX_KEY'] %>"
     </script>
 
   </head>
