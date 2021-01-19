@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import Logo from '../navbar/logo';
+import Logo from '../navbar/logo/logo';
 import SearchContainer from '../search/search_container';
 import HeaderItems from './header_items';
 import AccountDropdown from './account_dropdown';

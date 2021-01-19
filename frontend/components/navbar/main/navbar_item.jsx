@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { IoIosArrowDown } from '@react-icons/all-files/io/IoIosArrowDown';
 import { IoIosArrowUp } from '@react-icons/all-files/io/IoIosArrowUp';
+import styles from './main-navbar.module.scss';
 
 const NestedNavbarItem = ({ item, ...props }) => (
   <li className="lj-nested-navbar-item">

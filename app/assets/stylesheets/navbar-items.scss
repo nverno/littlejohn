@@ -50,16 +50,17 @@
   text-align: -webkit-match-parent;
 }
 
-.lj-nested-navbar-item {
-  white-space: nowrap;
-  display: inline-block;
-  margin-top: 0;
-  margin-left: 36px;
-}
-.lj-nested-navbar-item:first-of-type {
-  margin-left: 0;
-}
+// .lj-nested-navbar-item {
+//   white-space: nowrap;
+//   display: inline-block;
+//   margin-top: 0;
+//   margin-left: 36px;
+// }
+// .lj-nested-navbar-item:first-of-type {
+//   margin-left: 0;
+// }
 
+// FIXME: redefine after styles are setup in frontend
 .lj-nested-navbar-item span {
   @include type11;
 }

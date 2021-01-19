@@ -2,7 +2,7 @@ import React from 'react';
 
 // import HeaderContainer from '../header/header_container';
 // import UserNavbar from './user_navbar';
-import MainNavbar from './main_navbar';
+import MainNavbar from './main/main_navbar';
 
 // FIXME: could add test if match.params have changed, in which
 // case all dropdowns should be closed

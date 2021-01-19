@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import NamedLogo from './named_logo';
-import NavbarItemsContainer from './items/navbar_items_container';
-import styles from './navbar.module.scss';
+import NamedLogo from '../logo/named_logo';
+import NavbarItems from './navbar_items';
+import styles from './main-navbar.module.scss';
 
 const navbarItems = [
   {
@@ -55,7 +55,7 @@ export default class MainNavbar extends Component {
                   <span>Log In</span>
                 </span>
               </Link>
-              <div className="navbar-button-spacer"/>
+              <div className={styles.buttonSpacer}/>
               <Link to="/signup" className="navbar-signup-button">
                 Sign up
               </Link>
@@ -63,32 +63,20 @@ export default class MainNavbar extends Component {
           );
 
     return (
-      <div className={styles.mainOuter}>
+      <div className={styles.outer}>
         
-        <div className="navbar-named-logo-centerer">
+        <div className={styles.logo}>
           <Link to="/">
             <NamedLogo />
           </Link>
         </div>
 
-        <div className="navbar-main-item-container">
-          <NavbarItemsContainer items={navbarItems} {...this.props} />
+        <div className={styles.itemsContainer}>
+          <NavbarItems items={navbarItems} {...this.props} />
         </div>
 
         <div className={styles.spacer} />
-        {/* <div className="navbar-main-empty-button"> */}
-        {/*   <svg fill="rgb(0, 0, 0)" height="30" width="30"> */}
-        {/*     <g className="css-13a2iw2-menuBar-DrawerMenuButton"> */}
-        {/*       <rect fill="transparent" height="30" width="30" x="0" y="0"></rect> */}
-        {/*       <rect height="3" width="30" x="0" y="7"></rect> */}
-        {/*     </g> */}
-        {/*     <g className="css-13a2iw2-menuBar-DrawerMenuButton"> */}
-        {/*       <rect fill="transparent" height="30" width="30" x="0" y="0"></rect> */}
-        {/*       <rect height="3" width="30" x="0" y="20"></rect> */}
-        {/*     </g> */}
-        {/*   </svg> */}
-        {/* </div> */}
-        
+
         <div className={styles.loginContainer}>
           {controls}
         </div>
