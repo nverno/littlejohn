@@ -55,11 +55,11 @@
     @include type12;
 }
 
-.navbar-login-container {
-  display: flex;
-  visibility: visible;
-  width: 100%;
-}
+// .navbar-login-container {
+//   display: flex;
+//   visibility: visible;
+//   width: 100%;
+// }
 
 .navbar-login-anchor {
   @include unstyled-anchor($color: black, $color-hover: rgba(0, 180, 5, 1));
@@ -72,11 +72,11 @@
   text-align: center;
 }
 
-.navbar-main-spacer {
-  flex-grow: 1;
-  -webkit-box-flex: 1;
-  width: 100%;
-}
+// .navbar-main-spacer {
+//   flex-grow: 1;
+//   -webkit-box-flex: 1;
+//   width: 100%;
+// }
 
 .navbar-button-spacer {
   width: 30px;

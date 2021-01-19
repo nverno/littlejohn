@@ -75,7 +75,7 @@ export default class MainNavbar extends Component {
           <NavbarItemsContainer items={navbarItems} {...this.props} />
         </div>
 
-        <div className="navbar-main-spacer"/>
+        <div className={styles.spacer} />
         {/* <div className="navbar-main-empty-button"> */}
         {/*   <svg fill="rgb(0, 0, 0)" height="30" width="30"> */}
         {/*     <g className="css-13a2iw2-menuBar-DrawerMenuButton"> */}
@@ -89,7 +89,7 @@ export default class MainNavbar extends Component {
         {/*   </svg> */}
         {/* </div> */}
         
-        <div className="navbar-login-container">
+        <div className={styles.loginContainer}>
           {controls}
         </div>
 
