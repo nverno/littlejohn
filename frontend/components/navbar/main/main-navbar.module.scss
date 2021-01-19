@@ -23,6 +23,8 @@
   width: 100%;
   display: block;
   visibility: visible;
+  position: absolute;
+  left: 160px;
 }
 
 .logo {
@@ -76,13 +78,14 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 64px;
   margin: 0px;
   padding: 0px;
   position: absolute;
-  left: 205px;
+  height: 28px;
+  left: 30px;
   top: 64px;
   text-align: -webkit-match-parent;
+  text-align: match-parent;
 }
 
 .caret {}
