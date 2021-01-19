@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import StockCell from './stock_cell';
+import StockCell from '../../lists/cell/StockCell';
 import { fetchSidebarHoldingsData } from '../../../actions/portfolio_actions';
 
 const mapStateToProps = (state, _ownProps) => ({
@@ -21,7 +21,6 @@ class PortfolioHoldings extends Component {
   }
 
   componentDidMount() {
-    // console.log('PHoldings: ', this.props.holdings, this.props.quotes);
     const { quotes, prices } = this.props;
     this.props.fetchSidebarHoldingsData({ quotes, prices });
   }

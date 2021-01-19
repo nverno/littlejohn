@@ -1,4 +1,5 @@
-.lj-section {
+@import '../../styles/mixins';
+.section {
   margin-bottom: 60px;
   transition: background 0.3s;
 
@@ -7,7 +8,7 @@
   }
 }
 
-.lj-section-header-container {
+.header {
   border-bottom: 1px solid;
   border-color: var(--rh__neutral-bg3);
   padding-bottom: 16px;

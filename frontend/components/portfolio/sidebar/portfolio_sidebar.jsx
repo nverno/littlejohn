@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BiDotsHorizontalRounded } from '@react-icons/all-files/bi/BiDotsHorizontalRounded';
 
+import styles from './psidebar.module.scss';
 import SidebarContent from '../../parts/sidebar_content';
 import PortfolioSidebarHeader from './portfolio_sidebar_header';
 import PortfolioHoldings from './portfolio_holdings';
@@ -40,7 +41,7 @@ export default class PortfolioSidebar extends Component {
     return (
       <SidebarContent {...this.props}>
         <PortfolioSidebarHeader title="Stocks">
-          <button type="button" className="port-sidebar-header-button">
+          <button type="button" className={styles.headerButton}>
             <BiDotsHorizontalRounded size={24} />
           </button>
         </PortfolioSidebarHeader>

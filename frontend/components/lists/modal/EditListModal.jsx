@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import { AiOutlineClose } from '@react-icons/all-files/ai/AiOutlineClose';
 
-import { ListForm } from './list_form';
+import { ListForm } from '../form/ListForm';
 import {
   updateList,
   clearListErrors,
   closeEditListModal,
-} from '../../actions/list_actions';
+} from '../../../actions/list_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   formType: 'Save',

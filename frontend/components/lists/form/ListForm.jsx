@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import ListIcon from './list_icon';
+import ListIcon from '../ListIcon';
 
-import { createUserList, clearListErrors } from '../../actions/list_actions';
+import { createUserList, clearListErrors } from '../../../actions/list_actions';
 
 const mapStateToProps = (state) => {
   const listErrors = state.errors.lists;

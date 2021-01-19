@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { AiOutlinePlus } from '@react-icons/all-files/ai/AiOutlinePlus';
 
 import PortfolioSidebarHeader from './portfolio_sidebar_header';
-import ListCell from '../../lists/list_cell';
-import ListForm from '../../lists/list_form';
-import StockCell from './stock_cell';
+import List from '../../lists/List';
+import ListForm from '../../lists/form/ListForm';
+import StockCell from '../../lists/cell/StockCell';
 import { clearListErrors } from '../../../actions/list_actions';
 import { fetchSidebarListsData } from '../../../actions/portfolio_actions';
+import styles from './psidebar.module.scss';
 
 const mapStateToProps = (state, _ownProps) => ({
   lists: state.entities.lists,
@@ -46,7 +47,7 @@ class PortfolioLists extends Component {
         <PortfolioSidebarHeader title="Lists">
           <button
             type="button"
-            className="port-sidebar-header-button"
+            className={styles.headerButton}
             onClick={() => {
               clearListErrors();
               this.toggleForm();
@@ -60,7 +61,7 @@ class PortfolioLists extends Component {
 
         {Object.keys(lists).map((listId, idx) => (
           <React.Fragment key={idx}>
-            <ListCell key={`list-${idx}`} listId={listId} />
+            <List key={`list-${idx}`} listId={listId} />
 
             {openLists[listId] &&
               lists[listId].assets.map((symbol, idx) => (

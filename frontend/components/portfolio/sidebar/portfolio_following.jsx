@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import PortfolioSidebarHeader from './portfolio_sidebar_header';
 import { getFollowedLists } from '../../../selectors/lists';
+import styles from './psidebar.module.scss';
 
 const mapStateToProps = (state, _ownProps) => {
   return {
@@ -19,23 +20,23 @@ const mapDispatchToProps = (dispatch) => ({
 
 const FollowCell = ({ list }) => {
   return (
-    <div className="follow-cell-container">
-      <div className="follow-cell-outer">
-        <button type="button" disabled className="follow-cell-button">
-          <div className="follow-cell-inner">
-            <Link to={`/lists/${list.id}`} className="follow-cell-link">
-              <div className="follow-cell-icon-container">
-                <div className="follow-cell-icon-outer">
-                  <div className="follow-cell-icon-inner">
+    <div className={styles.followContainer}>
+      <div className={styles.followOuter}>
+        <button type="button" disabled className={styles.followButton}>
+          <div className={styles.followInner}>
+            <Link to={`/lists/${list.id}`} className={styles.followLink}>
+              <div className={styles.followIcon}>
+                <div className={styles.followIconOuter}>
+                  <div className={styles.followIconInner}>
                     <img
-                      className="follow-cell-image"
+                      className={styles.followImage}
                       src={window.followIconURL}
                     ></img>
                   </div>
                 </div>
 
-                <div className="follow-cell-title">
-                  <span className="lj-type1">{list.name}</span>
+                <div className={styles.followTitle}>
+                  <span>{list.name}</span>
                 </div>
               </div>
             </Link>

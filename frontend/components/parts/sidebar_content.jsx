@@ -1,12 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import styles from './sidebar.module.scss';
+import themes from '../../styles/theme.module.scss';
 
-const SidebarContent = ({ footer, ...props }) => {
+const mapStateToProps = (state) => ({
+  theme: state.settings.theme,
+});
+
+const SidebarContent = ({ footer, theme, ...props }) => {
+  const colorTheme = theme === 'dark' ? themes.overlayDark : themes.overlay;
+
   return (
-    <div className="sidebar-content">
-      <div className="sidebar-container lj-theme-overlay">
-        <div className="sidebar-outer">
-          <div className="sidebar-inner">
-            <div className="sidebar-scroll-container">{props.children}</div>
+    <div className={styles.content}>
+      <div className={`${styles.container} ${colorTheme}`}>
+        <div className={styles.outer}>
+          <div className={styles.inner}>
+            <div className={styles.scroll}>{props.children}</div>
           </div>
         </div>
       </div>
@@ -15,4 +24,4 @@ const SidebarContent = ({ footer, ...props }) => {
   );
 };
 
-export default SidebarContent;
+export default connect(mapStateToProps)(SidebarContent);

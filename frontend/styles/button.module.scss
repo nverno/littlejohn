@@ -140,3 +140,23 @@
     background: var(--rh__primary-pressed);
   }
 }
+
+.primary {
+  background: none;
+  border: 0px;
+  padding: 0px;
+  font: inherit;
+  appearance: none;
+  text-align: unset;
+  color: unset;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  --rh__text-color: var(--rh__primary-base);
+}
+

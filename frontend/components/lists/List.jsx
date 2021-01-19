@@ -7,7 +7,7 @@ import { BiDotsHorizontalRounded } from '@react-icons/all-files/bi/BiDotsHorizon
 
 import { maybeFetchSidebarData } from '../../actions/portfolio_actions';
 import { getOpenListSymbols } from '../../selectors/lists';
-import ListIcon from './list_icon';
+import ListIcon from './ListIcon';
 import {
   closeList,
   openList,
@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch, { listId }) => ({
     dispatch(maybeFetchSidebarData(stateData)),
 });
 
-const ListCell = ({
+const List = ({
   quotes,
   listId,
   list,
@@ -90,4 +90,4 @@ const ListCell = ({
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListCell);
+export default connect(mapStateToProps, mapDispatchToProps)(List);

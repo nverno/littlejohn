@@ -8,7 +8,7 @@ import {
   quotePrice,
 } from '../../../selectors/quotes';
 
-import StockCellGraph from './stock_cell_graph';
+import StockCellGraph from './StockCellGraph';
 import { getPrices } from '../../../selectors/prices';
 
 const mapStateToProps = (state, ownProps) => {

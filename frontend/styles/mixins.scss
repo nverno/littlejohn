@@ -1,22 +1,4 @@
-.default {
-  margin: 0px;
-  text-decoration: unset;
-  color: var(--rh__text-color);
-}
-
-.primary {
-  color: var(--rh__primary-base);
-}
-
-.positive {
-  --rh__text-color: var(--rh__semantic-positive-base);
-}
-
-.negative {
-  --rh__text-color: var(--rh__semantic-negative-base);
-}
-
-.type1 {
+@mixin type1 {
   font-family: var(--rh__type-palette__type1__stack);
   font-size: var(--rh__type-palette__type1__font-size);
   font-weight: var(--rh__type-palette__type1__font-weight);
@@ -24,7 +6,7 @@
   letter-spacing: var(--rh__type-palette__type1__letter-spacing);
 }
 
-.type2 {
+@mixin type2 {
   font-family: var(--rh__type-palette__type2__stack);
   font-size: var(--rh__type-palette__type2__font-size);
   font-weight: var(--rh__type-palette__type2__font-weight);
@@ -32,7 +14,7 @@
   letter-spacing: var(--rh__type-palette__type2__letter-spacing);
 }
 
-.type4 {
+@mixin type4 {
   font-family: var(--rh__type-palette__type4__stack);
   font-size: var(--rh__type-palette__type4__font-size);
   font-weight: var(--rh__type-palette__type4__font-weight);
@@ -40,7 +22,7 @@
   letter-spacing: var(--rh__type-palette__type4__letter-spacing);
 }
 
-.type7 {
+@mixin type7 {
   font-family: var(--rh__type-palette__type7__stack);
   font-size: var(--rh__type-palette__type7__font-size);
   font-weight: var(--rh__type-palette__type7__font-weight);
@@ -48,7 +30,7 @@
   letter-spacing: var(--rh__type-palette__type7__letter-spacing);
 }
 
-.type8 {
+@mixin type8 {
   font-family: var(--rh__type-palette__type8__stack);
   font-size: var(--rh__type-palette__type8__font-size);
   font-weight: var(--rh__type-palette__type8__font-weight);
@@ -56,7 +38,7 @@
   letter-spacing: var(--rh__type-palette__type8__letter-spacing);
 }
 
-.type11 {
+@mixin type11 {
   font-family: var(--rh__type-palette__type11__stack);
   font-size: var(--rh__type-palette__type11__font-size);
   font-weight: var(--rh__type-palette__type11__font-weight);
@@ -64,7 +46,7 @@
   letter-spacing: var(--rh__type-palette__type11__letter-spacing);
 }
 
-.type12 {
+@mixin type12 {
   font-family: var(--rh__type-palette__type12__stack);
   font-size: var(--rh__type-palette__type12__font-size);
   font-weight: var(--rh__type-palette__type12__font-weight);
@@ -72,7 +54,7 @@
   letter-spacing: var(--rh__type-palette__type12__letter-spacing);
 }
 
-.type15 {
+@mixin type15 {
   font-family: var(--rh__type-palette__type15__stack);
   font-size: var(--rh__type-palette__type15__font-size);
   font-weight: var(--rh__type-palette__type15__font-weight);
@@ -80,7 +62,7 @@
   letter-spacing: var(--rh__type-palette__type15__letter-spacing);
 }
 
-.type16 {
+@mixin type16 {
   font-family: var(--rh__type-palette__type16__stack);
   font-size: var(--rh__type-palette__type16__font-size);
   font-weight: var(--rh__type-palette__type16__font-weight);
