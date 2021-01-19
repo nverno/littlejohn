@@ -7,7 +7,6 @@ import configureStore from './store/store';
 import './styles/theme.module.scss';
 import './styles/font.module.scss';
 import './styles/button.module.scss';
-import './styles/lj-logo.module.scss';
 import './styles/main.module.scss';
 
 // BEGIN testing

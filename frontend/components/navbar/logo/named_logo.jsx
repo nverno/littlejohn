@@ -1,11 +1,14 @@
 import React from 'react';
 import Logo from './logo';
+import styles from './logo.module.scss';
 
 const NamedLogo = props => {
   return (
-    <div className="lj-logo-named">
+    <div className={styles.named}>
       {/* {FIXME: how to adjust svg size with params?} */}
-      <span className="lj-logo-text">LittleJohn</span>
+      <span className={styles.text}>
+        LittleJohn
+      </span>
       <Logo {...props} />
     </div>
   );
