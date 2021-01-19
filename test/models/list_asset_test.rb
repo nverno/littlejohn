@@ -7,6 +7,7 @@
 #  symbol     :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  index      :integer          default(0)
 #
 require 'test_helper'
 

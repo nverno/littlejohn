@@ -4,6 +4,7 @@ import { AiOutlinePlus } from '@react-icons/all-files/ai/AiOutlinePlus';
 
 import PortfolioSidebarHeader from './portfolio_sidebar_header';
 import List from '../../lists/List';
+import Lists from '../../lists/Lists';
 import ListForm from '../../lists/form/ListForm';
 import StockCell from '../../lists/cell/StockCell';
 import { clearListErrors } from '../../../actions/list_actions';
@@ -59,6 +60,7 @@ class PortfolioLists extends Component {
 
         {listFormOpen && <ListForm setOpen={this.toggleForm} />}
 
+        {/* <Lists lists={lists} /> */}
         {Object.keys(lists).map((listId, idx) => (
           <React.Fragment key={idx}>
             <List key={`list-${idx}`} listId={listId} />

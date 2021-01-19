@@ -8,6 +8,8 @@
 #  public     :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  index      :integer          default(0)
+#  size       :integer          default(0)
 #
 class List < ApplicationRecord
   validates :name, presence: true
@@ -30,10 +32,11 @@ class List < ApplicationRecord
   end
 
   def assets=(new_assets)
+    self.size = new_assets.size
     save
     assets.destroy_all
-    new_assets.each do |asset|
-      assets.create(symbol: asset)
+    new_assets.each.with_index do |asset, idx|
+      assets.create(symbol: asset, index: idx)
     end
   end
 end

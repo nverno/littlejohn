@@ -36,7 +36,7 @@ class User < ApplicationRecord
   after_create :create_default_watchlist
   after_create :create_default_follows
 
-  DEFAULT_LIST = %w[AAPL TWTR TSLA NFLX FB MSFT].freeze
+  DEFAULT_LIST = %w[TSLA SPCE CCIV CLNE].freeze
 
   def buy(asset, units, unit_cost)
     throw 'Not enough buying power' if unit_cost * units > balance
