@@ -5,7 +5,9 @@ import { formatSearchResults } from '../../selectors/search_results';
 import styles from './search-menu.module.scss';
 
 const SearchResults = ({ results, query, ...props }) => {
-  // console.log('results: ', results);
+  console.log("results: ", results);
+  console.log("query: ", query);
+  if (!query || !results) return null;
   const formatted = formatSearchResults(query, results);
   // console.log('formatted: ', formatted);
   if (!formatted) return null;
