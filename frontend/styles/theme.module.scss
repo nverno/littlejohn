@@ -138,6 +138,18 @@
   --st__primary-lightest-base: rgba(255, 80, 0, 0.1);
 }
 
+.positive {
+  color: var(--rh__semantic-positive-base);
+}
+
+.negative {
+  color: var(--rh__semantic-negative-base);
+}
+
+.primary {
+  color: var(--rh__primary-base);
+}
+
 .overlay {
   background-color: var(--rh__neutral-bg1);
   border-radius: var(--rh__size-palette__borderRadius);

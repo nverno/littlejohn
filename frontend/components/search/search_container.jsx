@@ -7,6 +7,7 @@ import {
 } from '../../actions/search_actions';
 
 const mapStateToProps = (state, _ownProps) => ({
+  theme: state.settings.theme,
   searchResults: state.ui.searchResults,
 });
 

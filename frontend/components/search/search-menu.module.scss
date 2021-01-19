@@ -16,13 +16,13 @@
   }
 }
 
-.fade-in {
+.fadeIn {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
   animation: fadeIn 0.5s ease-out;
 }
 
-.search-menu-outer {
+.outer {
   padding: 0 24px 24px;
 
   & section {
@@ -38,8 +38,7 @@
   }
 }
 
-// Search results
-.search-result-container {
+.results {
   font-weight: 500;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -57,17 +56,24 @@
   }
 }
 
-.search-result-symbol {
+.symbol {
   flex: 0 0 75px;
   -webkit-box-flex: 0;
+  text-overflow: ellipsis;
 }
 
-.search-result-company {
+.company {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.search-result-link {
+.link {
   display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.match {
+  composes: primary from '../../styles/theme.module.scss';
 }

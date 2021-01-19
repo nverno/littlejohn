@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { formatSearchResults } from '../../selectors/search_results';
+import styles from './search-menu.module.scss';
 
 const SearchResults = ({ results, query, ...props }) => {
   // console.log('results: ', results);
@@ -21,24 +22,24 @@ export const SearchResult = ({ result, selected }) => {
   const { linkName, symbol, name } = result;
   return (
     <div
-      className="search-result-container"
+      className={styles.results}
       role="option"
       /* aria-selected={selected} */
     >
-      <Link to={linkName} className="search-result-link">
-        <div className="search-result-symbol">
+      <Link to={linkName} className={styles.link}>
+        <div className={styles.symbol}>
           <span>
             {symbol.map((part, idx) => (
-              <span key={idx} className={part.match ? 'lj-primary' : ''}>
+              <span key={idx} className={part.match ? styles.match : ''}>
                 {part.value}
               </span>
             ))}
           </span>
         </div>
-        <div className="search-result-company">
+        <div className={styles.company}>
           <span>
             {name.map((part, idx) => (
-              <span key={idx} className={part.match ? 'lj-primary' : ''}>
+              <span key={idx} className={part.match ? styles.match : ''}>
                 {part.value}
               </span>
             ))}

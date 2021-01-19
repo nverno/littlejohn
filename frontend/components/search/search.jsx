@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import SearchIcon from './search_icon';
 import SearchMenu from './search_menu';
+import styles from './search.module.scss';
+import themes from '../../styles/theme.module.scss';
 
 // TODO: clicking elsewhere should also close search menu
 class Search extends Component {
@@ -47,24 +49,25 @@ class Search extends Component {
 
   render() {
     const { query, menuOpen } = this.state;
-    const { searchResults } = this.props;
+    const { theme, searchResults } = this.props;
+    const colorTheme = theme === 'dark' ? themes.overlayDark : themes.overlay;
 
     return (
-      <div className="search-container">
-        <div className="search-box">
+      <div className={`${styles.container} ${colorTheme}`}>
+        <div className={styles.box}>
           <div
-            className="search-box-outer"
+            className={styles.boxOuter}
             onClick={this.toggleMenu.bind(this)}
           >
-            <div className="search-box-inner">
-              <div className="search-icon-container">
-                <span className="search-icon">
+            <div className={styles.boxInner}>
+              <div className={styles.iconContainer}>
+                <span className={styles.icon}>
                   <SearchIcon />
                 </span>
               </div>
               <input
                 type="search"
-                className="lj-type1 search-input"
+                className={styles.input}
                 value={query}
                 onChange={this.updateQuery.bind(this)}
                 placeholder="Search"
