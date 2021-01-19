@@ -7,6 +7,8 @@ import PopularLists from './popular_lists';
 import BuyingPower from './buying_power';
 import PortfolioGraphContainer from './graph/portfolio_graph_container';
 
+import styles from './portfolio.module.scss';
+
 export default class Portfolio extends Component {
   constructor(props) {
     super(props);
@@ -21,8 +23,8 @@ export default class Portfolio extends Component {
     return (
       <HeaderPage>
         <div className="row">
-          <div className="col-12 portfolio-col-left">
-            <section className="portfolio-graph-section">
+          <div className='col-12'>
+            <section className={styles.graph}>
               <PortfolioGraphContainer />
             </section>
 
@@ -30,12 +32,12 @@ export default class Portfolio extends Component {
 
             <PopularLists />
 
-            <section className="portfolio-news-section">
+            <section className={styles.news}>
               Popular Lists & News
             </section>
           </div>
 
-          <div className="col-5 portfolio-col-right">
+          <div className="col-5">
             <PortfolioSidebar {...this.props} />
           </div>
         </div>

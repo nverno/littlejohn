@@ -1,0 +1,76 @@
+.container {
+  margin-bottom: 60px;
+  margin-top: -24px;
+}
+
+.button {
+  -webkit-tap-highlight-color: transparent;
+  border-radius: var(--rh__size-palette__borderRadius);
+  background-color: var(--rh__neutral-bg1);
+  padding-left: calc(2 * var(--rh__size-palette__gutterWidth));
+  padding-right: calc(2 * var(--rh__size-palette__gutterWidth));
+  background-image: none;
+  background-position: initial;
+  background-size: initial;
+  background-repeat: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  border: 0px;
+  font: inherit;
+  appearance: none;
+  text-align: unset;
+  color: unset;
+  display: block;
+  width: 100%;
+
+  &>:only-child {
+    border-top: none;
+  }
+}
+
+.expanded {
+  composes: button;
+  background-color: var(--rh__neutral-hover-bg1);
+}
+
+.header {
+  composes: type8 from '../../styles/font.module.scss';
+  border-bottom: 1px solid var(--rh__neutral-bg3);
+  padding-top: calc(2 * var(--rh__size-palette__gutterWidth));
+  padding-bottom: calc(2 * var(--rh__size-palette__gutterWidth));
+  // padding-left: 10px;
+  // padding-right: 10px;
+}
+
+.power {
+  float: right;
+  opacity: 1;
+  transition: opacity 400ms ease-in-out 0s;
+}
+
+.deposit {
+  will-change: height;
+  padding-top: calc(2 * var(--rh__size-palette__gutterWidth));
+  padding-left: calc(2 * var(--rh__size-palette__gutterWidth));
+  padding-right: calc(2 * var(--rh__size-palette__gutterWidth));
+  padding-bottom: calc(2 * var(--rh__size-palette__gutterWidth));
+}
+
+.depositOuter {
+//   border-radius: var(--rh__size-palette__borderRadius);
+//   box-sizing: border-box;
+//   transition: background-color 400ms ease 0s, box-shadow 400ms ease 0s, margin-bottom 400ms ease 0s;
+//   margin-left: calc(-1 * calc(2 * var(--rh__size-palette__gutterWidth)));
+//   margin-right: calc(-1 * calc(2 * var(--rh__size-palette__gutterWidth)));
+}
+
+.depositForm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.depositButton {
+  composes: login-submit from '../../styles/button.module.scss';
+}

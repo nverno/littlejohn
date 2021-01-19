@@ -59,7 +59,7 @@
 
 .disabled {
   composes: link;
-  composes: disabled-link from '../../styles/main.module.scss';
+  composes: disabled-link from '../../styles/button.module.scss';
 }
 
 .itemContainer {

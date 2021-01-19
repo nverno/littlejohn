@@ -105,3 +105,38 @@
     outline: 0px;
   }
 }
+
+.disabled-link {
+  pointer-events: none;
+  color: var(--rh__neutral-fg2);
+}
+
+.login-submit {
+  background: var(--rh__primary-base);
+  border-color: var(--rh__primary-base);
+  color: var(--rh__neutral-bg1);
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 48px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 120px;
+  padding: 0 48px;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--rh__primary-hover);
+  }
+
+  &:active {
+    background: var(--rh__primary-pressed);
+  }
+}

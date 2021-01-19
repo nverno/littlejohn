@@ -4,6 +4,7 @@ import { Section } from '../parts/section';
 
 import { getBuyingPower } from '../../selectors/user';
 import { updateBalance } from '../../actions/user_actions';
+import styles from './buying-power.module.scss';
 
 // import { ShowMoreButton } from '../parts/buttons';
 const mapStateToProps = (state, ownProps) => ({
@@ -26,9 +27,9 @@ const DepositFunds = ({ userId, updateBalance }) => {
   };
 
   return (
-    <div className="bp-deposit-container">
-      <div className="bp-deposit-outer">
-        <form onSubmit={handleSubmit} className="bp-deposit-form">
+    <div className={styles.deposit}>
+      <div className={styles.depositOuter}>
+        <form onSubmit={handleSubmit} className={styles.depositForm}>
           <input
             type="text"
             className="form-input"
@@ -37,7 +38,7 @@ const DepositFunds = ({ userId, updateBalance }) => {
             placeholder="Amount"
           />
           <div style={{ paddingLeft: '20px' }}>
-            <button className="login-submit">Deposit Funds</button>
+            <button className={styles.depositButton}>Deposit Funds</button>
           </div>
         </form>
       </div>
@@ -50,25 +51,27 @@ const BuyingPower = ({ buyingPower, ...props }) => {
   const cname = expanded ? 'expanded-item' : 'expandable-item';
 
   return (
-    <div className="bp-container">
-      <div className={cname}>
-        <button
-          type="button"
-          className="bp-button"
-          onClick={() => setExpanded((expandable) => !expandable)}
-        >
-          <header className="bp-header">
-            <div>
-              <span className="lj-type8">Buying Power</span>
-              <span className="bp-buying-power-container">
-                <span className="lj-type8">${buyingPower}</span>
-              </span>
-            </div>
-          </header>
-        </button>
-        {expanded && <DepositFunds {...props} />}
+    <section>
+      <div className={styles.container}>
+        <div className={cname}>
+          <button
+            type="button"
+            className={expanded ? styles.expanded : styles.button}
+            onClick={() => setExpanded((expandable) => !expandable)}
+          >
+            <header className={styles.header}>
+              <div>
+                <span>Buying Power</span>
+                <span className={styles.power}>
+                  <span>${buyingPower}</span>
+                </span>
+              </div>
+            </header>
+          </button>
+          {expanded && <DepositFunds {...props} />}
+        </div>
       </div>
-    </div>
+    </section>    
   );
 };
 
