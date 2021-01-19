@@ -1,4 +1,4 @@
-.lj-header {
+.header {
   background-color: var(--rh__neutral-bg1);
   height: 64px;
   position: fixed;
@@ -7,7 +7,7 @@
   z-index: 100;
 }
 
-.lj-header-outer {
+.outer {
   margin: 0 auto;
   max-width: 100%;
   width: 1024px;
@@ -21,19 +21,17 @@
   -webkit-box-direction: normal;
 }
 
-.lj-header-logo-container {
+.logoContainer {
   margin-right: 6px;
 }
 
-.lj-header-items-container {
+.itemsContainer {
   padding: 0 4px 0 6px;
   flex-shrink: 0;
   margin-left: auto;
-  /* position: relative; */
-  // border: 1px solid black;
 }
 
-.lj-header-items-outer {
+.itemsOuter {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -44,20 +42,26 @@
   -webkit-box-pack: end;
   -ms-flex-pack: end;
   justify-content: flex-end;
+
+  &>div:not(:first-child) {
+    margin-left: 33px;
+  }
 }
 
-.lj-header-items-outer > div:not(:first-child) {
-  margin-left: 33px;
-}
+.link {
+  composes: type8 from '../../styles/font.module.scss';
 
-.lj-header-link {
   display: inline-block;
   padding: 6px 0px;
   box-sizing: border-box;
   border-bottom: 2px solid transparent;
-  @include type8;
 }
 
-.lj-header-item-container {
+.disabled {
+  composes: link;
+  composes: disabled-link from '../../styles/main.module.scss';
+}
+
+.itemContainer {
   position: relative;
 }

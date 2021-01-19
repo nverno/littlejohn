@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-import HeaderContainer from './header_container';
+import Header from './header';
 import LoadingHeader from '../loading/loading_header';
+import styles from './header-page.module.scss';
 
 export default class HeaderPage extends Component {
   constructor(props) {
@@ -12,13 +13,13 @@ export default class HeaderPage extends Component {
     return (
       <>
         <LoadingHeader />
-        <div className="lj-header-page-container">
-          <div className="lj-header-page-outer">
-            <div className="lj-header-page-body">
-              <div className="main-container">{this.props.children}</div>
+        <div className={styles.container}>
+          <div className={styles.outer}>
+            <div className={styles.body}>
+              <div className={styles.main}>{this.props.children}</div>
             </div>
           </div>
-          <HeaderContainer />
+          <Header />
         </div>
       </>
     );

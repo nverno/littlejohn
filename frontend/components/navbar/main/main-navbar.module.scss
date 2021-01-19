@@ -20,11 +20,11 @@
 }
 
 .itemsContainer {
-  width: 100%;
+  // width: 100%;
   display: block;
   visibility: visible;
   position: absolute;
-  left: 160px;
+  left: 170px;
 }
 
 .logo {
@@ -100,17 +100,11 @@
 }
 
 .loginButton {
-  composes: unstyled-anchor from '../../../styles/button.module.scss';
   composes: type12 from '../../../styles/font.module.scss';
+  composes: unstyled-anchor from '../../../styles/button.module.scss';
 }
 
 .signupButton {
-  composes: signup-button from '../../../styles/button.module.scss';
   composes: type12 from '../../../styles/font.module.scss';
-}
-
-.loginText {
-  white-space: nowrap;
-  position: static;
-  text-align: center;
+  composes: signup-button from '../../../styles/button.module.scss';
 }

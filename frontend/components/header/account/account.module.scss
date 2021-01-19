@@ -1,4 +1,6 @@
-.lj-acct-drop-container {
+.container {
+  composes: theme-overlay from '../../../styles/theme.module.scss';
+
   position: absolute;
   top: 34px;
   padding: 18px 0 0;
@@ -17,36 +19,11 @@
   }
 }
 
-.lj-acct-drop-outer {
-  --rh__text-color: var(--rh__neutral-fg1);
+.outer {
   width: 100%;
 }
 
-.lj-acct-drop-header {
-  border-bottom: 1px solid;
-  border-color: var(--rh__neutral-bg3);
-  padding: 0 24px 12px;
-  display: block;
-}
-
-.lj-acct-drop-account {
-  margin-top: 12px;
-  display: flex;
-}
-
-.lj-acct-drop-portfolio-outer {
-  margin-right: 36px;
-  white-space: nowrap;
-}
-.lj-acct-drop-portfolio-inner {
-  margin-botton: 0;
-}
-
-.lj-acct-drop-buying-power {
-  white-space: nowrap;
-}
-
-.lj-acct-logout {
+.logout {
   font-weight: 500;
   color: var(--rh__neutral-fg1);
   -webkit-box-align: center;
@@ -59,7 +36,34 @@
   padding: 0 24px;
   background-color: transparent;
 }
-.lj-acct-logout-icon {
+
+.logoutIcon {
   display: inline-flex;
   margin-right: 12px;
+}
+
+// Dropdown Header
+.header {
+  border-bottom: 1px solid;
+  border-color: var(--rh__neutral-bg3);
+  padding: 0 24px 12px;
+  display: block;
+}
+
+.account {
+  margin-top: 12px;
+  display: flex;
+}
+
+.portfolioOuter {
+  margin-right: 36px;
+  white-space: nowrap;
+}
+
+.portfolioInner {
+  margin-botton: 0;
+}
+
+.buyingPower {
+  white-space: nowrap;
 }

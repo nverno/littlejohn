@@ -51,9 +51,7 @@ export default class MainNavbar extends Component {
           ) : (
             <>
               <Link to='/login' className={styles.loginButton}>
-                <span className={styles.loginText}>
-                  <span>Log In</span>
-                </span>
+                Log In
               </Link>
               <div className={styles.buttonSpacer}/>
               <Link to="/signup" className={styles.signupButton}>

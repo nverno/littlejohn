@@ -12,7 +12,6 @@ import PropagateLoader from 'react-spinners/PropagateLoader';
 import PriceGraphHeader from './price_graph_header';
 
 import { range, isPositive } from '../../selectors/prices';
-// import { Tooltip } from '../../../node_modules/react-bootstrap/esm/index';
 
 const PriceGraphTooltip = ({ active, payload, label }) => {
   if (active) {

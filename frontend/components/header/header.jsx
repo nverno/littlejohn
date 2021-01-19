@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import Logo from '../navbar/logo/logo';
 import SearchContainer from '../search/search_container';
 import HeaderItems from './header_items';
-import AccountDropdown from './account_dropdown';
+import AccountDropdown from './account/account_dropdown';
+import styles from './header.module.scss';
 
 const headerItems = [
   {
@@ -40,9 +41,9 @@ export default class Header extends Component {
 
   render() {
     return (
-      <header className="lj-header">
-        <div className="lj-header-outer">
-          <div className="lj-header-logo-container">
+      <header className={styles.header}>
+        <div className={styles.outer}>
+          <div className={styles.logoContainer}>
             <Link to="/">
               <Logo className="lj-logo" />
             </Link>

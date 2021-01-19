@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { Link, withRouter, Redirect } from 'react-router-dom';
 import { FiLogOut } from '@react-icons/all-files/fi/FiLogOut';
 
-import HeaderDropdown from './header_dropdown';
+import HeaderDropdown from '../header_dropdown';
 import AccountDropdownHeader from './account_dropdown_header';
-import { logout } from '../../actions/session_actions';
+import { logout } from '../../../actions/session_actions';
+import styles from './account.module.scss';
 
 const mapDispatchToProps = (dispatch) => ({
   logout: () => {
@@ -17,21 +18,21 @@ const mapDispatchToProps = (dispatch) => ({
 const AccountDropdown = ({ logout, ...props }) => {
   return (
     <HeaderDropdown {...props}>
-      <>
-        <div className="lj-acct-drop-container lj-theme-overlay">
-          <div className="lj-acct-drop-outer">
+      <div>
+        <div className={styles.container}>
+          <div className={styles.outer}>
             <AccountDropdownHeader />
-            <a className="lj-acct-logout" onClick={logout}>
-              <span className="lj-acct-logout-icon">
+            <a className={styles.logout} onClick={logout}>
+              <span className={styles.logoutIcon}>
                 <h3>
                   <FiLogOut size={24} />
                 </h3>
               </span>
-              <span type="lj-11">Log Out</span>
+              <span type="type11">Log Out</span>
             </a>
           </div>
         </div>
-      </>
+      </div>
     </HeaderDropdown>
   );
 };

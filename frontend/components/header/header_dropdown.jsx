@@ -5,6 +5,7 @@ import {
   headerDropdownClose,
   headerDropdownOpen,
 } from '../../actions/header_actions';
+import styles from './header.module.scss';
 
 const mapStateToProps = (state, _ownProps) => {
   const loggedIn = Boolean(state.session.currentUser);
@@ -73,7 +74,7 @@ class HeaderDropdown extends Component {
         <a
           href="#"
           onClick={() => this.toggleOpen(item.title)}
-          className="lj-header-link"
+          className={styles.link}
         >
           {item.title}
         </a>

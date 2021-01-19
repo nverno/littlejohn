@@ -4,10 +4,11 @@ import Modal from 'react-modal';
 
 import Root from './components/root';
 import configureStore from './store/store';
-
-import './styles/theme.scss';
+import './styles/theme.module.scss';
 import './styles/font.module.scss';
 import './styles/button.module.scss';
+import './styles/lj-logo.module.scss';
+import './styles/main.module.scss';
 
 // BEGIN testing
 import * as util from './util/session_api_util';

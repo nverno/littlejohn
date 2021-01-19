@@ -4,7 +4,8 @@ import {
   getUsername,
   getBuyingPower,
   getPortfolioValue,
-} from '../../selectors/user';
+} from '../../../selectors/user';
+import styles from './account.module.scss';
 
 const mapStateToProps = (state, _ownProps) => ({
   name: getUsername(state),
@@ -23,15 +24,15 @@ const AccountDropdownHeader = ({
   const portfolioValue = getPortfolioValue(holdings, quotes);
 
   return (
-    <header className="lj-acct-drop-header">
+    <header className={styles.header}>
       <h3 style={{ margin: 0 }}>
-        <span className="lj-type8">{name}</span>
+        <span className="type8">{name}</span>
       </h3>
 
-      <div className="lj-acct-drop-account">
-        <div className="lj-acct-drop-portfolio-outer">
-          <div className="lj-acct-drop-portfolio-inner">
-            <span className="lj-type4">
+      <div className={styles.account}>
+        <div className={styles.portfolioOuter}>
+          <div className={styles.portfolioInner}>
+            <span className="type4">
               <span>${portfolioValue}</span>
             </span>
           </div>
@@ -39,9 +40,9 @@ const AccountDropdownHeader = ({
           <div>Portfolio Value</div>
         </div>
 
-        <div className="lj-acct-drop-buying-power">
+        <div className={styles.buyingPower}>
           <div style={{ marginBottom: '0' }}>
-            <span className="lj-type4">
+            <span className="type4">
               <div>
                 <h3>${buyingPower}</h3>
               </div>
