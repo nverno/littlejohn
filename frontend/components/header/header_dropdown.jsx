@@ -72,7 +72,7 @@ class HeaderDropdown extends Component {
     return (
       <div ref={this.wrapperRef}>
         <a
-          href="#"
+          /* href="#" */
           onClick={() => this.toggleOpen(item.title)}
           className={styles.link}
         >
