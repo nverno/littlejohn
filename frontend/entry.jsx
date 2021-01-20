@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
   Modal.setAppElement(document.getElementById('root'));
 
   // setup store w/ bootstrapped values
-  const store = configureStore(preloadedState);
+  const { store, persistor } = configureStore(preloadedState);
   if (uiSettings) store.dispatch(loadUiSettings(uiSettings));
   const keys = {
     iex: window.iexKey,
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (store.getState().settings.theme === 'dark')
     document.body.className = 'dark';
   
-  ReactDOM.render(<Root store={store} />, root);
+  ReactDOM.render(<Root store={store} persistor={persistor} />, root);
 
   // BEGIN testing
   window.store = store;
