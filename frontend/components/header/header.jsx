@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import Logo from '../navbar/logo/logo';
+import Logo from '../logo/logo';
 import SearchContainer from '../search/search_container';
 import HeaderItems from './header_items';
 import AccountDropdown from './account/account_dropdown';
 import styles from './header.module.scss';
+import logoStyles from '../logo/logo.module.scss';
 
 const headerItems = [
   {
@@ -45,7 +46,7 @@ export default class Header extends Component {
         <div className={styles.outer}>
           <div className={styles.logoContainer}>
             <Link to="/">
-              <Logo className="lj-logo" />
+              <Logo className={logoStyles.logo}/>
             </Link>
           </div>
 

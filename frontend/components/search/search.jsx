@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import SearchIcon from './search_icon';
 import SearchMenu from './search_menu';
 import styles from './search.module.scss';
-import themes from '../../styles/theme.module.scss';
+import { setOverlay } from '../../selectors/themes';
 
 // TODO: clicking elsewhere should also close search menu
 class Search extends Component {
@@ -50,7 +50,7 @@ class Search extends Component {
   render() {
     const { query, menuOpen } = this.state;
     const { theme, searchResults } = this.props;
-    const colorTheme = theme === 'dark' ? themes.overlayDark : themes.overlay;
+    const colorTheme = setOverlay(theme);
 
     return (
       <div className={`${styles.container} ${colorTheme}`}>

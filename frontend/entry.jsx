@@ -58,6 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // for cached results
   StocksAPI.initializeStocksAPI(10 * 60 * 1000, keys);
   
+  // Set any saved themes
+  if (store.getState().settings.theme === 'dark')
+    document.body.className = 'dark';
+  
   ReactDOM.render(<Root store={store} />, root);
 
   // BEGIN testing

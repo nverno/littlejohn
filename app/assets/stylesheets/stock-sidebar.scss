@@ -152,11 +152,11 @@
 }
 .stock-order-form-button {
   @include lj-square-button(
-      $color: var(--rh__neutral-bg1),
-      $background: var(--rh__primary-base),
-      $background-color-hover: var(--rh__primary-hover)
-    )
-    border: none;
+    $color: var(--rh__neutral-bg1),
+    $background: var(--rh__primary-base),
+    $background-color-hover: var(--rh__primary-hover)
+  );
+  border: none;
   width: 100%;
 }
 

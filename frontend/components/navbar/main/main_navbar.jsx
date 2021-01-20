@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import NamedLogo from '../logo/named_logo';
+import NamedLogo from '../../logo/named_logo';
 import NavbarItems from './navbar_items';
 import styles from './main-navbar.module.scss';
 

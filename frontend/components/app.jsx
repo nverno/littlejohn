@@ -11,16 +11,8 @@ import Unknown404Container from './errors/404/unknown_404_container';
 import NavbarContainer from './navbar/navbar_container';
 // import PortfolioContainer from './portfolio/portfolio_container';
 import StockContainer from './stock/stock_container';
-import styles from '../styles/theme.module.scss';
 
-const mapStateToProps = (state) => ({
-  theme: state.settings.theme,
-});
-
-const App = ({ theme }) => {
-  if (theme === 'dark')
-    document.body.className = styles.dark;
-
+const App = () => {
   return (
     <div className='app'>
       <Switch>
@@ -50,4 +42,4 @@ const App = ({ theme }) => {
   );
 };
 
-export default connect(mapStateToProps)(App);
+export default App;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SignupFormContainer from './signup_form_container';
-import NamedLogo from '../../navbar/logo/named_logo';
+import NamedLogo from '../../logo/named_logo';
 
 export default class SignupPage extends Component {
   constructor(props) {

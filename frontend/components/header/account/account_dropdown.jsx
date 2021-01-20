@@ -8,8 +8,8 @@ import HeaderDropdown from '../header_dropdown';
 import AccountDropdownHeader from './account_dropdown_header';
 import { logout } from '../../../actions/session_actions';
 import { setTheme } from '../../../actions/settings_actions';
+import { setOverlay } from '../../../selectors/themes';
 import styles from './account.module.scss';
-import themes from '../../../styles/theme.module.scss';
 
 const mapStateToProps = (state) => ({
   theme: state.settings.theme,
@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const AccountDropdown = ({ theme, setTheme, logout, ...props }) => {
-  const colorTheme = theme === 'dark' ? themes.overlayDark : themes.overlay;
+  const colorTheme = setOverlay(theme);
 
   const toggleTheme = () => {
     if (theme === 'dark') setTheme('');
