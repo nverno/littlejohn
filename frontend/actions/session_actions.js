@@ -43,7 +43,7 @@ export const login = (formUser) => (dispatch) =>
   APIUtil.postSession(formUser)
     .then((user) => {
       dispatch(receiveCurrentUser(user));
-      dispatch(loadSettings());
+      dispatch(loadSettings(user));
     })
     .fail((err) => dispatch(receiveErrors(err.responseJSON)));
 

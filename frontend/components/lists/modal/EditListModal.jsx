@@ -1,70 +1,67 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Modal from 'react-modal';
-import { AiOutlineClose } from '@react-icons/all-files/ai/AiOutlineClose';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { GiCancel } from 'react-icons/gi';
 
-import { ListForm } from '../form/ListForm';
+import ThemedModal from '../../parts/ThemedModal';
 import {
-  updateList,
-  clearListErrors,
-  closeEditListModal,
+  updateList, openEditListModal, closeEditListModal
 } from '../../../actions/list_actions';
+import listStyles from '../lists.module.scss';
+import styles from './edit-list.module.scss';
 
-const mapStateToProps = (state, ownProps) => ({
-  formType: 'Save',
-  errors: state.errors.lists,
-  userId: state.session.currentUser.id,
-  isOpen: Boolean(state.ui.modals.editList),
-  list: state.entities.lists[state.ui.modals.editList],
-  state,
-});
+const mapStateToProps = (state, _ownProps) => {
+  const listId = state.ui.modals.editList;
+  return {
+    isOpen: Boolean(listId),
+    list: state.entities.lists[listId],
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
-  processForm: (_userId, list) => {
-    dispatch(updateList(list));
-    dispatch(closeEditListModal());
-  },
-  clearListErrors: () => dispatch(clearListErrors()),
+  updateList: (list) => dispatch(updateList(list)),
+  openEditListModal: (id) => dispatch(openEditListModal(id)),
   closeEditListModal: () => dispatch(closeEditListModal()),
 });
 
-const EditListModal = ({ list, isOpen, ...props }) => {
-  const afterOpenModal = () => {};
+const EditListModal = ({ list, isOpen, updateList, ...props }) => {
   if (!isOpen) return null;
 
-  return (
-    <div>
-      <Modal
-        isOpen={isOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={props.closeEditListModal}
-        contentLabel="Edit List"
-        className="edit-modal"
-        overlayClassName="edit-overlay"
-        ariaHideApp={false}
-      >
-        <div className="edit-list-modal">
-          <header className="edit-list-modal-header">
-            <span className="lj-type12">
-              <span>Edit List</span>
-            </span>
-            <div className="edit-list-modal-close">
-              <button
-                type="button"
-                className="edit-list-modal-close-button"
-                onClick={props.closeEditListModal}
-              >
-                <AiOutlineClose color="var(--rh__neutral-fg3)" size={24} />
-              </button>
-            </div>
-          </header>
+  const toggle = () => {
+    if (isOpen) props.closeEditListModal();
+    else props.openEditListModal();
+  };
 
-          <div className="edit-list-modal-content">
-            <ListForm list={list} {...props} />
-          </div>
-        </div>
+  const { name, assets } = list;
+  return (
+    <ThemedModal isOpen={isOpen}>
+      <Modal isOpen={isOpen} toggle={toggle} className={styles.modal}>
+        <ModalHeader toggle={toggle} className={styles.header}>
+          {name}
+        </ModalHeader>
+        <ModalBody className={styles.body}>
+          {assets.map((asset, idx) => (
+            <div
+              key={idx}
+              className={listStyles.container}
+              onClick={(e) => {
+                e.preventDefault();
+                console.log('TODO: Clicked on ', asset, '!');
+              }}
+            >
+              <div className={listStyles.outer}>
+                <div className={styles.inner}>
+                  <span>{asset}</span>
+                  <div>
+                    <GiCancel size={24} className={styles.removeIcon} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </ModalBody>
       </Modal>
-    </div>
+    </ThemedModal>
   );
 };
 

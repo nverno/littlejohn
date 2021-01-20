@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import ListHeader from './List';
 import StockCell from './cell/StockCell';
+import EditListModal from './modal/EditListModal';
 import { maybeFetchSidebarData } from '../../actions/portfolio_actions';
 import { getLists, getOpenListSymbols } from '../../selectors/lists';
 
@@ -40,6 +41,8 @@ const Lists = ({ lists, openLists, quotes, maybeFetchSidebarData, }) => {
            ))}
         </React.Fragment>
       ))}
+
+      <EditListModal />
     </>
   );
 };

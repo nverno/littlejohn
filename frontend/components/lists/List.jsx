@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { IoIosArrowDown } from '@react-icons/all-files/io/IoIosArrowDown';
 import { IoIosArrowUp } from '@react-icons/all-files/io/IoIosArrowUp';
-import { BiDotsHorizontalRounded } from '@react-icons/all-files/bi/BiDotsHorizontalRounded';
 
 import styles from './lists.module.scss';
 import fonts from '../../styles/font.module.scss';
@@ -11,8 +10,8 @@ import ListIcon from './icons/ListIcon';
 import {
   closeList,
   openList,
-  openEditListModal,
 } from '../../actions/list_actions';
+import ListDropdown from './dropdown/ListDropdown';
 
 const mapStateToProps = (state, { list: { id } }) => {
   return {
@@ -23,7 +22,6 @@ const mapStateToProps = (state, { list: { id } }) => {
 const mapDispatchToProps = (dispatch, { list: { id } }) => ({
   closeList: () => dispatch(closeList(id)),
   openList: () => dispatch(openList(id)),
-  openEditListModal: () => dispatch(openEditListModal(id)),
 });
 
 const List = ({
@@ -61,18 +59,12 @@ const List = ({
               </Link>
             </div>
 
-            <div className={styles.menu}>
-              <button
-                type="button"
-                className={styles.menuButton}
-                onClick={() => props.openEditListModal()}
-              >
-                <BiDotsHorizontalRounded size={24} />
-              </button>
-            </div>
+            <div className={styles.controls}>
+              <ListDropdown list={list} />
 
-            <div className={styles.toggle} onClick={toggleList}>
-              <div className={styles.caretContainer}>{caret}</div>
+              <div className={styles.toggle} onClick={toggleList}>
+                <div className={styles.caretContainer}>{caret}</div>
+              </div>
             </div>
           </div>
         </div>

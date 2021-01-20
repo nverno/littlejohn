@@ -1,0 +1,7 @@
+.toggle {
+  &:focus, &:active {
+    border: none;
+    outline: none;
+    box-shadow: none !important;
+  }
+}

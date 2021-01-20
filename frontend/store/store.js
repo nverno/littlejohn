@@ -2,11 +2,11 @@ import { applyMiddleware, createStore } from 'redux';
 import rootReducer from '../reducers/root_reducer';
 import thunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storageSession from 'redux-persist/lib/storage/session';
 
 const persistConfig = {
   key: 'root',
-  storage: storage,
+  storage: storageSession,
   // default autoMergeLeve1
   // stateReconciler: 
 };

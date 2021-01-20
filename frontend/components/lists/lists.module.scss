@@ -31,6 +31,11 @@
   &:hover {
     border-color: var(--rh__neutral-hover-bg1);
     background-color: var(--rh__neutral-hover-bg1);
+
+    /* show hidden edit button */
+    *>button>* {
+      fill: var(--rh__neutral-fg2);
+    }
   }
 }
 
@@ -60,27 +65,6 @@
   overflow: hidden;
 }
 
-.menu {
-  height: 24px;
-  margin-right: 20px;
-  // display: none;
-  &:hover {
-    display: block;
-  }
-}
-
-.menuButton {
-  composes: unstyled from '../../styles/button.module.scss';
-}
-
-
-.labelInner {
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  overflow: hidden;
-}
-
 .caret {
   display: inline-flex;
   --rh__text-color: var(--rh__neutral-fg1);
@@ -103,4 +87,17 @@
   display: flex;
   -webkit-box-align: center;
   align-items: center;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+
+  div:not(:first-child) {
+    margin-left: 10px;
+  }
+
+  & button>*:hover {
+    fill: var(--rh__primary-hover);
+  }
 }
