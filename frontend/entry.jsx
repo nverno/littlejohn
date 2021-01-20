@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       settings: {
         theme: window.currentUser.theme || '',
-      }
+      },
+      ui: JSON.parse(localStorage.getItem('ui')) || {},
     };
     delete window.currentUser;
   }

@@ -5,8 +5,6 @@ import { IoIosArrowDown } from '@react-icons/all-files/io/IoIosArrowDown';
 import { IoIosArrowUp } from '@react-icons/all-files/io/IoIosArrowUp';
 import { BiDotsHorizontalRounded } from '@react-icons/all-files/bi/BiDotsHorizontalRounded';
 
-import { maybeFetchSidebarData } from '../../actions/portfolio_actions';
-import { getOpenListSymbols } from '../../selectors/lists';
 import ListIcon from './ListIcon';
 import {
   closeList,
@@ -14,34 +12,27 @@ import {
   openEditListModal,
 } from '../../actions/list_actions';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state, { list: { id } }) => {
   return {
-    list: state.entities.lists[ownProps.listId],
-    open: state.ui.lists[ownProps.listId],
-    symbols: getOpenListSymbols(state),
-    quotes: state.entities.quotes,
-    // state,
+    open: state.ui.lists[id],
   };
 };
 
-const mapDispatchToProps = (dispatch, { listId }) => ({
-  closeList: () => dispatch(closeList(listId)),
-  openList: () => dispatch(openList(listId)),
-  openEditListModal: () => dispatch(openEditListModal(listId)),
-  maybeFetchSidebarData: (stateData) =>
-    dispatch(maybeFetchSidebarData(stateData)),
+const mapDispatchToProps = (dispatch, { list: { id } }) => ({
+  closeList: () => dispatch(closeList(id)),
+  openList: () => dispatch(openList(id)),
+  openEditListModal: () => dispatch(openEditListModal(id)),
 });
 
 const List = ({
-  quotes,
-  listId,
   list,
   open,
   closeList,
   openList,
-  maybeFetchSidebarData,
   ...props
 }) => {
+  if (!list) return null;
+
   const caret = (
     <span className="list-cell-caret">
       {!open ? <IoIosArrowUp size={24} /> : <IoIosArrowDown size={24} />}
@@ -50,12 +41,10 @@ const List = ({
 
   const toggleList = () => {
     if (open) closeList();
-    else {
-      maybeFetchSidebarData({ symbols: list.assets, quotes });
-      openList();
-    }
+    else openList();
   };
 
+  const { name, id: listId } = list;
   return (
     <div className="list-cell-container">
       <div className="list-cell-outer">
@@ -65,7 +54,7 @@ const List = ({
               <Link to={`/lists/${listId}`} className="list-cell-link">
                 <ListIcon />
                 <div className="list-cell-name">
-                  <span className="lj-type1">{list.name}</span>
+                  <span className="lj-type1">{name}</span>
                 </div>
               </Link>
             </div>

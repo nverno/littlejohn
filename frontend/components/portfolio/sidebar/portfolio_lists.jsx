@@ -3,17 +3,15 @@ import { connect } from 'react-redux';
 import { AiOutlinePlus } from '@react-icons/all-files/ai/AiOutlinePlus';
 
 import PortfolioSidebarHeader from './portfolio_sidebar_header';
-import List from '../../lists/List';
 import Lists from '../../lists/Lists';
 import ListForm from '../../lists/form/ListForm';
-import StockCell from '../../lists/cell/StockCell';
 import { clearListErrors } from '../../../actions/list_actions';
 import { fetchSidebarListsData } from '../../../actions/portfolio_actions';
 import styles from './psidebar.module.scss';
 
 const mapStateToProps = (state, _ownProps) => ({
-  lists: state.entities.lists,
-  openLists: state.ui.lists,
+  // lists: getLists(state.entities.lists),
+  // openLists: state.ui.lists,
   userId: state.session.currentUser.id,
 });
 
@@ -40,7 +38,7 @@ class PortfolioLists extends Component {
   }
 
   render() {
-    const { clearListErrors, lists, openLists } = this.props;
+    const { clearListErrors, } = this.props;
     const { listFormOpen } = this.state;
 
     return (
@@ -59,18 +57,7 @@ class PortfolioLists extends Component {
         </PortfolioSidebarHeader>
 
         {listFormOpen && <ListForm setOpen={this.toggleForm} />}
-
-        {/* <Lists lists={lists} /> */}
-        {Object.keys(lists).map((listId, idx) => (
-          <React.Fragment key={idx}>
-            <List key={`list-${idx}`} listId={listId} />
-
-            {openLists[listId] &&
-              lists[listId].assets.map((symbol, idx) => (
-                <StockCell key={`list-${symbol}-${idx}`} symbol={symbol} />
-              ))}
-          </React.Fragment>
-        ))}
+        <Lists />
       </>
     );
   }
