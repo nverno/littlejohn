@@ -9,8 +9,8 @@ const SearchResults = ({ results, query, ...props }) => {
   console.log("query: ", query);
   if (!query || !results) return null;
   const formatted = formatSearchResults(query, results);
-  // console.log('formatted: ', formatted);
   if (!formatted) return null;
+  console.log("formatted: ", formatted);
   return (
     <>
       {formatted.map((result, idx) => (
@@ -25,7 +25,7 @@ export const SearchResult = ({ result, selected }) => {
   return (
     <div
       className={styles.results}
-      role="option"
+      /* role="option" */
       /* aria-selected={selected} */
     >
       <Link to={linkName} className={styles.link}>

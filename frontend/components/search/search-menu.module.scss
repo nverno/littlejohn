@@ -57,21 +57,23 @@
 }
 
 .symbol {
-  flex: 0 0 75px;
+  flex: 0 0 100px;
   -webkit-box-flex: 0;
-  text-overflow: ellipsis;
+  // text-overflow: ellipsis;
 }
 
 .company {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  // white-space: nowrap;
 }
 
 .link {
   display: flex;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
 }
 
 .match {
