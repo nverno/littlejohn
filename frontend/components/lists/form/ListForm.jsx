@@ -1,9 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import ListIcon from '../ListIcon';
+import ListIcon from '../icons/ListIcon';
 
 import { createUserList, clearListErrors } from '../../../actions/list_actions';
+// Note: when composing styles, must import ones that come first before others!!!!
+// (must be a bug)
+import buttons from '../../../styles/button.module.scss';
+import fonts from '../../../styles/font.module.scss';
+import styles from './list-form.module.scss';
 
 const mapStateToProps = (state) => {
   const listErrors = state.errors.lists;
@@ -48,12 +53,12 @@ export const ListForm = ({
   };
 
   return (
-    <div className="list-form-container">
-      <form className="list-form" onSubmit={handleSubmit}>
-        <div className="list-form-name-container">
+    <div className={styles.container}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.nameContainer}>
           <ListIcon />
-          <div className="list-form-name-outer">
-            <div className="list-form-name-inner">
+          <div className={styles.nameOuter}>
+            <div className={styles.nameInner}>
               <input
                 type="text"
                 className="form-input"
@@ -66,23 +71,24 @@ export const ListForm = ({
           </div>
         </div>
 
-        <footer className="list-form-footer">
+        <footer className={styles.footer}>
           {setOpen && (
             <div style={{ marginRight: '8px' }}>
               <button
                 type="button"
-                className="list-form-cancel-button list-form-button"
+                /* className="list-form-cancel-button list-form-button" */
+                className={`${buttons.cancel} ${styles.formButton}`}
                 onClick={() => {
                   setOpen(false);
                   clearListErrors();
                 }}
               >
-                <span className="lj-type4">Cancel</span>
+                <span className={fonts.type4}>Cancel</span>
               </button>
             </div>
           )}
-          <button className="list-form-submit-button list-form-button">
-            <span className="lj-type4">{formType}</span>
+          <button className={`${buttons.submit} ${styles.formButton}`}>
+            <span className={fonts.type4}>{formType}</span>
           </button>
         </footer>
       </form>

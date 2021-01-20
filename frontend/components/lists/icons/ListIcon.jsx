@@ -1,10 +1,11 @@
 import React from 'react';
+import styles from './list-icons.module.scss';
 
-const ListIcon = props => {
+const ListIcon = () => {
   return (
-    <div className="list-cell-icon-outer">
-      <div className="list-cell-icon-inner">
-        <div className="list-cell-icon">
+    <div className={styles.outer}>
+      <div className={styles.inner}>
+        <div className={styles.icon}>
           <div aria-label="light bulb"
                role="img"
                className="icon-lightbulb">

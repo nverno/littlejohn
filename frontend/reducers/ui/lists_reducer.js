@@ -2,8 +2,10 @@ import {
   RECEIVE_CLOSE_ALL_LISTS,
   RECEIVE_CLOSE_LIST,
   RECEIVE_OPEN_LIST,
+  RECEIVE_OPEN_LISTS,
 } from '../../actions/list_actions';
 import { saveSettings } from '../../util/settings_api_util';
+import { merge } from 'lodash';
 
 export default (state = {}, action) => {
   Object.freeze(state);
@@ -21,6 +23,10 @@ export default (state = {}, action) => {
 
     case RECEIVE_OPEN_LIST:
       res = Object.assign({}, state, { [action.listId]: true });
+      break;
+
+    case RECEIVE_OPEN_LISTS:
+      res = merge(action.lists, state);
       break;
 
     default:

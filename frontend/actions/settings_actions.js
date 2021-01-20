@@ -1,4 +1,5 @@
 import * as SettingsAPI from '../util/settings_api_util';
+import { receiveOpenLists } from './list_actions';
 
 export const RECEIVE_THEME = 'RECEIVE_THEME';
 export const RESET_THEME = 'RESET_THEME';
@@ -37,4 +38,9 @@ export const resetSettings = () => dispatch => {
 
 export const loadSettings = (user) => dispatch => {
   dispatch(setTheme(user.theme));
+};
+
+export const loadUiSettings = (settings) => dispatch => {
+  if (settings.lists)
+    dispatch(receiveOpenLists(settings.lists));
 };

@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 
 import Root from './components/root';
 import configureStore from './store/store';
-import { receiveApiKeys } from './actions/settings_actions';
+import { receiveApiKeys, loadUiSettings } from './actions/settings_actions';
 
 import './styles/theme.module.scss';
 import './styles/font.module.scss';
@@ -27,6 +27,7 @@ import * as settings from './actions/settings_actions';
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   let preloadedState = undefined;
+  let uiSettings;
 
   // bootstrap currentUser
   if (window.currentUser) {
@@ -37,8 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
       settings: {
         theme: window.currentUser.theme || '',
       },
-      ui: JSON.parse(localStorage.getItem('ui')) || {},
     };
+    // dispatch these to store so hooks will be run when the changes are seen
+    uiSettings = JSON.parse(localStorage.getItem('ui'));
     delete window.currentUser;
   }
 
@@ -47,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // setup store w/ bootstrapped values
   const store = configureStore(preloadedState);
+  if (uiSettings) store.dispatch(loadUiSettings(uiSettings));
   const keys = {
     iex: window.iexKey,
     av: window.avKeys,

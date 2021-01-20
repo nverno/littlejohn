@@ -1,16 +1,12 @@
 import * as Holdings from './holdings_actions';
-// import { fetchPublicLists, fetchUserLists } from './list_actions';
 import { iexAPI } from '../util/stocks_api';
 import {
   receiveBatchQuotes,
-  // fetchBatchPrices,
   receiveBatchPrices,
   receiveApiErrors,
 } from './stock_price_actions';
 import * as UserAPI from '../util/user_api_util';
 import * as Lists from './list_actions';
-
-// import * as ListsAPI from '../util/list_api_util';
 
 export const fetchPortfolioStockData = (holdings) => (dispatch) => {
   iexAPI
@@ -30,6 +26,7 @@ const symbolsToFetch = (symbols, quotes) =>
 
 // only get quotes for holdings if haven't already
 export const maybeFetchSidebarData = ({ symbols, quotes }) => (dispatch) => {
+  console.log('sidebar fetch: ', symbols, quotes);
   const syms = symbolsToFetch(symbols, quotes);
   if (syms.length > 0) {
     iexAPI

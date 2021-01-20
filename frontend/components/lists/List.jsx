@@ -5,7 +5,9 @@ import { IoIosArrowDown } from '@react-icons/all-files/io/IoIosArrowDown';
 import { IoIosArrowUp } from '@react-icons/all-files/io/IoIosArrowUp';
 import { BiDotsHorizontalRounded } from '@react-icons/all-files/bi/BiDotsHorizontalRounded';
 
-import ListIcon from './ListIcon';
+import styles from './lists.module.scss';
+import fonts from '../../styles/font.module.scss';
+import ListIcon from './icons/ListIcon';
 import {
   closeList,
   openList,
@@ -34,7 +36,7 @@ const List = ({
   if (!list) return null;
 
   const caret = (
-    <span className="list-cell-caret">
+    <span className={styles.caret}>
       {!open ? <IoIosArrowUp size={24} /> : <IoIosArrowDown size={24} />}
     </span>
   );
@@ -46,31 +48,31 @@ const List = ({
 
   const { name, id: listId } = list;
   return (
-    <div className="list-cell-container">
-      <div className="list-cell-outer">
-        <div className="list-cell-button">
-          <div className="list-cell-inner">
-            <div className="list-cell-label-container">
-              <Link to={`/lists/${listId}`} className="list-cell-link">
+    <div className={styles.container}>
+      <div className={styles.outer}>
+        <div className={styles.button}>
+          <div className={styles.inner}>
+            <div className={styles.label}>
+              <Link to={`/lists/${listId}`} className={styles.link}>
                 <ListIcon />
-                <div className="list-cell-name">
-                  <span className="lj-type1">{name}</span>
+                <div className={styles.name}>
+                  <span className={fonts.type1}>{name}</span>
                 </div>
               </Link>
             </div>
 
-            <div className="list-cell-overflow-menu">
+            <div className={styles.menu}>
               <button
                 type="button"
-                className="list-cell-overflow-button"
+                className={styles.menuButton}
                 onClick={() => props.openEditListModal()}
               >
                 <BiDotsHorizontalRounded size={24} />
               </button>
             </div>
 
-            <div className="list-cell-toggle-container" onClick={toggleList}>
-              <div className="list-cell-caret-container">{caret}</div>
+            <div className={styles.toggle} onClick={toggleList}>
+              <div className={styles.caretContainer}>{caret}</div>
             </div>
           </div>
         </div>

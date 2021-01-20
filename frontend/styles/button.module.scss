@@ -74,6 +74,21 @@
   );
 }
 
+.cancel {
+  @include signup-button-mixin(
+    $color: var(--rh__primary-base),
+    $bg-color: transparent,
+    $bg-color-hover: var(--rh__primary-light-base));
+  border: 1px solid currentcolor;
+}
+
+.submit {
+  @include signup-button-mixin(
+    $bg-color: var(--rh__primary-base),
+    $bg-color-hover: var(--rh__primary-light-base));
+  border: 0px;
+}
+
 .unstyled {
   background: none;
   border: 0;

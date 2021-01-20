@@ -8,11 +8,10 @@ export const getFollowedLists = (state) => {
   return res;
 };
 
-export const getOpenListSymbols = (state) => {
-  const listIds = Object.keys(state.ui.lists);
-  if (!state.entities.lists.length) return [];
+export const getOpenListSymbols = ({ openLists, lists }) => {
+  const listIds = Object.keys(openLists);
   return listIds.reduce(
-    (acc, listId) => acc.concat(state.entities.lists[listId].assets),
+    (acc, listId) => acc.concat(lists[listId].assets),
     []
   );
 };

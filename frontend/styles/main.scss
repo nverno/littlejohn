@@ -330,3 +330,13 @@ a {
   margin-bottom: var(--rh__size-palette__gutterWidth);
   position: relative;
 }
+
+.list-errors {
+  list-style: none;
+  color: var(--rh__semantic-negative-base);
+  font-family: var(--rh__type-palette__type4__stack);
+  font-size: var(--rh__type-palette__type4__font-size);
+  font-weight: var(--rh__type-palette__type4__font-weight);
+  line-height: var(--rh__type-palette__type4__line-height);
+  letter-spacing: var(--rh__type-palette__type4__letter-spacing);
+}

@@ -7,31 +7,37 @@ import { maybeFetchSidebarData } from '../../actions/portfolio_actions';
 import { getLists, getOpenListSymbols } from '../../selectors/lists';
 
 const mapStateToProps = (state) => ({
-  lists: getLists(state.entities.lists),
+  lists: state.entities.lists,
   openLists: state.ui.lists,
   quotes: state.entities.quotes,
-  symbols: getOpenListSymbols(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   maybeFetchSidebarData: (stateData) => dispatch(maybeFetchSidebarData(stateData)),
 });
 
-const Lists = ({ lists, openLists, quotes, symbols, maybeFetchSidebarData, }) => {
+const all = (arr, fn = Boolean) => arr.every(fn);
+const Lists = ({ lists, openLists, quotes, maybeFetchSidebarData, }) => {
   useEffect(() => {
-    maybeFetchSidebarData({ symbols, quotes });
-  }, [openLists]);
+    // if open lists are loaded from localStorage, lists may not be populated...
+    if (!quotes || !all(Object.keys(openLists), (lst => lists[lst])))
+      return ;
+
+    const symbolsToFetch = getOpenListSymbols({ openLists, lists });
+    maybeFetchSidebarData({ symbols: symbolsToFetch, quotes });
+  }, [lists, openLists]);
   
+  const orderedLists = getLists(lists);
   return (
     <>
-      {lists.map((list, idx) => (
+      {orderedLists.map((list, idx) => (
         <React.Fragment key={idx}>
           <ListHeader key={`list-${idx}`} list={list} />
 
-        {openLists[list.id] &&
-         list.assets.map((symbol, idx) => (
-           <StockCell key={`list-${symbol}-${idx}`} symbol={symbol} />
-         ))}
+          {openLists[list.id] &&
+           list.assets.map((symbol, idx) => (
+             <StockCell key={`list-${symbol}-${idx}`} symbol={symbol} />
+           ))}
         </React.Fragment>
       ))}
     </>
