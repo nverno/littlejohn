@@ -1,13 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import { GiCancel } from 'react-icons/gi';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import {
+  SortableHandle,
+  SortableContainer,
+  SortableElement
+} from 'react-sortable-hoc';
+import arrayMove from 'array-move';
 
 import ThemedModal from '../../parts/ThemedModal';
+import ListCell from './ListCell';
 import {
   updateList, openEditListModal, closeEditListModal
 } from '../../../actions/list_actions';
-import listStyles from '../lists.module.scss';
+// import listStyles from '../lists.module.scss';
 import styles from './edit-list.module.scss';
 
 const mapStateToProps = (state, _ownProps) => {
@@ -24,12 +31,39 @@ const mapDispatchToProps = (dispatch) => ({
   closeEditListModal: () => dispatch(closeEditListModal()),
 });
 
+const DragHandle = SortableHandle(() => (
+  <span className="burger">
+    <GiHamburgerMenu size={24} color="var(--st__neutral-fg2)" />
+  </span>
+));
+
+const SortableItem = SortableElement(({ item }) => (
+  <ListCell handle={<DragHandle />} asset={item} />
+));
+
+const SortableList = SortableContainer(({ items }) => {
+  return (
+    <div>
+      {items.map((item, idx) => (
+        <SortableItem item={item} key={`item-${item}`} index={idx} />
+      ))}
+    </div>
+  );
+});
+
 const EditListModal = ({ list, isOpen, updateList, ...props }) => {
   if (!isOpen) return null;
 
   const toggle = () => {
     if (isOpen) props.closeEditListModal();
     else props.openEditListModal();
+  };
+
+  const onSortEnd = ({ oldIndex, newIndex }) => {
+    updateList({
+      ...list,
+      assets: arrayMove(list.assets, oldIndex, newIndex)
+    });
   };
 
   const { name, assets } = list;
@@ -40,25 +74,7 @@ const EditListModal = ({ list, isOpen, updateList, ...props }) => {
           {name}
         </ModalHeader>
         <ModalBody className={styles.body}>
-          {assets.map((asset, idx) => (
-            <div
-              key={idx}
-              className={listStyles.container}
-              onClick={(e) => {
-                e.preventDefault();
-                console.log('TODO: Clicked on ', asset, '!');
-              }}
-            >
-              <div className={listStyles.outer}>
-                <div className={styles.inner}>
-                  <span>{asset}</span>
-                  <div>
-                    <GiCancel size={24} className={styles.removeIcon} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+          <SortableList items={assets} onSortEnd={onSortEnd} />
         </ModalBody>
       </Modal>
     </ThemedModal>
