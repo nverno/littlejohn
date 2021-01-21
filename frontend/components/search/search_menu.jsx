@@ -7,8 +7,8 @@ import styles from './search-menu.module.scss';
 const SearchMenu = ({ query, searchResults, loading, ...props }) => {
   // const [selected, setSelected] = React.useState(0);
   const results = !searchResults || loading
-        ? <BeatLoader />
-        : (!searchResults.length && query // && query.length
+        ? <BeatLoader color='var(--rh__neutral-fg3)'/>
+        : (!searchResults.length && query
            ? 'We were unable to find any results for your search.'
            : <SearchResults items={searchResults} query={query} {...props} />);
 
