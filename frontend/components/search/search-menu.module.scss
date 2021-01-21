@@ -38,6 +38,12 @@
   }
 }
 
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .results {
   font-weight: 500;
   -webkit-box-align: center;

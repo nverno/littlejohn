@@ -57,7 +57,9 @@ class Search extends Component {
     const colorTheme = setOverlay(theme);
 
     return (
-      <div className={`${styles.container} ${colorTheme}`}>
+      <div className={menuOpen
+                      ? `${styles.container} ${colorTheme}`
+                      : styles.container}>
         <div className={styles.box}>
           <div
             className={styles.boxOuter}
@@ -77,7 +79,7 @@ class Search extends Component {
                 placeholder="Search"
               />
             </div>
-            {menuOpen && (
+            {menuOpen && query && query.length && (
               <SearchMenu
                 results={searchResults}
                 query={query}
