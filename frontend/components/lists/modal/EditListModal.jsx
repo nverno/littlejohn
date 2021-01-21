@@ -10,11 +10,11 @@ import {
 import arrayMove from 'array-move';
 
 import ThemedModal from '../../parts/ThemedModal';
+import RenameForm from '../form/RenameForm';
 import ListCell from './ListCell';
 import {
   updateList, openEditListModal, closeEditListModal
 } from '../../../actions/list_actions';
-// import listStyles from '../lists.module.scss';
 import styles from './edit-list.module.scss';
 
 const mapStateToProps = (state, _ownProps) => {
@@ -29,29 +29,40 @@ const mapDispatchToProps = (dispatch) => ({
   updateList: (list) => dispatch(updateList(list)),
   openEditListModal: (id) => dispatch(openEditListModal(id)),
   closeEditListModal: () => dispatch(closeEditListModal()),
+  removeAsset: (asset, list) => dispatch(updateList({
+    ...list,
+    assets: list.assets.filter(el => el !== asset),
+  })),
 });
 
 const DragHandle = SortableHandle(() => (
-  <span className="burger">
+  <span className={styles.burger}>
     <GiHamburgerMenu size={24} color="var(--st__neutral-fg2)" />
   </span>
 ));
 
-const SortableItem = SortableElement(({ item }) => (
-  <ListCell handle={<DragHandle />} asset={item} />
+const SortableItem = SortableElement(({ item, ...props }) => (
+  <ListCell
+    handle={<DragHandle />}
+    asset={item}
+    {...props} />
 ));
 
-const SortableList = SortableContainer(({ items }) => {
+const SortableList = SortableContainer(({ items, ...props }) => {
   return (
     <div>
       {items.map((item, idx) => (
-        <SortableItem item={item} key={`item-${item}`} index={idx} />
+        <SortableItem
+          item={item}
+          key={`item-${item}`}
+          index={idx}
+          {...props} />
       ))}
     </div>
   );
 });
 
-const EditListModal = ({ list, isOpen, updateList, ...props }) => {
+const EditListModal = ({ list, isOpen, updateList, removeAsset, ...props }) => {
   if (!isOpen) return null;
 
   const toggle = () => {
@@ -71,10 +82,14 @@ const EditListModal = ({ list, isOpen, updateList, ...props }) => {
     <ThemedModal isOpen={isOpen}>
       <Modal isOpen={isOpen} toggle={toggle} className={styles.modal}>
         <ModalHeader toggle={toggle} className={styles.header}>
-          {name}
+          <RenameForm list={list} updateList={updateList} />
         </ModalHeader>
         <ModalBody className={styles.body}>
-          <SortableList items={assets} onSortEnd={onSortEnd} />
+          <SortableList
+            items={assets}
+            onSortEnd={onSortEnd}
+            removeAsset={(asset) => removeAsset(asset, list) }
+            useDragHandle {...props} />
         </ModalBody>
       </Modal>
     </ThemedModal>

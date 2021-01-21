@@ -20,7 +20,9 @@
 
 .burger {
   margin-right: 10px;
-  &>*:hover {
+  cursor: move;
+
+  &:hover {
     fill: var(--st__primary-hover);
   }
 }

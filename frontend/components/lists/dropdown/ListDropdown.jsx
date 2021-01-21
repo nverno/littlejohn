@@ -9,7 +9,9 @@ import { BsListCheck } from 'react-icons/bs';
 import { removeList, openEditListModal } from '../../../actions/list_actions';
 import styles from './dropdown.module.scss';
 
-const mapStateToProps = (state, ownProps) => ({});
+const mapStateToProps = (state) => ({
+  theme: state.settings.theme,
+});
 
 const mapDispatchToProps = (dispatch, { list: { id } }) => ({
   removeList: () => dispatch(removeList(id)),
@@ -17,41 +19,40 @@ const mapDispatchToProps = (dispatch, { list: { id } }) => ({
 });
 
 
-const ListDropdown = ({ list, removeList, openEditListModal, ...props }) => {
+const ListDropdown = ({ list, theme, removeList, openEditListModal, ...props }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   // const [editModalOpen, setEditModalOpen] = React.useState(false);
   // const toggleEditModal = () => setEditModalOpen(!editModalOpen);
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <>
+    <div className={`${theme}`}>
       <ButtonDropdown isOpen={isOpen} toggle={toggle} direction="down">
         <DropdownToggle
           color="transparent"
-          /* FIXME: color on hover */
           className={styles.toggle}
           data-toggle='modal'
         >
           <BiDotsHorizontalRounded size={24} color="transparent" />
         </DropdownToggle>
 
-        <DropdownMenu className={styles.menu} right={true}>
-          <DropdownItem onClick={() => openEditListModal()} >
+        <DropdownMenu className={`overlay ${styles.menu}`} right={true}>
+          <DropdownItem onClick={() => openEditListModal()} className={styles.item}>
             <span>
               <BsListCheck size={24} />
             </span>
-            Edit List
+            <span>Edit List</span>
           </DropdownItem>
 
-          <DropdownItem onClick={removeList}>
+          <DropdownItem onClick={removeList} className={styles.item}>
             <span>
               <TiDeleteOutline size={24} />
             </span>
-            Delete List
+            <span>Delete List</span>
           </DropdownItem>
         </DropdownMenu>
       </ButtonDropdown>
-    </>
+    </div>
   );
 };
 
