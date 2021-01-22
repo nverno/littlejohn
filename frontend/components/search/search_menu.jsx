@@ -1,13 +1,14 @@
 import React from 'react';
+import BeatLoader from 'react-spinners/BeatLoader';
 
 import SearchResults from './search_results';
 import styles from './search-menu.module.scss';
 
-const SearchMenu = ({ query, searchResults, ...props }) => {
+const SearchMenu = ({ query, searchResults, loading, ...props }) => {
   // const [selected, setSelected] = React.useState(0);
-  const results = !searchResults
-        ? null
-        : (!searchResults.length && query // && query.length
+  const results = !searchResults || loading
+        ? <BeatLoader color='var(--rh__neutral-fg3)'/>
+        : (!searchResults.length && query
            ? 'We were unable to find any results for your search.'
            : <SearchResults items={searchResults} query={query} {...props} />);
 
@@ -18,7 +19,9 @@ const SearchMenu = ({ query, searchResults, ...props }) => {
           <section>
             <h4>Stocks</h4>
           </section>
-          {results}
+          {loading
+           ? <div className={styles.loading}>{results}</div>
+           : results}
         </div>
       </div>
     </div>

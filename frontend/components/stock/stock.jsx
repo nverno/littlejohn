@@ -8,6 +8,7 @@ import SidebarContent from '../parts/sidebar_content';
 import StockOrderForm from './stock_order_form';
 import StockSidebarButtons from './stock_sidebar_buttons';
 import StockHoldings from './stock_holdings';
+import SelectListModal from '../lists/modal/SelectListModal';
 
 export default class Stock extends Component {
   constructor(props) {
@@ -73,6 +74,8 @@ export default class Stock extends Component {
             </SidebarContent>
           </div>
         </div>
+
+        <SelectListModal />
       </HeaderPage>
     );
   }

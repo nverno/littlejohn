@@ -10,22 +10,23 @@ export const CLEAR_LIST_ERRORS = 'CLEAR_LIST_ERRORS';
 export const RECEIVE_OPEN_LIST = 'RECEIVE_OPEN_LIST';
 export const RECEIVE_CLOSE_LIST = 'RECEIVE_CLOSE_LIST';
 export const RECEIVE_CLOSE_ALL_LISTS = 'RECEIVE_CLOSE_ALL_LISTS';
-export const OPEN_EDIT_LIST_MODAL = 'OPEN_EDIT_LIST_MODAL';
-export const CLOSE_EDIT_LIST_MODAL = 'CLOSE_EDIT_LIST_MODAL';
 export const RECEIVE_OPEN_LISTS = 'RECEIVE_OPEN_LISTS';
+export const CLOSE_LIST_MODALS = 'CLOSE_LIST_MODALS';
+export const OPEN_LIST_MODAL = 'OPEN_LIST_MODAL';
+
+export const openListModal = (name, value) => ({
+  type: OPEN_LIST_MODAL,
+  name,
+  value,
+});
+
+export const closeListModals = () => ({
+  type: CLOSE_LIST_MODALS,
+});
 
 export const receiveOpenLists = (lists) => ({
   type: RECEIVE_OPEN_LISTS,
   lists
-});
-
-export const closeEditListModal = () => ({
-  type: CLOSE_EDIT_LIST_MODAL,
-});
-
-export const openEditListModal = (listId) => ({
-  type: OPEN_EDIT_LIST_MODAL,
-  listId,
 });
 
 export const closeAllLists = () => ({

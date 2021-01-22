@@ -1,7 +1,34 @@
 @import-normalize;
 @import './themes.scss';
 
-// Bootstrap Overrides
+// START bootstrap-overrides
+.modal-header, .modal-content, .modal-body {
+  color: var(--rh__neutral-fg1);
+  background-color: var(--rh__neutral-bg1);
+  border-radius: var(--rh__size-palette__borderRadius);
+  box-sizing: border-box;
+  box-shadow: 0px 12px 24px var(--rh__shadow__s1),
+              0px -12px 24px var(--rh__shadow__s2);
+}
+
+.dropdown-header, .dropdown-item, .dropdown-menu {
+  color: var(--rh__neutral-fg1);
+  background-color: var(--rh__neutral-bg1);
+}
+
+.dropdown-menu {
+  // box-shadow: 0px 6px 12px 2px var(--rh__neutral-bg2);
+}
+
+.dropdown-item:hover {
+  color: var(--rh__primary-hover);
+  background-color: var(--rh__neutral-hover-bg1);
+}
+
+.dropdown-item span {
+  margin-right: 5px;
+}
+// END bootstrap-overrides
 
 @import 'bootstrap/dist/css/bootstrap.min.css';
 

@@ -23,3 +23,15 @@ export const getLists = (lists) => {
   res.sort((a, b) => a.index - b.index);
   return res;
 };
+
+export const listContains = (list, symbol) => {
+  return list.assets.some(item => item === symbol);
+};
+
+export const isWatched = (asset, lists) => {
+  for (const [key, list] of Object.entries(lists)) {
+    if (list.assets.includes(asset))
+      return true;
+  }
+  return false;
+};

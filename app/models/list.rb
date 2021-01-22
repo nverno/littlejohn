@@ -35,6 +35,7 @@ class List < ApplicationRecord
     self.size = new_assets.size
     save
     assets.destroy_all
+
     new_assets.each.with_index do |asset, idx|
       assets.create(symbol: asset, index: idx)
     end

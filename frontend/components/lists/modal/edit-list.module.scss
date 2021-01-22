@@ -1,7 +1,26 @@
-.modal {
-  max-width: 100%;
-  animation-name: animation-1mblexk;
-  animation-duration: 300ms;
-  margin: 20vh auto 0px;
-  position: relative;
+.removeIcon {
+  color: var(--rh__semantic-error-base);
+}
+
+.inner {
+  composes: inner from '../lists.module.scss';
+  padding: 5px 20px 5px 20px;
+  border-bottom: 1px solid;
+  border-color: var(--rh__neutral-bg3);
+}
+
+.header {
+  
+}
+
+.body {
+}
+
+.burger {
+  margin-right: 10px;
+  cursor: move;
+
+  &:hover {
+    fill: var(--st__primary-hover);
+  }
 }

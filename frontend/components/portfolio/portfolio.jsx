@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import HeaderPage from '../header/header_page';
 import PortfolioSidebar from './sidebar/portfolio_sidebar';
-import EditListModal from '../lists/modal/EditListModal';
+// import EditListModal from '../lists/modal/EditListModal';
 import PopularLists from './popular_lists';
 import BuyingPower from './buying_power';
 import PortfolioGraphContainer from './graph/portfolio_graph_container';
@@ -42,7 +42,7 @@ export default class Portfolio extends Component {
           </div>
         </div>
 
-        <EditListModal />
+        {/* <EditListModal /> */}
       </HeaderPage>
     );
   }

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import onClickOutside from 'react-onclickoutside';
 
 import SearchIcon from './search_icon';
 import SearchMenu from './search_menu';
 import styles from './search.module.scss';
 import { setOverlay } from '../../selectors/themes';
 
-// TODO: clicking elsewhere should also close search menu
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -47,13 +47,19 @@ class Search extends Component {
     }
   }
 
+  handleClickOutside(e) {
+    this.setState({ menuOpen: false });
+  }
+
   render() {
     const { query, menuOpen } = this.state;
     const { theme, searchResults } = this.props;
     const colorTheme = setOverlay(theme);
 
     return (
-      <div className={`${styles.container} ${colorTheme}`}>
+      <div className={menuOpen
+                      ? `${styles.container} ${colorTheme}`
+                      : styles.container}>
         <div className={styles.box}>
           <div
             className={styles.boxOuter}
@@ -73,7 +79,7 @@ class Search extends Component {
                 placeholder="Search"
               />
             </div>
-            {menuOpen && (
+            {menuOpen && query && query.length && (
               <SearchMenu
                 results={searchResults}
                 query={query}
@@ -87,4 +93,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default onClickOutside(Search);

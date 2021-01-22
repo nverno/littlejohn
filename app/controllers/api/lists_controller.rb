@@ -18,6 +18,8 @@ class Api::ListsController < ApplicationController # rubocop:todo Style/Document
 
   def update
     @list = List.find(params[:id])
+    # workaround rails substituting nil for [] in params...
+    params[:list][:assets] ||= [] # if params[:list].has_key?(:assets)
     if @list.update(list_params)
       # XXX: when changing associations, need to hit database again?
       @list = List.find(params[:id])
@@ -53,6 +55,6 @@ class Api::ListsController < ApplicationController # rubocop:todo Style/Document
   private
 
   def list_params
-    params.require(:list).permit(:name, :public, :user_id, assets: [])
+    params.require(:list).permit(:name, :public, :user_id, :index, assets: [])
   end
 end

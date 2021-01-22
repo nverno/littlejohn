@@ -5,15 +5,18 @@
 export const formatSearchResults = (query, results) => {
   if (!results) return null;
 
-  const formatted = results.map((res) => {
-    const symbol = res['1. symbol'];
-    return {
-      symbol: splitByMatches(query, symbol),
-      name: splitByMatches(query, res['2. name']),
-      matchScore: parseFloat(res['9. matchScore']),
-      linkName: `/stocks/${symbol}`,
-    };
-  });
+  const formatted = results
+        .filter(res => res['4. region'] === 'United States' &&
+                res['3. type'] === 'Equity')
+        .map((res) => {
+          const symbol = res['1. symbol'];
+          return {
+            symbol: splitByMatches(query, symbol),
+            name: splitByMatches(query, res['2. name']),
+            matchScore: parseFloat(res['9. matchScore']),
+            linkName: `/stocks/${symbol}`,
+          };
+        });
 
   return formatted;
 };

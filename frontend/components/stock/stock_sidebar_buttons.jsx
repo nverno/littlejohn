@@ -3,30 +3,23 @@ import { connect } from 'react-redux';
 import { IoMdCheckmark } from '@react-icons/all-files/io/IoMdCheckmark';
 import { AiOutlinePlus } from '@react-icons/all-files/ai/AiOutlinePlus';
 
-import { updateList, fetchUserLists } from '../../actions/list_actions';
+import {
+  fetchUserLists,
+  openListModal,
+} from '../../actions/list_actions';
+import { isWatched } from '../../selectors/lists';
 
-const mapStateToProps = (state, ownProps) => {
-  const { symbol } = ownProps;
+const mapStateToProps = (state, { symbol }) => {
   const { lists } = state.entities;
-  let inList = false;
-
-  for (const [key, list] of Object.entries(lists)) {
-    if (list.assets.includes(symbol)) {
-      inList = true;
-      break;
-    }
-  }
-
   return {
-    lists: state.entities.lists,
-    inList,
     lists,
+    inList: isWatched(symbol, lists)
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  updateList: (list) => dispatch(updateList(list)),
+const mapDispatchToProps = (dispatch, { symbol }) => ({
   fetchUserLists: () => dispatch(fetchUserLists()),
+  openSelectModal: () => dispatch(openListModal('select', symbol)),
 });
 
 class StockSidebarButtons extends Component {
@@ -41,22 +34,11 @@ class StockSidebarButtons extends Component {
 
   handleClick(e) {
     e.preventDefault();
-    const { symbol, updateList, lists, inList } = this.props;
-    console.log(lists);
-    if (!lists || lists.length === 0) return;
-    // FIXME: just puts in first list
-    const list = Object.values(lists)[0];
-    // console.log(list);
-    if (!list.assets.includes(symbol)) {
-      list.assets.push(symbol);
-    } else {
-      list.assets.splice(list.assets.indexOf(symbol), 1);
-    }
-    updateList(list);
+    this.props.openSelectModal();
   }
 
   render() {
-    const { symbol, updateList, lists, inList } = this.props;
+    const { inList } = this.props;
 
     return (
       <div className="stock-sidebar-buttons">
@@ -71,8 +53,8 @@ class StockSidebarButtons extends Component {
                 {inList ? (
                   <IoMdCheckmark color="var(--rh__primary-base)" size={24} />
                 ) : (
-                  <AiOutlinePlus color="var(--rh__primary-base)" size={24} />
-                )}{' '}
+                    <AiOutlinePlus color="var(--rh__primary-base)" size={24} />
+                  )}{' '}
                 <span className="lj-type4">Add to Lists</span>
               </span>
             </div>

@@ -1,0 +1,51 @@
+.checkContainer {
+  flex: 0 0 50px;
+}
+
+.createList {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  composes: type11 from '../../../styles/font.module.scss';
+}
+.createContainer {
+  margin: 5px 15px 5px 15px;
+  min-height: 55px;
+  border-bottom: 1px solid var(--rh__neutral-fg3);
+}
+
+.modal {}
+.header {}
+.body {}
+
+// A row in list
+.item {
+  composes: type11 from '../../../styles/font.module.scss';
+  display: flex;
+  align-items: center;
+  margin: 5px 15px 5px 15px;
+  height: 60px;
+}
+
+.listIcon {
+  flex: 0 0 50px;
+}
+
+.nameContainer {
+  display: inline-block;
+  // margin: 0;
+  // padding: 0;
+  span:first-child {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+  span:not(:first-child) {
+    padding-top: 0px;
+    margin-top: 0px;
+  }
+}
+
+.listSize {
+  color: var(--rh__neutral-fg3);
+  font-size: 12px;
+}

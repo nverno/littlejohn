@@ -1,0 +1,13 @@
+.toggle {
+  &:focus, &:active {
+    border: none;
+    outline: none;
+    box-shadow: none !important;
+  }
+}
+
+.item {
+  span:not(:first-child) {
+    margin-left: 15px;
+  }
+}
