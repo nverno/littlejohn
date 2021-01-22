@@ -13,6 +13,17 @@ export const RECEIVE_CLOSE_ALL_LISTS = 'RECEIVE_CLOSE_ALL_LISTS';
 export const OPEN_EDIT_LIST_MODAL = 'OPEN_EDIT_LIST_MODAL';
 export const CLOSE_EDIT_LIST_MODAL = 'CLOSE_EDIT_LIST_MODAL';
 export const RECEIVE_OPEN_LISTS = 'RECEIVE_OPEN_LISTS';
+export const OPEN_SELECT_LIST_MODAL = 'OPEN_SELECT_LIST_MODAL';
+export const CLOSE_SELECT_LIST_MODAL = 'CLOSE_SELECT_LIST_MODAL';
+
+export const closeSelectListModal = () => ({
+  type: CLOSE_SELECT_LIST_MODAL,
+});
+
+export const openSelectListModal = (asset) => ({
+  type: OPEN_SELECT_LIST_MODAL,
+  asset,
+});
 
 export const receiveOpenLists = (lists) => ({
   type: RECEIVE_OPEN_LISTS,
