@@ -2,11 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { BiDotsHorizontalRounded } from 'react-icons/bi';
-import { AiOutlineEdit } from 'react-icons/ai';
+import { IoMdReorder } from 'react-icons/io';
 import { TiDeleteOutline } from 'react-icons/ti';
 import { BsListCheck } from 'react-icons/bs';
 
-import { removeList, openListModal } from '../../../actions/list_actions';
+import {
+  removeList,
+  openListModal
+} from '../../../actions/list_actions';
 import styles from './dropdown.module.scss';
 
 const mapStateToProps = (state) => ({
@@ -16,9 +19,12 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch, { list: { id } }) => ({
   removeList: () => dispatch(removeList(id)),
   openEditModal: () => dispatch(openListModal('edit', id)),
+  openOrderModal: () => dispatch(openListModal('order', true)),
 });
 
-const ListDropdown = ({ list, theme, removeList, openEditModal, ...props }) => {
+const ListDropdown = ({
+  list, theme, removeList, openEditModal,
+  openOrderModal, ...props }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -34,6 +40,13 @@ const ListDropdown = ({ list, theme, removeList, openEditModal, ...props }) => {
         </DropdownToggle>
 
         <DropdownMenu className={`overlay ${styles.menu}`} right={true}>
+          <DropdownItem onClick={() => openOrderModal()} className={styles.item}>
+            <span>
+              <IoMdReorder size={24} />
+            </span>
+            <span>Rearrange Lists</span>
+          </DropdownItem>
+
           <DropdownItem onClick={() => openEditModal()} className={styles.item}>
             <span>
               <BsListCheck size={24} />
