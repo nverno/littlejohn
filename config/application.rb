@@ -11,6 +11,10 @@ module Littlejohn
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    # https://stackoverflow.com/questions/62145080/heroku-precompiling-assets-failed-push-rejected-failed-to-compile-ruby-app
+    # building assets failing on heroku
+    config.assets.js_compressor = Uglifier.new(harmony: true)
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
