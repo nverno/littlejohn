@@ -11,8 +11,8 @@ module Littlejohn
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
-    # https://stackoverflow.com/questions/62145080/heroku-precompiling-assets-failed-push-rejected-failed-to-compile-ruby-app
     # building assets failing on heroku
+    # https://github.com/lautis/uglifier/issues/127#issuecomment-352224986
     config.assets.js_compressor = Uglifier.new(harmony: true)
 
     # Settings in config/environments/* take precedence over those specified here.
@@ -20,8 +20,9 @@ module Littlejohn
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    # Note: fixed this in lists_controller.rb to default to [] when assets is nil
     # bug httparty converts '[]' to 'nil' on put/patch requests from controller??
     # https://stackoverflow.com/questions/15399423/how-do-i-send-an-empty-array-through-a-put-request-via-httparty
-    config.action_dispatch.perform_deep_munge = false
+    # config.action_dispatch.perform_deep_munge = false
   end
 end
