@@ -13,8 +13,8 @@ module Littlejohn
 
     # building assets failing on heroku
     # https://github.com/lautis/uglifier/issues/127#issuecomment-352224986
-    # config.assets.js_compressor = Uglifier.new(harmony: true)
-    config.assets.js_compressor = :uglifier
+    config.assets.js_compressor = Uglifier.new(harmony: true)
+    # config.assets.js_compressor = :uglifier
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

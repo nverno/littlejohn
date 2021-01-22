@@ -8,7 +8,6 @@
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "@react-icons/all-files": "^4.1.0",
-    "array-move": "^3.0.1",
     "bootstrap": "^4.6.0",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",

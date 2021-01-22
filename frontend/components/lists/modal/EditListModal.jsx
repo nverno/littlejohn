@@ -7,7 +7,7 @@ import {
   SortableContainer,
   SortableElement
 } from 'react-sortable-hoc';
-import arrayMove from 'array-move';
+import { arrayMove } from '../../../lib/array-move';
 
 import ThemedModal from '../../parts/ThemedModal';
 import RenameForm from '../form/RenameForm';
