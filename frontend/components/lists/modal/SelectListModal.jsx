@@ -8,7 +8,10 @@ import NewListForm from '../form/ListForm';
 import ThemedModal from '../../parts/ThemedModal';
 import ListIcon from '../../lists/icons/ListIcon';
 import {
-  updateList, openSelectListModal, closeSelectListModal, clearListErrors,
+  updateList,
+  closeListModals,
+  openListModal,
+  clearListErrors,
 } from '../../../actions/list_actions';
 import { listContains } from '../../../selectors/lists';
 import portStyles from '../../portfolio/sidebar/psidebar.module.scss';
@@ -16,14 +19,14 @@ import styles from './select-list.module.scss';
 
 const mapStateToProps = (state, ownProps) => ({
   lists: state.entities.lists,
-  isOpen: Boolean(state.ui.modals.selectList),
-  asset: state.ui.modals.selectList,
+  isOpen: Boolean(state.ui.modals.lists.select),
+  asset: state.ui.modals.lists.select,
 });
 
 const mapDispatchToProps = dispatch => ({
   updateList: (list) => dispatch(updateList(list)),
-  openSelectListModal: () => dispatch(openSelectListModal()),
-  closeSelectListModal: () => dispatch(closeSelectListModal()),
+  closeListModals: () => dispatch(closeListModals()),
+  openModal: (asset) => dispatch(openListModal('select', asset)),
   clearListErrors: () => dispatch(clearListErrors()),
 });
 
@@ -92,8 +95,8 @@ const SelectListModal = ({ asset, lists, isOpen, ...props }) => {
   if (!isOpen) return null;
 
   const toggle = () => {
-    if (isOpen) props.closeSelectListModal();
-    else props.openSelectListModal();
+    if (isOpen) props.closeListModals();
+    else props.openModal(asset);
   };
 
   return (

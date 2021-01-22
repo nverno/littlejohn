@@ -7,25 +7,25 @@ import { ListForm } from '../form/ListForm';
 import {
   updateList,
   clearListErrors,
-  closeEditListModal,
+  closeListModals,
 } from '../../../actions/list_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   formType: 'Save',
   errors: state.errors.lists,
   userId: state.session.currentUser.id,
-  isOpen: Boolean(state.ui.modals.editList),
-  list: state.entities.lists[state.ui.modals.editList],
+  isOpen: Boolean(state.ui.modals.lists.rename),
+  list: state.entities.lists[state.ui.modals.rename],
   state,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   processForm: (_userId, list) => {
     dispatch(updateList(list));
-    dispatch(closeEditListModal());
+    dispatch(closeListModals());
   },
   clearListErrors: () => dispatch(clearListErrors()),
-  closeEditListModal: () => dispatch(closeEditListModal()),
+  closeListsModal: () => dispatch(closeListModals()),
 });
 
 const RenameListModal = ({ list, isOpen, ...props }) => {
@@ -37,7 +37,7 @@ const RenameListModal = ({ list, isOpen, ...props }) => {
       <Modal
         isOpen={isOpen}
         onAfterOpen={afterOpenModal}
-        onRequestClose={props.closeEditListModal}
+        onRequestClose={props.closeListsModal}
         contentLabel="Edit List"
         className="edit-modal"
         overlayClassName="edit-overlay"
@@ -52,7 +52,7 @@ const RenameListModal = ({ list, isOpen, ...props }) => {
               <button
                 type="button"
                 className="edit-list-modal-close-button"
-                onClick={props.closeEditListModal}
+                onClick={props.closeListsModal}
               >
                 <AiOutlineClose color="var(--rh__neutral-fg3)" size={24} />
               </button>

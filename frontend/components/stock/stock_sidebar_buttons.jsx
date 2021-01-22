@@ -4,7 +4,8 @@ import { IoMdCheckmark } from '@react-icons/all-files/io/IoMdCheckmark';
 import { AiOutlinePlus } from '@react-icons/all-files/ai/AiOutlinePlus';
 
 import {
-  fetchUserLists, openSelectListModal
+  fetchUserLists,
+  openListModal,
 } from '../../actions/list_actions';
 import { isWatched } from '../../selectors/lists';
 
@@ -18,7 +19,7 @@ const mapStateToProps = (state, { symbol }) => {
 
 const mapDispatchToProps = (dispatch, { symbol }) => ({
   fetchUserLists: () => dispatch(fetchUserLists()),
-  openSelectListModal: () => dispatch(openSelectListModal(symbol)),
+  openSelectModal: () => dispatch(openListModal('select', symbol)),
 });
 
 class StockSidebarButtons extends Component {
@@ -33,8 +34,7 @@ class StockSidebarButtons extends Component {
 
   handleClick(e) {
     e.preventDefault();
-    // FIXME: what about when there are no lists?
-    this.props.openSelectListModal();
+    this.props.openSelectModal();
   }
 
   render() {

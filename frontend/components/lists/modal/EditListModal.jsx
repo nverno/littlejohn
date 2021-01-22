@@ -11,14 +11,16 @@ import arrayMove from 'array-move';
 
 import ThemedModal from '../../parts/ThemedModal';
 import RenameForm from '../form/RenameForm';
-import ListCell from './ListCell';
+import AssetCell from './AssetCell';
 import {
-  updateList, openEditListModal, closeEditListModal
+  updateList,
+  openListModal,
+  closeListModals,
 } from '../../../actions/list_actions';
 import styles from './edit-list.module.scss';
 
 const mapStateToProps = (state, _ownProps) => {
-  const listId = state.ui.modals.editList;
+  const listId = state.ui.modals.lists.edit;
   return {
     isOpen: Boolean(listId),
     list: state.entities.lists[listId],
@@ -27,8 +29,8 @@ const mapStateToProps = (state, _ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
   updateList: (list) => dispatch(updateList(list)),
-  openEditListModal: (id) => dispatch(openEditListModal(id)),
-  closeEditListModal: () => dispatch(closeEditListModal()),
+  openModal: (id) => dispatch(openListModal('edit', id)),
+  closeListModals: () => dispatch(closeListModals()),
   removeAsset: (asset, list) => dispatch(updateList({
     ...list,
     assets: list.assets.filter(el => el !== asset),
@@ -42,7 +44,7 @@ const DragHandle = SortableHandle(() => (
 ));
 
 const SortableItem = SortableElement(({ item, ...props }) => (
-  <ListCell
+  <AssetCell
     handle={<DragHandle />}
     asset={item}
     {...props} />
@@ -66,8 +68,8 @@ const EditListModal = ({ list, isOpen, updateList, removeAsset, ...props }) => {
   if (!isOpen) return null;
 
   const toggle = () => {
-    if (isOpen) props.closeEditListModal();
-    else props.openEditListModal();
+    if (isOpen) props.closeListModals();
+    else props.openModal();
   };
 
   const onSortEnd = ({ oldIndex, newIndex }) => {
