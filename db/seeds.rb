@@ -33,7 +33,8 @@ lj = User.create!(
   username: 'lj',
   email: 'test@littlejohn.io',
   password: 'asdfasdf',
-  balance: 10_000
+  balance: 10_000,
+  theme: 'dark',
 )
 
 # Transactions
