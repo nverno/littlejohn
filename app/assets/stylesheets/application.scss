@@ -1,12 +1,10 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 // @import 'bootstrap';
 
-// @import 'rh_vars';
 @import 'fonts.scss';
 @import 'buttons';
 @import 'icons';
 
-@import 'app'; // XXX: remove?
 @import 'loading';
 
 @import 'graph-nav';
