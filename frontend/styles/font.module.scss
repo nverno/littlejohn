@@ -4,16 +4,18 @@
   color: var(--rh__text-color);
 }
 
-.primary {
-  color: var(--rh__primary-base);
-}
-
 .positive {
   --rh__text-color: var(--rh__semantic-positive-base);
+  color: var(--rh__semantic-positive-base);
 }
 
 .negative {
   --rh__text-color: var(--rh__semantic-negative-base);
+  color: var(--rh__semantic-negative-base);
+}
+
+.primary {
+  color: var(--rh__primary-base);
 }
 
 .type1 {

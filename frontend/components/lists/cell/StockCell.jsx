@@ -8,6 +8,8 @@ import {
   quotePrice,
 } from '../../../selectors/quotes';
 
+import fonts from '../../../styles/font.module.scss';
+import styles from './stock-cell.module.scss';
 import StockCellGraph from './StockCellGraph';
 import { getPrices } from '../../../selectors/prices';
 
@@ -22,11 +24,11 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const StockCellPercent = ({ quote }) => {
-  const cname = positiveChange(quote) ? 'lj-positive' : 'lj-negative';
+  const cname = positiveChange(quote) ? fonts.positive : fonts.negative;
 
   return (
     <span className={cname}>
-      <span className="lj-type1 stock-cell-percent-change">
+      <span className={`${fonts.type1} ${styles.percentChange}`}>
         {quotePercent(quote)}
       </span>
     </span>
@@ -42,17 +44,17 @@ class StockCell extends Component {
     const { symbol, quote, holding, data } = this.props;
 
     return (
-      <div className="stock-cell-container">
-        <Link to={`/stocks/${symbol}`} className="stock-cell-link">
-          <div className="stock-cell-left">
-            <div className="stock-cell-symbol-container">
-              <span className="lj-type2 stock-cell-symbol">{symbol}</span>
+      <div className={styles.cellContainer}>
+        <Link to={`/stocks/${symbol}`} className={styles.cellLink}>
+          <div className={styles.cellLeft}>
+            <div className={styles.symbolContainer}>
+              <span className={`${fonts.type2} ${styles.symbol}`}>{symbol}</span>
             </div>
 
             {holding && (
-              <div className="stock-cell-holdings-container">
+              <div className={styles.holdings}>
                 <div style={{ minWidth: '0px' }}>
-                  <span className="lj-type1">{holding.amount} Sha..</span>
+                  <span className={fonts.type1}>{holding.amount} Sha..</span>
                 </div>
               </div>
             )}
@@ -66,10 +68,10 @@ class StockCell extends Component {
             />
           )}
 
-          <div className="stock-cell-right">
-            <span className="lj-type7">
-              <div className="stock-cell-price-container">
-                <span className="lj-type1">{quotePrice(quote)}</span>
+          <div className={styles.cellRight}>
+            <span className={fonts.type7}>
+              <div className={styles.price}>
+                <span className={fonts.type1}>{quotePrice(quote)}</span>
                 <div style={{ height: '2px' }} />
                 <StockCellPercent quote={quote} />
               </div>

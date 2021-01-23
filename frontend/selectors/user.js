@@ -11,8 +11,9 @@ const capitalize = ([first, ...rest], lowerRest = false) =>
 export const getUsername = ({ session: { currentUser } }) =>
   `${capitalize(currentUser.firstName)} ${capitalize(currentUser.lastName)}`;
 
-export const getBuyingPower = ({ session: { currentUser } }) =>
-  currentUser.balance.toLocaleString('en');
+export const getBuyingPower = ({ session: { currentUser } }) => {
+  return fmt(currentUser.balance);
+};
 
 // export const getPortfolioValue = ({ session: { currentUser } }) => {
 //   return '--';
@@ -24,7 +25,7 @@ export const getPortfolioValue = (holdings, quotes) => {
   for (const [symbol, val] of Object.entries(holdings)) {
     amt += quotes[symbol].latestPrice * val.amount;
   }
-  return amt;
+  return fmt(amt);
 };
 
 export const getMarketValue = (holding, quote) => {

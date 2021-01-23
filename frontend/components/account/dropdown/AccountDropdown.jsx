@@ -52,7 +52,7 @@ const AccountDropdown = ({ theme, setTheme, logout,
               <span className={styles.headerIcon}>
                 <h3><GiCash size={24} color='var(--rh__semantic-positive-base)' /></h3>
               </span>
-              <span className={fonts.type11}>Deposit</span>
+              <span className={fonts.type8}>Deposit</span>
             </a>
             <a className={styles.headerItem} onClick={toggleTheme}>
               <span className={styles.headerIcon}>
@@ -62,7 +62,7 @@ const AccountDropdown = ({ theme, setTheme, logout,
                     color={theme === 'dark' ? 'yellow' : 'purple'} />
                 </h3>
               </span>
-              <span className={fonts.type11}>
+              <span className={fonts.type8}>
                 {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
               </span>
             </a>
@@ -72,7 +72,7 @@ const AccountDropdown = ({ theme, setTheme, logout,
                   <FiLogOut size={24} />
                 </h3>
               </span>
-              <span className={fonts.type11}>Log Out</span>
+              <span className={fonts.type8}>Log Out</span>
             </a>
           </div>
         </div>

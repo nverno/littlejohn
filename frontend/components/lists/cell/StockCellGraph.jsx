@@ -5,13 +5,13 @@ import {
   SparklinesLine,
   SparklinesReferenceLine,
 } from 'react-sparklines';
+import styles from './stock-cell.module.scss';
 
 const StockCellGraph = ({ symbol, data, positive }) => {
-  // console.log('CELL: ', data);
   if (!data) return null;
   return (
-    <div className="stock-cell-graph-container">
-      <div className="stock-cell-graph-outer">
+    <div className={styles.graphContainer}>
+      <div className={styles.graphOuter}>
         <Sparklines
           min={Math.min.apply(Math, data)}
           max={Math.max.apply(Math, data)}

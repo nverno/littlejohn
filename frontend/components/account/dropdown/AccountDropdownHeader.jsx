@@ -5,11 +5,12 @@ import {
   getBuyingPower,
   getPortfolioValue,
 } from '../../../selectors/user';
+import fonts from '../../../styles/font.module.scss';
 import styles from './account.module.scss';
 
 const mapStateToProps = (state, _ownProps) => ({
   name: getUsername(state),
-  buyingPower: getBuyingPower(state),
+  buyingPower: getBuyingPower(state),             // 
   holdings: state.entities.holdings,
   quotes: state.entities.quotes,
 });
@@ -26,13 +27,13 @@ const AccountDropdownHeader = ({
   return (
     <header className={styles.header}>
       <h3 style={{ margin: 0 }}>
-        <span className="type8">{name}</span>
+        <span className={fonts.type8}>{name}</span>
       </h3>
 
       <div className={styles.account}>
         <div className={styles.portfolioOuter}>
           <div className={styles.portfolioInner}>
-            <span className="type4">
+            <span className={fonts.type4}>
               <span>${portfolioValue}</span>
             </span>
           </div>
@@ -42,7 +43,7 @@ const AccountDropdownHeader = ({
 
         <div className={styles.buyingPower}>
           <div style={{ marginBottom: '0' }}>
-            <span className="type4">
+            <span className={fonts.type4}>
               <div>
                 <h3>${buyingPower}</h3>
               </div>
