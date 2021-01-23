@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from './header';
 import LoadingHeader from '../loading/loading_header';
+import DepositModal from '../account/deposit/DepositModal';
 import styles from './header-page.module.scss';
 
 const HeaderPage = ({ ...props }) => {
@@ -15,6 +16,7 @@ const HeaderPage = ({ ...props }) => {
           </div>
         </div>
         <Header />
+        <DepositModal />
       </div>
     </>
   );

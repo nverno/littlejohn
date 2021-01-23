@@ -7,11 +7,11 @@ import { GiCash } from 'react-icons/gi';
 
 import HeaderDropdown from '../../header/header_dropdown';
 import AccountDropdownHeader from './AccountDropdownHeader';
-import DepositModal from '../deposit/DepositModal';
 import { logout } from '../../../actions/session_actions';
 import { setTheme } from '../../../actions/settings_actions';
 import { setOverlay } from '../../../selectors/themes';
 import { openDepositModal } from '../../../actions/user_actions';
+import { headerCloseAll } from '../../../actions/header_actions';
 import fonts from '../../../styles/font.module.scss';
 import styles from './account.module.scss';
 
@@ -26,9 +26,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setTheme: (theme) => dispatch(setTheme(theme)),
   openDepositModal: () => dispatch(openDepositModal()),
+  headerCloseAll: () => dispatch(headerCloseAll()),
 });
 
-const AccountDropdown = ({ theme, setTheme, logout, openDepositModal, ...props }) => {
+const AccountDropdown = ({ theme, setTheme, logout,
+  openDepositModal, headerCloseAll,
+  ...props }) => {
   const colorTheme = setOverlay(theme);
 
   const toggleTheme = () => {
@@ -42,9 +45,12 @@ const AccountDropdown = ({ theme, setTheme, logout, openDepositModal, ...props }
         <div className={`${styles.container} ${colorTheme}`}>
           <div className={styles.outer}>
             <AccountDropdownHeader />
-            <a className={styles.headerItem} onClick={openDepositModal}>
+            <a className={styles.headerItem} onClick={() => {
+              headerCloseAll();
+              openDepositModal();
+            }}>
               <span className={styles.headerIcon}>
-                <h3><GiCash size={24} color='var(--rh__semantic-positive-base)'/></h3>
+                <h3><GiCash size={24} color='var(--rh__semantic-positive-base)' /></h3>
               </span>
               <span className={fonts.type11}>Deposit</span>
             </a>
@@ -53,7 +59,7 @@ const AccountDropdown = ({ theme, setTheme, logout, openDepositModal, ...props }
                 <h3>
                   <ImPower
                     size={24}
-                    color={theme === 'dark' ? 'yellow' : 'purple'}/>
+                    color={theme === 'dark' ? 'yellow' : 'purple'} />
                 </h3>
               </span>
               <span className={fonts.type11}>
@@ -71,8 +77,6 @@ const AccountDropdown = ({ theme, setTheme, logout, openDepositModal, ...props }
           </div>
         </div>
       </div>
-
-      <DepositModal />
     </HeaderDropdown>
   );
 };
