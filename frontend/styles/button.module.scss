@@ -121,12 +121,7 @@
   }
 }
 
-.disabled-link {
-  pointer-events: none;
-  color: var(--rh__neutral-fg2);
-}
-
-.login-submit {
+.loginSubmit {
   background: var(--rh__primary-base);
   border-color: var(--rh__primary-base);
   color: var(--rh__neutral-bg1);
@@ -175,3 +170,7 @@
   --rh__text-color: var(--rh__primary-base);
 }
 
+.disabledLink {
+  pointer-events: none;
+  color: var(--rh__neutral-fg2);
+}

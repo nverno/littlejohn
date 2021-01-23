@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Logo from '../logo/logo';
 import SearchContainer from '../search/search_container';
 import HeaderItems from './header_items';
-import AccountDropdown from './account/account_dropdown';
+import AccountDropdown from '../account/dropdown/AccountDropdown';
 import styles from './header.module.scss';
 import logoStyles from '../logo/logo.module.scss';
 
@@ -35,26 +35,21 @@ const headerItems = [
   },
 ];
 
-export default class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <header className={styles.header}>
-        <div className={styles.outer}>
-          <div className={styles.logoContainer}>
-            <Link to="/">
-              <Logo className={logoStyles.logo}/>
-            </Link>
-          </div>
-
-          <SearchContainer />
-
-          <HeaderItems items={headerItems} />
+const Header = () => {
+  return (
+    <header className={styles.header}>
+      <div className={styles.outer}>
+        <div className={styles.logoContainer}>
+          <Link to="/">
+            <Logo className={logoStyles.logo}/>
+          </Link>
         </div>
-      </header>
-    );
-  }
-}
+
+        <SearchContainer />
+
+        <HeaderItems items={headerItems} />
+      </div>
+    </header>
+  );
+};
+export default Header;

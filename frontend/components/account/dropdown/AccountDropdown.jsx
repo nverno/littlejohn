@@ -3,12 +3,16 @@ import { connect } from 'react-redux';
 import { Link, withRouter, Redirect } from 'react-router-dom';
 import { FiLogOut } from '@react-icons/all-files/fi/FiLogOut';
 import { ImPower } from '@react-icons/all-files/im/ImPower';
+import { GiCash } from 'react-icons/gi';
 
-import HeaderDropdown from '../header_dropdown';
-import AccountDropdownHeader from './account_dropdown_header';
+import HeaderDropdown from '../../header/header_dropdown';
+import AccountDropdownHeader from './AccountDropdownHeader';
+import DepositModal from '../deposit/DepositModal';
 import { logout } from '../../../actions/session_actions';
 import { setTheme } from '../../../actions/settings_actions';
 import { setOverlay } from '../../../selectors/themes';
+import { openDepositModal } from '../../../actions/user_actions';
+import fonts from '../../../styles/font.module.scss';
 import styles from './account.module.scss';
 
 const mapStateToProps = (state) => ({
@@ -21,9 +25,10 @@ const mapDispatchToProps = (dispatch) => ({
     return <Redirect to="/login" />;
   },
   setTheme: (theme) => dispatch(setTheme(theme)),
+  openDepositModal: () => dispatch(openDepositModal()),
 });
 
-const AccountDropdown = ({ theme, setTheme, logout, ...props }) => {
+const AccountDropdown = ({ theme, setTheme, logout, openDepositModal, ...props }) => {
   const colorTheme = setOverlay(theme);
 
   const toggleTheme = () => {
@@ -37,11 +42,23 @@ const AccountDropdown = ({ theme, setTheme, logout, ...props }) => {
         <div className={`${styles.container} ${colorTheme}`}>
           <div className={styles.outer}>
             <AccountDropdownHeader />
+            <a className={styles.headerItem} onClick={openDepositModal}>
+              <span className={styles.headerIcon}>
+                <h3><GiCash size={24} color='var(--rh__semantic-positive-base)'/></h3>
+              </span>
+              <span className={fonts.type11}>Deposit</span>
+            </a>
             <a className={styles.headerItem} onClick={toggleTheme}>
               <span className={styles.headerIcon}>
-                <h3><ImPower size={24} /></h3>
+                <h3>
+                  <ImPower
+                    size={24}
+                    color={theme === 'dark' ? 'yellow' : 'purple'}/>
+                </h3>
               </span>
-              <span type='type11'>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+              <span className={fonts.type11}>
+                {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+              </span>
             </a>
             <a className={styles.headerItem} onClick={logout}>
               <span className={styles.headerIcon}>
@@ -49,11 +66,13 @@ const AccountDropdown = ({ theme, setTheme, logout, ...props }) => {
                   <FiLogOut size={24} />
                 </h3>
               </span>
-              <span type="type11">Log Out</span>
+              <span className={fonts.type11}>Log Out</span>
             </a>
           </div>
         </div>
       </div>
+
+      <DepositModal />
     </HeaderDropdown>
   );
 };
