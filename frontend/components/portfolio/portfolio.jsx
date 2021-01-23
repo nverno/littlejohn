@@ -3,7 +3,7 @@ import React from 'react';
 import HeaderPage from '../header/header_page';
 import PortfolioSidebar from './sidebar/portfolio_sidebar';
 import PopularLists from './popular_lists';
-import BuyingPower from './deposit/BuyingPower';
+import BuyingPower from './buying/BuyingPower';
 import PortfolioGraphContainer from './graph/portfolio_graph_container';
 
 import styles from './portfolio.module.scss';

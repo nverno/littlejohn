@@ -50,9 +50,10 @@ const AccountDropdown = ({ theme, setTheme, logout, openDepositModal, ...props }
             </a>
             <a className={styles.headerItem} onClick={toggleTheme}>
               <span className={styles.headerIcon}>
-                <h3><ImPower
-                      size={24}
-                      color={theme === 'dark' ? 'yellow' : 'purple'}/>
+                <h3>
+                  <ImPower
+                    size={24}
+                    color={theme === 'dark' ? 'yellow' : 'purple'}/>
                 </h3>
               </span>
               <span className={fonts.type11}>
@@ -70,6 +71,8 @@ const AccountDropdown = ({ theme, setTheme, logout, openDepositModal, ...props }
           </div>
         </div>
       </div>
+
+      <DepositModal />
     </HeaderDropdown>
   );
 };
