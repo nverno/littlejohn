@@ -72,8 +72,20 @@
   color: unset;
   appearance: none;
 
+  &:hover {
+    background-color: transparent;
+  }
+
   & span:hover {
     color: var(--rh__primary-base);
+  }
+}
+
+.disabled {
+  composes: navButton;
+  pointer-events: none;
+  & span {
+    color: var(--rh__neutral-fg2);
   }
 }
 

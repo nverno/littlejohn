@@ -10,11 +10,12 @@ import {
 import PropagateLoader from 'react-spinners/PropagateLoader';
 
 import GraphNav from '../../graph/graph_nav';
-import PriceGraphHeader from '../../graph/price_graph_header';
+// import PriceGraphHeader from '../../graph/price_graph_header';
 import PriceGraph from '../../graph/price_graph';
 import { computePortfolioValue } from '../../../selectors/user';
 
 const navIntervals = ['1d', '5d', '1m', '3m', '1y'];
+const navDisabled = ['5d', '1m', '3m', '1y'];
 
 export default class PortfolioGraph extends Component {
   constructor(props) {
@@ -60,6 +61,7 @@ export default class PortfolioGraph extends Component {
 
         <GraphNav
           intervals={navIntervals}
+          disabled={navDisabled}
           updateInterval={this.updateInterval}
         />
       </>

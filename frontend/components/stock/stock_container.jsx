@@ -14,7 +14,6 @@ const mapStateToProps = (state, ownProps) => {
     entities: state.entities,
     description: state.entities.descriptions[symbol],
     holding: state.entities.holdings[symbol],
-    // forceUpdate: state.entities.forceUpdate,
   };
 };
 

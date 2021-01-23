@@ -12,6 +12,7 @@ import PropagateLoader from 'react-spinners/PropagateLoader';
 import PriceGraphHeader from './price_graph_header';
 import styles from './price-graph.module.scss';
 import { range, isPositive } from '../../selectors/prices';
+import { setPriceTheme } from '../../actions/settings_actions';
 
 const PriceGraphTooltip = ({ active, payload, label }) => {
   if (active) {
@@ -28,7 +29,7 @@ const PriceGraphTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-const PriceGraph = ({ data, xkey, ykey, ...props }) => {
+const PriceGraph = ({ data, xkey, ykey, interval, ...props }) => {
   if (!data || data.length === 0)
     return (
       <div>
@@ -43,7 +44,10 @@ const PriceGraph = ({ data, xkey, ykey, ...props }) => {
   const color = isPositive(data, ykey)
     ? 'var(--rh__semantic-positive-base)'
     : 'var(--rh__semantic-negative-base)';
-  
+
+  if (finalPrice - startPrice > 0) setPriceTheme('theme-open-up');
+  else setPriceTheme('theme-open-down');
+
   return (
     <>
       <PriceGraphHeader
@@ -51,6 +55,7 @@ const PriceGraph = ({ data, xkey, ykey, ...props }) => {
         price={price}
         startPrice={startPrice}
         finalPrice={finalPrice}
+        interval={interval}
       />
 
       <div>

@@ -4,7 +4,7 @@ import PropagateLoader from 'react-spinners/PropagateLoader';
 import { fmtClass, fmtPrice, fmtPercent } from '../../selectors/util';
 import styles from './price-graph.module.scss';
 
-const PriceGraphHeader = ({ price, startPrice, finalPrice }) => {
+const PriceGraphHeader = ({ price, startPrice, finalPrice, interval }) => {
   if (!price) return (
     <div className={styles.header}>
       <PropagateLoader />
@@ -14,6 +14,7 @@ const PriceGraphHeader = ({ price, startPrice, finalPrice }) => {
   // const price = data[data.length - 1].value;
   const percentChange = priceChange / startPrice;
   const cname = fmtClass(priceChange);
+  const intervalText = !interval || interval === '1d' ? 'Today' : interval;
   return (
     <header className={styles.header}>
       <div className={styles.price}>
@@ -25,7 +26,7 @@ const PriceGraphHeader = ({ price, startPrice, finalPrice }) => {
           <span className={cname}>{fmtPrice(priceChange)}</span>
           <span className={cname}> ({fmtPercent(percentChange)})</span>
         </span>
-        <span className={styles.changeTime}>Today</span>
+        <span className={styles.changeTime}>{intervalText}</span>
       </div>
     </header>
   );

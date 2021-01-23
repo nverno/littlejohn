@@ -25,14 +25,25 @@ export const receiveTheme = (theme) => ({
   theme
 });
 
+// Global/Price themes
+const globalThemes = ['dark'];
+const priceThemes = ['theme-open-up', 'theme-open-down'];
+
+const removeThemes = (themes) => {
+  for (let theme of themes) {
+    document.body.classList.remove(theme);
+  }
+};
+
 export const setTheme = (theme) => dispatch => {
-  document.getElementsByTagName('body')[0].className = theme;
+  removeThemes(globalThemes);
+  if (theme.length) document.body.classList.add(theme);
   SettingsAPI.postTheme(theme).then(
     _ => dispatch(receiveTheme(theme)));
 };
 
 export const resetSettings = () => dispatch => {
-  document.getElementsByTagName('body')[0].className = '';
+  removeThemes(globalThemes);
   dispatch(resetTheme());
 };
 
@@ -43,4 +54,11 @@ export const loadSettings = (user) => dispatch => {
 export const loadUiSettings = (settings) => dispatch => {
   if (settings.lists)
     dispatch(receiveOpenLists(settings.lists));
+};
+
+// Manage themes based on current price change
+export const setPriceTheme = (theme) => {
+  removeThemes(priceThemes);
+  if (theme.length)
+    document.body.classList.add(theme);
 };

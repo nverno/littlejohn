@@ -1,12 +1,4 @@
-export const fmt = (num) => {
-  return num.toFixed(2).toLocaleString('en');
-};
-
-const capitalize = ([first, ...rest], lowerRest = false) =>
-  first.toUpperCase() +
-  (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
-
-// const capitalizeEveryWord = str => str.replace(/\b[a-z]/g, char => char.toUpperCase());
+import { fmt, capitalize } from './util';
 
 export const getUsername = ({ session: { currentUser } }) =>
   `${capitalize(currentUser.firstName)} ${capitalize(currentUser.lastName)}`;
@@ -15,10 +7,6 @@ export const getBuyingPower = ({ session: { currentUser } }) => {
   return fmt(currentUser.balance);
 };
 
-// export const getPortfolioValue = ({ session: { currentUser } }) => {
-//   return '--';
-// };
-
 export const getPortfolioValue = (holdings, quotes) => {
   if (holdings.length === 0 || quotes.length === 0) return '--';
   let amt = 0.0;
@@ -26,10 +14,6 @@ export const getPortfolioValue = (holdings, quotes) => {
     amt += quotes[symbol].latestPrice * val.amount;
   }
   return fmt(amt);
-};
-
-export const getMarketValue = (holding, quote) => {
-  return fmt(holding.amount * quote.latestPrice);
 };
 
 // Compute portfolio value of over time from holdings and times series data

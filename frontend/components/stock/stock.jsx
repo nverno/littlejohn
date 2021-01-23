@@ -17,7 +17,7 @@ export default class Stock extends Component {
   }
 
   fetchStockShowData() {
-    console.log('State: ', this.props.state);
+    // console.log('State: ', this.props.state);
     this.props.fetchStockShowData({
       symbol: this.props.symbol,
       // quotes: {}, prices: {}, companies: {},
@@ -42,7 +42,7 @@ export default class Stock extends Component {
 
         <div className="row">
           <div className="col-12">
-            <header className="lj-stock-header">
+            <header className={styles.header}>
               <h1>{company && company['companyName']}</h1>
             </header>
 

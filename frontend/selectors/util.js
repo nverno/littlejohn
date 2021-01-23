@@ -1,6 +1,8 @@
 import fonts from '../styles/font.module.scss';
 
-export const fmt = (n) => n.toFixed(2).toLocaleString('en');
+export const fmt = (n) => n.toLocaleString('en', {
+  maximumFractionDigits: 2
+});
 
 export const fmtPrice = (price) => (
   (!price && '—') ||
@@ -11,4 +13,10 @@ export const fmtPercent = price => (
   price ? fmt(100 * price) + '%' : '—'
 );
 
-export const fmtClass = (price) => price && price > 0 ? fonts.posititve: fonts.negative;
+export const fmtClass = (price) => price && price > 0 ? fonts.positive : fonts.negative;
+
+export const capitalize = ([first, ...rest], lowerRest = false) =>
+  first.toUpperCase() +
+  (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
+
+// const capitalizeEveryWord = str => str.replace(/\b[a-z]/g, char => char.toUpperCase());

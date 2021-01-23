@@ -13,6 +13,8 @@ import {
 import { changesOverTime } from '../../../selectors/prices';
 
 const navIntervals = ['1d', '5d', '1m', '3m', '1y', '5y'];
+// too much API usage!
+const navDisabled = ['3m', '1y', '5y'];
 
 // Graph header to display overview of data range, eg.
 // $122.28
@@ -35,13 +37,6 @@ const StockPriceHeader = ({ quote, symbol }) => {
         </span>
         <span className="lj-stock-graph-percent-change-time">Today</span>
       </div>
-      {/* <div className="lj-stock-graph-subheader"> */}
-      {/*   <span className="lj-stock-graph-percent-change"> */}
-      {/*     <span>-$0.13</span> */}
-      {/*     <span>(-0.11%)</span> */}
-      {/*   </span> */}
-      {/*   <span className="lj-stock-graph-percent-change-time">Today</span> */}
-      {/* </div> */}
     </header>
   );
 };
@@ -87,11 +82,15 @@ export default class StockPriceGraph extends Component {
     return (
       <>
         <div>
-          <PriceGraph data={prices[interval]} xkey="label" ykey={ykey} />
+          <PriceGraph
+            data={prices[interval]}
+            xkey="label" ykey={ykey}
+            interval={interval} />
         </div>
 
         <GraphNav
           intervals={navIntervals}
+          disabled={navDisabled}
           updateInterval={this.updateInterval}
         />
       </>

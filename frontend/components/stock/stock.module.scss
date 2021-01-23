@@ -1,6 +1,28 @@
-.graphSection {
-  width: 646px;
-  height: 349px;
-  margin-bottom: 44px;
-  position: relative;
+.header {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.userValue {
+  margin-bottom: 60px;
+  transition: background .3s;
+}
+
+.associatedLists {
+  margin-bottom: 8px;
+  border: 1px solid black;
+}
+
+.gridCell {
+  background-color: var(--rh__neutral-bg1);
+  border-radius: var(--rh__size-palette__borderRadius);
+  box-sizing: border-box;
+  border: 1px solid var(--rh__neutral-bg3);
+  padding: 24px;
+
+  header h2 {
+    margin-top: -10px;
+    padding-top: 0px;
+  }
 }

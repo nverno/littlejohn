@@ -2,6 +2,23 @@
 @import './themes.scss';
 
 // START bootstrap-overrides
+.table {
+  color: unset;
+  & td, & th {
+    border: none;
+  }
+  tr {
+    border-top: 1px solid var(--rh__neutral-bg3);
+  }
+  tr:first-child {
+    border: none;
+  }
+
+  tr td:last-child {
+    text-align: right;
+  }
+}
+
 .modal-header, .modal-content, .modal-body {
   color: var(--rh__neutral-fg1);
   background-color: var(--rh__neutral-bg1);

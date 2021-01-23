@@ -109,19 +109,19 @@
 }
 
 .theme-open-up {
-  --st__primary-base: rgb(0,200,5);
-  --st__primary-hover: rgba(38,208,43,1);
-  --st__primary-pressed: rgba(0,160,4,1);
-  --st__primary-light-base: rgba(0,200,5,0.4);
-  --st__primary-lightest-base: rgba(0,200,5,0.2);
+  --rh__primary-base: rgb(0,200,5);
+  --rh__primary-hover: rgba(38,208,43,1);
+  --rh__primary-pressed: rgba(0,160,4,1);
+  --rh__primary-light-base: rgba(0,200,5,0.4);
+  --rh__primary-lightest-base: rgba(0,200,5,0.2);
 }
 
 .theme-open-down {
-  --st__primary-base: rgb(255, 80, 0);
-  --st__primary-hover: rgba(230, 72, 0, 1);
-  --st__primary-pressed: rgba(204, 64, 0, 1);
-  --st__primary-light-base: rgba(255, 80, 0, 0.3);
-  --st__primary-lightest-base: rgba(255, 80, 0, 0.1);
+  --rh__primary-base: rgb(255, 80, 0);
+  --rh__primary-hover: rgba(230, 72, 0, 1);
+  --rh__primary-pressed: rgba(204, 64, 0, 1);
+  --rh__primary-light-base: rgba(255, 80, 0, 0.3);
+  --rh__primary-lightest-base: rgba(255, 80, 0, 0.1);
 }
 
 .overlay {
