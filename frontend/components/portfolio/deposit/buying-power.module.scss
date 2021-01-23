@@ -35,7 +35,7 @@
 }
 
 .header {
-  composes: type8 from '../../styles/font.module.scss';
+  composes: type8 from '../../../styles/font.module.scss';
   border-bottom: 1px solid var(--rh__neutral-bg3);
   padding-top: calc(2 * var(--rh__size-palette__gutterWidth));
   padding-bottom: calc(2 * var(--rh__size-palette__gutterWidth));
@@ -72,5 +72,5 @@
 }
 
 .depositButton {
-  composes: login-submit from '../../styles/button.module.scss';
+  composes: login-submit from '../../../styles/button.module.scss';
 }
