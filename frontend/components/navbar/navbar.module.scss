@@ -5,9 +5,32 @@
   width: 100%;
 }
 
+.welcome {
+  --rh__neutral-fg1: rgb(0, 0, 0);
+  --rh__neutral-fg2: rgb(111, 120, 126);
+  --rh__neutral-fg3: rgb(180, 189, 194);
+  --rh__neutral-bg3: rgb(227, 233, 237);
+  --rh__neutral-bg2: rgb(245, 248, 250);
+  --rh__neutral-bg1: rgb(255, 255, 255);
+  --rh__neutral-hover-bg1: rgb(245, 248, 250);
+  --rh__neutral-hover-bg2: rgb(227, 233, 237);
+  --rh__neutral-pressed-bg1: rgb(227, 233, 237);
+  --rh__neutral-pressed-bg2: rgb(227, 233, 237);
+  --rh__text-color: rgb(0, 0, 0);
+  --rh__shadow__s1: rgba(0, 0, 0, 0.06);
+  --rh__shadow__s2: rgba(0, 0, 0, 0.6);
+  color: var(--rh__neutral-fg1);
+  background-color: var(--rh__neutral-bg1);
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 4px 0px;
+}
+
+.default {
+  color: var(--rh__neutral-fg1);
+  background-color: var(--rh__neutral-bg1);
+  box-shadow: var(--rh__shadow__s2) 0px 1px 4px 0px;
+}
+
 .main {
-  background-color: rgb(255, 255, 255);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px 0px;
   height: 64px;
   position: relative;
 }

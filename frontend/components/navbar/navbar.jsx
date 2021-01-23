@@ -42,7 +42,12 @@ export default class Navbar extends React.Component {
   }
 
   render() {
+    const { pathname } = this.props.location;
+    console.log("pathname: ", pathname);
     let navClass = this.props.isOpen ? styles.mainExpanded : styles.main;
+    navClass += (pathname === '/welcome'
+                 ? navClass += ` ${styles.welcome}`
+                 : navClass += ` ${styles.default}`);
 
     return (
       <div ref={this.wrapperRef}>
