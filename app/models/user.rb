@@ -13,7 +13,7 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  theme           :string           default("")
+#  theme           :string           default("dark")
 #
 class User < ApplicationRecord
   attr_reader :password
@@ -36,7 +36,7 @@ class User < ApplicationRecord
   after_create :create_default_watchlist
   after_create :create_default_follows
 
-  DEFAULT_LIST = %w[TSLA SPCE CCIV CLNE].freeze
+  DEFAULT_LIST = %w[TSLA SPCE CLNE FUBO].freeze
 
   def buy(asset, units, unit_cost)
     throw 'Not enough buying power' if unit_cost * units > balance

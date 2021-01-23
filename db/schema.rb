@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2021_01_19_225449) do
     t.string "session_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "theme", default: ""
+    t.string "theme", default: "dark"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end

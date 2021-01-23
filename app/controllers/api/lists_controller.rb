@@ -2,13 +2,13 @@ class Api::ListsController < ApplicationController # rubocop:todo Style/Document
   before_action :require_logged_in, except: :index
 
   def index
-    @lists = if params[:user]
-               current_user.lists
-               # User.find(params[:user_id]).lists
-             else
-               List.public_lists
-             end
-    render :index
+    if params[:user] && !current_user
+      # this shouldn't happen!
+      render json: ['No current user to fetch lists for!'], status: 401
+    else
+      @lists = params[:user] ? current_user.lists : List.public_lists
+      render :index
+    end
   end
 
   def show

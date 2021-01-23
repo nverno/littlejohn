@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base # rubocop:todo Style/Docume
   end
 
   def logged_in?
-    !current_user.nil?
+    !!current_user
   end
 
   def require_logged_out

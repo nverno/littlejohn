@@ -13,7 +13,7 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  theme           :string           default("")
+#  theme           :string           default("dark")
 #
 require 'test_helper'
 
