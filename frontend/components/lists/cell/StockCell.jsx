@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import {
+  quoteClass,
   positiveChange,
   quotePercent,
   quotePrice,
 } from '../../../selectors/quotes';
+import { fmt } from '../../../selectors/util';
 
 import fonts from '../../../styles/font.module.scss';
 import styles from './stock-cell.module.scss';
@@ -24,7 +26,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const StockCellPercent = ({ quote }) => {
-  const cname = positiveChange(quote) ? fonts.positive : fonts.negative;
+  const cname = quoteClass(quote);
 
   return (
     <span className={cname}>
@@ -54,7 +56,7 @@ class StockCell extends Component {
             {holding && (
               <div className={styles.holdings}>
                 <div style={{ minWidth: '0px' }}>
-                  <span className={fonts.type1}>{holding.amount} Sha..</span>
+                  <span className={fonts.type1}>{fmt(holding.amount)} Sha..</span>
                 </div>
               </div>
             )}

@@ -9,6 +9,7 @@ import StockOrderForm from './stock_order_form';
 import StockSidebarButtons from './stock_sidebar_buttons';
 import StockHoldings from './stock_holdings';
 import SelectListModal from '../lists/modal/SelectListModal';
+import styles from './stock.module.scss';
 
 export default class Stock extends Component {
   constructor(props) {
@@ -46,7 +47,7 @@ export default class Stock extends Component {
             </header>
 
             <div>
-              <section className="lj-stock-graph-section">
+              <section className={styles.graphSection}>
                 <StockPriceGraphContainer quote={quote} symbol={symbol} />
               </section>
 

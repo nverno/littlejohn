@@ -10,7 +10,7 @@ import {
 } from 'recharts';
 import PropagateLoader from 'react-spinners/PropagateLoader';
 import PriceGraphHeader from './price_graph_header';
-
+import styles from './price-graph.module.scss';
 import { range, isPositive } from '../../selectors/prices';
 
 const PriceGraphTooltip = ({ active, payload, label }) => {
@@ -43,7 +43,7 @@ const PriceGraph = ({ data, xkey, ykey, ...props }) => {
   const color = isPositive(data, ykey)
     ? 'var(--rh__semantic-positive-base)'
     : 'var(--rh__semantic-negative-base)';
-
+  
   return (
     <>
       <PriceGraphHeader
@@ -54,18 +54,19 @@ const PriceGraph = ({ data, xkey, ykey, ...props }) => {
       />
 
       <div>
-        <div className="lj-stock-graph-container">
-          <div className="lj-stock-graph-outer">
-            <div className="lj-stock-graph-inner">
+        <div className={styles.graphContainer}>
+          <div className={styles.graphOuter}>
+            <div className={styles.graphInner}>
               <ResponsiveContainer height="100%" width="100%">
                 <LineChart
                   data={data}
                   margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
                   onMouseMove={({ isTooltipActive, activePayload }) => {
                     /* console.log('Payload: ', data); */
-                    isTooltipActive && setPrice(activePayload[0].payload[ykey]);
+                    isTooltipActive && activePayload[0].payload[ykey] &&
+                      setPrice(activePayload[0].payload[ykey]);
                   }}
-                  onMouseLeave={() => setPrice(data[data.length - 1][ykey])}
+                  onMouseLeave={() => setPrice(finalPrice)}
                 >
                   <XAxis
                     dataKey={xkey}
@@ -85,7 +86,7 @@ const PriceGraph = ({ data, xkey, ykey, ...props }) => {
                     strokeWidth="2"
                     stroke={color}
                     dot={false}
-                    /* connectNulls={true} */
+                    connectNulls={true}
                   />
 
                   <Tooltip

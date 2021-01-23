@@ -1,15 +1,16 @@
 import React from 'react';
+import styles from './price-graph.module.scss';
 
 // Nav controls along bottom of graphs to toggle the displayed interval
 const GraphNav = ({ intervals, updateInterval }) => {
   const [active, setActive] = React.useState(0);
 
   return (
-    <nav className="lj-graph-nav" bounds="trading">
-      <div className="lj-graph-nav-container">
+    <nav className={styles.nav} bounds="trading">
+      <div className={styles.navContainer}>
         {intervals.map((interval, idx) => {
-          let cname = "lj-graph-nav-button";
-          if (active === idx) cname += ' lj-nav-button-active';
+          let cname = styles.navButton;
+          if (active === idx) cname += ` ${styles.active}`;
 
           return (
             <button
@@ -20,8 +21,8 @@ const GraphNav = ({ intervals, updateInterval }) => {
                 setActive(idx);
                 updateInterval(interval);
               }} >
-              <span className="lj-graph-nav-tab-outer">
-                <span className="lj-graph-nav-tab">
+              <span className={styles.tabOuter}>
+                <span className={styles.tab}>
                   {interval}
                 </span>
               </span>
