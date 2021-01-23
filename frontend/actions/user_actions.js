@@ -2,6 +2,16 @@ import * as UserAPI from '../util/user_api_util';
 import { receiveCurrentUser } from './session_actions';
 export const RECEIVE_USER_ERRORS = 'RECEIVE_USER_ERRORS';
 export const CLEAR_USER_ERRORS = 'CLEAR_USER_ERRORS';
+export const OPEN_DEPOSIT_MODAL = 'OPEN_DEPOSIT_MODAL';
+export const CLOSE_DEPOSIT_MODAL = 'CLOSE_DEPOSIT_MODAL';
+
+export const closeDepositModal = () => ({
+  type: CLOSE_DEPOSIT_MODAL,
+});
+
+export const openDepositModal = () => ({
+  type: OPEN_DEPOSIT_MODAL,
+});
 
 export const clearUserErrors = () => ({
   type: CLEAR_USER_ERRORS,

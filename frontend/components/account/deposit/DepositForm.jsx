@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import styles from './deposit.module.scss';
 import { updateBalance } from '../../../actions/user_actions';
 
 const mapStateToProps = (state) => ({
@@ -21,16 +22,16 @@ const DepositForm = ({ userId, updateBalance, ...props }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={props.className}>
+    <form onSubmit={handleSubmit} className={props.className || styles.depositForm}>
       <input
         type='text'
-        className="form-input"
+        className={`form-input ${styles.depositInput}`}
         value={amount}
         onChange={(e) => setAmount(e.currentTarget.value)}
         placeholder='Amount'
       />
       <div style={{ paddingLeft: '20px' }}>
-        <button>Deposit Funds</button>
+        <button className={styles.depositButton}>Deposit Funds</button>
       </div>
     </form>
   );

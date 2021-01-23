@@ -56,21 +56,3 @@
   padding-right: calc(2 * var(--rh__size-palette__gutterWidth));
   padding-bottom: calc(2 * var(--rh__size-palette__gutterWidth));
 }
-
-.depositOuter {
-//   border-radius: var(--rh__size-palette__borderRadius);
-//   box-sizing: border-box;
-//   transition: background-color 400ms ease 0s, box-shadow 400ms ease 0s, margin-bottom 400ms ease 0s;
-//   margin-left: calc(-1 * calc(2 * var(--rh__size-palette__gutterWidth)));
-//   margin-right: calc(-1 * calc(2 * var(--rh__size-palette__gutterWidth)));
-}
-
-.depositForm {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.depositButton {
-  composes: login-submit from '../../../styles/button.module.scss';
-}

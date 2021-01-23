@@ -2,6 +2,7 @@ import {
   OPEN_LIST_MODAL,
   CLOSE_LIST_MODALS,
 } from '../../actions/list_actions';
+import { OPEN_DEPOSIT_MODAL, CLOSE_DEPOSIT_MODAL } from '../../actions/user_actions';
 
 const _defaultState = {
   lists: {
@@ -9,7 +10,8 @@ const _defaultState = {
     select: false,
     order: false,
     rename: false,
-  }
+  },
+  deposit: false,
 };
 
 export default (state = _defaultState, action) => {
@@ -21,6 +23,12 @@ export default (state = _defaultState, action) => {
 
     case OPEN_LIST_MODAL:
       return Object.assign({}, state, { lists: { [action.name]: action.value } });
+
+    case OPEN_DEPOSIT_MODAL:
+      return Object.assign({}, state, { deposit: true });
+
+    case CLOSE_DEPOSIT_MODAL:
+      return Object.assign({}, state, { deposit: false });
 
     default:
       return state;

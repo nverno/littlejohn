@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import DepositForm from './DepositForm';
+import DepositForm from '../../account/deposit/DepositForm';
 import { getBuyingPower } from '../../../selectors/user';
 import styles from './buying-power.module.scss';
 
@@ -11,9 +11,7 @@ const mapStateToProps = (state) => ({
 const DepositFunds = () => {
   return (
     <div className={styles.deposit}>
-      <div className={styles.depositOuter}>
-        <DepositForm className={styles.depositForm} />
-      </div>
+      <DepositForm />
     </div>
   );
 };

@@ -1,0 +1,13 @@
+.depositForm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.depositInput {
+  background-color: var(--rh__neutral-bg1) !important;
+}
+
+.depositButton {
+  composes: loginSubmit from '../../../styles/button.module.scss';
+}

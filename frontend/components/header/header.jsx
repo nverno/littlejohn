@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../logo/logo';
 import SearchContainer from '../search/search_container';
 import HeaderItems from './header_items';
-import AccountDropdown from './account/account_dropdown';
+import AccountDropdown from '../account/dropdown/AccountDropdown';
 import styles from './header.module.scss';
 import logoStyles from '../logo/logo.module.scss';
 
