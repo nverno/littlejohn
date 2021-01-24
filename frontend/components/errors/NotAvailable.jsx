@@ -6,6 +6,10 @@ import { clearApiErrors } from '../../actions/stock_price_actions';
 import navStyles from '../navbar/main/main-navbar.module.scss';
 import fonts from '../../styles/font.module.scss';
 
+const mapStateToProps = (state, ownProps) => ({
+  symbol: ownProps.match.params.symbol,
+});
+
 const mapDispatchToProps = dispatch => ({
   clearApiErrors: () => dispatch(clearApiErrors()),
 });
@@ -21,6 +25,7 @@ const NotAvailable = ({ symbol, clearApiErrors }) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        flexDirection: 'column',
       }}>
         <div className={fonts.type11}>
           No data available for <span className={fonts.type12}>{symbol}</span>
@@ -37,4 +42,4 @@ const NotAvailable = ({ symbol, clearApiErrors }) => {
   );
 };
 
-export default connect(null, mapDispatchToProps)(NotAvailable);
+export default connect(mapStateToProps, mapDispatchToProps)(NotAvailable);

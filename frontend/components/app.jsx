@@ -11,6 +11,7 @@ import Unknown404Container from './errors/404/unknown_404_container';
 import NavbarContainer from './navbar/navbar_container';
 // import PortfolioContainer from './portfolio/portfolio_container';
 import StockContainer from './stock/stock_container';
+import NotAvailable from './errors/NotAvailable';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <AuthRoute exact path="/signup" component={SignupPage} />
 
         <Route exact path="/stocks/:symbol" component={StockContainer} />
+        <Route exact path="/nodata/:symbol" component={NotAvailable} />
 
         <ProtectedRoute
           exact

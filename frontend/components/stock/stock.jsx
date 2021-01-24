@@ -8,7 +8,6 @@ import StockOrderForm from './sidebar/stock_order_form';
 import StockSidebarButtons from './sidebar/StockSidebarButtons';
 import StockHoldings from './stock_holdings';
 import SelectListModal from '../lists/modal/SelectListModal';
-import NotAvailable from '../errors/NotAvailable';
 import styles from './stock.module.scss';
 
 export default class Stock extends Component {
@@ -36,9 +35,7 @@ export default class Stock extends Component {
     const { holding, symbol, company, quote, description, apiErrors } = this.props;
 
     if (apiErrors.length) {
-      return (
-        <NotAvailable symbol={symbol}/>
-      );
+      this.props.history.push(`/nodata/${symbol}`);
     }
 
     return (
