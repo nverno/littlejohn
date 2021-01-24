@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import HeaderPage from '../header/header_page';
 import StockPriceGraphContainer from './graph/stock_price_graph_container';
 import StockInfo from './about/stock_info';

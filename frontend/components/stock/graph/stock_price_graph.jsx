@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import PropagateLoader from 'react-spinners/PropagateLoader';
-
+import Loader from '../../loading/Loader';
 import PriceGraph from '../../graph/price_graph';
 import GraphNav from '../../graph/graph_nav';
 import {
@@ -10,7 +9,6 @@ import {
   positiveChange,
   quotePrice,
 } from '../../../selectors/quotes';
-import { changesOverTime } from '../../../selectors/prices';
 
 const navIntervals = ['1d', '5d', '1m', '3m', '1y', '5y'];
 // too much API usage!
@@ -20,26 +18,6 @@ const navDisabled = ['3m', '1y', '5y'];
 // $122.28
 // -$0.83 (-0.67%) Today
 // -$0.13 (-0.11%) After Hours
-const StockPriceHeader = ({ quote, symbol }) => {
-  if (!quote) return <PropagateLoader />;
-  const cname = quoteClass(quote);
-
-  return (
-    <header className="lj-stock-graph-header">
-      <div className="lj-stock-graph-price">
-        <h1 style={{ margin: 0 }}>{quotePrice(quote)}</h1>
-      </div>
-
-      <div className="lj-stock-graph-subheader">
-        <span className="lj-stock-graph-percent-change">
-          <span className={cname}>{prettyQuotePrice(quote, 'change')}</span>
-          <span className={cname}> ({quotePercent(quote)})</span>
-        </span>
-        <span className="lj-stock-graph-percent-change-time">Today</span>
-      </div>
-    </header>
-  );
-};
 
 export default class StockPriceGraph extends Component {
   constructor(props) {
@@ -74,9 +52,8 @@ export default class StockPriceGraph extends Component {
     const { symbol, prices, quote } = this.props;
     const { interval } = this.state;
 
-    if (!prices) {
-      return <PropagateLoader />;
-    }
+    if (!prices) return <Loader />;
+
     const ykey = interval === '1d' ? 'average' : 'close';
 
     return (

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropagateLoader from 'react-spinners/PropagateLoader';
-
+import Loader from '../../loading/Loader';
 import StockDailyInfo from './stock_daily_info';
 import StockDailyInfoCell from './stock_daily_info_cell';
 import { SectionHeader, Section } from '../../parts/section';
@@ -68,14 +67,13 @@ class StockInfo extends Component {
   }
 
   render() {
-    if (!this.props.company) return <PropagateLoader />;
+    if (!this.props.company) return <Loader />;
 
     const { readMore, showMore } = this.state;
 
     const { company, quote, description } = this.props;
     const formattedDescription = companyDescription(description);
     const overview = companyOverview(company, quote);
-    console.log('Description: ', formattedDescription);
 
     return (
       <Section>
@@ -93,7 +91,7 @@ class StockInfo extends Component {
               </span>
             ) : (
               <div style={{ width: '100%' }}>
-                <PropagateLoader style={{ alignItems: 'center' }} />
+                <Loader />
               </div>
             )}
 
