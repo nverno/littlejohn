@@ -53,7 +53,7 @@ class Search extends Component {
 
   render() {
     const { query, menuOpen } = this.state;
-    const { theme, searchResults } = this.props;
+    const { theme, searchResults, errors } = this.props;
     const colorTheme = setOverlay(theme);
 
     return (
@@ -83,6 +83,7 @@ class Search extends Component {
               <SearchMenu
                 results={searchResults}
                 query={query}
+                errors={errors}
                 {...this.props}
               />
             )}

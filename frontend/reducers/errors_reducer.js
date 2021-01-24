@@ -5,6 +5,7 @@ import users from './errors/user_errors_reducer';
 import lists from './errors/list_errors_reducer';
 import api from './errors/api_errors_reducer';
 import transactions from './errors/transactions_errors_reducer';
+import search from './errors/search_errors_reducer';
 
 export default combineReducers({
   session,
@@ -12,4 +13,5 @@ export default combineReducers({
   lists,
   api,
   transactions,
+  search,
 });

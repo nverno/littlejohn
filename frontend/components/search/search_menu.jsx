@@ -4,9 +4,11 @@ import BeatLoader from 'react-spinners/BeatLoader';
 import SearchResults from './search_results';
 import styles from './search-menu.module.scss';
 
-const SearchMenu = ({ query, searchResults, loading, ...props }) => {
+const SearchMenu = ({ query, searchResults, errors, loading, ...props }) => {
   // const [selected, setSelected] = React.useState(0);
-  const results = !searchResults || loading
+  const results = errors.length
+        ? <span className="list-errors">{errors[0]}</span>
+        : (!searchResults || loading)
         ? <BeatLoader color='var(--rh__neutral-fg3)'/>
         : (!searchResults.length && query
            ? 'We were unable to find any results for your search.'

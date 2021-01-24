@@ -4,6 +4,17 @@ export const RECEIVE_SEARCH_RESULTS = 'RECEIVE_SEARCH_RESULTS';
 export const CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS';
 export const SEARCH_STARTED = 'SEARCH_STARTED';
 export const SEARCH_COMPLETE = 'SEARCH_COMPLETE';
+export const RECEIVE_SEARCH_ERRORS = 'RECEIVE_SEARCH_ERRORS';
+export const CLEAR_SEARCH_ERRORS = 'CLEAR_SEARCH_ERRORS';
+
+export const clearSearchErrors = () => ({
+  type: CLEAR_SEARCH_ERRORS,
+});
+
+export const receiveSearchErrors = (errors) => ({
+  type: RECEIVE_SEARCH_ERRORS,
+  errors
+});
 
 export const searchComplete = () => ({
   type: SEARCH_COMPLETE,
@@ -24,10 +35,19 @@ export const receiveSearchResults = (results) => ({
 
 export const fetchSearchResults = (query) => (dispatch) => {
   dispatch(searchStarted());
-  StocksAPI.fetchSearchResults(query).then(
-    (results) => {
-      dispatch(searchComplete());
-      dispatch(receiveSearchResults(results));
-    },
-    _ => dispatch(searchComplete()));
+  dispatch(clearSearchErrors());
+  try {
+    StocksAPI.fetchSearchResults(query).then(
+      (results) => {
+        dispatch(searchComplete());
+        dispatch(receiveSearchResults(results));
+      },
+      (errors) => {
+        dispatch(receiveSearchErrors([errors.message]));
+        dispatch(searchComplete());
+      });
+  } catch(errors) {
+    dispatch(receiveSearchErrors([errors.message]));
+    dispatch(searchComplete());
+  }
 };

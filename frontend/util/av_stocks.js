@@ -176,29 +176,23 @@ Stocks.prototype = {
     return this.DEFAULT_URL + encoded;
   },
 
-  _doRequest: function (params) {
+  _doRequest: async function (params) {
     if (typeof this.apiKeys === 'undefined') {
       this._throw(0, 'error');
     }
 
     var self = this;
+    const res = await fetch(this._createUrl(params));
+    if (!res.ok) throw new Error(`API Error: ${res.status}`);
+    const data = await res.json();
+    
+    if (typeof data['Error Message'] !== 'undefined') {
+      self._throw(9, 'error');
+    } else if (typeof data['Note'] !== 'undefined') {
+      throw new Error(`API limit exceeded: ${data['Note']}`);
+    }
 
-    return new Promise((resolve, reject) => {
-      var url = this._createUrl(params);
-
-      fetch(url)
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          if (typeof data['Error Message'] !== 'undefined') {
-            self._throw(9, 'error');
-          } else if (typeof data['Note'] !== 'undefined') {
-            throw new Error(`API limit exceeded: ${data['Note']}`);
-          }
-          resolve(data);
-        });
-    });
+    return data;
   },
 
   _throw: function (code, type) {
