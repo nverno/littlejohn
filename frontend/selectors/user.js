@@ -11,6 +11,7 @@ export const getPortfolioValue = (holdings, quotes) => {
   if (holdings.length === 0 || quotes.length === 0) return '--';
   let amt = 0.0;
   for (const [symbol, val] of Object.entries(holdings)) {
+    if (!quotes[symbol]) return '--';
     amt += quotes[symbol].latestPrice * val.amount;
   }
   return fmt(amt);

@@ -26,7 +26,7 @@ const symbolsToFetch = (symbols, quotes) =>
 
 // only get quotes for holdings if haven't already
 export const maybeFetchSidebarData = ({ symbols, quotes }) => (dispatch) => {
-  console.log('sidebar fetch: ', symbols, quotes);
+  // console.log('sidebar fetch: ', symbols, quotes);
   const syms = symbolsToFetch(symbols, quotes);
   if (syms.length > 0) {
     iexAPI
@@ -39,7 +39,7 @@ export const maybeFetchSidebarData = ({ symbols, quotes }) => (dispatch) => {
           dispatch(receiveBatchPrices(data, 'intraday-prices'));
           dispatch(receiveBatchQuotes(data));
         },
-        (errors) => dispatch(receiveApiErrors(errors))
+        (errors) => dispatch(receiveApiErrors([errors.message]))
       );
   }
 };
