@@ -22,7 +22,7 @@ export const fetchPortfolioUserData = () => (dispatch) => {
 };
 
 const symbolsToFetch = (symbols, quotes) =>
-  symbols.filter((sym) => !quotes[sym]);
+      [...new Set(symbols.filter((sym) => !quotes[sym]))];
 
 // only get quotes for holdings if haven't already
 export const maybeFetchSidebarData = ({ symbols, quotes }) => (dispatch) => {
