@@ -4,7 +4,7 @@ import styles from './section.module.scss';
 export const SectionHeader = ({ title, ...props }) => (
   <header>
     <div className={styles.header}>
-      <div className="lj-section-header-outer">
+      <div className={styles.outer}>
         <h2>{title}</h2>
       </div>
       {props.children}
@@ -13,5 +13,5 @@ export const SectionHeader = ({ title, ...props }) => (
 );
 
 export const Section = (props) => (
-  <section className="lj-section">{props.children}</section>
+  <section className={styles.section}>{props.children}</section>
 );

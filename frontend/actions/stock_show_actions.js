@@ -47,13 +47,13 @@ export const fetchStockShowData = ({
         // dispatch(receiveBatchPrices(data, 'intraday-prices'));
         if (types.includes('company')) dispatch(receiveBatchCompany(data));
       },
-      (errors) => dispatch(receiveApiErrors(errors))
+      (errors) => dispatch(receiveApiErrors([errors.message]))
     );
   } else {
     // If components have cached all the data, they can subscribe to
     // this in order to re-render when they normally would have been triggered
     // by a state change.
-    dispatch(forceComponentRender());
+    // dispatch(forceComponentRender());
   }
 };
 
@@ -61,11 +61,11 @@ export const fetchStockPrices = ({ symbol, interval, prices }) => (
   dispatch
 ) => {
   if (prices[symbol] && prices[symbol][interval]) {
-    dispatch(forceComponentRender());
+    // dispatch(forceComponentRender());
   } else {
     iexAPI.fetchPrices(symbol, interval).then(
       (values) => dispatch(receiveStockPrices(symbol, interval, values)),
-      (errors) => dispatch(receiveApiErrors(errors))
+      (errors) => dispatch(receiveApiErrors([errors.message]))
     );
   }
 };

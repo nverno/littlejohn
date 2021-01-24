@@ -20,7 +20,7 @@ export default class IexAPI {
   createUrl(endpoint, params = {}) {
     params.token = this.apiKey;
     const encoded = Object.keys(params)
-      .map((key) => `${key}=${params[key]}`)
+      .map((key) => `${key}=${encodeURI(params[key])}`)
       .join('&');
     const url = `${this.baseURL}${endpoint}?${encoded}`;
     console.log('API: ', url);

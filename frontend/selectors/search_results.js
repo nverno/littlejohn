@@ -1,13 +1,15 @@
 // Formatting for search results in search menu
+// Ignore symbols with punctuation, non-USA, and non-equity
 // 1. Pull out the symbol/name
 // 2. Trim name
 // 3. Split results where query is matched to highlight in menu
 export const formatSearchResults = (query, results) => {
   if (!results) return null;
-
+  const ignore = new RegExp('[.-]');
   const formatted = results
         .filter(res => res['4. region'] === 'United States' &&
-                res['3. type'] === 'Equity')
+                res['3. type'] === 'Equity' &&
+                !res['1. symbol'].match(ignore))
         .map((res) => {
           const symbol = res['1. symbol'];
           return {

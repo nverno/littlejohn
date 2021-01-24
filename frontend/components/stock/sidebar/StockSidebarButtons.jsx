@@ -6,8 +6,10 @@ import { AiOutlinePlus } from '@react-icons/all-files/ai/AiOutlinePlus';
 import {
   fetchUserLists,
   openListModal,
-} from '../../actions/list_actions';
-import { isWatched } from '../../selectors/lists';
+} from '../../../actions/list_actions';
+import { isWatched } from '../../../selectors/lists';
+import fonts from '../../../styles/font.module.scss';
+import styles from './stock-order.module.scss';
 
 const mapStateToProps = (state, { symbol }) => {
   const { lists } = state.entities;
@@ -41,21 +43,21 @@ class StockSidebarButtons extends Component {
     const { inList } = this.props;
 
     return (
-      <div className="stock-sidebar-buttons">
+      <div className={styles.sidebarButtons}>
         <div>
           <button
             type="button"
-            className="stock-sidebar-list-button"
+            className={styles.listButton}
             onClick={this.handleClick}
           >
-            <div className="stock-sidebar-button-text">
-              <span className="stock-sidebar-button-inner">
+            <div className={styles.listButtonText}>
+              <span className={styles.listButtonInner}>
                 {inList ? (
                   <IoMdCheckmark color="var(--rh__primary-base)" size={24} />
                 ) : (
                     <AiOutlinePlus color="var(--rh__primary-base)" size={24} />
                   )}{' '}
-                <span className="lj-type4">Add to Lists</span>
+                <span className={fonts.type4}>Add to Lists</span>
               </span>
             </div>
           </button>

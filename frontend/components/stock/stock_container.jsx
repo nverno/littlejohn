@@ -3,6 +3,7 @@ import Stock from './stock';
 import { withRouter } from 'react-router-dom';
 
 import { fetchStockShowData } from '../../actions/stock_show_actions';
+import { clearTransactionErrors } from '../../actions/transactions_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const symbol = ownProps.match.params.symbol;
@@ -14,6 +15,7 @@ const mapStateToProps = (state, ownProps) => {
     entities: state.entities,
     description: state.entities.descriptions[symbol],
     holding: state.entities.holdings[symbol],
+    apiErrors: state.errors.api,
   };
 };
 
@@ -26,6 +28,7 @@ const mapDispatchToProps = (
   }
 ) => ({
   fetchStockShowData: (stateData) => dispatch(fetchStockShowData(stateData)),
+  clearTransactionErrors: () => dispatch(clearTransactionErrors()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Stock));

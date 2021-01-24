@@ -14,6 +14,7 @@ const StockHoldings = ({ holding, quote }) => {
   const [totalChange, totalPct] = returnTotal(holding, quote);
   return (
     <Section>
+      <div style={{marginTop: '20px'}}/>
       <div className="grid-2">
         <div className={`grid-2-cell ${styles.gridCell}`}>
           <header>

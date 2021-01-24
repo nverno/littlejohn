@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import Spinner from '../../loading/spinner';
 import PropagateLoader from 'react-spinners/PropagateLoader';
 
 import StockDailyInfo from './stock_daily_info';
@@ -13,6 +12,8 @@ import {
   companyOverview,
 } from '../../../selectors/companies';
 import { fetchCompanyInfo } from '../../../actions/company_actions';
+import fonts from '../../../styles/font.module.scss';
+import styles from './stock-info.module.scss';
 
 const mapStateToProps = (state, ownProps) => ({
   description: state.entities.descriptions[ownProps.symbol],
@@ -25,7 +26,7 @@ const mapDispatchToProps = (dispatch, { symbol }) => ({
 
 const StockInfoGrid = ({ company, overview, showMore, quote, ...props }) => {
   return (
-    <div className="grid-4 lj-stock-info-grid">
+    <div className={`grid-4 ${styles.grid}`}>
       {overview &&
         overview.map((item, idx) => <StockDailyInfoCell key={idx} {...item} />)}
       {showMore && (
@@ -46,7 +47,6 @@ class StockInfo extends Component {
     this.state = {
       readMore: false,
       showMore: false,
-      // forcedUpdate: this.props.forcedUpdate,
     };
     this.setReadMore = this.setReadMore.bind(this);
     this.setShowMore = this.setShowMore.bind(this);
@@ -83,10 +83,10 @@ class StockInfo extends Component {
           <ShowMoreButton toggle={showMore} setToggle={this.setShowMore} />
         </SectionHeader>
 
-        <div className="lj-stock-info-about-container">
-          <h3 className="lj-stock-info-about">
+        <div className={styles.container}>
+          <h3 className={styles.about}>
             {formattedDescription ? (
-              <span className="lj-type7 lj-default-text">
+              <span className={`${fonts.type7} ${fonts.default}`}>
                 {formattedDescription.first}
                 {!readMore && '... '}
                 {readMore && formattedDescription.second}

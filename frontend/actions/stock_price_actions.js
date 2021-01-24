@@ -60,7 +60,7 @@ export const fetchStockPrices = ({ symbol, interval, prices }) => (
 export const fetchStockQuote = (symbol) => (dispatch) => {
   return StocksAPI.iexAPI.fetchBatchStocks([symbol], ['quote']).then(
     (data) => dispatch(receiveBatchQuotes(data)),
-    (errors) => dispatch(receiveApiErrors(errors))
+    (errors) => dispatch(receiveApiErrors([errors.message]))
   );
 };
 
@@ -72,7 +72,7 @@ export const fetchBatchPrices = ({ symbols, interval, prices }) => (
     : symbols;
   if (syms.length === 0) return null;
 
-  console.log('Fetching prices for: ', syms);
+  // console.log('Fetching prices for: ', syms);
   switch (interval) {
     case '1d':
       return StocksAPI.iexAPI.fetchBatchDailyPrices(syms).then(

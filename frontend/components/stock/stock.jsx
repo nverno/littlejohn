@@ -5,10 +5,11 @@ import StockPriceGraphContainer from './graph/stock_price_graph_container';
 import StockInfo from './about/stock_info';
 import { Section, SectionHeader } from '../parts/section';
 import SidebarContent from '../parts/sidebar_content';
-import StockOrderForm from './stock_order_form';
-import StockSidebarButtons from './stock_sidebar_buttons';
+import StockOrderForm from './sidebar/stock_order_form';
+import StockSidebarButtons from './sidebar/StockSidebarButtons';
 import StockHoldings from './stock_holdings';
 import SelectListModal from '../lists/modal/SelectListModal';
+import NotAvailable from '../errors/NotAvailable';
 import styles from './stock.module.scss';
 
 export default class Stock extends Component {
@@ -17,7 +18,6 @@ export default class Stock extends Component {
   }
 
   fetchStockShowData() {
-    // console.log('State: ', this.props.state);
     this.props.fetchStockShowData({
       symbol: this.props.symbol,
       // quotes: {}, prices: {}, companies: {},
@@ -34,7 +34,13 @@ export default class Stock extends Component {
   }
 
   render() {
-    const { holding, symbol, company, quote, description } = this.props;
+    const { holding, symbol, company, quote, description, apiErrors } = this.props;
+
+    if (apiErrors.length) {
+      return (
+        <NotAvailable symbol={symbol}/>
+      );
+    }
 
     return (
       <HeaderPage>
@@ -50,6 +56,7 @@ export default class Stock extends Component {
               <section className={styles.graphSection}>
                 <StockPriceGraphContainer quote={quote} symbol={symbol} />
               </section>
+              <div style={{ height: '40px' }}/>
 
               {holding && <StockHoldings holding={holding} quote={quote} />}
 

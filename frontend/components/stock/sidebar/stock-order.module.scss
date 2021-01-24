@@ -1,4 +1,7 @@
-.stock-order-form-header {
+@import '../../../styles/mixins.scss';
+
+.form {}
+.header {
   padding-left: 24px;
   padding-right: 24px;
   border-bottom: 1px solid;
@@ -7,7 +10,7 @@
   padding-top: 4px;
 }
 
-.stock-order-tab-panel {
+.tabPanel {
   -webkit-box-align: center;
   align-items: center;
   display: -webkit-box;
@@ -18,7 +21,7 @@
   border-top: none;
 }
 
-.stock-order-tabs-outer {
+.tabsOuter {
   height: 100%;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -30,49 +33,11 @@
   justify-content: space-between;
   height: 100%;
 }
-.stock-order-tabs-inner {
+.tabsInner {
   display: flex;
 }
 
-.stock-order-buy-outer {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  height: 48px;
-  -webkit-transition: opacity 0.2s;
-  transition: opacity 0.2s;
-  cursor: pointer;
-}
-.stock-order-buy-inner {
-  transition-duration: 250ms;
-  transition: width;
-}
-
-// Body
-
-.stock-order-form-body {
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-top: 12px;
-}
-.stock-order-sell-outer {
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  height: 48px;
-  -webkit-transition: opacity 0.2s;
-  transition: opacity 0.2s;
-}
-
-.stock-order-sell-inner {
-  -webkit-transition: width;
-  transition: width;
-  transition-duration: 250ms;
-}
-
-.stock-order-tab-button {
-  border-bottom: 2px solid transparent;
+.tabButton {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -84,11 +49,32 @@
   padding-top: 2px;
 }
 
-.panel-active {
-  border-color: var(--rh__primary-base);
+.panelActive {
+  border-bottom: 2px solid var(--rh__primary-base);
 }
 
-.stock-order-input-outer {
+.tabOuter {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 48px;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+.tabInner {
+  transition-duration: 250ms;
+  transition: width;
+}
+
+// Form Body
+.body {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 12px;
+}
+
+.inputOuter {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -101,19 +87,18 @@
   min-height: 48px;
 }
 
-.stock-order-amount-label {
+.amountLabel {
   margin-right: 12px;
   min-width: 48px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
-.stock-order-amount-input-outer {
+.amountOuter {
   text-align: right;
   width: 136px;
 }
-.stock-order-amount-input-inner {
+.amountInner {
   position: relative;
   width: 100%;
   display: flex;
@@ -121,12 +106,12 @@
   align-items: center;
 }
 
-.stock-order-estimate-container {
+.estimateContainer {
   border-top: 1px solid;
   border-color: var(--rh__neutral-bg3);
 }
 
-.stock-order-estimate-outer {
+.estimateOuter {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -139,19 +124,21 @@
   min-height: 48px;
 }
 
-.stock-order-form-controls {
+// Form Controls
+.controls {
   padding-top: 12px;
 }
-.stock-order-form-outer {
+.controlsOuter {
   margin-bottom: 12px;
 }
 
-.stock-order-form-inner {
+.controlsInner {
   padding: 12px 24px 24px;
   background-color: var(--rh__neutral-bg1);
 }
-.stock-order-form-button {
-  @include lj-square-button(
+
+.orderButton {
+  @include square-button(
     $color: var(--rh__neutral-bg1),
     $background: var(--rh__primary-base),
     $background-color-hover: var(--rh__primary-hover)
@@ -160,7 +147,8 @@
   width: 100%;
 }
 
-.stock-order-form-footer {
+// Form Footer
+.formFooter {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -176,13 +164,7 @@
   padding: 0 15px;
 }
 
-.list-errors {
-  list-style: none;
-  color: var(--rh__semantic-negative-base);
-  @include type4;
-}
-
-.stock-order-form-buying-power {
+.buyingPower {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -190,17 +172,24 @@
   border-left: 2px solid transparent;
 }
 
-.stock-sidebar-buttons {
+.sellAll {
+  composes: unstyled-anchor from '../../../styles/button.module.scss';
+  background-color: transparent;
+  color: var(--rh__primary-base);
+}
+
+// Sidebar Button Section
+.sidebarButtons {
   margin-top: 24px;
   padding: 0 24px;
   width: 100%;
 }
 
-.stock-sidebar-list-button {
-  @include lj-square-button;
+.listButton {
+  @include square-button;
 }
 
-.stock-sidebar-button-text {
+.listButtonText {
   position: relative;
   display: flex;
   -webkit-box-align: center;
@@ -210,7 +199,7 @@
   --rh__text-color: var(--rh__primary-base);
 }
 
-.stock-sidebar-button-inner {
+.listButtonInner {
   transition: opacity 300ms ease 0s;
   display: flex;
   -webkit-box-align: center;
