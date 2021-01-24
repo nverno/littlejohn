@@ -10,7 +10,7 @@ const Loader = ({ ...props }) => {
       justifyContent: 'center',
       alignItems: 'center'
     }}>
-      <PropagateLoader color='##00C805' {...props} />
+      <PropagateLoader color='#00C805' {...props} />
     </div>
   );
 };
