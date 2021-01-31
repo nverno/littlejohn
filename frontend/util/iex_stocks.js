@@ -42,7 +42,7 @@ export default class IexAPI {
     return this.apiRequest(`/stock/${symbol}/company`);
   }
 
-  async news(symbol, lastN = 10) {
+  async news(symbol, lastN = 3) {
     return this.apiRequest(`/stock/${symbol}/news/last/${lastN}`);
   }
 
