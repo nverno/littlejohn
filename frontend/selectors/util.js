@@ -20,3 +20,11 @@ export const capitalize = ([first, ...rest], lowerRest = false) =>
   (lowerRest ? rest.join('').toLowerCase() : rest.join(''));
 
 // const capitalizeEveryWord = str => str.replace(/\b[a-z]/g, char => char.toUpperCase());
+
+export const timeAgo = (time) => {
+  const hours = (new Date() - new Date(time)) / 36e5;
+  if (hours > 24) {
+    return `${Math.floor(hours / 24)}d`;
+  }
+  return `${Math.floor(hours)}h`;
+};

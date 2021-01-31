@@ -10,6 +10,7 @@ import holdings from './entities/holdings_reducer';
 import transactions from './entities/transactions_reducer';
 import forceUpdate from './entities/api_actions_reducer';
 import descriptions from './entities/descriptions_reducer';
+import news from './entities/news_reducer';
 
 export default combineReducers({
   users,
@@ -22,4 +23,5 @@ export default combineReducers({
   transactions,
   forceUpdate,
   descriptions,
+  news,
 });

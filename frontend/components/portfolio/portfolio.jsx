@@ -5,6 +5,7 @@ import PortfolioSidebar from './sidebar/portfolio_sidebar';
 import PopularLists from './popular_lists';
 import BuyingPower from './buying/BuyingPower';
 import PortfolioGraphContainer from './graph/portfolio_graph_container';
+import PortfolioNews from './PortfolioNews';
 
 import styles from './portfolio.module.scss';
 
@@ -21,9 +22,7 @@ const Portfolio = ({ ...props }) => {
 
           <PopularLists />
 
-          <section className={styles.news}>
-            Popular Lists & News
-          </section>
+          <PortfolioNews />
         </div>
 
         <div className="col-5">
