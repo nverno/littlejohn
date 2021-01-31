@@ -1,7 +1,13 @@
 #+TITLE: LittleJohn
 
-[[https://littlejohnn.herokuapp.com/#/][Live App]]
+#+CAPTION:
+#+NAME: logo
+[[file:./app/assets/images/rh_logo.png]]
 
-[[./app/assets/images/rh_logo.png]]
+[[https://littlejohnn.herokuapp.com][Live App]]
 
-LittleJohn aims to be a pixel-perfect clone of the popular trading app, [[https://robinhood.com/][RobinHood]].
+LittleJohn is a trading app used to track, discover, and trade stocks, 
+aiming to be a pixel-perfect clone of the popular trading app,
+[[https://robinhood.com/][RobinHood]]. It is built on Ruby on Rails, PostgresSQL,
+and React/Redux.
+
