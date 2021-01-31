@@ -1,26 +1,6 @@
-# README
+[Live App](https://littlejohnn.herokuapp.com/#/)
 
-[Live version](https://littlejohnn.herokuapp.com/#/)
+![img](./app/assets/images/rh_logo.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+LittleJohn aims to be a pixel-perfect clone of the popular trading app, [RobinHood](https://robinhood.com/).
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
