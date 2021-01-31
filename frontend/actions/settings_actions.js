@@ -44,6 +44,7 @@ export const setTheme = (theme) => dispatch => {
 
 export const resetSettings = () => dispatch => {
   removeThemes(globalThemes);
+  removeThemes(priceThemes);
   dispatch(resetTheme());
 };
 
