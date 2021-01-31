@@ -1,4 +1,4 @@
-import { iexAPI } from '../util/stocks_api';
+import * as StocksAPI from '../util/stocks_api';
 import { receiveApiErrors } from './stock_price_actions';
 export const RECEIVE_BATCH_NEWS = 'RECEIVE_BATCH_NEWS';
 export const RECEIVE_NEWS = 'RECEIVE_NEWS';
@@ -15,7 +15,7 @@ export const receiveBatchNews = (data) => ({
 });
 
 export const fetchNews = (symbol, n) => dispatch => {
-  return iexAPI.fetchNews(symbol, n).then(
+  return StocksAPI.iexAPI.news(symbol, n).then(
     (news) => dispatch(receiveNews(symbol, news)),
     (errors) => dispatch(receiveApiErrors([errors.message])),
   );
