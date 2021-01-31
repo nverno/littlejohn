@@ -1,6 +1,19 @@
 .container {
   padding: 20px 5px 10px 5px;
   border-bottom: 1px solid var(--rh__neutral-bg3);
+
+  &:hover {
+    background-color: var(--rh__neutral-hover-bg1);
+  }
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    color: inherit;
+  }
 }
 
 .firstRow {
@@ -19,7 +32,7 @@
   align-items: baseline;
 
   div:first-child {
-    margin-right: 5px;
+    margin-right: 8px;
   }
 
   div:not(:first-child) {
