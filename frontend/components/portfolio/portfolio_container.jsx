@@ -7,14 +7,9 @@ import {
 import { getOpenListSymbols } from '../../selectors/lists';
 
 const mapStateToProps = (state, ownProps) => {
-  // const { holdings, lists, quotes } = state.entities;
-  // const symbols = Object.keys(holdings).concat(getOpenListSymbols(state));
-
   return {
     holdings: state.entities.holdings,
-    prices: state.entities.prices,
-    // 
-    // symbols,
+    // prices: state.entities.prices,
   };
 };
 

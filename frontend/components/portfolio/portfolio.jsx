@@ -6,16 +6,17 @@ import PopularLists from './popular_lists';
 import BuyingPower from './buying/BuyingPower';
 import PortfolioGraphContainer from './graph/portfolio_graph_container';
 import PortfolioNews from './PortfolioNews';
-
 import styles from './portfolio.module.scss';
 
-const Portfolio = ({ ...props }) => {
+const Portfolio = ({ holdings, ...props }) => {
   return (
     <HeaderPage>
       <div className="row">
         <div className='col-12'>
           <section className={styles.graph}>
-            <PortfolioGraphContainer />
+            {Object.keys(holdings).length
+             ? <PortfolioGraphContainer />
+             : <img src={window.stonksURL} alt='Stonks' className={styles.image}/>}
           </section>
 
           <BuyingPower />
