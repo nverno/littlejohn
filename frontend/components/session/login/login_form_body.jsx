@@ -1,33 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styles from './login.module.scss';
 
 const LoginFormBody = ({ email, password, handleChange, demoLogin }) => {
+  const inputClass = `form-input ${styles.input}`;
   return (
     <>
       <header className="login-header">
         <span>Welcome to LittleJohn</span>
       </header>
       <div className="login-form-body">
-        <label>
+        <label className={styles.label}>
           Email or username
           <br />
           <input
             type="text"
             value={email}
             onChange={handleChange('email')}
-            className="form-input"
+            className={inputClass}
             required
           />
         </label>
         <br />
-        <label>
+        <label className={styles.label}>
           Password
           <br />
           <input
             type="password"
             value={password}
             onChange={handleChange('password')}
-            className="form-input"
+            className={inputClass}
             required
           />
         </label>
