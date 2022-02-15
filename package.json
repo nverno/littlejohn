@@ -2,8 +2,8 @@
   "name": "littlejohn",
   "private": true,
   "engines": {
-    "node": ">=15",
-    "npm": ">=7"
+    "node": ">=17",
+    "npm": ">=8"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
